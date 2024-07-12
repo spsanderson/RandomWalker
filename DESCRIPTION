@@ -11,6 +11,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2.9000
+URL: https://github.com/spsanderson/RandomWalker
+BugReports: https://github.com/spsanderson/RandomWalker/issues
+Depends: 
+    R (>= 4.1.0)
 Suggests: 
     knitr,
     rmarkdown
