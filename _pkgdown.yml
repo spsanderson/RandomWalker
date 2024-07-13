@@ -10,6 +10,7 @@ navbar:
   left:
     - icon: "fa-home"
       href: index.html
+      aria-lable: "Home"
     - text: "Getting Started"
       href: articles/getting-started.html
     - text: "Function Reference"
