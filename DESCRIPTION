@@ -1,5 +1,5 @@
 Package: RandomWalker
-Title: What the Package Does (One Line, Title Case)
+Title: Generate Random Walks Compatible With The 'tidyverse'
 Version: 0.0.0.9000
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre","cph"),
@@ -15,7 +15,11 @@ URL: https://www.spsanderson.com/RandomWalker/, https://github.com/spsanderson/R
 BugReports: https://github.com/spsanderson/RandomWalker/issues
 Depends: 
     R (>= 4.1.0)
+Imports:
+    dplyr,
+    tidyr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    stats
 VignetteBuilder: knitr
