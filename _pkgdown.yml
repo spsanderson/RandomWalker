@@ -19,7 +19,7 @@ navbar:
       href: news/index.html
 
 reference:
-  -  title: Automatic Random Wallks
+  -  title: Automatic Random Walks
      desc: Functions that generate non-modifiable random walks
      contents:
      -  has_concept("Auto Random Walk")
