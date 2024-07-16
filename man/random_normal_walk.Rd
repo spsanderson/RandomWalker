@@ -69,6 +69,10 @@ random_normal_walk(.num_walks = 10, .n = 50)
 random_normal_walk(.num_walks = 5, .n = 100, .mu = 0.5, .sd = 0.2)
 
 }
+\seealso{
+Other Generator Functions: 
+\code{\link{geometric_brownian_motion}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }
