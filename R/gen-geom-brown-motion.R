@@ -43,7 +43,7 @@
 #' of class matrix will be returned.
 #'
 #' @examples
-#' ts_geometric_brownian_motion()
+#' geometric_brownian_motion()
 #'
 #' @return
 #' A tibble/matrix

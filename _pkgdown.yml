@@ -4,7 +4,6 @@ template:
   bootswatch: flatly
   ganalytics: G-BSLLH3X96M
 
-
 navbar:
   title: "RandomWalker"
   left:
