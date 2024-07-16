@@ -6,7 +6,11 @@ Authors@R: c(
       comment = c(ORCID = "0009-0006-7661-8247")
       )
     )
-Description: What the package does (one paragraph).
+Description: 
+    This package makes it simple to generate random walks of various types.
+    It does so by providing a set of functions that are compatible with the 
+    'tidyverse'. The goal is to provide a simple set of functions that are powerful
+    enough to generate a wide variety of random walks, while also being easy to use.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -17,7 +21,9 @@ Depends:
     R (>= 4.1.0)
 Imports:
     dplyr,
-    tidyr
+    tidyr,
+    purrr,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
