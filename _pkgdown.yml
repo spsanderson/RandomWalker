@@ -23,5 +23,9 @@ reference:
      desc: Functions that generate non-modifiable random walks
      contents:
      -  has_concept("Auto Random Walk")
+  -  title: Generator Functions
+     desc: Functions that generate modifiable random walks
+     contents:
+     -  has_concept("Generator Functions")
 
 search:

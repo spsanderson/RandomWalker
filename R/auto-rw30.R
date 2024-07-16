@@ -47,19 +47,20 @@ rw30 <- function() {
   # Create a tibble with the walks
   walks_tibble <- dplyr::tibble(
     x = 1:num_steps,
-    !!!stats::setNames(walks, paste0("walk_", 1:num_walks))
+    !!!stats::setNames(walks, 1:num_walks)
+    #!!!stats::setNames(walks, paste0("walk_", 1:num_walks))
   )
 
   # Pivot the tibble longer
   walks_long <- tidyr::pivot_longer(
     walks_tibble,
-    cols = dplyr::starts_with("walk_"),
-    names_to = "walk",
-    values_to = "value"
+    cols = -x,
+    names_to = "walk_number",
+    values_to = "y"
   ) |>
-    dplyr::arrange(walk, x) |>
-    dplyr::select(walk, x, value) |>
-    dplyr::mutate(walk = factor(walk))
+    dplyr::mutate(walk_number = factor(walk_number)) |>
+    dplyr::select(walk_number, x, y) |>
+    dplyr::arrange(walk_number, x)
 
   attr(walks_long, "num_walks") <- num_walks
   attr(walks_long, "num_steps") <- num_steps

@@ -36,19 +36,15 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(RandomWalker)
 ## basic example code
-rw30()
-#> # A tibble: 3,000 × 3
-#>    walk       x value
-#>    <fct>  <int> <dbl>
-#>  1 walk_1     1 0    
-#>  2 walk_1     2 0.916
-#>  3 walk_1     3 1.26 
-#>  4 walk_1     4 1.84 
-#>  5 walk_1     5 2.53 
-#>  6 walk_1     6 1.39 
-#>  7 walk_1     7 1.94 
-#>  8 walk_1     8 2.42 
-#>  9 walk_1     9 1.86 
-#> 10 walk_1    10 2.27 
-#> # ℹ 2,990 more rows
+rw30() |>
+  head()
+#> # A tibble: 6 × 3
+#>   walk_number     x      y
+#>   <fct>       <int>  <dbl>
+#> 1 1               1  0    
+#> 2 1               2 -0.859
+#> 3 1               3 -2.52 
+#> 4 1               4 -2.88 
+#> 5 1               5 -2.74 
+#> 6 1               6 -3.90
 ```
