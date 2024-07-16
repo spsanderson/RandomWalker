@@ -66,7 +66,7 @@ of a GBM process. It can be used to analyze the behavior of financial
 assets and to make informed investment decisions.
 }
 \examples{
-ts_geometric_brownian_motion()
+geometric_brownian_motion()
 
 }
 \seealso{
