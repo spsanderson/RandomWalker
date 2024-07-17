@@ -48,7 +48,6 @@ rw30 <- function() {
   walks_tibble <- dplyr::tibble(
     x = 1:num_steps,
     !!!stats::setNames(walks, 1:num_walks)
-    #!!!stats::setNames(walks, paste0("walk_", 1:num_walks))
   )
 
   # Pivot the tibble longer

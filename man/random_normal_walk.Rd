@@ -71,7 +71,8 @@ random_normal_walk(.num_walks = 5, .n = 100, .mu = 0.5, .sd = 0.2)
 }
 \seealso{
 Other Generator Functions: 
-\code{\link{geometric_brownian_motion}()}
+\code{\link{geometric_brownian_motion}()},
+\code{\link{random_normal_drift_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH
