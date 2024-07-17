@@ -66,6 +66,7 @@ rw30 <- function() {
   attr(walks_long, "num_steps") <- num_steps
   attr(walks_long, "mu") <- mu
   attr(walks_long, "sd") <- sd
+  attr(walks_long, "fns") <- "rw30"
 
   return(walks_long)
 }
