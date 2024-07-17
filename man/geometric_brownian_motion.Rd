@@ -71,6 +71,7 @@ geometric_brownian_motion()
 }
 \seealso{
 Other Generator Functions: 
+\code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()}
 }
 \author{
