@@ -113,6 +113,7 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
+  attr(res, "fns")           <- "random_normal_walk"
 
   # Return
   return(res)
