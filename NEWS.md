@@ -8,6 +8,7 @@ None
 2. Fix #17 - Add Function `geometric_brownian_motion()` to generate Geometric Brownian Motion
 3. Fix #18 - Add Function `random_normal_drift_walk()` to generate Random Walk with Drift
 4. Fix #16 - Add Function `brownian_motion()` to generate Brownian Motion
+5. Fix #13 - Add Function `random_normal_walk()` to generate Random Walk
 
 ## Minor Improvements and Fixes
 None
