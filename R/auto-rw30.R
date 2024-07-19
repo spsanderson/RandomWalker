@@ -80,7 +80,7 @@ rw30 <- function() {
   attr(walks_long, "mu") <- mu
   attr(walks_long, "sd") <- sd
   attr(walks_long, "fns") <- "rw30"
-  attr(res, "dimension")     <- 1
+  attr(walks_long, "dimension")     <- 1
 
   return(walks_long)
 }
