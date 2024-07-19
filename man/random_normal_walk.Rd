@@ -66,7 +66,7 @@ cumulative sum, product, minimum, and maximum of the steps.
 random_normal_walk(.num_walks = 10, .n = 50)
 
 # Generate random walks with different mean and standard deviation
-random_normal_walk(.num_walks = 5, .n = 100, .mu = 0.5, .sd = 0.2)
+random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
 
 }
 \seealso{
