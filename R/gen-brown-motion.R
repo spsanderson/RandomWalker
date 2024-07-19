@@ -105,6 +105,7 @@ brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
   attr(ret, "initial_value") <- .initial_value
   attr(ret, "return_tibble") <- .return_tibble
   attr(ret, "fns") <- "brownian_motion"
+  attr(res, "dimension")     <- 1
 
   return(ret)
 }
