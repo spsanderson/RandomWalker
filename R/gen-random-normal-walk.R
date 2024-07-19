@@ -143,6 +143,7 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
   attr(res, "samp_size")     <- samp_size
   attr(res, "periods")       <- periods
   attr(res, "fns")           <- "random_normal_walk"
+  attr(res, "dimension")     <- 1
 
   # Return
   return(res)

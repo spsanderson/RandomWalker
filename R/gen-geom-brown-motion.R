@@ -124,6 +124,7 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   attr(ret, "delta_time") <- .delta_time
   attr(ret, "return_tibble") <- .return_tibble
   attr(ret, "fns") <- "geometric_brownian_motion"
+  attr(res, "dimension")     <- 1
 
   return(ret)
 }

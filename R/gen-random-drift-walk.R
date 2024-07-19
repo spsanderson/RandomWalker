@@ -90,6 +90,7 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
   attr(walks_long, "sd") <- sd
   attr(walks_long, "drift") <- drift
   attr(walks_long, "fns") <- "random_normal_drift_walk"
+  attr(res, "dimension")     <- 1
 
   return(walks_long)
 }
