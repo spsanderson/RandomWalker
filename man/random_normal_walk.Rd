@@ -71,6 +71,7 @@ random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
 }
 \seealso{
 Other Generator Functions: 
+\code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()}
 }

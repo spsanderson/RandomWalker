@@ -54,6 +54,7 @@ ggplot(walks, ggplot2::aes(x = x, y = y, group = walk_number, color = walk_numbe
 }
 \seealso{
 Other Generator Functions: 
+\code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_walk}()}
 }
