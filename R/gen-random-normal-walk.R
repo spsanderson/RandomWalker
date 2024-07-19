@@ -46,7 +46,7 @@
 #' random_normal_walk(.num_walks = 10, .n = 50)
 #'
 #' # Generate random walks with different mean and standard deviation
-#' random_normal_walk(.num_walks = 5, .n = 100, .mu = 0.5, .sd = 0.2)
+#' random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
 #'
 #' @name random_normal_walk
 NULL
@@ -82,27 +82,48 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
+  x <- if (samp) {
+    1:samp_size
+  } else {
+    1:n
+  }
+  periods <- length(x)
 
-  res <- dplyr::tibble(walk_number = 1:num_walks |>
-                         factor()) |>
+  res <- tidyr::expand_grid(walk_number = factor(1:num_walks), x = 1:periods) |>
     dplyr::group_by(walk_number) |>
     dplyr::mutate(
-      x = dplyr::case_when(
-        samp == TRUE ~ list(1:samp_size),
-        .default = list(1:n)
-      )) |>
-    dplyr::mutate(
-      y = dplyr::case_when(
-        samp == TRUE ~ list(sample(rnorm(n, mu, sd), replace = replace,
-                                   size = samp_size)),
-        .default = list(rnorm(n, mu, sd))
-      )) |>
-    tidyr::unnest(cols = c(x, y)) |>
+      y = if (samp) {
+        sample(rnorm(periods, mu, sd), replace = replace, size = samp_size)
+      } else {
+        rnorm(periods, mu, sd)
+      }
+    ) |>
     dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
     dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>
     dplyr::mutate(cum_min  = initial_value + cummin(y)) |>
     dplyr::mutate(cum_max  = initial_value + cummax(y)) |>
     dplyr::ungroup()
+
+  # res <- dplyr::tibble(walk_number = 1:num_walks |>
+  #                        factor()) |>
+  #   dplyr::group_by(walk_number) |>
+  #   dplyr::mutate(
+  #     x = dplyr::case_when(
+  #       samp == TRUE ~ list(1:samp_size),
+  #       .default = list(1:n)
+  #     )) |>
+  #   dplyr::mutate(
+  #     y = dplyr::case_when(
+  #       samp == TRUE ~ list(sample(rnorm(n, mu, sd), replace = replace,
+  #                                  size = samp_size)),
+  #       .default = list(rnorm(n, mu, sd))
+  #     )) |>
+  #   tidyr::unnest(cols = c(x, y)) |>
+  #   dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
+  #   dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>
+  #   dplyr::mutate(cum_min  = initial_value + cummin(y)) |>
+  #   dplyr::mutate(cum_max  = initial_value + cummax(y)) |>
+  #   dplyr::ungroup()
 
   # Attributes
   attr(res, "num_walks")     <- num_walks
@@ -113,6 +134,7 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
+  attr(res, "periods")       <- periods
   attr(res, "fns")           <- "random_normal_walk"
 
   # Return
