@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RandomWalker
+# RandomWalker <img src="man/figures/logo.png" width="147" height="170" align="right" />
 
 <!-- badges: start -->
 
@@ -37,14 +37,18 @@ This is a basic example which shows you how to solve a common problem:
 library(RandomWalker)
 ## basic example code
 rw30() |>
-  head()
-#> # A tibble: 6 × 3
-#>   walk_number     x      y
-#>   <fct>       <int>  <dbl>
-#> 1 1               1  0    
-#> 2 1               2 -0.859
-#> 3 1               3 -2.52 
-#> 4 1               4 -2.88 
-#> 5 1               5 -2.74 
-#> 6 1               6 -3.90
+  head(10)
+#> # A tibble: 10 × 3
+#>    walk_number     x      y
+#>    <fct>       <int>  <dbl>
+#>  1 1               1  0    
+#>  2 1               2 -0.821
+#>  3 1               3 -0.969
+#>  4 1               4 -2.08 
+#>  5 1               5 -3.58 
+#>  6 1               6 -2.50 
+#>  7 1               7 -4.65 
+#>  8 1               8 -4.68 
+#>  9 1               9 -5.75 
+#> 10 1              10 -6.49
 ```
