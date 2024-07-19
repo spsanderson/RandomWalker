@@ -68,6 +68,13 @@ random_normal_walk(.num_walks = 10, .n = 50)
 # Generate random walks with different mean and standard deviation
 random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
 
+random_normal_walk(.num_walks = 2, .n = 100) |>
+  ggplot(aes(x = x, y = y, group = walk_number, color = walk_number)) +
+  geom_line() +
+  labs(title = "Random Normal Walk", x = "Time", y = "Value") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
 }
 \seealso{
 Other Generator Functions: 

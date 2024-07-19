@@ -27,7 +27,7 @@
 #'
 #' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1,
 #'                                   .drift = 0.05)
-#' ggplot(walks, ggplot2::aes(x = x, y = y, group = walk_number, color = walk_number)) +
+#' ggplot(walks, aes(x = x, y = y, group = walk_number, color = walk_number)) +
 #'   geom_line() +
 #'   labs(title = "Random Walks with Drift", x = "Time", y = "Value") +
 #'   theme_minimal() +

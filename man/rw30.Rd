@@ -21,8 +21,22 @@ Each walk is generated independently and stored in a tibble. The resulting
 tibble is then pivoted into a long format for easier analysis.
 }
 \examples{
+library(ggplot2)
+
 # Generate random walks and print the result
 rw30()
+
+rw30() |>
+ ggplot(aes(x = x, y = y, color = walk_number, group = walk_number)) +
+ geom_line() +
+ theme_minimal() +
+ theme(legend.position = "none") +
+ labs(
+   title = "30 Random Walks",
+   x = "Step",
+   y = "Value",
+   color = "Walk Number"
+ )
 
 }
 \author{
