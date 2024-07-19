@@ -66,7 +66,16 @@ of a GBM process. It can be used to analyze the behavior of financial
 assets and to make informed investment decisions.
 }
 \examples{
+library(ggplot2)
+
 geometric_brownian_motion()
+
+geometric_brownian_motion() |>
+  ggplot(aes(x = x, y = y, group = walk_number, color = walk_number)) +
+  geom_line() +
+  labs(title = "Geometric Brownian Motion", x = "Time", y = "Value") +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 }
 \seealso{
