@@ -52,7 +52,7 @@ NULL
 #' @export
 #' @rdname brownian_motion
 
-brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
+brownian_motion <- function(.num_walks = 10, .n = 100, .delta_time = 1,
                                .initial_value = 0, .return_tibble = TRUE) {
 
   # Tidyeval ----
@@ -99,8 +99,8 @@ brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
   }
 
   # Return ----
-  attr(ret, "time") <- .n
-  attr(ret, "num_sims") <- .num_walks
+  attr(ret, "n") <- .n
+  attr(ret, "num_walks") <- .num_walks
   attr(ret, "delta_time") <- .delta_time
   attr(ret, "initial_value") <- .initial_value
   attr(ret, "return_tibble") <- .return_tibble
