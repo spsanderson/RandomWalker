@@ -78,8 +78,8 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
     dplyr::ungroup()
 
   # Attributes
-  attr(res, "num_walks")     <- num_walks
-  attr(res, "n")             <- n
+  attr(res, "n")             <- periods
+  attr(res, "num_walks")     <- .num_walks
   attr(res, "upper_bound")   <- upper_bound
   attr(res, "lower_bound")   <- lower_bound
   attr(res, "upper_probability") <- upper_probability
