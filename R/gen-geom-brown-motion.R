@@ -116,8 +116,8 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
       dplyr::arrange(walk_number, x)
   }
 
-  attr(ret, "time") <- .n
-  attr(ret, "num_sims") <- .num_walks
+  attr(ret, "n") <- .n
+  attr(ret, "num_walks") <- .num_walks
   attr(ret, "mean") <- .mu
   attr(ret, "sigma") <- .sigma
   attr(ret, "initial_value") <- .initial_value
