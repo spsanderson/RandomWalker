@@ -101,8 +101,8 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   colnames(rand_matrix) <- 1:num_sims
 
   # get GBM and convert to price paths
-  ret <- exp((mu - sigma * sigma / 2) * delta_time + sigma * rand_matrix * sqrt(delta_time))
-  ret <- apply(rbind(rep(initial_value, num_sims), ret), 2, cumprod)
+  res <- exp((mu - sigma * sigma / 2) * delta_time + sigma * rand_matrix * sqrt(delta_time))
+  res <- apply(rbind(rep(initial_value, num_sims), res), 2, cumprod)
 
   # Return
   if (return_tibble){
