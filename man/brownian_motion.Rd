@@ -5,17 +5,17 @@
 \title{Brownian Motion}
 \usage{
 brownian_motion(
-  .n = 100,
   .num_walks = 10,
+  .n = 100,
   .delta_time = 1,
   .initial_value = 0,
   .return_tibble = TRUE
 )
 }
 \arguments{
-\item{.n}{Total time of the simulation.}
-
 \item{.num_walks}{Total number of simulations.}
+
+\item{.n}{Total time of the simulation.}
 
 \item{.delta_time}{Time step size.}
 

@@ -84,13 +84,13 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
     dplyr::select(walk_number, x, y) |>
     dplyr::arrange(walk_number, x)
 
+  attr(walks_long, "n") <- num_steps
   attr(walks_long, "num_walks") <- num_walks
-  attr(walks_long, "num_steps") <- num_steps
   attr(walks_long, "mu") <- mu
   attr(walks_long, "sd") <- sd
   attr(walks_long, "drift") <- drift
   attr(walks_long, "fns") <- "random_normal_drift_walk"
-  attr(res, "dimension")     <- 1
+  attr(walks_long, "dimension")     <- 1
 
   return(walks_long)
 }

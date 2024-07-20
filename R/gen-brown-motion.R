@@ -52,7 +52,7 @@ NULL
 #' @export
 #' @rdname brownian_motion
 
-brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
+brownian_motion <- function(.num_walks = 10, .n = 100, .delta_time = 1,
                                .initial_value = 0, .return_tibble = TRUE) {
 
   # Tidyeval ----
@@ -84,11 +84,11 @@ brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
   colnames(rand_matrix) <- 1:num_sims
 
   # Get the Brownian Motion and convert to price paths
-  ret <- apply(rbind(rep(initial_value, num_sims), rand_matrix), 2, cumsum)
+  res <- apply(rbind(rep(initial_value, num_sims), rand_matrix), 2, cumsum)
 
   # Return
   if (return_tibble){
-    ret <- ret |>
+    res <- res |>
       dplyr::as_tibble() |>
       dplyr::mutate(t = 1:(t+1)) |>
       tidyr::pivot_longer(-t) |>
@@ -99,13 +99,13 @@ brownian_motion <- function(.n = 100, .num_walks = 10, .delta_time = 1,
   }
 
   # Return ----
-  attr(ret, "time") <- .n
-  attr(ret, "num_sims") <- .num_walks
-  attr(ret, "delta_time") <- .delta_time
-  attr(ret, "initial_value") <- .initial_value
-  attr(ret, "return_tibble") <- .return_tibble
-  attr(ret, "fns") <- "brownian_motion"
+  attr(res, "n") <- .n
+  attr(res, "num_walks") <- .num_walks
+  attr(res, "delta_time") <- .delta_time
+  attr(res, "initial_value") <- .initial_value
+  attr(res, "return_tibble") <- .return_tibble
+  attr(res, "fns") <- "brownian_motion"
   attr(res, "dimension")     <- 1
 
-  return(ret)
+  return(res)
 }

@@ -133,8 +133,8 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
   #   dplyr::ungroup()
 
   # Attributes
-  attr(res, "num_walks")     <- num_walks
   attr(res, "n")             <- n
+  attr(res, "num_walks")     <- num_walks
   attr(res, "mu")            <- mu
   attr(res, "sd")            <- sd
   attr(res, "initial_value") <- initial_value
