@@ -5,7 +5,7 @@
 \title{Brownian Motion}
 \usage{
 brownian_motion(
-  .num_walks = 10,
+  .num_walks = 25,
   .n = 100,
   .delta_time = 1,
   .initial_value = 0,
