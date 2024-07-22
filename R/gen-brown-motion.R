@@ -94,7 +94,7 @@ brownian_motion <- function(.num_walks = 10, .n = 100, .delta_time = 1,
       tidyr::pivot_longer(-t) |>
       dplyr::select(name, t, value) |>
       purrr::set_names("walk_number", "x", "y") |>
-      dplyr::mutate(walk_number = factor(walk_number)) |>
+      dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
       dplyr::arrange(walk_number, x)
   }
 

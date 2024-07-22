@@ -80,7 +80,7 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
     names_to = "walk_number",
     values_to = "y"
   ) |>
-    dplyr::mutate(walk_number = factor(walk_number)) |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
     dplyr::select(walk_number, x, y) |>
     dplyr::arrange(walk_number, x)
 
