@@ -69,7 +69,7 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
         x = c(upper_bound, lower_bound),
         size = 1,
         prob = c(upper_probability, lower_probability))
-    )
+      )
     ) |>
     dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
     dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>

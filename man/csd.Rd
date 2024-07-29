@@ -32,10 +32,10 @@ Other Vector Function:
 \code{\link{ckurtosis}()},
 \code{\link{cmean}()},
 \code{\link{cmedian}()},
+\code{\link{crange}()},
 \code{\link{cskewness}()},
 \code{\link{cvar}()},
 \code{\link{kurtosis_vec}()},
-\code{\link{name}},
 \code{\link{rw_range}()},
 \code{\link{skewness_vec}()}
 }

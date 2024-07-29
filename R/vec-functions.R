@@ -338,7 +338,7 @@ rw_range <- function(.x) {
 #' @return
 #' A numeric vector
 #'
-#' @name name
+#' @name crange
 NULL
 #' @rdname crange
 #' @export
