@@ -82,8 +82,10 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
     values_to = "y"
   ) |>
     dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
-    dplyr::select(walk_number, x, y) |>
-    dplyr::arrange(walk_number, x)
+    dplyr::select(walk_number, x, y, dplyr::everything()) |>
+    dplyr::arrange(walk_number, x)  |>
+    dplyr::ungroup() |>
+    rand_walk_helper(.value = initial_value)
 
   attr(walks_long, "n") <- num_steps
   attr(walks_long, "num_walks") <- num_walks

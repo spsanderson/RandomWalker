@@ -108,32 +108,8 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
         rnorm(periods, mu, sd)
       }
     ) |>
-    dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
-    dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>
-    dplyr::mutate(cum_min  = initial_value + cummin(y)) |>
-    dplyr::mutate(cum_max  = initial_value + cummax(y)) |>
-    dplyr::ungroup()
-
-  # res <- dplyr::tibble(walk_number = 1:num_walks |>
-  #                        factor()) |>
-  #   dplyr::group_by(walk_number) |>
-  #   dplyr::mutate(
-  #     x = dplyr::case_when(
-  #       samp == TRUE ~ list(1:samp_size),
-  #       .default = list(1:n)
-  #     )) |>
-  #   dplyr::mutate(
-  #     y = dplyr::case_when(
-  #       samp == TRUE ~ list(sample(rnorm(n, mu, sd), replace = replace,
-  #                                  size = samp_size)),
-  #       .default = list(rnorm(n, mu, sd))
-  #     )) |>
-  #   tidyr::unnest(cols = c(x, y)) |>
-  #   dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
-  #   dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>
-  #   dplyr::mutate(cum_min  = initial_value + cummin(y)) |>
-  #   dplyr::mutate(cum_max  = initial_value + cummax(y)) |>
-  #   dplyr::ungroup()
+    dplyr::ungroup() |>
+    rand_walk_helper(.value = initial_value)
 
   # Attributes
   attr(res, "n")             <- n
