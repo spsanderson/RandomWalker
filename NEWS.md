@@ -13,6 +13,8 @@ None
 7. Fix #43 - Add vectorized functions
 8. Fix #44 - Add Function `internal_rand_walk_helper()` to help generate common
 columns for random walks.
+9. Fix #34 - Add Function `euclidean_distance()` to calculate the Euclidean distance
+of a random walk.
 
 ## Minor Improvements and Fixes
 None
