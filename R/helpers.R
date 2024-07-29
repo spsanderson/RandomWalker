@@ -1,6 +1,6 @@
 #' Random Walk Helper
 #'
-#' @family Helper Functions
+#' @family Utility Functions
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -18,13 +18,13 @@
 #' function being called by the end user.
 #'
 #' @examples
-#' df <- tibble(
+#' df <- data.frame(
 #'   walk_number = factor(rep(1L:25L, each = 30L)),
 #'   x = rep(1L:30L, 25L),
 #'   y = rnorm(750L, 0L, 1L)
 #'   )
 #'
-#' internal_rand_walk_helper(df, 100)
+#' rand_walk_helper(df, 100)
 #'
 #' @return
 #' A modified data frame/tibble with the following columns added:
@@ -36,14 +36,14 @@
 #'  \item `cum_mean`: Cumulative mean of `y`.
 #'  }
 #'
-#' @name internal_rand_walk_helper
+#' @name rand_walk_helper
 NULL
-#' @rdname internal_rand_walk_helper
+#' @rdname rand_walk_helper
 #' @export
 
-internal_rand_walk_helper <- function(.data, .value) {
+rand_walk_helper <- function(.data, .value) {
 
-  value = as.numeric(.value)
+  initial_value = as.numeric(.value)
 
   df <- .data |>
     dplyr::group_by(walk_number) |>

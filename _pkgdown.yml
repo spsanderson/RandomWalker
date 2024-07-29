@@ -30,9 +30,9 @@ reference:
      desc: Functions that generate random walks in vector form
      contents:
      -  has_concept("Vector Function")
-  -  title: Helpers
+  -  title: Helpers / Utilities
      desc: Functions that help with random walks
      contents:
-     -  has_concept("Helper Functions")
+     -  has_concept("Utility Functions")
 
 search:
