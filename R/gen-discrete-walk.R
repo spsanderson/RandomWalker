@@ -72,11 +72,8 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
         prob = c(upper_probability, lower_probability))
       )
     ) |>
-    dplyr::mutate(cum_sum  = initial_value + cumsum(y)) |>
-    dplyr::mutate(cum_prod = initial_value * cumprod(1 + y)) |>
-    dplyr::mutate(cum_min  = initial_value + cummin(y)) |>
-    dplyr::mutate(cum_max  = initial_value + cummax(y)) |>
-    dplyr::ungroup()
+    dplyr::ungroup() |>
+    rand_walk_helper(.value = initial_value)
 
   # Attributes
   attr(res, "n")             <- periods
