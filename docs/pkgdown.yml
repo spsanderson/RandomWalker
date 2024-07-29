@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2024-07-29T16:31Z
+last_built: 2024-07-29T16:35Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles

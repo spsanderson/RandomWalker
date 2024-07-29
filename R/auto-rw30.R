@@ -21,8 +21,10 @@
 #' library(ggplot2)
 #'
 #' # Generate random walks and print the result
+#' set.seed(123)
 #' rw30()
 #'
+#' set.seed(123)
 #' rw30() |>
 #'  ggplot(aes(x = x, y = y, color = walk_number, group = walk_number)) +
 #'  geom_line() +

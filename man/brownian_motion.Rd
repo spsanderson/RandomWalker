@@ -53,8 +53,10 @@ statistical analysis.
 \examples{
 library(ggplot2)
 
+set.seed(123)
 brownian_motion()
 
+set.seed(123)
 brownian_motion() |>
   ggplot(aes(x = x, y = y, group = walk_number, color = walk_number)) +
   geom_line() +
