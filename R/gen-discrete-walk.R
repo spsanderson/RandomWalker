@@ -29,6 +29,7 @@
 #' @examples
 #' library(ggplot2)
 #'
+#' set.seed(123)
 #' discrete_walk()
 #'
 #' set.seed(123)

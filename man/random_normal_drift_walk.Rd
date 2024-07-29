@@ -43,6 +43,7 @@ additional drift term added to each step.
 \examples{
 library(ggplot2)
 
+set.seed(123)
 walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1,
                                   .drift = 0.05)
 ggplot(walks, aes(x = x, y = y, group = walk_number, color = walk_number)) +
