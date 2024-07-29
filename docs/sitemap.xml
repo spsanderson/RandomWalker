@@ -8,11 +8,23 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/LICENSE.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/news/index.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/brownian_motion.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/cgmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/chmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/ckurtosis.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/cmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/cmedian.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/csd.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/cskewness.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/cvar.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/discrete_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/kurtosis_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/name.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/random_normal_drift_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/random_normal_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/rw30.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/rw_range.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/skewness_vec.html</loc></url>
 </urlset>
 
