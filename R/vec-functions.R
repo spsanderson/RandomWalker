@@ -368,6 +368,7 @@ crange <- function(.x) {
 #' @param .x A numeric vector of length four or more.
 #'
 #' @examples
+#' set.seed(123)
 #' kurtosis_vec(rnorm(100, 3, 2))
 #'
 #' @return
@@ -425,6 +426,7 @@ kurtosis_vec <- function(.x) {
 #' @param .x A numeric vector of length four or more.
 #'
 #' @examples
+#' set.seed(123)
 #' skewness_vec(rnorm(100, 3, 2))
 #'
 #' @return
