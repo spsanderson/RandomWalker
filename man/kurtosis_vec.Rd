@@ -23,6 +23,7 @@ kurtosis explains the sharpness of the peak of a distribution of data.
 A function to return the kurtosis of a vector.
 }
 \examples{
+set.seed(123)
 kurtosis_vec(rnorm(100, 3, 2))
 
 }
@@ -35,10 +36,10 @@ Other Vector Function:
 \code{\link{ckurtosis}()},
 \code{\link{cmean}()},
 \code{\link{cmedian}()},
+\code{\link{crange}()},
 \code{\link{csd}()},
 \code{\link{cskewness}()},
 \code{\link{cvar}()},
-\code{\link{name}},
 \code{\link{rw_range}()},
 \code{\link{skewness_vec}()}
 }

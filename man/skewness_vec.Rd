@@ -23,6 +23,7 @@ skewness explains the 'tailedness' of the distribution of data.
 A function to return the skewness of a vector.
 }
 \examples{
+set.seed(123)
 skewness_vec(rnorm(100, 3, 2))
 
 }
@@ -35,11 +36,11 @@ Other Vector Function:
 \code{\link{ckurtosis}()},
 \code{\link{cmean}()},
 \code{\link{cmedian}()},
+\code{\link{crange}()},
 \code{\link{csd}()},
 \code{\link{cskewness}()},
 \code{\link{cvar}()},
 \code{\link{kurtosis_vec}()},
-\code{\link{name}},
 \code{\link{rw_range}()}
 }
 \author{
