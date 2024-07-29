@@ -26,5 +26,9 @@ reference:
      desc: Functions that generate modifiable random walks
      contents:
      -  has_concept("Generator Functions")
+  -  title: Vector Functions
+     desc: Functions that generate random walks in vector form
+     contents:
+     -  has_concept("Vector Function")
 
 search:
