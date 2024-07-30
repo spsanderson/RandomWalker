@@ -9,7 +9,8 @@ random_normal_drift_walk(
   .n = 100,
   .mu = 0,
   .sd = 1,
-  .drift = 0.1
+  .drift = 0.1,
+  .initial_value = 0
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ random_normal_drift_walk(
 \item{.sd}{Numeric. The standard deviation of the normal distribution used for generating steps. Default is 1.}
 
 \item{.drift}{Numeric. The drift term to be added to each step. Default is 0.1.}
+
+\item{.initial_value}{A numeric value indicating the initial value of the walks. Default is 0.}
 }
 \value{
 A tibble in long format with columns \code{walk_number}, \code{x} (step index),
