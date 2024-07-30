@@ -21,6 +21,7 @@
 #' @param .mu Numeric. The mean of the normal distribution used for generating steps. Default is 0.
 #' @param .sd Numeric. The standard deviation of the normal distribution used for generating steps. Default is 1.
 #' @param .drift Numeric. The drift term to be added to each step. Default is 0.1.
+#' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
 #'
 #' @examples
 #' library(ggplot2)
@@ -44,13 +45,14 @@ NULL
 #' @export
 
 random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
-                                     .sd = 1, .drift = 0.1) {
+                                     .sd = 1, .drift = 0.1, .initial_value = 0) {
 
   num_walks <- as.integer(.num_walks)
   num_steps <- as.integer(.n)
   mu <- as.numeric(.mu)
   sd <- as.numeric(.sd)
   drift <- as.numeric(.drift)
+  initial_value <- as.numeric(.initial_value)
   #dr <- seq(from = drift, to = n, length.out = n)
 
   # Function to generate a single random walk
