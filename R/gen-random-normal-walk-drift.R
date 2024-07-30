@@ -27,7 +27,7 @@
 #' library(ggplot2)
 #'
 #' set.seed(123)
-#' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1,
+#' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
 #'                                   .drift = 0.05)
 #' ggplot(walks, aes(x = x, y = y, group = walk_number, color = walk_number)) +
 #'   geom_line() +
@@ -53,13 +53,13 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
   sd <- as.numeric(.sd)
   drift <- as.numeric(.drift)
   initial_value <- as.numeric(.initial_value)
-  #dr <- seq(from = drift, to = n, length.out = n)
+  dr <- seq(from = drift, to = drift * num_steps, length.out = num_steps)
 
   # Function to generate a single random walk
   single_random_walk_with_drift <- function(num_steps, mu, sd, drift) {
     wn <- stats::rnorm(n = num_steps, mean = mu, sd = sd)
     rw <- cumsum(stats::rnorm(n = num_steps, mean = mu, sd = sd))
-    res <- wn + rw + drift
+    res <- wn + rw + dr
     return(res)
   }
 
