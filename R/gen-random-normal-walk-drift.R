@@ -21,12 +21,13 @@
 #' @param .mu Numeric. The mean of the normal distribution used for generating steps. Default is 0.
 #' @param .sd Numeric. The standard deviation of the normal distribution used for generating steps. Default is 1.
 #' @param .drift Numeric. The drift term to be added to each step. Default is 0.1.
+#' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
 #'
 #' @examples
 #' library(ggplot2)
 #'
 #' set.seed(123)
-#' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1,
+#' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
 #'                                   .drift = 0.05)
 #' ggplot(walks, aes(x = x, y = y, group = walk_number, color = walk_number)) +
 #'   geom_line() +
@@ -44,20 +45,21 @@ NULL
 #' @export
 
 random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
-                                     .sd = 1, .drift = 0.1) {
+                                     .sd = 1, .drift = 0.1, .initial_value = 0) {
 
   num_walks <- as.integer(.num_walks)
   num_steps <- as.integer(.n)
   mu <- as.numeric(.mu)
   sd <- as.numeric(.sd)
   drift <- as.numeric(.drift)
-  #dr <- seq(from = drift, to = n, length.out = n)
+  initial_value <- as.numeric(.initial_value)
+  dr <- seq(from = drift, to = drift * num_steps, length.out = num_steps)
 
   # Function to generate a single random walk
   single_random_walk_with_drift <- function(num_steps, mu, sd, drift) {
     wn <- stats::rnorm(n = num_steps, mean = mu, sd = sd)
     rw <- cumsum(stats::rnorm(n = num_steps, mean = mu, sd = sd))
-    res <- wn + rw + drift
+    res <- wn + rw + dr
     return(res)
   }
 
