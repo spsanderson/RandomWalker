@@ -62,6 +62,8 @@ The output tibble includes several computed columns for each walk, such as the
 cumulative sum, product, minimum, and maximum of the steps.
 }
 \examples{
+library(ggplot2)
+
 # Generate 10 random walks with 50 steps each
 set.seed(123)
 random_normal_walk(.num_walks = 10, .n = 50)
