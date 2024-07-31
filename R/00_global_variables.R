@@ -1,5 +1,5 @@
 globalVariables(
   names = c(
-    "walk","x","value"
+    "walk_number","x","y","value","name"
   )
 )

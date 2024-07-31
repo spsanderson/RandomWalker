@@ -81,7 +81,7 @@ brownian_motion <- function(.num_walks = 25, .n = 100, .delta_time = 1,
   }
 
   # Matrix of random draws - one for each simulation
-  rand_matrix <- matrix(rnorm(t * num_sims, mean = 0, sd = sqrt(delta_time)),
+  rand_matrix <- matrix(stats::rnorm(t * num_sims, mean = 0, sd = sqrt(delta_time)),
                         ncol = num_sims, nrow = t)
   colnames(rand_matrix) <- 1:num_sims
 

@@ -99,7 +99,7 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   }
 
   # matrix of random draws - one for each day for each simulation
-  rand_matrix <- matrix(rnorm(t * num_sims), ncol = num_sims, nrow = t)
+  rand_matrix <- matrix(stats::rnorm(t * num_sims), ncol = num_sims, nrow = t)
   colnames(rand_matrix) <- 1:num_sims
 
   # get GBM and convert to price paths

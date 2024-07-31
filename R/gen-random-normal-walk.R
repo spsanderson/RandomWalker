@@ -42,6 +42,8 @@
 #' The tibble includes attributes for the function parameters.
 #'
 #' @examples
+#' library(ggplot2)
+#'
 #' # Generate 10 random walks with 50 steps each
 #' set.seed(123)
 #' random_normal_walk(.num_walks = 10, .n = 50)
@@ -103,9 +105,9 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = .1,
     dplyr::group_by(walk_number) |>
     dplyr::mutate(
       y = if (samp) {
-        sample(rnorm(periods, mu, sd), replace = replace, size = samp_size)
+        sample(stats::rnorm(periods, mu, sd), replace = replace, size = samp_size)
       } else {
-        rnorm(periods, mu, sd)
+        stats::rnorm(periods, mu, sd)
       }
     ) |>
     dplyr::ungroup() |>
