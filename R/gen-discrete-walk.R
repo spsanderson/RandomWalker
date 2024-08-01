@@ -62,6 +62,49 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
   lower_probability <- 1 - upper_probability
   initial_value <- as.numeric(.initial_value)
 
+  # Checks
+  if (!is.integer(num_walks) | num_walks < 1) {
+    rlang::abort(
+      message = "The number of walks must be an integer greater than 0.",
+      use_cli_format = TRUE
+    )
+  }
+
+  if (!is.integer(periods) | periods < 1) {
+    rlang::abort(
+      message = "The number of periods must be an integer greater than 0.",
+      use_cli_format = TRUE
+    )
+  }
+
+  if (!is.numeric(upper_bound)) {
+    rlang::abort(
+      message = "The upper bound must be a numeric value.",
+      use_cli_format = TRUE
+      )
+  }
+
+  if (!is.numeric(lower_bound)) {
+    rlang::abort(
+      message = "The lower bound must be a numeric value.",
+      use_cli_format = TRUE
+      )
+  }
+
+  if (!is.numeric(upper_probability) | upper_probability < 0 | upper_probability > 1) {
+    rlang::abort(
+      message = "The upper probability must be a numeric value between 0 and 1.",
+      use_cli_format = TRUE
+      )
+  }
+
+  if (!is.numeric(initial_value)) {
+    rlang::abort(
+      message = "The initial value must be a numeric value.",
+      use_cli_format = TRUE
+      )
+  }
+
   res <- tidyr::expand_grid(walk_number = factor(1:num_walks), x = 1:periods) |>
     dplyr::group_by(walk_number) |>
     dplyr::mutate(y = replicate(

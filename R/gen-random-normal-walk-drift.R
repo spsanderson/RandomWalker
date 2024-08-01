@@ -47,6 +47,7 @@ NULL
 random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
                                      .sd = 1, .drift = 0.1, .initial_value = 0) {
 
+  # Convert inputs to appropriate types
   num_walks <- as.integer(.num_walks)
   num_steps <- as.integer(.n)
   mu <- as.numeric(.mu)
@@ -54,6 +55,49 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
   drift <- as.numeric(.drift)
   initial_value <- as.numeric(.initial_value)
   dr <- seq(from = drift, to = drift * num_steps, length.out = num_steps)
+
+  # Checks
+  if (num_walks <= 0) {
+    rlang::abort(
+      message = "Number of walks must be a positive integer.",
+      use_cli = TRUE
+      )
+  }
+
+  if (num_steps <= 0) {
+    rlang::abort(
+      message = "Number of steps must be a positive integer.",
+      use_cli = TRUE
+      )
+  }
+
+  if (sd <= 0) {
+    rlang::abort(
+      message = "Standard deviation must be a positive number.",
+      use_cli = TRUE
+      )
+  }
+
+  if (is.na(mu)) {
+    rlang::abort(
+      message = "Mean must be a number.",
+      use_cli = TRUE
+      )
+  }
+
+  if (is.na(drift)) {
+    rlang::abort(
+      message = "Drift must be a number.",
+      use_cli = TRUE
+      )
+  }
+
+  if (is.na(initial_value)) {
+    rlang::abort(
+      message = "Initial value must be a number.",
+      use_cli = TRUE
+      )
+  }
 
   # Function to generate a single random walk
   single_random_walk_with_drift <- function(num_steps, mu, sd, drift) {

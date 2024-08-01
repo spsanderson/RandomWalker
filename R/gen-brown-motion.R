@@ -55,7 +55,7 @@ NULL
 #' @rdname brownian_motion
 
 brownian_motion <- function(.num_walks = 25, .n = 100, .delta_time = 1,
-                               .initial_value = 0, .return_tibble = TRUE) {
+                            .initial_value = 0, .return_tibble = TRUE) {
 
   # Tidyeval ----
   num_sims <- as.numeric(.num_walks)
@@ -69,6 +69,22 @@ brownian_motion <- function(.num_walks = 25, .n = 100, .delta_time = 1,
       !is.numeric(delta_time)){
     rlang::abort(
       message = "The parameters `.num_walks`, `.n`, `.delta_time`, and `.initial_value` must be numeric.",
+      use_cli_format = TRUE
+    )
+  }
+
+  # .num_walks and .n must be >= 1
+  if (num_sims < 1 | t < 1){
+    rlang::abort(
+      message = "The parameters of `.num_walks` and `.n` must be >= 1.",
+      use_cli_format = TRUE
+    )
+  }
+
+  # .delta_time must be > 0
+  if (delta_time <= 0){
+    rlang::abort(
+      message = "The parameter `.delta_time` must be > 0.",
       use_cli_format = TRUE
     )
   }

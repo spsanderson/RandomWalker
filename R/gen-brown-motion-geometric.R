@@ -98,6 +98,22 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
     )
   }
 
+  # .mu and .sigma and .detla_time must be >= 0
+  if (mu < 0 | sigma < 0 | delta_time < 0){
+    rlang::abort(
+      message = "The parameters of `.mu`, `.sigma`, and `.delta_time` must be >= 0.",
+      use_cli_format = TRUE
+    )
+  }
+
+  # .num_walks and .n must be >= 1
+  if (num_sims < 1 | t < 1){
+    rlang::abort(
+      message = "The parameters of `.num_walks` and `.n` must be >= 1.",
+      use_cli_format = TRUE
+    )
+  }
+
   # matrix of random draws - one for each day for each simulation
   rand_matrix <- matrix(stats::rnorm(t * num_sims), ncol = num_sims, nrow = t)
   colnames(rand_matrix) <- 1:num_sims
