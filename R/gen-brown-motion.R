@@ -113,7 +113,9 @@ brownian_motion <- function(.num_walks = 25, .n = 100, .delta_time = 1,
       dplyr::select(name, t, value) |>
       purrr::set_names("walk_number", "x", "y") |>
       dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
-      dplyr::arrange(walk_number, x)
+      dplyr::arrange(walk_number, x) |>
+      rand_walk_helper(.value = initial_value) |>
+      dplyr::select(-cum_sum, -cum_prod)
   }
 
   # Return ----
