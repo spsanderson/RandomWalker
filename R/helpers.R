@@ -107,8 +107,10 @@ convert_snake_to_title_case <- function(string) {
 
 #' Helper function to generate a caption string based on provided attributes
 #'
-#' @family caption generation
-#' @author Your Name
+#' @family Utility Functions
+#'
+#' @author Antti Lennart Rask
+#'
 #' @details This function is useful for creating descriptive captions for
 #' plots or outputs based on the attributes provided. It ensures that only
 #' non-null attributes are included in the caption. This function constructs a
@@ -136,6 +138,7 @@ convert_snake_to_title_case <- function(string) {
 NULL
 #' @rdname generate_caption
 #' @export
+
 generate_caption <- function(attributes) {
 
   # Initialize an empty vector to hold parts of the caption
