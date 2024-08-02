@@ -13,12 +13,14 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/ckurtosis.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cmean.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cmedian.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/convert_snake_to_title_case.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/crange.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/csd.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cskewness.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cvar.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/discrete_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/euclidean_distance.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/generate_caption.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/index.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/internal_rand_walk_helper.html</loc></url>
@@ -30,5 +32,6 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/rw30.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/rw_range.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/skewness_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/visualize_walks.html</loc></url>
 </urlset>
 
