@@ -41,6 +41,11 @@ df <- data.frame(
 rand_walk_helper(df, 100)
 
 }
+\seealso{
+Other Utility Functions: 
+\code{\link{convert_snake_to_title_case}()},
+\code{\link{generate_caption}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }

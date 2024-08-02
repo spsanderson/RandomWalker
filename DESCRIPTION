@@ -25,7 +25,8 @@ Imports:
     dplyr,
     tidyr,
     purrr,
-    rlang
+    rlang,
+    patchwork
 Suggests: 
     knitr,
     rmarkdown,
