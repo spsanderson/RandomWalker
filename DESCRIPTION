@@ -16,7 +16,7 @@ Description:
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.2.9000
 URL: https://www.spsanderson.com/RandomWalker/, https://github.com/spsanderson/RandomWalker
 BugReports: https://github.com/spsanderson/RandomWalker/issues
 Depends: 
