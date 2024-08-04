@@ -16,6 +16,7 @@ columns for random walks.
 9. Fix #34 - Add Function `euclidean_distance()` to calculate the Euclidean distance
 of a random walk.
 10. Fix #33 - Add Function `visualize_walks()` to visualize random walks.
+11. Fix #66 - Add Function `summarize_walks()` to summarize random walks.
 
 ## Minor Improvements and Fixes
 None
