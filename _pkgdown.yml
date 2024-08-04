@@ -38,5 +38,9 @@ reference:
      desc: Functions that help with random walks
      contents:
      -  has_concept("Utility Functions")
+  -  title: Statistic and Summary Functions
+     desc: Functions that summarise random walks
+     contents:
+     -  has_concept("Statistic Functions")
 
 search:
