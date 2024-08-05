@@ -31,6 +31,12 @@ currently in the experimental stage of development.
 
 ## Installation
 
+You can install the released version of {TidyDensity} from CRAN with:
+
+```r
+install.packages("RandomWalker")
+```
+
 You can install the development version of RandomWalker from [GitHub](https://github.com/) with:
 
 ``` r
@@ -42,9 +48,16 @@ devtools::install_github("spsanderson/RandomWalker")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r rw30_example}
 library(RandomWalker)
 ## basic example code
 rw30() |>
   head(10)
+```
+
+Here is a basic visualization of a Random Walk:
+
+```{r random_walk_visual_example}
+rw30() |>
+  visualize_walks()
 ```
