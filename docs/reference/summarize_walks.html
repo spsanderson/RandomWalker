@@ -98,29 +98,32 @@ for necessary attributes and ensures that the data frame is structured correctly
 <span class="r-in"><span><span class="va">walk_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.initial_value <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Summarize the walks</span></span></span>
-<span class="r-in"><span><span class="fu">summarize_walks</span><span class="op">(</span><span class="va">walk_data</span>, <span class="va">cum_sum</span>, <span class="va">walk_number</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">summarize_walks</span><span class="op">(</span><span class="va">walk_data</span>, <span class="va">cum_sum</span>, <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 method overwritten by 'quantmod':</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   method            from</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   as.zoo.data.frame zoo </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 25 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    walk_number fns         fns_name dimensions mean_val median range quantile_lo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1           random_nor… Random …          1    100.   100.  1.47         99.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2           random_nor… Random …          1     99.8   99.8 0.721        99.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 3           random_nor… Random …          1     99.5   99.5 0.987        99.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 4           random_nor… Random …          1     98.8   98.6 1.96         98.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 5           random_nor… Random …          1    101.   101.  1.41        100. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 6           random_nor… Random …          1    100.   100.  0.937        99.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 7           random_nor… Random …          1    101.   101.  1.94        100. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 8           random_nor… Random …          1     99.4   99.5 1.70         98.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 9           random_nor… Random …          1    101.   100.  2.03         99.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 10          random_nor… Random …          1    101.   100.  1.22        100. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ walk_number    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fns            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "random_normal_walk", "random_normal_walk", "random_nor…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fns_name       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Random Normal Walk", "Random Normal Walk", "Random Nor…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dimensions     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ mean_val       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.10659, 99.82922, 99.52922, 98.75850, 100.85864, 100…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ median         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.07614, 99.81004, 99.46064, 98.59080, 100.87054, 99.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ range          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.4702499, 0.7206181, 0.9869902, 1.9579304, 1.4119450, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ quantile_lo    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 99.47986, 99.56809, 99.17375, 98.08058, 100.38400, 99.6…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ quantile_hi    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.79633, 100.17122, 100.01265, 99.74580, 101.37084, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ variance       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.14913626, 0.02532646, 0.07434017, 0.24369466, 0.10788…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sd             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.3861816, 0.1591429, 0.2726539, 0.4936544, 0.3284642, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ min_val        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 99.43543, 99.49121, 99.05844, 98.04468, 100.10611, 99.6…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ max_val        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.90568, 100.21183, 100.04543, 100.00261, 101.51805, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ harmonic_mean  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.10512, 99.82897, 99.52849, 98.75607, 100.85759, 100…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ geometric_mean <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 100.10585, 99.82910, 99.52885, 98.75728, 100.85812, 100…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ skewness       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.18662786, 0.34427100, 0.42980993, 0.41718949, -0.0445…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ kurtosis       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -0.9483369, -0.1798819, -1.1319872, -0.8449953, -0.9673…</span>
 <span class="r-in"><span><span class="fu">summarize_walks</span><span class="op">(</span><span class="va">walk_data</span>, <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/pillar/man/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There was 1 warning in `dplyr::summarize()`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> In argument: `geometric_mean = exp(mean(log(y)))`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Caused by warning in `log()`:</span>
