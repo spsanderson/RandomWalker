@@ -1,5 +1,5 @@
 Package: RandomWalker
-Title: Generate Random Walks Compatible With The 'tidyverse'
+Title: Generate Random Walks Compatible with the 'tidyverse'
 Version: 0.1.0
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre","cph"),
@@ -9,7 +9,7 @@ Authors@R: c(
       )
     )
 Description: 
-    This package makes it simple to generate random walks of various types.
+    RandomWalker makes it simple to generate random walks of various types.
     It does so by providing a set of functions that are compatible with the 
     'tidyverse'. The goal is to provide a simple set of functions that are powerful
     enough to generate a wide variety of random walks, while also being easy to use.
