@@ -3,15 +3,12 @@
 
 # RandomWalker <img src="man/figures/logo.png" width="147" height="170" align="right" />
 
-<!-- badges: start -->
-
+<!-- badges: start
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RandomWalker)](https://cran.r-project.org/package=RandomWalker)
 ![](https://cranlogs.r-pkg.org/badges/RandomWalker)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/RandomWalker)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html##experimental)
-[![PRs
-Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html##experimental)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 <!-- badges: end -->
 
 The goal of RandomWalker is to allow users to easily create Random Walks
@@ -45,18 +42,18 @@ library(RandomWalker)
 rw30() |>
   head(10)
 #> # A tibble: 10 × 3
-#>    walk_number     x       y
-#>    <fct>       <int>   <dbl>
-#>  1 1               1  0     
-#>  2 1               2  0.609 
-#>  3 1               3  1.11  
-#>  4 1               4  0.344 
-#>  5 1               5 -0.627 
-#>  6 1               6 -1.67  
-#>  7 1               7 -0.713 
-#>  8 1               8  0.0888
-#>  9 1               9 -0.151 
-#> 10 1              10 -0.534
+#>    walk_number     x     y
+#>    <fct>       <int> <dbl>
+#>  1 1               1 0    
+#>  2 1               2 0.776
+#>  3 1               3 1.29 
+#>  4 1               4 0.408
+#>  5 1               5 1.10 
+#>  6 1               6 0.905
+#>  7 1               7 0.579
+#>  8 1               8 1.83 
+#>  9 1               9 2.61 
+#> 10 1              10 1.43
 ```
 
 Here is a basic visualization of a Random Walk:
