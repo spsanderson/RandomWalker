@@ -9,10 +9,8 @@ Authors@R: c(
       )
     )
 Description: 
-    RandomWalker makes it simple to generate random walks of various types.
-    It does so by providing a set of functions that are compatible with the 
-    'tidyverse'. The goal is to provide a simple set of functions that are powerful
-    enough to generate a wide variety of random walks, while also being easy to use.
+    Generates random walks of various types by providing a set of functions
+    that are compatible with the 'tidyverse'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
