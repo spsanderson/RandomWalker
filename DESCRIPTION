@@ -10,7 +10,10 @@ Authors@R: c(
     )
 Description: 
     Generates random walks of various types by providing a set of functions
-    that are compatible with the 'tidyverse'.
+    that are compatible with the 'tidyverse'. The functions provided in the package
+    make it simple to create random walks with a variety of properties, such as
+    how many simulations to run, how many steps to take, and the distribution of
+    random walk itself.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
