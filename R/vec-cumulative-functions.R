@@ -402,7 +402,6 @@ kurtosis_vec <- function(.x) {
   de <- (1 / n * sum(d_diff))^2
   k <- nu / de
   return(k)
-  print(k)
 }
 
 #' Compute Skewness of a Vector
@@ -460,5 +459,4 @@ skewness_vec <- function(.x) {
   de <- (1 / n * sum(d_diff))^(3 / 2)
   s <- nu / de
   return(s)
-  print(s)
 }
