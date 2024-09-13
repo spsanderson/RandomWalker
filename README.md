@@ -18,7 +18,7 @@ development.
 
 ## Installation
 
-You can install the released version of {TidyDensity} from CRAN with:
+You can install the released version of {RandomWalker} from CRAN with:
 
 ``` r
 install.packages("RandomWalker")
