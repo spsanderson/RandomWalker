@@ -32,8 +32,7 @@ computes the cumulative sum for each specified column, starting from an
 initial value. If the column names are not provided, it will throw an error.
 }
 \examples{
-library(dplyr)
-df <- tibble(x = 1:5, y = 6:10)
+df <- data.frame(x = 1:5, y = 6:10)
 std_cum_sum_augment(df, .value = x)
 std_cum_sum_augment(df, .value = y, .names = c("cumsum_y"))
 
@@ -43,6 +42,7 @@ Other Utility Functions:
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
 \code{\link{rand_walk_helper}()},
+\code{\link{std_cum_max_augment}()},
 \code{\link{std_cum_min_augment}()},
 \code{\link{std_cum_prod_augment}()}
 }

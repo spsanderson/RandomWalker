@@ -10,6 +10,8 @@ sum of a random walk
 product of a random walk
 3. Fix #94 - Add Function `std_cum_min_augment()` to calculate the cumulative
 minimum of a random walk
+4. Fix #95 - Add Function `std_cum_max_augment()` to calculate the cumulative
+maximum of a random walk
 
 ## Minor Improvements and Fixes
 None

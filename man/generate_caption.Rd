@@ -38,6 +38,7 @@ generate_caption(attrs) # "50 steps, sd = 2.0."
 Other Utility Functions: 
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{rand_walk_helper}()},
+\code{\link{std_cum_max_augment}()},
 \code{\link{std_cum_min_augment}()},
 \code{\link{std_cum_prod_augment}()},
 \code{\link{std_cum_sum_augment}()}

@@ -32,8 +32,7 @@ computes the cumulative minimum for each specified column, starting from an
 initial value. If the column names are not provided, it will throw an error.
 }
 \examples{
-library(dplyr)
-df <- tibble(x = c(5, 3, 8, 1, 4), y = c(10, 7, 6, 12, 5))
+df <- data.frame(x = c(5, 3, 8, 1, 4), y = c(10, 7, 6, 12, 5))
 std_cum_min_augment(df, .value = x)
 std_cum_min_augment(df, .value = y, .names = c("cummin_y"))
 
@@ -43,6 +42,7 @@ Other Utility Functions:
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
 \code{\link{rand_walk_helper}()},
+\code{\link{std_cum_max_augment}()},
 \code{\link{std_cum_prod_augment}()},
 \code{\link{std_cum_sum_augment}()}
 }

@@ -199,8 +199,7 @@ generate_caption <- function(attributes) {
 #' the cumulative sums.
 #'
 #' @examples
-#' library(dplyr)
-#' df <- tibble(x = 1:5, y = 6:10)
+#' df <- data.frame(x = 1:5, y = 6:10)
 #' std_cum_sum_augment(df, .value = x)
 #' std_cum_sum_augment(df, .value = y, .names = c("cumsum_y"))
 #'
@@ -268,8 +267,7 @@ std_cum_sum_augment <- function(.data,
 #' cumulative products.
 #'
 #' @examples
-#' library(dplyr)
-#' df <- tibble(x = 1:5, y = 6:10)
+#' df <- data.frame(x = 1:5, y = 6:10)
 #' std_cum_prod_augment(df, .value = x)
 #' std_cum_prod_augment(df, .value = y, .names = c("cumprod_y"))
 #'
@@ -337,8 +335,7 @@ std_cum_prod_augment <- function(.data,
 #' the cumulative minimums.
 #'
 #' @examples
-#' library(dplyr)
-#' df <- tibble(x = c(5, 3, 8, 1, 4), y = c(10, 7, 6, 12, 5))
+#' df <- data.frame(x = c(5, 3, 8, 1, 4), y = c(10, 7, 6, 12, 5))
 #' std_cum_min_augment(df, .value = x)
 #' std_cum_min_augment(df, .value = y, .names = c("cummin_y"))
 #'
@@ -372,6 +369,74 @@ std_cum_min_augment <- function(.data,
 
   if (any(.names == "auto")) {
     newname <- paste0("cum_min_", grid$col)
+  } else {
+    newname <- as.list(.names)
+  }
+
+  calls <- purrr::set_names(calls, newname)
+
+  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+
+  return(ret)
+}
+
+#' Augment Cumulative Maximum
+#'
+#' @family Utility Functions
+#' @author Steven P. Sanderson II, MPH
+#' @description This function augments a data frame by adding cumulative maximum
+#' columns for specified variables.
+#'
+#' @details The function takes a data frame and a column name (or names) and
+#' computes the cumulative maximum for each specified column, starting from an
+#' initial value. If the column names are not provided, it will throw an error.
+#'
+#' @param .data A data frame to augment.
+#' @param .value A column name or names for which to compute the cumulative maximum.
+#' @param .names Optional. A character vector of names for the new cumulative
+#' maximum columns. Defaults to "auto", which generates names based on the
+#' original column names.
+#' @param .initial_value A numeric value to start the cumulative maximum from.
+#' Defaults to 0.
+#'
+#' @return A tibble with the original data and additional columns containing the
+#' cumulative maximums.
+#'
+#' @examples
+#' df <- data.frame(x = c(1, 3, 2, 5, 4), y = c(10, 7, 6, 12, 5))
+#' std_cum_max_augment(df, .value = x)
+#' std_cum_max_augment(df, .value = y, .names = c("cummax_y"))
+#'
+#' @name std_cum_max_augment
+NULL
+#' @rdname std_cum_max_augment
+#' @export
+#'
+std_cum_max_augment <- function(.data,
+                                .value,
+                                .names = "auto",
+                                .initial_value = 0) {
+  column_expr <- rlang::enquo(.value)
+
+  if (rlang::quo_is_missing(column_expr)) {
+    rlang::abort("std_cum_max_augment(.value) is missing.", use_cli_format = TRUE)
+  }
+
+  col_nms <- names(tidyselect::eval_select(column_expr, .data))
+
+  make_call <- function(col) {
+    rlang::expr(!!.initial_value + cummax(!!rlang::sym(col)))
+  }
+
+  grid <- expand.grid(
+    col = col_nms,
+    stringsAsFactors = FALSE
+  )
+
+  calls <- purrr::pmap(list(grid$col), make_call)
+
+  if (any(.names == "auto")) {
+    newname <- paste0("cum_max_", grid$col)
   } else {
     newname <- as.list(.names)
   }
