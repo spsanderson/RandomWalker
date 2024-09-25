@@ -313,3 +313,72 @@ std_cum_prod_augment <- function(.data,
 
   return(ret)
 }
+
+#' Augment Cumulative Minimum
+#'
+#' @family Utility Functions
+#' @author Steven P. Sanderson II, MPH
+#' @description This function augments a data frame by adding cumulative minimum
+#' columns for specified variables.
+#'
+#' @details The function takes a data frame and a column name (or names) and
+#' computes the cumulative minimum for each specified column, starting from an
+#' initial value. If the column names are not provided, it will throw an error.
+#'
+#' @param .data A data frame to augment.
+#' @param .value A column name or names for which to compute the cumulative minimum.
+#' @param .names Optional. A character vector of names for the new cumulative
+#' minimum columns. Defaults to "auto", which generates names based on the
+#' original column names.
+#' @param .initial_value A numeric value to start the cumulative minimum from.
+#' Defaults to 0.
+#'
+#' @return A tibble with the original data and additional columns containing
+#' the cumulative minimums.
+#'
+#' @examples
+#' library(dplyr)
+#' df <- tibble(x = c(5, 3, 8, 1, 4), y = c(10, 7, 6, 12, 5))
+#' std_cum_min_augment(df, .value = x)
+#' std_cum_min_augment(df, .value = y, .names = c("cummin_y"))
+#'
+#' @name std_cum_min_augment
+NULL
+#' @rdname std_cum_min_augment
+#' @export
+#'
+std_cum_min_augment <- function(.data,
+                                .value,
+                                .names = "auto",
+                                .initial_value = 0) {
+  column_expr <- rlang::enquo(.value)
+
+  if (rlang::quo_is_missing(column_expr)) {
+    rlang::abort("std_cum_min_augment(.value) is missing.", use_cli_format = TRUE)
+  }
+
+  col_nms <- names(tidyselect::eval_select(column_expr, .data))
+
+  make_call <- function(col) {
+    rlang::expr(!!.initial_value + cummin(!!rlang::sym(col)))
+  }
+
+  grid <- expand.grid(
+    col = col_nms,
+    stringsAsFactors = FALSE
+  )
+
+  calls <- purrr::pmap(list(grid$col), make_call)
+
+  if (any(.names == "auto")) {
+    newname <- paste0("cum_min_", grid$col)
+  } else {
+    newname <- as.list(.names)
+  }
+
+  calls <- purrr::set_names(calls, newname)
+
+  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+
+  return(ret)
+}

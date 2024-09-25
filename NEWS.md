@@ -8,7 +8,8 @@ None
 sum of a random walk
 2 Fix #93 - Add Function `std_cum_prod_augment()` to calculate the cumulative
 product of a random walk
-
+3. Fix #94 - Add Function `std_cum_min_augment()` to calculate the cumulative
+minimum of a random walk
 
 ## Minor Improvements and Fixes
 None
