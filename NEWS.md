@@ -5,15 +5,15 @@ None
 
 ## New Features
 1. Fix #92 - Add Function `std_cum_sum_augment()` to calculate the cumulative 
-sum of a random walk
-2 Fix #93 - Add Function `std_cum_prod_augment()` to calculate the cumulative
-product of a random walk
+sum of a random walk.
+2. Fix #93 - Add Function `std_cum_prod_augment()` to calculate the cumulative
+product of a random walk.
 3. Fix #94 - Add Function `std_cum_min_augment()` to calculate the cumulative
-minimum of a random walk
+minimum of a random walk.
 4. Fix #95 - Add Function `std_cum_max_augment()` to calculate the cumulative
-maximum of a random walk
+maximum of a random walk.
 5. Fix #96 - Add Function `std_cum_mean_augment()` to calculate the cumulative
-mean of a random walk
+mean of a random walk.
 
 ## Minor Improvements and Fixes
 None
