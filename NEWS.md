@@ -4,9 +4,11 @@
 None
 
 ## New Features
-1. Fix #92 - Add function `std_cum_sum_augment()` to calculate the cumulative 
+1. Fix #92 - Add Function `std_cum_sum_augment()` to calculate the cumulative 
 sum of a random walk
-2 Fix 
+2 Fix #93 - Add Function `std_cum_prod_augment()` to calculate the cumulative
+product of a random walk
+
 
 ## Minor Improvements and Fixes
 None
