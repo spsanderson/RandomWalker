@@ -48,15 +48,15 @@ rw30() |>
 #>    walk_number     x      y
 #>    <fct>       <int>  <dbl>
 #>  1 1               1  0    
-#>  2 1               2 -1.82 
-#>  3 1               3 -2.48 
-#>  4 1               4 -2.29 
-#>  5 1               5 -1.34 
-#>  6 1               6 -0.373
-#>  7 1               7  0.287
-#>  8 1               8  0.495
-#>  9 1               9  0.493
-#> 10 1              10  1.23
+#>  2 1               2 -0.895
+#>  3 1               3 -1.21 
+#>  4 1               4 -0.805
+#>  5 1               5 -1.42 
+#>  6 1               6 -2.50 
+#>  7 1               7 -2.58 
+#>  8 1               8 -3.19 
+#>  9 1               9 -3.46 
+#> 10 1              10 -3.90
 ```
 
 Here is a basic visualization of a Random Walk:
@@ -66,4 +66,4 @@ rw30() |>
   visualize_walks()
 ```
 
-<img src="man/figures/README-random_walk_visual_example-1.png" width="100%" />
+<img src="man/figures/README-random_walk_visual_example-1.png" alt="Visualize a Random Walk of 30 simulations" width="100%" />

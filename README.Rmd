@@ -58,6 +58,8 @@ rw30() |>
 Here is a basic visualization of a Random Walk:
 
 ```{r random_walk_visual_example}
+#| fig.alt: >
+#|   Visualize a Random Walk of 30 simulations
 rw30() |>
   visualize_walks()
 ```
