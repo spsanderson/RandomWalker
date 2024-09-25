@@ -447,3 +447,71 @@ std_cum_max_augment <- function(.data,
 
   return(ret)
 }
+
+#' Augment Cumulative Sum
+#'
+#' @family Utility Functions
+#' @author Steven P. Sanderson II, MPH
+#' @description This function augments a data frame by adding cumulative mean
+#' columns for specified variables.
+#'
+#' @details The function takes a data frame and a column name (or names) and
+#' computes the cumulative mean for each specified column, starting from an
+#' initial value. If the column names are not provided, it will throw an error.
+#'
+#' @param .data A data frame to augment.
+#' @param .value A column name or names for which to compute the cumulative mean.
+#' @param .names Optional. A character vector of names for the new cumulative
+#' mean columns. Defaults to "auto", which generates names based on the original
+#' column names.
+#' @param .initial_value A numeric value to start the cumulative mean from.
+#' Defaults to 0.
+#'
+#' @return A tibble with the original data and additional columns containing the
+#' cumulative means.
+#'
+#' @examples
+#' df <- data.frame(x = c(1, 2, 3, 4, 5), y = c(10, 20, 30, 40, 50))
+#' std_cum_mean_augment(df, .value = x)
+#' std_cum_mean_augment(df, .value = y, .names = c("cummean_y"))
+#'
+#' @name std_cum_mean_augment
+NULL
+#' @rdname std_cum_mean_augment
+#' @export
+#'
+std_cum_mean_augment <- function(.data,
+                                 .value,
+                                 .names = "auto",
+                                 .initial_value = 0) {
+  column_expr <- rlang::enquo(.value)
+
+  if (rlang::quo_is_missing(column_expr)) {
+    rlang::abort("std_cum_mean_augment(.value) is missing.", use_cli_format = TRUE)
+  }
+
+  col_nms <- names(tidyselect::eval_select(column_expr, .data))
+
+  make_call <- function(col) {
+    rlang::expr(!!.initial_value + cmean(!!rlang::sym(col)))
+  }
+
+  grid <- expand.grid(
+    col = col_nms,
+    stringsAsFactors = FALSE
+  )
+
+  calls <- purrr::pmap(list(grid$col), make_call)
+
+  if (any(.names == "auto")) {
+    newname <- paste0("cum_mean_", grid$col)
+  } else {
+    newname <- as.list(.names)
+  }
+
+  calls <- purrr::set_names(calls, newname)
+
+  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+
+  return(ret)
+}
