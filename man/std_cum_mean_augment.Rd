@@ -41,6 +41,7 @@ std_cum_mean_augment(df, .value = y, .names = c("cummean_y"))
 Other Utility Functions: 
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
+\code{\link{get_attributes}()},
 \code{\link{rand_walk_helper}()},
 \code{\link{std_cum_max_augment}()},
 \code{\link{std_cum_min_augment}()},
