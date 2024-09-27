@@ -14,6 +14,7 @@ minimum of a random walk.
 maximum of a random walk.
 5. Fix #96 - Add Function `std_cum_mean_augment()` to calculate the cumulative
 mean of a random walk.
+6. Fix #113 - Add Function `get_attributes()` to get attributes without the `row.names`
 
 ## Minor Improvements and Fixes
 None

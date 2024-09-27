@@ -515,3 +515,42 @@ std_cum_mean_augment <- function(.data,
 
   return(ret)
 }
+
+#' Get Attributes
+#'
+#' @family Utility Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @details This function retrieves the attributes of a given R object,
+#' excluding the row.names attribute.
+#'
+#' @description The `get_attributes` function takes an R object as input and
+#' returns its attributes, omitting the row.names attribute.
+#'
+#' @param .data An R object from which attributes are to be extracted.
+#'
+#' @examples
+#' get_attributes(rw30())
+#' get_attributes(iris)
+#' get_attributes(mtcars)
+#'
+#' @return A list of attributes of the input R object, excluding row.names.
+#'
+#' @name get_attributes
+NULL
+#'
+#' @rdname get_attributes
+#'
+#' @export
+
+get_attributes <- function(.data){
+
+  atb <- attributes(.data)
+
+  # drop row.names
+  atb <- atb[!names(atb) %in% c("row.names")]
+
+  # Return
+  return(atb)
+}
