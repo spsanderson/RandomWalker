@@ -4,7 +4,7 @@
 \alias{visualize_walks}
 \title{Visualize Walks}
 \usage{
-visualize_walks(.data, .alpha = 0.7)
+visualize_walks(.data, .alpha = 0.7, .interactive = FALSE)
 }
 \arguments{
 \item{.data}{The input data. Assumed to be created by one of the random walk
@@ -15,6 +15,9 @@ instance.}
 
 \item{.alpha}{The alpha value for all the line charts in the visualization.
 Values range from 0 to 1. Default is 0.7.}
+
+\item{.interactive}{A boolean value. TRUE if you want the patches to be
+interactive. FALSE if you don't. Default is FALSE.}
 }
 \value{
 A patchwork composed of 1 or more patches
@@ -41,8 +44,12 @@ It is possible there are more when you read this, but you can check the rest
 of the documentation for the current situation.
 
 The visualization function is meant to be easy to use. No parameters needed,
-but you can set the \code{.alpha} if the default value of 0.7 isn't to your
+but you can set \code{.alpha} if the default value of 0.7 isn't to your
 liking.
+
+You can also choose whether you want the visualization to be interactive or
+not by setting \code{.interactive} to TRUE. The function uses the {ggiraph}
+package for making the patches interactive.
 
 You can combine this function with many tidyverse functions (either before or
 after). There's one example below.
@@ -62,6 +69,11 @@ rw30() |>
 set.seed(123)
 random_normal_walk() |>
  visualize_walks()
+
+# Set .interactive to TRUE
+set.seed(123)
+random_normal_walk() |>
+ visualize_walks(.interactive = TRUE)
 
 # Use the pluck function from purrr to pick just one visualization
 set.seed(123)
