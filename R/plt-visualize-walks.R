@@ -93,7 +93,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
     if (.interactive == FALSE) {
 
       # Create a ggplot object
-      ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
+      p <- ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
         # Plot lines with some transparency
         ggplot2::geom_line(alpha = .alpha) +
         # Use a minimal theme
@@ -103,7 +103,9 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
         # Set plot labels
         ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
 
-      # Create an interactive version of the visualization using ggiraph
+      return(p)
+
+      # Create an interactive visualization with ggiraph
     } else if (.interactive == TRUE) {
 
       # Add tooltip information to the data
@@ -117,7 +119,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
         )
 
       # Create an interactive plot with ggiraph
-      p <- ggplot2::ggplot(
+      g <- ggplot2::ggplot(
         .data,
         ggplot2::aes(
           x       = x,
@@ -139,9 +141,9 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
         # Set plot labels
         ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
 
-      return(p)
+      return(g)
 
-      # Error handling for incorrect `.interactive` parameter values
+      # Check the .interactive parameter
     } else {
       rlang::abort(
         message = "The parameter `.interactive` must be either TRUE/FALSE",
@@ -172,7 +174,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
   # Define theme adjustment for the combined plot (applicable in interactive mode)
   plot_theme <- ggplot2::theme(
     plot.caption = ggplot2::element_text(hjust = 1, margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0)),
-    plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10),
+    plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10)
   )
 
   # Handle the `.pluck` option for selecting a specific plot
@@ -193,13 +195,35 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
 
     # Return the plucked plot with annotations
     plucked_plot <- plots[[.pluck_n]] + plot_annotations
+
+    # If interactive, return the interactive version of the plucked plot
+    if (.interactive == TRUE) {
+      return(
+        ggiraph::girafe(
+          ggobj   = plucked_plot + plot_theme,
+          options = list(
+            ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
+            ggiraph::opts_hover_inv(css = "opacity:0.4;"),
+            ggiraph::opts_toolbar(position = "topright"),
+            ggiraph::opts_tooltip(
+              offx           = 200,
+              offy           = 5,
+              use_cursor_pos = FALSE,
+              opacity        = 0.7
+            ),
+            ggiraph::opts_zoom(max = 5)
+          )
+        )
+      )
+    }
+
     return(plucked_plot)
   }
 
-  # Combine the individual plots into a single plot for non-interactive visualization
+  # Patchwork for the default version of the visualization
   if (.interactive == FALSE) {
 
-    # If more than one plot exists, wrap them together, otherwise return the single plot
+    # Combine the individual plots into a single plot, or return the single plot with annotations
     combined_plot <- if (length(plots) > 1) {
       patchwork::wrap_plots(plots) + plot_annotations
     } else {
@@ -208,10 +232,10 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
 
     return(combined_plot)
 
-    # Combine the individual plots into a single interactive plot using ggiraph
+    # Patchwork for the interactive version of the visualization
   } else {
 
-    # Define interaction options for the interactive plot
+    # Define plot options for ggiraph
     plot_options <- list(
       # Customize hover effect
       ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
@@ -220,12 +244,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
       # Place toolbar on top right
       ggiraph::opts_toolbar(position = "topright"),
       # Customize tooltip
-      ggiraph::opts_tooltip(
-        offx           = 200,
-        offy           = 5,
-        use_cursor_pos = FALSE,
-        opacity        = 0.7
-      ),
+      ggiraph::opts_tooltip(offx = 200, offy = 5, use_cursor_pos = FALSE, opacity = 0.7),
       # Enable zoom
       ggiraph::opts_zoom(max = 5)
     )
