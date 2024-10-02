@@ -22,8 +22,12 @@
 #' of the documentation for the current situation.
 #'
 #' The visualization function is meant to be easy to use. No parameters needed,
-#' but you can set the `.alpha` if the default value of 0.7 isn't to your
+#' but you can set `.alpha` if the default value of 0.7 isn't to your
 #' liking.
+#'
+#' You can also choose whether you want the visualization to be interactive or
+#' not by setting `.interactive` to TRUE. The function uses the {ggiraph}
+#' package for making the patches interactive.
 #'
 #' You can combine this function with many tidyverse functions (either before or
 #' after). There's one example below.
@@ -35,6 +39,8 @@
 #' instance.
 #' @param .alpha The alpha value for all the line charts in the visualization.
 #' Values range from 0 to 1. Default is 0.7.
+#' @param .interactive A boolean value. TRUE if you want the patches to be
+#' interactive. FALSE if you don't. Default is FALSE.
 #'
 #' @return A patchwork composed of 1 or more patches
 #'
@@ -54,6 +60,11 @@
 #' random_normal_walk() |>
 #'  visualize_walks()
 #'
+#' # Set .interactive to TRUE
+#' set.seed(123)
+#' random_normal_walk() |>
+#'  visualize_walks(.interactive = TRUE)
+#'
 #' # Use the pluck function from purrr to pick just one visualization
 #' set.seed(123)
 #' random_normal_walk() |>
@@ -64,7 +75,7 @@
 NULL
 #' @rdname visualize_walks
 #' @export
-visualize_walks <- function(.data, .alpha = 0.7) {
+visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
 
   # Retrieve the attributes of the data
   atb <- attributes(.data)
@@ -75,16 +86,65 @@ visualize_walks <- function(.data, .alpha = 0.7) {
     # Convert y_label to a pretty format if it's not "y"
     y_label_pretty <- if (y_var == "y") "y" else convert_snake_to_title_case(y_var)
 
-    # Create a ggplot object
-    ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
-      # Plot lines with some transparency
-      ggplot2::geom_line(alpha = .alpha) +
-      # Use a minimal theme
-      ggplot2::theme_minimal() +
-      # Remove the legend
-      ggplot2::theme(legend.position = "none") +
-      # Set the labels for the plot
-      ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
+    # Create a default version of the visualization
+    if (.interactive == FALSE) {
+
+      # Create a ggplot object
+      ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
+        # Plot lines with some transparency
+        ggplot2::geom_line(alpha = .alpha) +
+        # Use a minimal theme
+        ggplot2::theme_minimal() +
+        # Remove the legend
+        ggplot2::theme(legend.position = "none") +
+        # Set the labels for the plot
+        ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
+
+      # Create an interactive version of the visualization
+    } else if (.interactive == TRUE) {
+
+      # Create the tooltip text in a new column
+      .data <- .data |>
+        dplyr::mutate(
+          .tooltip = paste0(
+            "Walk Number: ", walk_number, " | ",
+            "Step: ", x, " | ",
+            y_label_pretty, ": ", round(get(y_var), digits = 3)
+          )
+        )
+
+      # Create a ggplot object
+      p <- ggplot2::ggplot(
+        .data,
+        ggplot2::aes(
+          x       = x,
+          y       = get(y_var),
+          color   = walk_number,
+          group   = walk_number,
+          data_id = walk_number,
+          tooltip = .tooltip
+        )
+      ) +
+        # Plot lines with some transparency
+        ggiraph::geom_line_interactive(alpha = .alpha) +
+        ggiraph::geom_point_interactive(
+          alpha = .alpha,
+          size  = 0.1
+        ) +
+        # Use a minimal theme
+        ggplot2::theme_minimal() +
+        # Remove the legend
+        ggplot2::theme(legend.position = "none") +
+        # Set the labels for the plot
+        ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
+
+      # Check
+    } else {
+      rlang::abort(
+        message = "The parameter `.interactive` must be either TRUE/FALSE",
+        use_cli_format = TRUE
+      )
+    }
   }
 
   # Identify variables to plot, excluding 'walk_number' and 'x'
@@ -106,11 +166,52 @@ visualize_walks <- function(.data, .alpha = 0.7) {
     caption  = .caption
   )
 
-  # Combine the individual plots into a single plot, or return the single plot with annotations
-  combined_plot <- if (length(plots) > 1) {
-    patchwork::wrap_plots(plots) + plot_annotations
+  # Definte theme adjustment for the combined plot (interactive only)
+
+  plot_theme <- ggplot2::theme(
+    plot.caption = ggplot2::element_text(hjust = 1, margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0)),
+    plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10),
+    )
+
+  # Patchwork for the default version of the visualization
+  if (.interactive == FALSE) {
+
+    # Combine the individual plots into a single plot, or return the single plot with annotations
+    combined_plot <- if (length(plots) > 1) {
+      patchwork::wrap_plots(plots)
+    } else {
+      plots[[1]] + plot_annotations
+    }
+
+    # Patchwork for the interactive version of the visualization
   } else {
-    plots[[1]] + plot_annotations
+
+    # Define plot options for ggiraph
+    plot_options <- list(
+      ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
+      ggiraph::opts_hover_inv(css = "opacity:0.4;"),
+      ggiraph::opts_toolbar(position = "topright"),
+      ggiraph::opts_tooltip(
+        offx           = 200,
+        offy           = 5,
+        use_cursor_pos = FALSE,
+        opacity        = 0.7
+      ),
+      ggiraph::opts_zoom(max = 5)
+    )
+
+    # Combine plots using patchwork or return a single plot
+    combined_plot <- if (length(plots) > 1) {
+      ggiraph::girafe(
+        ggobj   = patchwork::wrap_plots(plots) + plot_annotations + plot_theme,
+        options = plot_options
+      )
+    } else {
+      ggiraph::girafe(
+        ggobj   = plots[[1]] + plot_annotations + plot_theme,
+        options = plot_options
+      )
+    }
   }
 
   # Return the final combined plot
