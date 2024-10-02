@@ -28,7 +28,8 @@ Imports:
     purrr,
     rlang,
     patchwork,
-    NNS
+    NNS,
+    ggiraph
 Suggests: 
     knitr,
     rmarkdown,
