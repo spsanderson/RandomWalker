@@ -83,6 +83,20 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
   # Retrieve the attributes of the data (e.g., function name, number of walks, etc.)
   atb <- attributes(.data)
 
+  # Define plot options for ggiraph
+  plot_options <- list(
+    # Customize hover effect
+    ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
+    # Customize hover-out effect
+    ggiraph::opts_hover_inv(css = "opacity:0.4;"),
+    # Place toolbar on top right
+    ggiraph::opts_toolbar(position = "topright"),
+    # Customize tooltip
+    ggiraph::opts_tooltip(offx = 200, offy = 5, use_cursor_pos = FALSE, opacity = 0.7),
+    # Enable zoom
+    ggiraph::opts_zoom(max = 5)
+  )
+
   # Function to generate a plot for a given y-variable in the data
   generate_plot <- function(y_var) {
 
@@ -201,18 +215,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
       return(
         ggiraph::girafe(
           ggobj   = plucked_plot + plot_theme,
-          options = list(
-            ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
-            ggiraph::opts_hover_inv(css = "opacity:0.4;"),
-            ggiraph::opts_toolbar(position = "topright"),
-            ggiraph::opts_tooltip(
-              offx           = 200,
-              offy           = 5,
-              use_cursor_pos = FALSE,
-              opacity        = 0.7
-            ),
-            ggiraph::opts_zoom(max = 5)
-          )
+          options = plot_options
         )
       )
     }
@@ -234,20 +237,6 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
 
     # Patchwork for the interactive version of the visualization
   } else {
-
-    # Define plot options for ggiraph
-    plot_options <- list(
-      # Customize hover effect
-      ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
-      # Customize hover-out effect
-      ggiraph::opts_hover_inv(css = "opacity:0.4;"),
-      # Place toolbar on top right
-      ggiraph::opts_toolbar(position = "topright"),
-      # Customize tooltip
-      ggiraph::opts_tooltip(offx = 200, offy = 5, use_cursor_pos = FALSE, opacity = 0.7),
-      # Enable zoom
-      ggiraph::opts_zoom(max = 5)
-    )
 
     # Combine plots using patchwork for interactive visualization
     combined_plot <- if (length(plots) > 1) {
