@@ -17,6 +17,8 @@ mean of a random walk.
 6. Fix #113 - Add Function `get_attributes()` to get attributes without the `row.names`
 7. Fix #117 - Add `.interactive` parameter to `visualize_walks()` to allow for
 interactive plots.
+8. Fix #120 - Add `.pluck` parameter to `visualize_walks()` to allow for plucking
+of specific graph of walks.
 
 ## Minor Improvements and Fixes
 None
