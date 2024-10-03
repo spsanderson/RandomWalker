@@ -29,18 +29,22 @@
 #' not by setting `.interactive` to TRUE. The function uses the {ggiraph}
 #' package for making the patches interactive.
 #'
-#' You can combine this function with many tidyverse functions (either before or
-#' after). There's one example below.
+#' If you want to visualize only one of the attributes, you can choose use one of
+#' these values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`) for
+#' the `.pluck` parameter.
 #'
 #' @param .data The input data. Assumed to be created by one of the random walk
 #' functions in the RandomWalker package, but can be any data frame or tibble
 #' that contains columns `walk_number`, `x`, and one or more numeric columns
-#' like `x`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max` and `cum_mean`, for
+#' like `y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max` and `cum_mean`, for
 #' instance.
 #' @param .alpha The alpha value for all the line charts in the visualization.
 #' Values range from 0 to 1. Default is 0.7.
 #' @param .interactive A boolean value. TRUE if you want the patches to be
 #' interactive. FALSE if you don't. Default is FALSE.
+#' @param .pluck If you want to visualize only one of the You can choose one of
+#' the values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`).
+#' Default is FALSE.
 #'
 #' @return A patchwork composed of 1 or more patches
 #'
@@ -60,50 +64,51 @@
 #' random_normal_walk() |>
 #'  visualize_walks()
 #'
-#' # Set .interactive to TRUE
+#' # Use the function to create interactive visualizations
 #' set.seed(123)
 #' random_normal_walk() |>
 #'  visualize_walks(.interactive = TRUE)
 #'
-#' # Use the pluck function from purrr to pick just one visualization
+#' # Use .pluck to pick just one visualization
 #' set.seed(123)
 #' random_normal_walk() |>
-#'  visualize_walks() |>
-#'  purrr::pluck(2)
+#'  visualize_walks(.pluck = "cum_sum")
 #'
 #' @name visualize_walks
 NULL
 #' @rdname visualize_walks
 #' @export
-visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
+visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = FALSE) {
 
-  # Retrieve the attributes of the data
+  # Retrieve the attributes of the data (e.g., function name, number of walks, etc.)
   atb <- attributes(.data)
 
-  # Function to generate a plot for a given variable
+  # Function to generate a plot for a given y-variable in the data
   generate_plot <- function(y_var) {
 
-    # Convert y_label to a pretty format if it's not "y"
+    # Convert y-label to a more readable format if it's not 'y'
     y_label_pretty <- if (y_var == "y") "y" else convert_snake_to_title_case(y_var)
 
-    # Create a default version of the visualization
+    # Create a static ggplot visualization
     if (.interactive == FALSE) {
 
       # Create a ggplot object
-      ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
+      p <- ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
         # Plot lines with some transparency
         ggplot2::geom_line(alpha = .alpha) +
         # Use a minimal theme
         ggplot2::theme_minimal() +
         # Remove the legend
         ggplot2::theme(legend.position = "none") +
-        # Set the labels for the plot
+        # Set plot labels
         ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
 
-      # Create an interactive version of the visualization
+      return(p)
+
+      # Create an interactive visualization with ggiraph
     } else if (.interactive == TRUE) {
 
-      # Create the tooltip text in a new column
+      # Add tooltip information to the data
       .data <- .data |>
         dplyr::mutate(
           .tooltip = paste0(
@@ -113,8 +118,8 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
           )
         )
 
-      # Create a ggplot object
-      p <- ggplot2::ggplot(
+      # Create an interactive plot with ggiraph
+      g <- ggplot2::ggplot(
         .data,
         ggplot2::aes(
           x       = x,
@@ -125,20 +130,20 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
           tooltip = .tooltip
         )
       ) +
-        # Plot lines with some transparency
+        # Add interactive lines
         ggiraph::geom_line_interactive(alpha = .alpha) +
-        ggiraph::geom_point_interactive(
-          alpha = .alpha,
-          size  = 0.1
-        ) +
+        # Add interactive points
+        ggiraph::geom_point_interactive(alpha = .alpha, size = 0.1) +
         # Use a minimal theme
         ggplot2::theme_minimal() +
         # Remove the legend
         ggplot2::theme(legend.position = "none") +
-        # Set the labels for the plot
+        # Set plot labels
         ggplot2::labs(title = y_label_pretty, x = "Step", y = NULL)
 
-      # Check
+      return(g)
+
+      # Check the .interactive parameter
     } else {
       rlang::abort(
         message = "The parameter `.interactive` must be either TRUE/FALSE",
@@ -150,57 +155,101 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
   # Identify variables to plot, excluding 'walk_number' and 'x'
   plot_vars <- setdiff(atb$names, c("walk_number", "x"))
 
-  # Generate a list of plots for each variable
+  # Generate a list of plots for each variable in plot_vars
   plots <- lapply(plot_vars, generate_plot)
 
-  # Generate a subtitle for the combined plot based on the function name
+  # Generate a subtitle based on the function name in attributes
   .subtitle <- paste0("Function: ", if (atb$fns == "rw30") "rw30" else convert_snake_to_title_case(atb$fns))
 
   # Generate the plot caption dynamically based on attributes
   .caption <- generate_caption(atb)
 
-  # Define annotations for the combined plot
+  # Define annotations (title, subtitle, caption) for the combined plot
   plot_annotations <- patchwork::plot_annotation(
     title    = paste0(atb$num_walks, " Random Walks"),
     subtitle = .subtitle,
     caption  = .caption
   )
 
-  # Definte theme adjustment for the combined plot (interactive only)
-
+  # Define theme adjustment for the combined plot (applicable in interactive mode)
   plot_theme <- ggplot2::theme(
     plot.caption = ggplot2::element_text(hjust = 1, margin = ggplot2::margin(t = 0, r = 0, b = 0, l = 0)),
-    plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10),
+    plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10)
+  )
+
+  # Handle the `.pluck` option for selecting a specific plot
+  if (.pluck != FALSE) {
+    .pluck_n <- switch(
+      .pluck,
+      "y"        = 1,
+      "cum_sum"  = 2,
+      "cum_prod" = 3,
+      "cum_min"  = 4,
+      "cum_max"  = 5,
+      "cum_mean" = 6,
+      rlang::abort(
+        message        = "Invalid parameter value for `.pluck`",
+        use_cli_format = TRUE
+      )
     )
+
+    # Return the plucked plot with annotations
+    plucked_plot <- plots[[.pluck_n]] + plot_annotations
+
+    # If interactive, return the interactive version of the plucked plot
+    if (.interactive == TRUE) {
+      return(
+        ggiraph::girafe(
+          ggobj   = plucked_plot + plot_theme,
+          options = list(
+            ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
+            ggiraph::opts_hover_inv(css = "opacity:0.4;"),
+            ggiraph::opts_toolbar(position = "topright"),
+            ggiraph::opts_tooltip(
+              offx           = 200,
+              offy           = 5,
+              use_cursor_pos = FALSE,
+              opacity        = 0.7
+            ),
+            ggiraph::opts_zoom(max = 5)
+          )
+        )
+      )
+    }
+
+    return(plucked_plot)
+  }
 
   # Patchwork for the default version of the visualization
   if (.interactive == FALSE) {
 
     # Combine the individual plots into a single plot, or return the single plot with annotations
     combined_plot <- if (length(plots) > 1) {
-      patchwork::wrap_plots(plots)
+      patchwork::wrap_plots(plots) + plot_annotations
     } else {
       plots[[1]] + plot_annotations
     }
+
+    return(combined_plot)
 
     # Patchwork for the interactive version of the visualization
   } else {
 
     # Define plot options for ggiraph
     plot_options <- list(
+      # Customize hover effect
       ggiraph::opts_hover(css = "stroke:black;stroke-width:2pt;"),
+      # Customize hover-out effect
       ggiraph::opts_hover_inv(css = "opacity:0.4;"),
+      # Place toolbar on top right
       ggiraph::opts_toolbar(position = "topright"),
-      ggiraph::opts_tooltip(
-        offx           = 200,
-        offy           = 5,
-        use_cursor_pos = FALSE,
-        opacity        = 0.7
-      ),
+      # Customize tooltip
+      ggiraph::opts_tooltip(offx = 200, offy = 5, use_cursor_pos = FALSE, opacity = 0.7),
+      # Enable zoom
       ggiraph::opts_zoom(max = 5)
     )
 
-    # Combine plots using patchwork or return a single plot
+    # Combine plots using patchwork for interactive visualization
     combined_plot <- if (length(plots) > 1) {
       ggiraph::girafe(
         ggobj   = patchwork::wrap_plots(plots) + plot_annotations + plot_theme,
@@ -212,8 +261,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE) {
         options = plot_options
       )
     }
-  }
 
-  # Return the final combined plot
-  return(combined_plot)
+    return(combined_plot)
+  }
 }
