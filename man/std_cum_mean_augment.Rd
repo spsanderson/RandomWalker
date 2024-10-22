@@ -43,6 +43,7 @@ Other Utility Functions:
 \code{\link{generate_caption}()},
 \code{\link{get_attributes}()},
 \code{\link{rand_walk_helper}()},
+\code{\link{running_quantile}()},
 \code{\link{std_cum_max_augment}()},
 \code{\link{std_cum_min_augment}()},
 \code{\link{std_cum_prod_augment}()},

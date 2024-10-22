@@ -19,6 +19,8 @@ mean of a random walk.
 interactive plots.
 8. Fix #120 - Add `.pluck` parameter to `visualize_walks()` to allow for plucking
 of specific graph of walks.
+9. Fix #123 - Add Function `running_quantile()` to calculate the running quantile
+of a given vector.
 
 ## Minor Improvements and Fixes
 None
