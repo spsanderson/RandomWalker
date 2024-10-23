@@ -63,3 +63,13 @@ Here is a basic visualization of a Random Walk:
 rw30() |>
   visualize_walks()
 ```
+
+Here is a basic summary of the random walks:
+
+```{r random_walk_summary}
+rw30() |>
+  summarize_walks(.value = y)
+
+rw30() |>
+  summarize_walks(.value = y, .group_var = walk_number)
+```

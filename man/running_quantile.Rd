@@ -54,7 +54,6 @@ a specified window size and probability.
 set.seed(123)
 data <- cumsum(rnorm(50))
 result <- running_quantile(data, .window = 3, .probs = 0.5)
-
 print(result)
 
 plot(data, type = "l")

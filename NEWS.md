@@ -15,15 +15,14 @@ maximum of a random walk.
 5. Fix #96 - Add Function `std_cum_mean_augment()` to calculate the cumulative
 mean of a random walk.
 6. Fix #113 - Add Function `get_attributes()` to get attributes without the `row.names`
-7. Fix #117 - Add `.interactive` parameter to `visualize_walks()` to allow for
-interactive plots.
-8. Fix #120 - Add `.pluck` parameter to `visualize_walks()` to allow for plucking
-of specific graph of walks.
-9. Fix #123 - Add Function `running_quantile()` to calculate the running quantile
+7. Fix #123 - Add Function `running_quantile()` to calculate the running quantile
 of a given vector.
 
 ## Minor Improvements and Fixes
-None
+1. Fix #117 - Add `.interactive` parameter to `visualize_walks()` to allow for
+interactive plots.
+2. Fix #120 - Add `.pluck` parameter to `visualize_walks()` to allow for plucking
+of specific graph of walks.
 
 # RandomWalker 0.1.0
 
