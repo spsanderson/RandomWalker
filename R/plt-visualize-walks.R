@@ -26,7 +26,7 @@
 #' liking.
 #'
 #' You can also choose whether you want the visualization to be interactive or
-#' not by setting `.interactive` to TRUE. The function uses the {ggiraph}
+#' not by setting `.interactive` to TRUE. The function uses the `ggiraph`
 #' package for making the patches interactive.
 #'
 #' If you want to visualize only one of the attributes, you can choose use one of
@@ -61,17 +61,17 @@
 #'
 #' # Use the function with an input that has alternatives for y
 #' set.seed(123)
-#' random_normal_walk() |>
+#' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 #'  visualize_walks()
 #'
 #' # Use the function to create interactive visualizations
 #' set.seed(123)
-#' random_normal_walk() |>
+#' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 #'  visualize_walks(.interactive = TRUE)
 #'
 #' # Use .pluck to pick just one visualization
 #' set.seed(123)
-#' random_normal_walk() |>
+#' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 #'  visualize_walks(.pluck = "cum_sum")
 #'
 #' @name visualize_walks

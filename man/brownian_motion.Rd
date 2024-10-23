@@ -51,18 +51,12 @@ walk processes in general. It is a useful tool in probability theory and
 statistical analysis.
 }
 \examples{
-library(ggplot2)
-
 set.seed(123)
 brownian_motion()
 
 set.seed(123)
-brownian_motion() |>
-  ggplot(aes(x = x, y = y, group = walk_number, color = walk_number)) +
-  geom_line() +
-  labs(title = "Brownian Motion", x = "Time", y = "Value") +
-  theme_minimal() +
-  theme(legend.position = "none")
+brownian_motion(.num_walks = 5) |>
+  visualize_walks()
 
 }
 \seealso{

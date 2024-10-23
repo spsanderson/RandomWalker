@@ -239,7 +239,7 @@ std_cum_sum_augment <- function(.data,
 
   calls <- purrr::set_names(calls, newname)
 
-  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
   return(ret)
 }
@@ -307,7 +307,7 @@ std_cum_prod_augment <- function(.data,
 
   calls <- purrr::set_names(calls, newname)
 
-  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
   return(ret)
 }
@@ -375,7 +375,7 @@ std_cum_min_augment <- function(.data,
 
   calls <- purrr::set_names(calls, newname)
 
-  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
   return(ret)
 }
@@ -443,7 +443,7 @@ std_cum_max_augment <- function(.data,
 
   calls <- purrr::set_names(calls, newname)
 
-  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
   return(ret)
 }
@@ -511,7 +511,7 @@ std_cum_mean_augment <- function(.data,
 
   calls <- purrr::set_names(calls, newname)
 
-  ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
   return(ret)
 }
