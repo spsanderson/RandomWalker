@@ -24,16 +24,10 @@
 #' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
 #'
 #' @examples
-#' library(ggplot2)
-#'
 #' set.seed(123)
-#' walks <- random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
-#'                                   .drift = 0.05)
-#' ggplot(walks, aes(x = x, y = y, group = walk_number, color = walk_number)) +
-#'   geom_line() +
-#'   labs(title = "Random Walks with Drift", x = "Time", y = "Value") +
-#'   theme_minimal() +
-#'   theme(legend.position = "none")
+#' random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
+#'                                   .drift = 0.05, .initial_value = 100) |>
+#'                                   visualize_walks()
 #'
 #' @return A tibble in long format with columns `walk_number`, `x` (step index),
 #' and `y` (walk value). The tibble has attributes for the number of walks,

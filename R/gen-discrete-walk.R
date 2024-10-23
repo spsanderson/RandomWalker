@@ -33,12 +33,9 @@
 #' discrete_walk()
 #'
 #' set.seed(123)
-#' discrete_walk(.num_walks = 30, .n = 250, .upper_probability = 0.55) |>
-#' ggplot(aes(x = x, y = cum_sum)) +
-#'  geom_line(aes(group = walk_number), alpha = .618, color = "steelblue") +
-#'  theme_minimal() +
-#'  theme(legend.position = "none") +
-#'  geom_smooth(method = "lm", se = FALSE)
+#' discrete_walk(.num_walks = 10, .n = 250, .upper_probability = 0.51,
+#' .initial_value = 100) |>
+#' visualize_walks()
 #'
 #' @return
 #' A tibble containing the simulated walks, with columns for the walk number,

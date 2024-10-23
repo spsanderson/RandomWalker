@@ -18,24 +18,13 @@
 #' `num_steps`, `mu`, and `sd` are attached to the tibble.
 #'
 #' @examples
-#' library(ggplot2)
-#'
 #' # Generate random walks and print the result
 #' set.seed(123)
 #' rw30()
 #'
 #' set.seed(123)
 #' rw30() |>
-#'  ggplot(aes(x = x, y = y, color = walk_number, group = walk_number)) +
-#'  geom_line() +
-#'  theme_minimal() +
-#'  theme(legend.position = "none") +
-#'  labs(
-#'    title = "30 Random Walks",
-#'    x = "Step",
-#'    y = "Value",
-#'    color = "Walk Number"
-#'  )
+#'  visualize_walks()
 #'
 #' @name rw30
 NULL

@@ -34,5 +34,6 @@ Suggests:
     knitr,
     rmarkdown,
     stats,
-    ggplot2
+    ggplot2,
+    tidyselect
 VignetteBuilder: knitr

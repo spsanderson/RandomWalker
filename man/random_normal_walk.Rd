@@ -73,12 +73,8 @@ set.seed(123)
 random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
 
 set.seed(123)
-random_normal_walk(.num_walks = 2, .n = 100) |>
-  ggplot(aes(x = x, y = y, group = walk_number, color = walk_number)) +
-  geom_line() +
-  labs(title = "Random Normal Walk", x = "Time", y = "Value") +
-  theme_minimal() +
-  theme(legend.position = "none")
+random_normal_walk(.num_walks = 2, .n = 100, .initial_value = 100) |>
+  visualize_walks()
 
 }
 \seealso{
