@@ -24,6 +24,9 @@ interactive plots.
 2. Fix #120 - Add `.pluck` parameter to `visualize_walks()` to allow for plucking
 of specific graph of walks.
 
+# Release Blog Post
+https://www.spsanderson.com/steveondata/posts/2024-10-24/
+
 # RandomWalker 0.1.0
 
 ## Breaking Changes
