@@ -554,3 +554,41 @@ get_attributes <- function(.data){
   # Return
   return(atb)
 }
+
+#' Get Column Names
+#'
+#' @family Utility Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description This function generates the column names of a rand walk
+#' data frame.
+#'
+#' @details The `rand_walk_column_names` function takes a data frame as input and
+#' returns the rand walk data with column names.
+#'
+#' @keywords internal
+#'
+#' @param .rand_data A data frame from which column names are to be extracted.
+#' @param .dim_names The dimnames passed from the rand walk function.
+#'
+#' @name rand_walk_column_names
+NULL
+#'
+#' @rdname rand_walk_column_names
+#'
+#' @export
+
+rand_walk_column_names <- function(.rand_data, .dim_names) {
+  # Set column names
+  rand_steps <- stats::setNames(.rand_data, .dim_names)
+  rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
+    purrr::list_cbind()
+  colnames(rand_steps) <- .dim_names
+  rand_steps <- purrr::map(
+    rand_steps, \(x) x |>
+      unlist(use.names = FALSE)) |>
+    dplyr::as_tibble()
+
+  return(rand_steps)
+}
