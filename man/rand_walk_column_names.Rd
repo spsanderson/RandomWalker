@@ -4,7 +4,7 @@
 \alias{rand_walk_column_names}
 \title{Get Column Names}
 \usage{
-rand_walk_column_names(.rand_data, .dim_names)
+rand_walk_column_names(.rand_data, .dim_names, .num_sims, .t)
 }
 \arguments{
 \item{.rand_data}{A data frame from which column names are to be extracted.}
