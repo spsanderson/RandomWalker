@@ -1,5 +1,15 @@
 # RandomWalker (development version)
 
+## Breaing Changes
+None
+
+## New Features
+1. Fix #105 - Add internal function `rand_walk_column_names()` to generate 
+column names for random walks.
+
+## Minor Fixes and Improvements
+1. 
+
 # RandomWalker 0.2.0
 
 ## Breaking Changes
