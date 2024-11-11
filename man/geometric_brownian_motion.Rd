@@ -11,7 +11,7 @@ geometric_brownian_motion(
   .sigma = 0.1,
   .initial_value = 100,
   .delta_time = 0.003,
-  .return_tibble = TRUE
+  .dimensions = 1
 )
 }
 \arguments{
@@ -27,11 +27,28 @@ geometric_brownian_motion(
 
 \item{.delta_time}{Time step size.}
 
-\item{.return_tibble}{The default is TRUE. If set to FALSE then an object
-of class matrix will be returned.}
+\item{.dimensions}{The default is 1. Allowable values are 1, 2 and 3.}
 }
 \value{
-A tibble/matrix
+A tibble containing the generated random walks with columns depending
+on the number of dimensions:
+\itemize{
+\item \code{walk_number}: Factor representing the walk number.
+\item \code{step_number}: Step index.
+\item \code{y}: If \code{.dimensions = 1}, the value of the walk at each step.
+\item \code{x}, \code{y}: If \code{.dimensions = 2}, the values of the walk in two dimensions.
+\item \code{x}, \code{y}, \code{z}: If \code{.dimensions = 3}, the values of the walk in three dimensions.
+}
+
+The following are also returned based upon how many dimensions there are and
+could be any of x, y and or z:
+\itemize{
+\item \code{cum_sum}: Cumulative sum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_prod}: Cumulative product of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_min}: Cumulative minimum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_max}: Cumulative maximum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_mean}: Cumulative mean of \code{dplyr::all_of(.dimensions)}.
+}
 }
 \description{
 Create a Geometric Brownian Motion.
@@ -66,12 +83,14 @@ of a GBM process. It can be used to analyze the behavior of financial
 assets and to make informed investment decisions.
 }
 \examples{
+
 set.seed(123)
 geometric_brownian_motion()
 
 set.seed(123)
-geometric_brownian_motion(.num_walks = 5) |>
-  visualize_walks()
+geometric_brownian_motion(.dimensions = 3) |>
+  head() |>
+  t()
 
 }
 \seealso{

@@ -10,7 +10,8 @@ random_normal_drift_walk(
   .mu = 0,
   .sd = 1,
   .drift = 0.1,
-  .initial_value = 0
+  .initial_value = 0,
+  .dimensions = 1
 )
 }
 \arguments{
@@ -25,11 +26,29 @@ random_normal_drift_walk(
 \item{.drift}{Numeric. The drift term to be added to each step. Default is 0.1.}
 
 \item{.initial_value}{A numeric value indicating the initial value of the walks. Default is 0.}
+
+\item{.dimensions}{The default is 1. Allowable values are 1, 2 and 3.}
 }
 \value{
-A tibble in long format with columns \code{walk_number}, \code{x} (step index),
-and \code{y} (walk value). The tibble has attributes for the number of walks,
-number of steps, mean, standard deviation, and drift.
+A tibble containing the generated random walks with columns depending
+on the number of dimensions:
+\itemize{
+\item \code{walk_number}: Factor representing the walk number.
+\item \code{step_number}: Step index.
+\item \code{y}: If \code{.dimensions = 1}, the value of the walk at each step.
+\item \code{x}, \code{y}: If \code{.dimensions = 2}, the values of the walk in two dimensions.
+\item \code{x}, \code{y}, \code{z}: If \code{.dimensions = 3}, the values of the walk in three dimensions.
+}
+
+The following are also returned based upon how many dimensions there are and
+could be any of x, y and or z:
+\itemize{
+\item \code{cum_sum}: Cumulative sum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_prod}: Cumulative product of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_min}: Cumulative minimum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_max}: Cumulative maximum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_mean}: Cumulative mean of \code{dplyr::all_of(.dimensions)}.
+}
 }
 \description{
 This function generates a specified number of random walks, each consisting
@@ -45,9 +64,12 @@ additional drift term added to each step.
 }
 \examples{
 set.seed(123)
-random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
-                                  .drift = 0.05, .initial_value = 100) |>
-                                  visualize_walks()
+random_normal_drift_walk()
+
+set.seed(123)
+random_normal_drift_walk(.dimensions = 3) |>
+  head() |>
+  t()
 
 }
 \seealso{

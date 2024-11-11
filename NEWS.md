@@ -1,14 +1,16 @@
 # RandomWalker (development version)
 
 ## Breaing Changes
-None
+1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
+Due to this what was the `x` column is now called `step_number`
 
 ## New Features
 1. Fix #105 - Add internal function `rand_walk_column_names()` to generate 
 column names for random walks.
 
 ## Minor Fixes and Improvements
-1. 
+1. Fix #107 - Add `.dimensions` parameter to random walk functions to allow for
+the generation of random walks with up to 3 dimensions.
 
 # RandomWalker 0.2.0
 

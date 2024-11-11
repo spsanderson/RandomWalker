@@ -2,7 +2,7 @@
 % Please edit documentation in R/gen-random-normal-walk.R
 \name{random_normal_walk}
 \alias{random_normal_walk}
-\title{Generate Multiple Random Normal Walks}
+\title{Generate Multiple Random Normal Walks in Multiple Dimensions}
 \usage{
 random_normal_walk(
   .num_walks = 25,
@@ -12,7 +12,8 @@ random_normal_walk(
   .initial_value = 0,
   .samp = TRUE,
   .replace = TRUE,
-  .sample_size = 0.8
+  .sample_size = 0.8,
+  .dimensions = 1
 )
 }
 \arguments{
@@ -31,9 +32,20 @@ random_normal_walk(
 \item{.replace}{A logical value indicating whether sampling is with replacement. Default is TRUE.}
 
 \item{.sample_size}{A numeric value between 0 and 1 specifying the proportion of \code{.n} to sample. Default is 0.8.}
+
+\item{.dimensions}{An integer specifying the number of dimensions (1, 2, or 3). Default is 1.}
 }
 \value{
-A tibble containing the generated random walks with the following columns:
+A tibble containing the generated random walks with columns depending on the number of dimensions:
+\itemize{
+\item \code{walk_number}: Factor representing the walk number.
+\item \code{step_number}: Step index.
+\item \code{y}: If \code{.dimensions = 1}, the value of the walk at each step.
+\item \code{x}, \code{y}: If \code{.dimensions = 2}, the values of the walk in two dimensions.
+\item \code{x}, \code{y}, \code{z}: If \code{.dimensions = 3}, the values of the walk in three dimensions.
+}
+
+The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
 \itemize{
 \item \code{walk_number}: Factor representing the walk number.
 \item \code{x}: Step index.
@@ -43,38 +55,24 @@ A tibble containing the generated random walks with the following columns:
 \item \code{cum_min}: Cumulative minimum of \code{y}.
 \item \code{cum_max}: Cumulative maximum of \code{y}.
 }
+
 The tibble includes attributes for the function parameters.
 }
 \description{
-The \code{random_normal_walk} function is useful for simulating random processes
-and can be applied in various fields such as finance, physics, and biology
-to model different stochastic behaviors.
-}
-\details{
-This function generates multiple random walks, which are sequences of steps
-where each step is a random draw from a normal distribution. The user can
-specify the number of walks, the number of steps in each walk, and the
-parameters of the normal distribution (mean and standard deviation). The
-function also allows for sampling a proportion of the steps and optionally
-sampling with replacement.
-
-The output tibble includes several computed columns for each walk, such as the
-cumulative sum, product, minimum, and maximum of the steps.
+The \code{random_normal_walk} function generates multiple random walks in 1, 2, or 3 dimensions.
+Each walk is a sequence of steps where each step is a random draw from a normal distribution.
+The user can specify the number of walks, the number of steps in each walk, and the
+parameters of the normal distribution (mean and standard deviation). The function
+also allows for sampling a proportion of the steps and optionally sampling with replacement.
 }
 \examples{
-library(ggplot2)
-
-# Generate 10 random walks with 50 steps each
 set.seed(123)
-random_normal_walk(.num_walks = 10, .n = 50)
-
-# Generate random walks with different mean and standard deviation
-set.seed(123)
-random_normal_walk(.num_walks = 10, .n = 50, .samp = FALSE)
+random_normal_walk()
 
 set.seed(123)
-random_normal_walk(.num_walks = 2, .n = 100, .initial_value = 100) |>
-  visualize_walks()
+random_normal_walk(.dimensions = 3) |>
+  head() |>
+  t()
 
 }
 \seealso{
