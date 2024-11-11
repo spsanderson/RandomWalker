@@ -58,7 +58,8 @@ to the walks.</p>
 <span>  .mu <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  .sd <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  .drift <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span>  .initial_value <span class="op">=</span> <span class="fl">0</span></span>
+<span>  .initial_value <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  .dimensions <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -89,13 +90,26 @@ to the walks.</p>
 <dt id="arg--initial-value">.initial_value<a class="anchor" aria-label="anchor" href="#arg--initial-value"></a></dt>
 <dd><p>A numeric value indicating the initial value of the walks. Default is 0.</p></dd>
 
+
+<dt id="arg--dimensions">.dimensions<a class="anchor" aria-label="anchor" href="#arg--dimensions"></a></dt>
+<dd><p>The default is 1. Allowable values are 1, 2 and 3.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A tibble in long format with columns <code>walk_number</code>, <code>x</code> (step index),
-and <code>y</code> (walk value). The tibble has attributes for the number of walks,
-number of steps, mean, standard deviation, and drift.</p>
-    </div>
+    <p>A tibble containing the generated random walks with columns depending
+on the number of dimensions:</p><ul><li><p><code>walk_number</code>: Factor representing the walk number.</p></li>
+<li><p><code>step_number</code>: Step index.</p></li>
+<li><p><code>y</code>: If <code>.dimensions = 1</code>, the value of the walk at each step.</p></li>
+<li><p><code>x</code>, <code>y</code>: If <code>.dimensions = 2</code>, the values of the walk in two dimensions.</p></li>
+<li><p><code>x</code>, <code>y</code>, <code>z</code>: If <code>.dimensions = 3</code>, the values of the walk in three dimensions.</p></li>
+</ul><p>The following are also returned based upon how many dimensions there are and
+could be any of x, y and or z:</p><ul><li><p><code>cum_sum</code>: Cumulative sum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_prod</code>: Cumulative product of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_min</code>: Cumulative minimum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_max</code>: Cumulative maximum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_mean</code>: Cumulative mean of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function generates multiple random walks with a specified drift.
@@ -118,10 +132,69 @@ additional drift term added to each step.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">random_normal_drift_walk</span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">10</span>, .n <span class="op">=</span> <span class="fl">50</span>, .mu <span class="op">=</span> <span class="fl">0</span>, .sd <span class="op">=</span> <span class="fl">1.2</span>,</span></span>
-<span class="r-in"><span>                                  .drift <span class="op">=</span> <span class="fl">0.05</span>, .initial_value <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>                                  <span class="fu"><a href="visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="random_normal_drift_walk-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu">random_normal_drift_walk</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,500 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    walk_number step_number      y cum_sum_y cum_prod_y cum_min_y cum_max_y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1                     1 -<span style="color: #BB0000;">1.02</span>     -<span style="color: #BB0000;">1.02</span>           0     -<span style="color: #BB0000;">1.02</span>    -<span style="color: #BB0000;">1.02</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1                     2 -<span style="color: #BB0000;">0.821</span>    -<span style="color: #BB0000;">1.84</span>           0     -<span style="color: #BB0000;">1.02</span>    -<span style="color: #BB0000;">0.821</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1                     3  2.63      0.785          0     -<span style="color: #BB0000;">1.02</span>     2.63 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1                     4  1.31      2.09           0     -<span style="color: #BB0000;">1.02</span>     2.63 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1                     5  1.60      3.69           0     -<span style="color: #BB0000;">1.02</span>     2.63 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1                     6  5.00      8.69           0     -<span style="color: #BB0000;">1.02</span>     5.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1                     7  4.30     13.0            0     -<span style="color: #BB0000;">1.02</span>     5.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1                     8  1.41     14.4            0     -<span style="color: #BB0000;">1.02</span>     5.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1                     9  1.41     15.8            0     -<span style="color: #BB0000;">1.02</span>     5.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1                    10  1.30     17.1            0     -<span style="color: #BB0000;">1.02</span>     5.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,490 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: cum_mean_y &lt;dbl&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">random_normal_drift_walk</span><span class="op">(</span>.dimensions <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]           [,2]           [,3]           [,4]          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> walk_number "1"            "1"            "1"            "1"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> step_number "1"            "2"            "3"            "4"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x           "-1.0209513"   "-0.8208306"   " 2.6267635"   " 1.3090720"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y           "-1.320813127" " 0.003360855" "-0.646906611" "-0.995299932"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> z           "4.497621"     "5.023636"     "3.280933"     "4.732466"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_x   "-1.0209513"   "-1.8417819"   " 0.7849816"   " 2.0940535"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   "-1.320813"    "-1.317452"    "-1.964359"    "-2.959659"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   " 4.497621"    " 9.521257"    "12.802190"    "17.534657"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_x  "0"            "0"            "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"            "0"            "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"            "0"            "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_x   "-1.020951"    "-1.020951"    "-1.020951"    "-1.020951"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "-1.320813"    "-1.320813"    "-1.320813"    "-1.320813"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "4.497621"     "4.497621"     "3.280933"     "3.280933"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_x   "-1.0209513"   "-0.8208306"   " 2.6267635"   " 2.6267635"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   "-1.320813127" " 0.003360855" " 0.003360855" " 0.003360855"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "4.497621"     "5.023636"     "5.023636"     "5.023636"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_x  "-1.0209513"   "-0.9208910"   " 0.2616605"   " 0.5235134"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_y  "-1.3208131"   "-0.6587261"   "-0.6547863"   "-0.7399147"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_z  "4.497621"     "4.760628"     "4.267397"     "4.383664"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             [,5]           [,6]          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> walk_number "1"            "1"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> step_number "5"            "6"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x           " 1.5971390"   " 4.9979813"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y           "-2.450994467" "-1.489431349"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> z           "3.460592"     "3.022439"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_x   " 3.6911926"   " 8.6891739"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   "-5.410653"    "-6.900085"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   "20.995249"    "24.017688"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_x  "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"            "0"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_x   "-1.020951"    "-1.020951"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "-2.450994"    "-2.450994"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "3.280933"     "3.022439"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_x   " 2.6267635"   " 4.9979813"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   " 0.003360855" " 0.003360855"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "5.023636"     "5.023636"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_x  " 0.7382385"   " 1.4481956"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_y  "-1.0821307"   "-1.1500141"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_z  "4.199050"     "4.002948"    </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
