@@ -132,7 +132,7 @@ from <a href="https://github.com/spsanderson/RandomWalker" class="external-link"
 with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/RandomWalker"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/RandomWalker"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-usage">Example Usage<a class="anchor" aria-label="anchor" href="#example-usage"></a>
@@ -144,18 +144,18 @@ This function generates a random walk with 30 steps.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 3</span></span></span>
-<span><span class="co">#&gt;    walk_number     x     y</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1               1  0   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1               2 -<span style="color: #BB0000;">1.40</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1               3 -<span style="color: #BB0000;">1.14</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1               4 -<span style="color: #BB0000;">3.58</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1               5 -<span style="color: #BB0000;">3.59</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1               6 -<span style="color: #BB0000;">2.97</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1               7 -<span style="color: #BB0000;">1.82</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1               8 -<span style="color: #BB0000;">3.64</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1               9 -<span style="color: #BB0000;">3.89</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1              10 -<span style="color: #BB0000;">4.13</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    walk_number step_number     y</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1                     1  0   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1                     2 -<span style="color: #BB0000;">1.40</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1                     3 -<span style="color: #BB0000;">1.14</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1                     4 -<span style="color: #BB0000;">3.58</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1                     5 -<span style="color: #BB0000;">3.59</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1                     6 -<span style="color: #BB0000;">2.97</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1                     7 -<span style="color: #BB0000;">1.82</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1                     8 -<span style="color: #BB0000;">3.64</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1                     9 -<span style="color: #BB0000;">3.89</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1                    10 -<span style="color: #BB0000;">4.13</span></span></span></code></pre></div>
 <p>The output shows the first 10 steps of the random walk. Each step
 represents the position of the object after moving forward or backward
 by one unit. The <code><a href="../reference/rw30.html">rw30()</a></code> function takes no parameters and
@@ -174,7 +174,7 @@ function:</p>
 <code class="sourceCode R"><span><span class="va">atb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attributes.html" class="external-link">attributes</a></span><span class="op">(</span><span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">atb</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">atb</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"row.names"</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="co">#&gt; $names</span></span>
-<span><span class="co">#&gt; [1] "walk_number" "x"           "y"          </span></span>
+<span><span class="co">#&gt; [1] "walk_number" "step_number" "y"          </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $class</span></span>
 <span><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span>
