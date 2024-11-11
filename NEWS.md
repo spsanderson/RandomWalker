@@ -3,7 +3,7 @@
 ## Breaing Changes
 1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
 Due to this what was the `x` column is now called `step_number` for all random walk
-functions including rw30().
+functions including rw30(). The `x` column is now the first dimension of a 2d/3d random walk.
 
 ## New Features
 1. Fix #105 - Add internal function `rand_walk_column_names()` to generate 
