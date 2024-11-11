@@ -107,7 +107,8 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
     if (.interactive == FALSE) {
 
       # Create a ggplot object
-      p <- ggplot2::ggplot(.data, ggplot2::aes(x = x, y = get(y_var), color = walk_number)) +
+      p <- ggplot2::ggplot(.data, ggplot2::aes(x = step_number, y = get(y_var),
+                                               color = walk_number)) +
         # Plot lines with some transparency
         ggplot2::geom_line(alpha = .alpha) +
         # Use a minimal theme
@@ -127,7 +128,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
         dplyr::mutate(
           .tooltip = paste0(
             "Walk Number: ", walk_number, " | ",
-            "Step: ", x, " | ",
+            "Step: ", step_number, " | ",
             y_label_pretty, ": ", round(get(y_var), digits = 3)
           )
         )
@@ -136,7 +137,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
       g <- ggplot2::ggplot(
         .data,
         ggplot2::aes(
-          x       = x,
+          x       = step_number,
           y       = get(y_var),
           color   = walk_number,
           group   = walk_number,
@@ -167,7 +168,7 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
   }
 
   # Identify variables to plot, excluding 'walk_number' and 'x'
-  plot_vars <- setdiff(atb$names, c("walk_number", "x"))
+  plot_vars <- setdiff(atb$names, c("walk_number", "step_number"))
 
   # Generate a list of plots for each variable in plot_vars
   plots <- lapply(plot_vars, generate_plot)
