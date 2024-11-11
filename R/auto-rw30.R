@@ -64,7 +64,8 @@ rw30 <- function() {
   ) |>
     dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
     dplyr::select(walk_number, x, y) |>
-    dplyr::arrange(walk_number, x)
+    dplyr::arrange(walk_number, x) |>
+    dplyr::rename(step_number = x)
 
   attr(walks_long, "num_walks") <- num_walks
   attr(walks_long, "num_steps") <- num_steps
