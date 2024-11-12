@@ -158,6 +158,7 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   res <- purrr::map(1:num_sims, ~ generate_gbm(.x)) |>
     dplyr::bind_rows() |>
     dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
     dplyr::group_by(walk_number) |>
     std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>

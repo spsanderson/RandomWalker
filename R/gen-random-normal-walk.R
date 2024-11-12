@@ -129,6 +129,7 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
   # Generate all walks
   res <- purrr::map_dfr(1:num_walks, generate_walk)
   res <- res |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
     dplyr::group_by(walk_number) |>
     std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>

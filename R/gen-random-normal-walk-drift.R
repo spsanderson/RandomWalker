@@ -134,7 +134,7 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 1
 
   # Create a tibble with all walks for all dimensions
   res <- dplyr::bind_rows(walks, .id = "walk_number") |>
-    dplyr::mutate(walk_number = as.factor(walk_number)) |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
     dplyr::group_by(walk_number) |>
     dplyr::mutate(step_number = 1:num_steps) |>
     dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
