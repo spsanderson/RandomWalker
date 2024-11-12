@@ -22,24 +22,44 @@
 #' @param .sd Numeric. The standard deviation of the normal distribution used for generating steps. Default is 1.
 #' @param .drift Numeric. The drift term to be added to each step. Default is 0.1.
 #' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
+#' @param .dimensions The default is 1. Allowable values are 1, 2 and 3.
 #'
 #' @examples
 #' set.seed(123)
-#' random_normal_drift_walk(.num_walks = 10, .n = 50, .mu = 0, .sd = 1.2,
-#'                                   .drift = 0.05, .initial_value = 100) |>
-#'                                   visualize_walks()
+#' random_normal_drift_walk()
 #'
-#' @return A tibble in long format with columns `walk_number`, `x` (step index),
-#' and `y` (walk value). The tibble has attributes for the number of walks,
-#' number of steps, mean, standard deviation, and drift.
+#' set.seed(123)
+#' random_normal_drift_walk(.dimensions = 3) |>
+#'   head() |>
+#'   t()
+#'
+#' @return A tibble containing the generated random walks with columns depending
+#' on the number of dimensions:
+#' \itemize{
+#'   \item `walk_number`: Factor representing the walk number.
+#'   \item `step_number`: Step index.
+#'   \item `y`: If `.dimensions = 1`, the value of the walk at each step.
+#'   \item `x`, `y`: If `.dimensions = 2`, the values of the walk in two dimensions.
+#'   \item `x`, `y`, `z`: If `.dimensions = 3`, the values of the walk in three dimensions.
+#' }
+#'
+#' The following are also returned based upon how many dimensions there are and
+#' could be any of x, y and or z:
+#' \itemize{
+#'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_min`: Cumulative minimum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_max`: Cumulative maximum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_mean`: Cumulative mean of `dplyr::all_of(.dimensions)`.
+#' }
 #'
 #' @name random_normal_drift_walk
 NULL
 #' @rdname random_normal_drift_walk
 #' @export
 
-random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
-                                     .sd = 1, .drift = 0.1, .initial_value = 0) {
+random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 1,
+                                     .drift = 0.1, .initial_value = 0, .dimensions = 1) {
 
   # Convert inputs to appropriate types
   num_walks <- as.integer(.num_walks)
@@ -48,92 +68,91 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0,
   sd <- as.numeric(.sd)
   drift <- as.numeric(.drift)
   initial_value <- as.numeric(.initial_value)
-  dr <- seq(from = drift, to = drift * num_steps, length.out = num_steps)
 
   # Checks
   if (num_walks <= 0) {
-    rlang::abort(
-      message = "Number of walks must be a positive integer.",
-      use_cli = TRUE
-      )
+    rlang::abort("Number of walks must be a positive integer.", use_cli = TRUE)
   }
-
   if (num_steps <= 0) {
-    rlang::abort(
-      message = "Number of steps must be a positive integer.",
-      use_cli = TRUE
-      )
+    rlang::abort("Number of steps must be a positive integer.", use_cli = TRUE)
   }
-
   if (sd <= 0) {
-    rlang::abort(
-      message = "Standard deviation must be a positive number.",
-      use_cli = TRUE
-      )
+    rlang::abort("Standard deviation must be a positive number.", use_cli = TRUE)
   }
-
   if (is.na(mu)) {
-    rlang::abort(
-      message = "Mean must be a number.",
-      use_cli = TRUE
-      )
+    rlang::abort("Mean must be a number.", use_cli = TRUE)
   }
-
   if (is.na(drift)) {
-    rlang::abort(
-      message = "Drift must be a number.",
-      use_cli = TRUE
-      )
+    rlang::abort("Drift must be a number.", use_cli = TRUE)
   }
-
   if (is.na(initial_value)) {
-    rlang::abort(
-      message = "Initial value must be a number.",
-      use_cli = TRUE
-      )
+    rlang::abort("Initial value must be a number.", use_cli = TRUE)
+  }
+  if (!.dimensions %in% c(1, 2, 3)) {
+    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli = TRUE)
   }
 
-  # Function to generate a single random walk
-  single_random_walk_with_drift <- function(num_steps, mu, sd, drift) {
-    wn <- stats::rnorm(n = num_steps, mean = mu, sd = sd)
-    rw <- cumsum(stats::rnorm(n = num_steps, mean = mu, sd = sd))
-    res <- wn + rw + dr
-    return(res)
+  # Create drift sequences for each dimension
+  dr <- purrr::map(
+    1:.dimensions,
+    ~ seq(from = drift, to = drift * num_steps, length.out = num_steps)
+  )
+
+  # Define dimension names
+  dim_names <- switch(.dimensions,
+                      `1` = c("y"),
+                      `2` = c("x", "y"),
+                      `3` = c("x", "y", "z"))
+
+  # Function to generate a single random walk with drift for multiple dimensions
+  single_random_walk_with_drift <- function(num_steps, mu, sd, dr) {
+    walks_per_dim <- purrr::map2(dr, dim_names, function(drift_seq, dim) {
+      wn <- stats::rnorm(n = num_steps, mean = mu, sd = sd)
+      rw <- cumsum(wn)
+      res <- wn + rw + drift_seq
+      res
+    })
+
+    # Set Column Names
+    # rand_steps <- stats::setNames(walks_per_dim, dim_names)
+    # rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
+    #   purrr::list_cbind()
+    # colnames(rand_steps) <- dim_names
+    # rand_steps <- purrr::map(
+    #   rand_steps, \(x) x |>
+    #     unlist(use.names = FALSE)) |>
+    #   dplyr::as_tibble()
+    rand_walk_column_names(walks_per_dim, dim_names, num_walks, num_steps)
   }
 
-  # Generate the walks
-  walks <- replicate(
-    num_walks,
-    single_random_walk_with_drift(num_steps, mu, sd, drift),
-    simplify = FALSE
+  # Generate all walks for each dimension
+  walks <- purrr::map(
+    1:num_walks,
+    ~ single_random_walk_with_drift(num_steps, mu, sd, dr)
   )
 
-  # Create a tibble with the walks
-  walks_tibble <- dplyr::tibble(
-    x = 1:num_steps,
-    !!!stats::setNames(walks, 1:num_walks)
-  )
 
-  # Pivot the tibble longer
-  walks_long <- tidyr::pivot_longer(
-    walks_tibble,
-    cols = -x,
-    names_to = "walk_number",
-    values_to = "y"
-  ) |>
+  # Create a tibble with all walks for all dimensions
+  res <- dplyr::bind_rows(walks, .id = "walk_number") |>
     dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
-    dplyr::select(walk_number, x, y, dplyr::everything()) |>
-    dplyr::arrange(walk_number, x)  |>
-    dplyr::ungroup() |>
-    rand_walk_helper(.value = initial_value)
+    dplyr::group_by(walk_number) |>
+    dplyr::mutate(step_number = 1:num_steps) |>
+    dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
+    std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
 
-  attr(walks_long, "n") <- num_steps
-  attr(walks_long, "num_walks") <- num_walks
-  attr(walks_long, "mu") <- mu
-  attr(walks_long, "sd") <- sd
-  attr(walks_long, "drift") <- drift
-  attr(walks_long, "fns") <- "random_normal_drift_walk"
-  attr(walks_long, "dimension")     <- 1
+  # Add attributes
+  attr(res, "n") <- num_steps
+  attr(res, "num_walks") <- num_walks
+  attr(res, "mu") <- mu
+  attr(res, "sd") <- sd
+  attr(res, "drift") <- drift
+  attr(res, "fns") <- "random_normal_drift_walk"
+  attr(res, "dimensions") <- .dimensions
 
-  return(walks_long)
+  return(res)
 }

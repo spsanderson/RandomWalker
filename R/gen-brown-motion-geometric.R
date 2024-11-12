@@ -39,19 +39,37 @@
 #' @param .initial_value Integer representing the initial value.
 #' @param .mu Expected return
 #' @param .sigma Volatility
-#' @param .return_tibble The default is TRUE. If set to FALSE then an object
-#' of class matrix will be returned.
+#' @param .dimensions The default is 1. Allowable values are 1, 2 and 3.
 #'
 #' @examples
+#'
 #' set.seed(123)
 #' geometric_brownian_motion()
 #'
 #' set.seed(123)
-#' geometric_brownian_motion(.num_walks = 5) |>
-#'   visualize_walks()
+#' geometric_brownian_motion(.dimensions = 3) |>
+#'   head() |>
+#'   t()
 #'
-#' @return
-#' A tibble/matrix
+#' @return A tibble containing the generated random walks with columns depending
+#' on the number of dimensions:
+#' \itemize{
+#'   \item `walk_number`: Factor representing the walk number.
+#'   \item `step_number`: Step index.
+#'   \item `y`: If `.dimensions = 1`, the value of the walk at each step.
+#'   \item `x`, `y`: If `.dimensions = 2`, the values of the walk in two dimensions.
+#'   \item `x`, `y`, `z`: If `.dimensions = 3`, the values of the walk in three dimensions.
+#' }
+#'
+#' The following are also returned based upon how many dimensions there are and
+#' could be any of x, y and or z:
+#' \itemize{
+#'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_min`: Cumulative minimum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_max`: Cumulative maximum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_mean`: Cumulative mean of `dplyr::all_of(.dimensions)`.
+#' }
 #'
 #' @name geometric_brownian_motion
 NULL
@@ -63,7 +81,7 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
                                          .mu = 0, .sigma = 0.1,
                                          .initial_value = 100,
                                          .delta_time = 0.003,
-                                         .return_tibble = TRUE) {
+                                         .dimensions = 1) {
 
   # Tidyeval ----
   # Thank you to https://robotwealth.com/efficiently-simulating-geometric-brownian-motion-in-r/
@@ -73,15 +91,8 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   sigma <- as.numeric(.sigma)
   initial_value <- as.numeric(.initial_value)
   delta_time <- as.numeric(.delta_time)
-  return_tibble <- as.logical(.return_tibble)
 
   # Checks ----
-  if (!is.logical(return_tibble)){
-    rlang::abort(
-      message = "The paramter `.return_tibble` must be either TRUE/FALSE",
-      use_cli_format = TRUE
-    )
-  }
 
   if (!is.numeric(num_sims) | !is.numeric(t) | !is.numeric(mu) |
       !is.numeric(sigma) | !is.numeric(initial_value) | !is.numeric(delta_time)){
@@ -107,28 +118,54 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
       use_cli_format = TRUE
     )
   }
+  if (!.dimensions %in% c(1, 2, 3)) {
+    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli = TRUE)
+  }
+
+  # Define dimension names
+  dim_names <- switch(.dimensions,
+                      `1` = c("y"),
+                      `2` = c("x", "y"),
+                      `3` = c("x", "y", "z"))
 
   # matrix of random draws - one for each day for each simulation
-  rand_matrix <- matrix(stats::rnorm(t * num_sims), ncol = num_sims, nrow = t)
-  colnames(rand_matrix) <- 1:num_sims
+  generate_gbm <- function(num_sims){
+    rand_steps <- purrr::map(
+      dim_names,
+      ~ exp((mu - sigma * sigma / 2) * delta_time + sigma * stats::rnorm(t) * sqrt(delta_time)) |>
+        cumprod()
+    )
 
-  # get GBM and convert to price paths
-  res <- exp((mu - sigma * sigma / 2) * delta_time + sigma * rand_matrix * sqrt(delta_time))
-  res <- apply(rbind(rep(initial_value, num_sims), res), 2, cumprod)
+    # Set column names
+    # rand_steps <- stats::setNames(rand_steps, dim_names)
+    # rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
+    #   purrr::list_cbind()
+    # colnames(rand_steps) <- dim_names
+    # rand_steps <- purrr::map(
+    #   rand_steps, \(x) x |>
+    #     unlist(use.names = FALSE)) |>
+    #   dplyr::as_tibble()
+    #
+    # # Combine into a tibble
+    # dplyr::tibble(
+    #   walk_number = factor(num_sims),
+    #   step_number = 1:t
+    # ) |>
+    #   dplyr::bind_cols(rand_steps)
+    rand_walk_column_names(rand_steps, dim_names, num_sims, t)
+  }
+
+  res <- purrr::map(1:num_sims, ~ generate_gbm(.x)) |>
+    dplyr::bind_rows() |>
+    dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
+    dplyr::group_by(walk_number) |>
+    std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
 
   # Return
-  if (return_tibble){
-    res <- res |>
-      dplyr::as_tibble() |>
-      dplyr::mutate(t = 1:(t+1)) |>
-      tidyr::pivot_longer(-t) |>
-      dplyr::select(name, t, value) |>
-      purrr::set_names("walk_number", "x", "y") |>
-      dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
-      dplyr::arrange(walk_number, x) |>
-      rand_walk_helper(.value = initial_value) |>
-      dplyr::select(-cum_sum, -cum_prod)
-  }
 
   attr(res, "n") <- .n
   attr(res, "num_walks") <- .num_walks
@@ -136,9 +173,8 @@ geometric_brownian_motion <- function(.num_walks = 25, .n = 100,
   attr(res, "sigma") <- .sigma
   attr(res, "initial_value") <- .initial_value
   attr(res, "delta_time") <- .delta_time
-  attr(res, "return_tibble") <- .return_tibble
   attr(res, "fns") <- "geometric_brownian_motion"
-  attr(res, "dimension")     <- 1
+  attr(res, "dimension")     <- .dimensions
 
   return(res)
 }

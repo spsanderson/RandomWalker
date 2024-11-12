@@ -25,21 +25,36 @@
 #' @param .upper_probability The probability of the upper bound. Default is 0.5.
 #' The lower bound is calculated as 1 - .upper_probability.
 #' @param .initial_value The initial value of the random walk. Default is 100.
+#' @param .dimensions The default is 1. Allowable values are 1, 2 and 3.
 #'
 #' @examples
-#' library(ggplot2)
-#'
 #' set.seed(123)
 #' discrete_walk()
 #'
 #' set.seed(123)
-#' discrete_walk(.num_walks = 10, .n = 250, .upper_probability = 0.51,
-#' .initial_value = 100) |>
-#' visualize_walks()
+#' discrete_walk(.dimensions = 3) |>
+#'   head() |>
+#'   t()
 #'
-#' @return
-#' A tibble containing the simulated walks, with columns for the walk number,
-#' time period, and various cumulative metrics (sum, product, min, max).
+#' @return A tibble containing the generated random walks with columns depending
+#' on the number of dimensions:
+#' \itemize{
+#'   \item `walk_number`: Factor representing the walk number.
+#'   \item `step_number`: Step index.
+#'   \item `y`: If `.dimensions = 1`, the value of the walk at each step.
+#'   \item `x`, `y`: If `.dimensions = 2`, the values of the walk in two dimensions.
+#'   \item `x`, `y`, `z`: If `.dimensions = 3`, the values of the walk in three dimensions.
+#' }
+#'
+#' The following are also returned based upon how many dimensions there are and
+#' could be any of x, y and or z:
+#' \itemize{
+#'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_min`: Cumulative minimum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_max`: Cumulative maximum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_mean`: Cumulative mean of `dplyr::all_of(.dimensions)`.
+#' }
 #'
 #' @name discrete_walk
 NULL
@@ -48,16 +63,17 @@ NULL
 
 discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
                           .lower_bound = -1, .upper_probability = 0.5,
-                          .initial_value = 100) {
+                          .initial_value = 100, .dimensions = 1) {
 
   # Variables
   num_walks <- as.integer(.num_walks)
-  periods <- as.integer(.n)
+  t <- as.integer(.n)
   upper_bound <- as.numeric(.upper_bound)
   lower_bound <- as.numeric(.lower_bound)
   upper_probability <- as.numeric(.upper_probability)
   lower_probability <- 1 - upper_probability
   initial_value <- as.numeric(.initial_value)
+  dimensions <- as.integer(.dimensions)
 
   # Checks
   if (!is.integer(num_walks) | num_walks < 1) {
@@ -67,7 +83,7 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
     )
   }
 
-  if (!is.integer(periods) | periods < 1) {
+  if (!is.integer(t) | t < 1) {
     rlang::abort(
       message = "The number of periods must be an integer greater than 0.",
       use_cli_format = TRUE
@@ -78,53 +94,112 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
     rlang::abort(
       message = "The upper bound must be a numeric value.",
       use_cli_format = TRUE
-      )
+    )
   }
 
   if (!is.numeric(lower_bound)) {
     rlang::abort(
       message = "The lower bound must be a numeric value.",
       use_cli_format = TRUE
-      )
+    )
   }
 
   if (!is.numeric(upper_probability) | upper_probability < 0 | upper_probability > 1) {
     rlang::abort(
       message = "The upper probability must be a numeric value between 0 and 1.",
       use_cli_format = TRUE
-      )
+    )
   }
 
   if (!is.numeric(initial_value)) {
     rlang::abort(
       message = "The initial value must be a numeric value.",
       use_cli_format = TRUE
-      )
+    )
   }
 
-  res <- tidyr::expand_grid(walk_number = factor(1:num_walks), x = 1:periods) |>
-    dplyr::group_by(walk_number) |>
-    dplyr::mutate(y = replicate(
-      n = periods,
-      sample(
-        x = c(upper_bound, lower_bound),
-        size = 1,
-        prob = c(upper_probability, lower_probability))
+  if (!is.integer(dimensions) | dimensions < 1 | dimensions > 3) {
+    rlang::abort(
+      message = "The number of dimensions must be an integer between 1 and 3.",
+      use_cli_format = TRUE
+    )
+  }
+
+  if (!.dimensions %in% c(1, 2, 3)) {
+    rlang::abort(
+      message = "The number of dimensions must be an integer between 1 and 3.",
+      use_cli_format = TRUE
+    )
+  }
+
+  # Define dimension names
+  dim_names <- switch(.dimensions,
+                      `1` = c("y"),
+                      `2` = c("x", "y"),
+                      `3` = c("x", "y", "z"))
+
+  # Generate walks for each dimension
+  single_discrete_walk <- function(t, upper_bound, lower_bound,
+                                   upper_probability, lower_probability){
+    rand_steps <- purrr::map(
+      dim_names,
+      ~ replicate(
+        n = t,
+        sample(
+          x = c(upper_bound, lower_bound),
+          size = 1,
+          prob = c(upper_probability, lower_probability))
       )
-    ) |>
-    dplyr::ungroup() |>
-    rand_walk_helper(.value = initial_value)
+    )
+
+    # Set Column Names
+    # rand_steps <- stats::setNames(rand_steps, dim_names)
+    # rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
+    #   purrr::list_cbind()
+    # colnames(rand_steps) <- dim_names
+    # rand_steps <- purrr::map(
+    #   rand_steps, \(x) x |>
+    #     unlist(use.names = FALSE)) |>
+    #   dplyr::as_tibble()
+    #
+    # # Combine into a tibble
+    # dplyr::tibble(
+    #   walk_number = factor(num_walks),
+    #   step_number = 1:t
+    # ) |>
+    #   dplyr::bind_cols(rand_steps)
+    rand_walk_column_names(rand_steps, dim_names, num_walks, t)
+  }
+
+  # Generate walks
+  walks <- purrr::map(
+    1:num_walks,
+    ~ single_discrete_walk(t, upper_bound, lower_bound,
+                           upper_probability, lower_probability)
+  )
+
+  # Create a tibble with all walks for all dimensions
+  res <- dplyr::bind_rows(walks, .id = "walk_number") |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
+    dplyr::group_by(walk_number) |>
+    dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
+    std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
 
   # Attributes
-  attr(res, "n")             <- periods
-  attr(res, "num_walks")     <- .num_walks
+  attr(res, "n")             <- t
+  attr(res, "num_walks")     <- num_walks
   attr(res, "upper_bound")   <- upper_bound
   attr(res, "lower_bound")   <- lower_bound
   attr(res, "upper_probability") <- upper_probability
   attr(res, "lower_probability") <- lower_probability
   attr(res, "initial_value") <- initial_value
   attr(res, "fns")           <- "discrete_walk"
-  attr(res, "dimension")     <- 1
+  attr(res, "dimension")     <- dimensions
 
   # Return
   return(res)

@@ -40,7 +40,7 @@ library(dplyr)
 walk_data <- random_normal_walk(.initial_value = 100)
 
 # Summarize the walks
-summarize_walks(walk_data, cum_sum, walk_number) |>
+summarize_walks(walk_data, cum_sum_y, walk_number) |>
  glimpse()
 summarize_walks(walk_data, y) |>
   glimpse()

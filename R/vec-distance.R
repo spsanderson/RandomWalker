@@ -22,8 +22,8 @@
 #' @examples
 #' set.seed(123)
 #' df <- rw30()
-#' euclidean_distance(df, x, y)
-#' euclidean_distance(df, x, y, TRUE) |> head(10)
+#' euclidean_distance(df, step_number, y)
+#' euclidean_distance(df, step_number, y, TRUE) |> head(10)
 #'
 #' @return
 #' A numeric Vector of ditances
