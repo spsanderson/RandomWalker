@@ -182,11 +182,25 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
   res <- dplyr::bind_rows(walks, .id = "walk_number") |>
     dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks)) |>
     dplyr::group_by(walk_number) |>
-    dplyr::select(walk_number, step_number, dplyr::all_of(dim_names)) |>
+    dplyr::select(walk_number, step_number, dplyr::all_of(dim_names))
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
 
