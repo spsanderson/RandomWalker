@@ -137,12 +137,25 @@ brownian_motion <- function(.num_walks = 25, .n = 100, .delta_time = 1,
   res <- purrr::map(1:num_sims, ~ generate_brownian_motion(.x)) |>
     dplyr::bind_rows() |>
     dplyr::select(walk_number, step_number, dplyr::any_of(dim_names)) |>
-    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims)) |>
+    dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_sims))
+  res <- res |>
     dplyr::group_by(walk_number) |>
     std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
+    dplyr::ungroup()
+  res <- res |>
+    dplyr::group_by(walk_number) |>
     std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
 
