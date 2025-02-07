@@ -39,6 +39,7 @@ std_cum_prod_augment(df, .value = y, .names = c("cumprod_y"))
 }
 \seealso{
 Other Utility Functions: 
+\code{\link{confidence_interval}()},
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
 \code{\link{get_attributes}()},
