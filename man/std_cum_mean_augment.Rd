@@ -39,6 +39,7 @@ std_cum_mean_augment(df, .value = y, .names = c("cummean_y"))
 }
 \seealso{
 Other Utility Functions: 
+\code{\link{confidence_interval}()},
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
 \code{\link{get_attributes}()},

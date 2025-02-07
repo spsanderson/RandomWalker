@@ -39,6 +39,7 @@ std_cum_min_augment(df, .value = y, .names = c("cummin_y"))
 }
 \seealso{
 Other Utility Functions: 
+\code{\link{confidence_interval}()},
 \code{\link{convert_snake_to_title_case}()},
 \code{\link{generate_caption}()},
 \code{\link{get_attributes}()},

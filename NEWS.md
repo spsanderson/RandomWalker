@@ -8,6 +8,8 @@ functions including rw30(). The `x` column is now the first dimension of a 2d/3d
 ## New Features
 1. Fix #105 - Add internal function `rand_walk_column_names()` to generate 
 column names for random walks.
+2. Fix #142 - Add vector function `confidence_interval()` to generate confidence
+interval tibble.
 
 ## Minor Fixes and Improvements
 1. Fix #107 - Add `.dimensions` parameter to random walk functions to allow for

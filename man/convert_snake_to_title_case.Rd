@@ -30,6 +30,7 @@ convert_snake_to_title_case("cumulative_sum") # "Cumulative Sum"
 }
 \seealso{
 Other Utility Functions: 
+\code{\link{confidence_interval}()},
 \code{\link{generate_caption}()},
 \code{\link{get_attributes}()},
 \code{\link{rand_walk_column_names}()},
