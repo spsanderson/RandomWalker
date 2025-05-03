@@ -16,7 +16,7 @@ subset_walks(.data, .type = "max")
 
 \item{.data}{A data frame containing random walks. It must have columns \code{walk_number} and \code{y}.}
 
-\item{.type}{A character string specifying the type of subset: "max" for maximum value or "min" for minimum value.}
+\item{.type}{A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.}
 }
 \value{
 A data frame containing the subsetted walk.
@@ -35,6 +35,7 @@ returns the rand walk data with column names.
 df <- rw30()
 subset_walks(df, .type = "max")
 subset_walks(df, .type = "min")
+subset_walks(df, .type = "both")
 
 }
 \seealso{
