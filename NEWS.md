@@ -1,5 +1,12 @@
 # RandomWalker (development version)
 
+## Breaking Changes
+None
+
+## New Features
+1. Fix #71 - Add function subset_walks() to subset random walks by max or min
+value.
+
 ## Breaing Changes
 1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
 Due to this what was the `x` column is now called `step_number` for all random walk

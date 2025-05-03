@@ -601,32 +601,37 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 
 #' Subset Walks by Extreme Values
 #'
+#' @family Utility Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @description This function subsets random walks to identify the walk with the maximum or minimum value.
 #'
 #' @param .data A data frame containing random walks. It must have columns `walk_number` and `y`.
-#' @param type A character string specifying the type of subset: "max" for maximum value or "min" for minimum value.
+#' @param .type A character string specifying the type of subset: "max" for maximum value or "min" for minimum value.
 #'
 #' @return A data frame containing the subsetted walk.
 #'
 #' @examples
-#' df <- data.frame(
-#'   walk_number = factor(rep(1L:25L, each = 30L)),
-#'   x = rep(1L:30L, 25L),
-#'   y = rnorm(750L, 0L, 1L)
-#' )
-#' subset_walks(df, type = "max")
-#' subset_walks(df, type = "min")
+#' df <- rw30()
+#' subset_walks(df, .type = "max")
+#' subset_walks(df, .type = "min")
+#'
+#' @name rand_walk_column_names
+NULL
+#'
+#' @rdname rand_walk_column_names
 #'
 #' @export
-subset_walks <- function(.data, type = "max") {
+subset_walks <- function(.data, .type = "max") {
   if (!"walk_number" %in% colnames(.data) || !"y" %in% colnames(.data)) {
     stop("The data frame must contain 'walk_number' and 'y' columns.")
   }
 
-  if (type == "max") {
+  if (.type == "max") {
     max_row <- .data[which.max(.data$y), ]
     result <- .data[.data$walk_number == max_row$walk_number, ]
-  } else if (type == "min") {
+  } else if (.type == "min") {
     min_row <- .data[which.min(.data$y), ]
     result <- .data[.data$walk_number == min_row$walk_number, ]
   } else {

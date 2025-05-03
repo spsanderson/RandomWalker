@@ -2,24 +2,55 @@
 % Please edit documentation in R/helpers.R
 \name{rand_walk_column_names}
 \alias{rand_walk_column_names}
+\alias{subset_walks}
 \title{Get Column Names}
 \usage{
 rand_walk_column_names(.rand_data, .dim_names, .num_sims, .t)
+
+subset_walks(.data, .type = "max")
 }
 \arguments{
 \item{.rand_data}{A data frame from which column names are to be extracted.}
 
 \item{.dim_names}{The dimnames passed from the rand walk function.}
+
+\item{.data}{A data frame containing random walks. It must have columns \code{walk_number} and \code{y}.}
+
+\item{.type}{A character string specifying the type of subset: "max" for maximum value or "min" for minimum value.}
+}
+\value{
+A data frame containing the subsetted walk.
 }
 \description{
 This function generates the column names of a rand walk
 data frame.
+
+This function subsets random walks to identify the walk with the maximum or minimum value.
 }
 \details{
 The \code{rand_walk_column_names} function takes a data frame as input and
 returns the rand walk data with column names.
 }
+\examples{
+df <- rw30()
+subset_walks(df, .type = "max")
+subset_walks(df, .type = "min")
+
+}
 \seealso{
+Other Utility Functions: 
+\code{\link{confidence_interval}()},
+\code{\link{convert_snake_to_title_case}()},
+\code{\link{generate_caption}()},
+\code{\link{get_attributes}()},
+\code{\link{rand_walk_helper}()},
+\code{\link{running_quantile}()},
+\code{\link{std_cum_max_augment}()},
+\code{\link{std_cum_mean_augment}()},
+\code{\link{std_cum_min_augment}()},
+\code{\link{std_cum_prod_augment}()},
+\code{\link{std_cum_sum_augment}()}
+
 Other Utility Functions: 
 \code{\link{confidence_interval}()},
 \code{\link{convert_snake_to_title_case}()},
