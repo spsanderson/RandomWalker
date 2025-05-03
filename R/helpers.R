@@ -630,12 +630,16 @@ subset_walks <- function(.data, .type = "max") {
   }
 
   if (.type == "max") {
-    return(.data[which.max(.data$y), ])
+    max_row <- .data[which.max(.data$y), ]
+    return(.data[.data$walk_number == max_row$walk_number, ])
   } else if (.type == "min") {
-    return(.data[which.min(.data$y), ])
+    max_row <- .data[which.min(.data$y), ]
+    return(.data[.data$walk_number == max_row$walk_number, ])
   } else if (.type == "both") {
-    max_walk <- .data[which.max(.data$y), ]
-    min_walk <- .data[which.min(.data$y), ]
+    max_row <- .data[which.max(.data$y), ]
+    min_row <- .data[which.min(.data$y), ]
+    max_walk <- .data[.data$walk_number == max_row$walk_number, ]
+    min_walk <- .data[.data$walk_number == min_row$walk_number, ]
     return(dplyr::bind_rows(max_walk, min_walk))
   }
 }
