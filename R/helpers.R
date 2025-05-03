@@ -608,7 +608,7 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' @description This function subsets random walks to identify the walk with the maximum or minimum value.
 #'
 #' @param .data A data frame containing random walks. It must have columns `walk_number` and `y`.
-#' @param .type A character string specifying the type of subset: "max" for maximum value or "min" for minimum value.
+#' @param .type A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.
 #'
 #' @return A data frame containing the subsetted walk.
 #'
@@ -616,6 +616,7 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' df <- rw30()
 #' subset_walks(df, .type = "max")
 #' subset_walks(df, .type = "min")
+#' subset_walks(df, .type = "both")
 #'
 #' @name rand_walk_column_names
 NULL
@@ -624,19 +625,17 @@ NULL
 #'
 #' @export
 subset_walks <- function(.data, .type = "max") {
-  if (!"walk_number" %in% colnames(.data) || !"y" %in% colnames(.data)) {
-    stop("The data frame must contain 'walk_number' and 'y' columns.")
+  if (!.type %in% c("max", "min", "both")) {
+    rlang::abort("Invalid .type. Choose from 'max', 'min', or 'both'.")
   }
 
   if (.type == "max") {
-    max_row <- .data[which.max(.data$y), ]
-    result <- .data[.data$walk_number == max_row$walk_number, ]
+    return(.data[which.max(.data$y), ])
   } else if (.type == "min") {
-    min_row <- .data[which.min(.data$y), ]
-    result <- .data[.data$walk_number == min_row$walk_number, ]
-  } else {
-    stop("Invalid type. Use 'max' or 'min'.")
+    return(.data[which.min(.data$y), ])
+  } else if (.type == "both") {
+    max_walk <- .data[which.max(.data$y), ]
+    min_walk <- .data[which.min(.data$y), ]
+    return(dplyr::bind_rows(max_walk, min_walk))
   }
-
-  return(result)
 }
