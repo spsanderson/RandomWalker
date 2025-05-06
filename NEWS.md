@@ -1,6 +1,6 @@
 # RandomWalker (development version)
 
-## Breaing Changes
+## Breaking Changes
 1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
 Due to this what was the `x` column is now called `step_number` for all random walk
 functions including rw30(). The `x` column is now the first dimension of a 2D/3D random walk.
