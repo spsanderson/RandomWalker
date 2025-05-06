@@ -11,7 +11,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html##experimental)
 [![PRs
-Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://kentcdodds.github.io/makeapullrequest.com/)
 <!-- badges: end -->
 
 The goal of RandomWalker is to allow users to easily create Random Walks
@@ -45,18 +45,18 @@ library(RandomWalker)
 rw30() |>
   head(10)
 #> # A tibble: 10 × 3
-#>    walk_number     x      y
-#>    <fct>       <int>  <dbl>
-#>  1 1               1  0    
-#>  2 1               2  1.52 
-#>  3 1               3  2.02 
-#>  4 1               4  1.82 
-#>  5 1               5 -0.120
-#>  6 1               6  0.588
-#>  7 1               7  0.412
-#>  8 1               8  0.998
-#>  9 1               9  1.37 
-#> 10 1              10  0.826
+#>    walk_number step_number        y
+#>    <fct>             <int>    <dbl>
+#>  1 1                     1  0      
+#>  2 1                     2 -0.644  
+#>  3 1                     3 -0.619  
+#>  4 1                     4  0.209  
+#>  5 1                     5  0.885  
+#>  6 1                     6 -0.00949
+#>  7 1                     7  0.339  
+#>  8 1                     8 -0.763  
+#>  9 1                     9 -2.33   
+#> 10 1                    10 -1.10
 ```
 
 Here is a basic visualization of a Random Walk:
@@ -76,7 +76,7 @@ rw30() |>
 #> # A tibble: 1 × 16
 #>   fns   fns_name dimensions mean_val median range quantile_lo quantile_hi
 #>   <chr> <chr>         <dbl>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 rw30  Rw30              1   -0.670 -0.132  47.4       -18.3        14.2
+#> 1 rw30  Rw30              1   -0.189      0  36.5       -12.5        11.8
 #> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
 #> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
 
@@ -85,16 +85,16 @@ rw30() |>
 #> # A tibble: 30 × 17
 #>    walk_number fns   fns_name dimensions mean_val  median range quantile_lo
 #>    <fct>       <chr> <chr>         <dbl>    <dbl>   <dbl> <dbl>       <dbl>
-#>  1 1           rw30  Rw30              1  -0.951   0.0447 15.6       -10.5 
-#>  2 2           rw30  Rw30              1  -0.947  -2.02   13.5        -5.69
-#>  3 3           rw30  Rw30              1  -2.91   -3.42   12.9        -8.84
-#>  4 4           rw30  Rw30              1  -0.0432  0.299  11.1        -4.63
-#>  5 5           rw30  Rw30              1  -4.28   -4.52   12.8        -9.94
-#>  6 6           rw30  Rw30              1  -1.77   -1.71   14.6        -9.60
-#>  7 7           rw30  Rw30              1  -3.51   -3.43   13.6        -9.47
-#>  8 8           rw30  Rw30              1  -4.25   -3.94   20.1       -14.8 
-#>  9 9           rw30  Rw30              1   1.93    2.16    7.11       -1.46
-#> 10 10          rw30  Rw30              1   0.621   1.20   13.7        -5.59
+#>  1 1           rw30  Rw30              1  -3.25   -4.14   17.2       -8.78 
+#>  2 2           rw30  Rw30              1  -1.85   -0.0795 18.6      -14.5  
+#>  3 3           rw30  Rw30              1   8.01    7.73   16.4        0.408
+#>  4 4           rw30  Rw30              1  -1.68   -1.53   12.1       -6.82 
+#>  5 5           rw30  Rw30              1  -0.0203 -0.472  11.7       -3.46 
+#>  6 6           rw30  Rw30              1  -1.25   -0.268  19.8      -12.7  
+#>  7 7           rw30  Rw30              1  -6.32   -6.51   18.3      -15.3  
+#>  8 8           rw30  Rw30              1  -6.37   -8.92   15.2      -13.3  
+#>  9 9           rw30  Rw30              1   0.327   0.0489  9.36      -2.55 
+#> 10 10          rw30  Rw30              1  -1.63    1.68   25.6      -16.1  
 #> # ℹ 20 more rows
 #> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
 #> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
