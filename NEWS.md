@@ -1,26 +1,21 @@
 # RandomWalker (development version)
 
-## Breaking Changes
-None
-
-## New Features
-1. Fix #71 - Add function subset_walks() to subset random walks by max or min
-value.
-
 ## Breaing Changes
 1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
 Due to this what was the `x` column is now called `step_number` for all random walk
-functions including rw30(). The `x` column is now the first dimension of a 2d/3d random walk.
+functions including rw30(). The `x` column is now the first dimension of a 2D/3D random walk.
 
 ## New Features
 1. Fix #105 - Add internal function `rand_walk_column_names()` to generate 
 column names for random walks.
 2. Fix #142 - Add vector function `confidence_interval()` to generate confidence
 interval tibble.
+3. Fix #71 - Add function subset_walks() to subset random walks by max or min
+value.
 
 ## Minor Fixes and Improvements
 1. Fix #107 - Add `.dimensions` parameter to random walk functions to allow for
-the generation of random walks with up to 3 dimensions.
+the generation of random walks with up to 3 dimensions!
 
 # RandomWalker 0.2.0
 
