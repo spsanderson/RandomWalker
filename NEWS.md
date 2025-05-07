@@ -1,4 +1,4 @@
-# RandomWalker (development version)
+# RandomWalker 0.3.0
 
 ## Breaking Changes
 1. Fix #107 - This change allows for the generation of random walks with up to 3 dimensions.
