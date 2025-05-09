@@ -1,3 +1,5 @@
+# RandomWalker (development version)
+
 # RandomWalker 0.3.0
 
 ## Breaking Changes
@@ -16,6 +18,9 @@ value.
 ## Minor Fixes and Improvements
 1. Fix #107 - Add `.dimensions` parameter to random walk functions to allow for
 the generation of random walks with up to 3 dimensions!
+
+## Release Blog Post
+[https://www.spsanderson.com/steveondata/posts/2025-05-09/](https://www.spsanderson.com/steveondata/posts/2025-05-09/)
 
 # RandomWalker 0.2.0
 
