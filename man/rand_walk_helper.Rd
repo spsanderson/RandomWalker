@@ -53,7 +53,8 @@ Other Utility Functions:
 \code{\link{std_cum_mean_augment}()},
 \code{\link{std_cum_min_augment}()},
 \code{\link{std_cum_prod_augment}()},
-\code{\link{std_cum_sum_augment}()}
+\code{\link{std_cum_sum_augment}()},
+\code{\link{subset_walks}()}
 }
 \author{
 Steven P. Sanderson II, MPH

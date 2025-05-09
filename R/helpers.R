@@ -618,10 +618,10 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' subset_walks(df, .type = "min")
 #' subset_walks(df, .type = "both")
 #'
-#' @name rand_walk_column_names
+#' @name subset_walks
 NULL
 #'
-#' @rdname rand_walk_column_names
+#' @rdname subset_walks
 #'
 #' @export
 subset_walks <- function(.data, .type = "max") {

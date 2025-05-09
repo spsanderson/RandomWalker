@@ -1,9 +1,9 @@
 pandoc: '3.2'
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2024-11-25T16:12Z
+last_built: 2025-05-09T01:33Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles

@@ -13,6 +13,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/ckurtosis.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cmean.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cmedian.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/confidence_interval.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/convert_snake_to_title_case.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/crange.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/csd.html</loc></url>
@@ -40,6 +41,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/std_cum_min_augment.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/std_cum_prod_augment.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/std_cum_sum_augment.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/subset_walks.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/summarize_walks.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/visualize_walks.html</loc></url>
 </urlset>
