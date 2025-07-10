@@ -117,10 +117,10 @@ random_weibull_walk <- function(
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::rweibull(n, shape = shape, scale = scale),
+        sample(stats::rweibull(n = n, shape = shape, scale = scale),
                size = periods, replace = replace)
       } else {
-        stats::rweibull(, shape = shape, scale = scale)
+        stats::rweibull(n = n, shape = shape, scale = scale)
       }
     )
     # Set column names
