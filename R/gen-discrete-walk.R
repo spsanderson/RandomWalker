@@ -153,21 +153,6 @@ discrete_walk <- function(.num_walks = 25, .n = 100, .upper_bound = 1,
     )
 
     # Set Column Names
-    # rand_steps <- stats::setNames(rand_steps, dim_names)
-    # rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
-    #   purrr::list_cbind()
-    # colnames(rand_steps) <- dim_names
-    # rand_steps <- purrr::map(
-    #   rand_steps, \(x) x |>
-    #     unlist(use.names = FALSE)) |>
-    #   dplyr::as_tibble()
-    #
-    # # Combine into a tibble
-    # dplyr::tibble(
-    #   walk_number = factor(num_walks),
-    #   step_number = 1:t
-    # ) |>
-    #   dplyr::bind_cols(rand_steps)
     rand_walk_column_names(rand_steps, dim_names, num_walks, t)
   }
 
