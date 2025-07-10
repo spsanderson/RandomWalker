@@ -6,13 +6,23 @@
 #'
 #' @details
 #' The `random_weibull_walk` function generates multiple random walks in 1, 2, or 3 dimensions.
-#' Each walk is a sequence of steps where each step is a random draw from the Weibull distribution
-#' using `stats::rweibull()`. The user can specify the number of walks, the number of steps in each walk,
-#' and the parameters `.shape` and `.scale` for the Weibull distribution. The function also allows for sampling
-#' a proportion of the steps and optionally sampling with replacement.
+#' Each walk is a sequence of steps where each step is a random draw from the
+#' Weibull distribution using `stats::rweibull()`. The user can specify the
+#' number of walks, the number of steps in each walk, and the parameters
+#' `.shape` and `.scale` for the Weibull distribution. The function also allows
+#' for sampling a proportion of the steps and optionally sampling with replacement.
 #'
 #' @description
-#' A Weibull random walk is a stochastic process in which each step is drawn from the Weibull distribution, a flexible distribution commonly used to model lifetimes, reliability, and extreme values. This function allows for the simulation of multiple independent random walks in one, two, or three dimensions, with user control over the number of walks, steps, and the shape and scale parameters of the Weibull distribution. Sampling options allow for further customization, including the ability to sample a proportion of steps and to sample with or without replacement. The resulting data frame includes cumulative statistics for each walk, making it suitable for simulation studies and visualization.
+#' A Weibull random walk is a stochastic process in which each step is drawn
+#' from the Weibull distribution, a flexible distribution commonly used to model
+#' lifetimes, reliability, and extreme values. This function allows for the
+#' simulation of multiple independent random walks in one, two, or three
+#' dimensions, with user control over the number of walks, steps, and the shape
+#' and scale parameters of the Weibull distribution. Sampling options allow for
+#' further customization, including the ability to sample a proportion of steps
+#' and to sample with or without replacement. The resulting data frame includes
+#' cumulative statistics for each walk, making it suitable for simulation
+#' studies and visualization.
 #'
 #' @param .num_walks Integer. Number of walks to generate. Default is 25.
 #' @param .n Integer. Number of steps in each walk. Default is 100.
@@ -33,7 +43,7 @@
 #' random_weibull_walk(.dimensions = 3) |>
 #'    head() |>
 #'    t()
-#' 
+#'
 #' @return A tibble containing the generated random walks with columns depending
 #' on the number of dimensions:
 #' \itemize{
@@ -93,7 +103,7 @@ random_weibull_walk <- function(
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
-  t       <- if (samp) samp_size else n
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -107,38 +117,39 @@ random_weibull_walk <- function(
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::rweibull(n, shape = shape, scale = scale), size = t, replace = replace)
+        sample(stats::rweibull(n, shape = shape, scale = scale),
+               size = periods, replace = replace)
       } else {
-        stats::rweibull(t, shape = shape, scale = scale)
+        stats::rweibull(, shape = shape, scale = scale)
       }
     )
     # Set column names
-    rand_walk_column_names(rand_steps, dim_names, walk_num, t)
+    rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
   }
 
   # Generate all walks
   res <- purrr::map_dfr(1:num_walks, generate_walk)
-  res <- res |
+  res <- res |>
     dplyr::mutate(walk_number = factor(walk_number, levels = 1:num_walks))
-  res <- res |
-    dplyr::group_by(walk_number) |
-    std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |
+  res <- res |>
+    dplyr::group_by(walk_number) |>
+    std_cum_sum_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
-  res <- res |
-    dplyr::group_by(walk_number) |
-    std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |
+  res <- res |>
+    dplyr::group_by(walk_number) |>
+    std_cum_prod_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
-  res <- res |
-    dplyr::group_by(walk_number) |
-    std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |
+  res <- res |>
+    dplyr::group_by(walk_number) |>
+    std_cum_min_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
-  res <- res |
-    dplyr::group_by(walk_number) |
-    std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |
+  res <- res |>
+    dplyr::group_by(walk_number) |>
+    std_cum_max_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
-  res <- res |
-    dplyr::group_by(walk_number) |
-    std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |
+  res <- res |>
+    dplyr::group_by(walk_number) |>
+    std_cum_mean_augment(.value = dplyr::all_of(dim_names), .initial_value = initial_value) |>
     dplyr::ungroup()
 
   # Add attributes

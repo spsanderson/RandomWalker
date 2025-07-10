@@ -59,14 +59,24 @@ could be any of x, y and or z:
 }
 }
 \description{
-A Weibull random walk is a stochastic process in which each step is drawn from the Weibull distribution, a flexible distribution commonly used to model lifetimes, reliability, and extreme values. This function allows for the simulation of multiple independent random walks in one, two, or three dimensions, with user control over the number of walks, steps, and the shape and scale parameters of the Weibull distribution. Sampling options allow for further customization, including the ability to sample a proportion of steps and to sample with or without replacement. The resulting data frame includes cumulative statistics for each walk, making it suitable for simulation studies and visualization.
+A Weibull random walk is a stochastic process in which each step is drawn
+from the Weibull distribution, a flexible distribution commonly used to model
+lifetimes, reliability, and extreme values. This function allows for the
+simulation of multiple independent random walks in one, two, or three
+dimensions, with user control over the number of walks, steps, and the shape
+and scale parameters of the Weibull distribution. Sampling options allow for
+further customization, including the ability to sample a proportion of steps
+and to sample with or without replacement. The resulting data frame includes
+cumulative statistics for each walk, making it suitable for simulation
+studies and visualization.
 }
 \details{
 The \code{random_weibull_walk} function generates multiple random walks in 1, 2, or 3 dimensions.
-Each walk is a sequence of steps where each step is a random draw from the Weibull distribution
-using \code{stats::rweibull()}. The user can specify the number of walks, the number of steps in each walk,
-and the parameters \code{.shape} and \code{.scale} for the Weibull distribution. The function also allows for sampling
-a proportion of the steps and optionally sampling with replacement.
+Each walk is a sequence of steps where each step is a random draw from the
+Weibull distribution using \code{stats::rweibull()}. The user can specify the
+number of walks, the number of steps in each walk, and the parameters
+\code{.shape} and \code{.scale} for the Weibull distribution. The function also allows
+for sampling a proportion of the steps and optionally sampling with replacement.
 }
 \examples{
 set.seed(123)
