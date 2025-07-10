@@ -14,8 +14,9 @@ None
 
 1.  Fix #179 - Add function `random_wilcox_walk()` to generate a random
     walk using the Wilcoxon signed-rank test.
-    
+
 ## Minor Fixes and Improvements
+
 None
 
 # RandomWalker 0.3.0
