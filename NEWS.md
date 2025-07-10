@@ -14,6 +14,8 @@ None
 
 1.  Fix #179 - Add function `random_wilcox_walk()` to generate a random
     walk using the Wilcoxon signed-rank test.
+2.  Fix #178 - Add function `random_weibull_walk()` to generate a random
+    walk using the Weibull distribution.
 
 ## Minor Fixes and Improvements
 
