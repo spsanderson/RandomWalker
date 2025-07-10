@@ -75,7 +75,7 @@ random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
                  use_cli_format = TRUE)
   }
   if (!.dimensions %in% c(1, 2, 3)) {
-    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli = TRUE)
+    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli_format = TRUE)
   }
 
   # Variables
@@ -87,7 +87,7 @@ random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
-  t       <- if (samp) samp_size else n
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -100,12 +100,12 @@ random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::rwilcox(n, m, k), size = t, replace = replace)
+        stats::rwilcox(periods, m, k)
       } else {
-        stats::rwilcox(t, m, k)
+        stats::rwilcox(periods, m, k)
       }
     )
-    rand_walk_column_names(rand_steps, dim_names, walk_num, t)
+    rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
   }
 
   # Generate all walks
@@ -142,7 +142,7 @@ random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
-  attr(res, "periods")       <- t
+  attr(res, "periods")       <- periods
   attr(res, "fns")           <- "random_wilcox_walk"
   attr(res, "dimensions")    <- .dimensions
 
