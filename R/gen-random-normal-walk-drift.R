@@ -71,25 +71,25 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 1
 
   # Checks
   if (num_walks <= 0) {
-    rlang::abort("Number of walks must be a positive integer.", use_cli = TRUE)
+    rlang::abort("Number of walks must be a positive integer.", use_cli_format = TRUE)
   }
   if (num_steps <= 0) {
-    rlang::abort("Number of steps must be a positive integer.", use_cli = TRUE)
+    rlang::abort("Number of steps must be a positive integer.", use_cli_format = TRUE)
   }
   if (sd <= 0) {
-    rlang::abort("Standard deviation must be a positive number.", use_cli = TRUE)
+    rlang::abort("Standard deviation must be a positive number.", use_cli_format = TRUE)
   }
   if (is.na(mu)) {
-    rlang::abort("Mean must be a number.", use_cli = TRUE)
+    rlang::abort("Mean must be a number.", use_cli_format = TRUE)
   }
   if (is.na(drift)) {
-    rlang::abort("Drift must be a number.", use_cli = TRUE)
+    rlang::abort("Drift must be a number.", use_cli_format = TRUE)
   }
   if (is.na(initial_value)) {
-    rlang::abort("Initial value must be a number.", use_cli = TRUE)
+    rlang::abort("Initial value must be a number.", use_cli_format = TRUE)
   }
   if (!.dimensions %in% c(1, 2, 3)) {
-    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli = TRUE)
+    rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli_format = TRUE)
   }
 
   # Create drift sequences for each dimension
@@ -114,14 +114,6 @@ random_normal_drift_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 1
     })
 
     # Set Column Names
-    # rand_steps <- stats::setNames(walks_per_dim, dim_names)
-    # rand_steps <- purrr::map(rand_steps, \(x) dplyr::as_tibble(x)) |>
-    #   purrr::list_cbind()
-    # colnames(rand_steps) <- dim_names
-    # rand_steps <- purrr::map(
-    #   rand_steps, \(x) x |>
-    #     unlist(use.names = FALSE)) |>
-    #   dplyr::as_tibble()
     rand_walk_column_names(walks_per_dim, dim_names, num_walks, num_steps)
   }
 
