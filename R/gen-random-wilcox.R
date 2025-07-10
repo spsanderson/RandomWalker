@@ -100,7 +100,8 @@ random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        stats::rwilcox(periods, m, k)
+        sample(stats::rwilcox(periods, m, k),
+               size = periods, replace = replace)
       } else {
         stats::rwilcox(periods, m, k)
       }
