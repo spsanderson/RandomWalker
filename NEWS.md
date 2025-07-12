@@ -18,6 +18,8 @@ None
     walk using the Weibull distribution.
 3.  Fix #177 - Add function `random_uniform_walk()` to generate a random
     walk using the Uniform distribution.
+4.  Fix #176 - Add function `random_t_walk()` to generate a random walk
+    using the Student's t-distribution.
 
 ## Minor Fixes and Improvements
 
