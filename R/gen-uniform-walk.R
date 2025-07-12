@@ -85,7 +85,7 @@ random_uniform_walk <- function(.num_walks = 25, .n = 100, .min = 0, .max = 1,
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
-  t       <- if (samp) samp_size else n
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -98,12 +98,12 @@ random_uniform_walk <- function(.num_walks = 25, .n = 100, .min = 0, .max = 1,
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::runif(n, min_val, max_val), size = t, replace = replace)
+        sample(stats::runif(n, min_val, max_val), size = periods, replace = replace)
       } else {
-        stats::runif(t, min_val, max_val)
+        stats::runif(periods, min_val, max_val)
       }
     )
-    rand_walk_column_names(rand_steps, dim_names, walk_num, t)
+    rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
   }
 
   # Generate all walks
@@ -140,7 +140,7 @@ random_uniform_walk <- function(.num_walks = 25, .n = 100, .min = 0, .max = 1,
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
-  attr(res, "periods")       <- t
+  attr(res, "periods")       <- periods
   attr(res, "fns")           <- "random_uniform_walk"
   attr(res, "dimensions")    <- .dimensions
 
