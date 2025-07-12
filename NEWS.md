@@ -20,6 +20,8 @@ None
     walk using the Uniform distribution.
 4.  Fix #176 - Add function `random_t_walk()` to generate a random walk
     using the Student's t-distribution.
+5.  Fix #175 - Add function `random_smirnov_walk()` to generate a random
+    walk using the Smirnov distribution.
 
 ## Minor Fixes and Improvements
 
