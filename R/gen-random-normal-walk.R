@@ -1,6 +1,7 @@
 #' Generate Multiple Random Normal Walks in Multiple Dimensions
 #'
 #' @family Generator Functions
+#' @family Continuous Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

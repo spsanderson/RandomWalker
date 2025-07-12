@@ -1,6 +1,7 @@
 #' Discrete Sampled Walk
 #'
 #' @family Generator Functions
+#' @family Discrete Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

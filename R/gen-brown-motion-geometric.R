@@ -1,6 +1,7 @@
 #' Geometric Brownian Motion
 #'
 #' @family Generator Functions
+#' @family Continuous Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
