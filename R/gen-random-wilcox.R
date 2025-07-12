@@ -54,6 +54,7 @@
 #'   t()
 #'
 #' @export
+#' @rdname random_wilcox_walk
 random_wilcox_walk <- function(.num_walks = 25, .n = 100, .m = 10, .k = 10,
                                .initial_value = 0, .samp = TRUE, .replace = TRUE,
                                .sample_size = 0.8, .dimensions = 1) {

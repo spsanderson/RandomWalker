@@ -65,6 +65,12 @@ The user can specify the number of walks, the number of steps in each walk, and 
 parameters of the uniform distribution (min and max). The function
 also allows for sampling a proportion of the steps and optionally sampling with replacement.
 }
+\details{
+This function is a flexible generator for random walks where each step is drawn from a uniform distribution.
+The user can control the number of walks, steps per walk, and the minimum and maximum values for the uniform distribution.
+The function supports 1, 2, or 3 dimensions, and augments the output with cumulative statistics for each walk.
+Sampling can be performed with or without replacement, and a proportion of steps can be sampled if desired.
+}
 \examples{
 set.seed(123)
 random_uniform_walk()
@@ -82,6 +88,7 @@ Other Generator Functions:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_weibull_walk}()},
 \code{\link{random_wilcox_walk}()}
 
@@ -90,6 +97,7 @@ Other Continuous Distribution:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_weibull_walk}()}
 }
 \author{

@@ -61,6 +61,7 @@
 #'   t()
 #'
 #' @export
+#' @rdname random_t_walk
 random_t_walk <- function(
   .num_walks = 25, .n = 100, .df = 5, .initial_value = 0, .ncp = 0,
   .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1

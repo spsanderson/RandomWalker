@@ -78,6 +78,7 @@ Other Generator Functions:
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
 \code{\link{random_weibull_walk}()},
 \code{\link{random_wilcox_walk}()}
@@ -86,6 +87,7 @@ Other Continuous Distribution:
 \code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
 \code{\link{random_weibull_walk}()}
 }

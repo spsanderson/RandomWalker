@@ -54,6 +54,7 @@
 #'   t()
 #'
 #' @export
+#' @rdname random_normal_walk
 random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
                                .initial_value = 0, .samp = TRUE, .replace = TRUE,
                                .sample_size = 0.8, .dimensions = 1) {
