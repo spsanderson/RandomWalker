@@ -16,6 +16,8 @@ None
     walk using the Wilcoxon signed-rank test.
 2.  Fix #178 - Add function `random_weibull_walk()` to generate a random
     walk using the Weibull distribution.
+3.  Fix #177 - Add function `random_uniform_walk()` to generate a random
+    walk using the Uniform distribution.
 
 ## Minor Fixes and Improvements
 
