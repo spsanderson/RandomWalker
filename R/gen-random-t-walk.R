@@ -1,4 +1,4 @@
-#' Generate Multiple Random Normal Walks in Multiple Dimensions
+#' Generate Multiple Random t-Distributed Walks in Multiple Dimensions
 #'
 #' @family Generator Functions
 #' @family Continuous Distribution
@@ -6,18 +6,25 @@
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' The `random_normal_walk` function generates multiple random walks in 1, 2, or 3 dimensions.
-#' Each walk is a sequence of steps where each step is a random draw from a normal distribution.
+#' The `random_t_walk` function generates multiple random walks in 1, 2, or 3 dimensions.
+#' Each walk is a sequence of steps where each step is a random draw from a t-distribution.
 #' The user can specify the number of walks, the number of steps in each walk, and the
-#' parameters of the normal distribution (mean and standard deviation). The function
+#' degrees of freedom for the t-distribution. The function
 #' also allows for sampling a proportion of the steps and optionally sampling with replacement.
+#'
+#' @details
+#' This function is a flexible generator for random walks where each step is drawn from a t-distribution.
+#' The user can control the number of walks, steps per walk, degrees of freedom, and optionally the non-centrality parameter (`ncp`).
+#' If `.ncp` is left blank, the function uses the default behavior of `rt()` from base R, which sets `ncp = 0`.
+#' The function supports 1, 2, or 3 dimensions, and augments the output with cumulative statistics for each walk.
+#' Sampling can be performed with or without replacement, and a proportion of steps can be sampled if desired.
 #'
 #' @param .num_walks An integer specifying the number of random walks to generate. Default is 25.
 #' @param .n An integer specifying the number of steps in each walk. Default is 100.
-#' @param .mu A numeric value indicating the mean of the normal distribution. Default is 0.
-#' @param .sd A numeric value indicating the standard deviation of the normal distribution. Default is 0.1.
+#' @param .df Degrees of freedom for the t-distribution. Default is 5.
 #' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
-#' @param .samp A logical value indicating whether to sample the normal distribution values. Default is TRUE.
+#' @param .ncp A numeric value for the non-centrality parameter for the t-distribution. Default is 0.
+#' @param .samp A logical value indicating whether to sample the t-distribution values. Default is TRUE.
 #' @param .replace A logical value indicating whether sampling is with replacement. Default is TRUE.
 #' @param .sample_size A numeric value between 0 and 1 specifying the proportion of `.n` to sample. Default is 0.8.
 #' @param .dimensions An integer specifying the number of dimensions (1, 2, or 3). Default is 1.
@@ -35,7 +42,7 @@
 #' \itemize{
 #'   \item `walk_number`: Factor representing the walk number.
 #'   \item `x`: Step index.
-#'   \item `y`: Normal distribution values.
+#'   \item `y`: t-distribution values.
 #'   \item `cum_sum`: Cumulative sum of `y`.
 #'   \item `cum_prod`: Cumulative product of `y`.
 #'   \item `cum_min`: Cumulative minimum of `y`.
@@ -46,18 +53,19 @@
 #'
 #' @examples
 #' set.seed(123)
-#' random_normal_walk()
+#' random_t_walk()
 #'
 #' set.seed(123)
-#' random_normal_walk(.dimensions = 3) |>
+#' random_t_walk(.dimensions = 3) |>
 #'   head() |>
 #'   t()
 #'
 #' @export
-#' @rdname random_normal_walk
-random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
-                               .initial_value = 0, .samp = TRUE, .replace = TRUE,
-                               .sample_size = 0.8, .dimensions = 1) {
+#' @rdname random_t_walk
+random_t_walk <- function(
+  .num_walks = 25, .n = 100, .df = 5, .initial_value = 0, .ncp = 0,
+  .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1
+) {
 
   # Defensive checks
   if (.num_walks < 0) {
@@ -66,11 +74,8 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
   if (.n < 0) {
     rlang::abort(".n cannot be less than 0", use_cli_format = TRUE)
   }
-  if (.mu < 0) {
-    rlang::abort(".mu cannot be less than 0", use_cli_format = TRUE)
-  }
-  if (.sd < 0) {
-    rlang::abort(".sd cannot be less than 0", use_cli_format = TRUE)
+  if (.df <= 0) {
+    rlang::abort(".df must be greater than 0", use_cli_format = TRUE)
   }
   if (.sample_size < 0 || .sample_size > 1) {
     rlang::abort(".sample_size cannot be less than 0 or more than 1",
@@ -83,13 +88,13 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
   # Variables
   num_walks     <- as.integer(.num_walks)
   n             <- as.integer(.n)
-  mu            <- as.numeric(.mu)
-  sd            <- as.numeric(.sd)
+  df            <- as.numeric(.df)
   initial_value <- as.numeric(.initial_value)
+  ncp           <- as.numeric(.ncp)
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
-  t       <- if (samp) samp_size else n
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -99,18 +104,15 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
 
   # Function to generate a single random walk
   generate_walk <- function(walk_num) {
-    # Generate random steps for each dimension
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::rnorm(n, mu, sd), size = t, replace = replace)
+        sample(stats::rt(n, df, ncp = ncp), size = periods, replace = replace)
       } else {
-        stats::rnorm(t, mu, sd)
+        stats::rt(periods, df, ncp = ncp)
       }
     )
-
-    # Set column names
-    rand_walk_column_names(rand_steps, dim_names, walk_num, t)
+    rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
   }
 
   # Generate all walks
@@ -141,14 +143,14 @@ random_normal_walk <- function(.num_walks = 25, .n = 100, .mu = 0, .sd = 0.1,
   # Add attributes
   attr(res, "n")             <- n
   attr(res, "num_walks")     <- num_walks
-  attr(res, "mu")            <- mu
-  attr(res, "sd")            <- sd
+  attr(res, "df")            <- df
   attr(res, "initial_value") <- initial_value
+  attr(res, "ncp")           <- ncp
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
-  attr(res, "periods")       <- t
-  attr(res, "fns")           <- "random_normal_walk"
+  attr(res, "periods")       <- periods
+  attr(res, "fns")           <- "random_t_walk"
   attr(res, "dimensions")    <- .dimensions
 
   # Return the result

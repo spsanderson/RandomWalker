@@ -95,6 +95,7 @@ Other Generator Functions:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
 \code{\link{random_wilcox_walk}()}
 
@@ -103,6 +104,7 @@ Other Continuous Distribution:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()}
 }
 \author{
