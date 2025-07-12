@@ -1,6 +1,7 @@
 #' Generate Multiple Random Wilcoxon Walks in Multiple Dimensions
 #'
 #' @family Generator Functions
+#' @family Discrete Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

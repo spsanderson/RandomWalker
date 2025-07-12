@@ -81,10 +81,15 @@ Other Generator Functions:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_uniform_walk}()},
 \code{\link{random_weibull_walk}()},
+\code{\link{random_wilcox_walk}()}
+
+Other Discrete Distribution: 
 \code{\link{random_wilcox_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH
 }
+\concept{Discrete Distribution}
 \concept{Generator Functions}

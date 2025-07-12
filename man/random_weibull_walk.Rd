@@ -95,9 +95,18 @@ Other Generator Functions:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
+\code{\link{random_uniform_walk}()},
 \code{\link{random_wilcox_walk}()}
+
+Other Continuous Distribution: 
+\code{\link{brownian_motion}()},
+\code{\link{geometric_brownian_motion}()},
+\code{\link{random_normal_drift_walk}()},
+\code{\link{random_normal_walk}()},
+\code{\link{random_uniform_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH
 }
+\concept{Continuous Distribution}
 \concept{Generator Functions}
