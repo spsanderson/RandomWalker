@@ -25,6 +25,8 @@ None
 6.  Fix #174 - Add function `random_wilcoxon_sr_walk()` to generate a
     random walk using the Wilcoxon signed-rank test with a specified
     number of steps.
+7.  Fix #173 - Add function `random_poisson_walk()` to generate a
+    random walk using the Poisson distribution.
 
 ## Minor Fixes and Improvements
 
