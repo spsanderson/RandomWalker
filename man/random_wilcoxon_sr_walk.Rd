@@ -19,8 +19,8 @@ random_wilcoxon_sr_walk(
 \item{.num_walks}{An integer specifying the number of random walks to
 generate. Default is 25.}
 
-\item{.nn}{Integer. Number of observations. If length(nn) > 1, the length is
-taken to be the number required. Default is 100.}
+\item{.nn}{An integer specifying the number of steps in each walk.
+Default is 100.}
 
 \item{.n}{Integer or vector. Number(s) of observations in the sample(s) for
 rsignrank. Default is 1.}
@@ -39,9 +39,6 @@ is 0.8.}
 1.}
 }
 \value{
-A data frame with the random walks and cumulative statistics as
-columns.
-
 A tibble containing the generated random walks with columns depending
 on the number of dimensions:
 \itemize{
