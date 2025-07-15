@@ -9,8 +9,8 @@
 #' The `random_wilcoxon_sr_walk` function generates multiple random walks in
 #' 1, 2, or 3 dimensions. Each walk is a sequence of steps where each step is
 #' a random draw from the Wilcoxon signed-rank distribution using
-#' `stats::rsignrank()`. The user can specify the number of walks (`nn`), the
-#' number of steps in each walk (`n`), and the number of dimensions. The
+#' `stats::rsignrank()`. The user can specify the number of steps/periods (`nn`),
+#' the number of samples in each walk (`n`), and the number of dimensions. The
 #' function also allows for sampling a proportion of the steps and optionally
 #' sampling with replacement.
 #'
@@ -28,8 +28,8 @@
 #'
 #' @param .num_walks An integer specifying the number of random walks to
 #' generate. Default is 25.
-#' @param .nn Integer. Number of observations. If length(nn) > 1, the length is
-#' taken to be the number required. Default is 100.
+#' @param .nn An integer specifying the number of steps in each walk.
+#' Default is 100.
 #' @param .n Integer or vector. Number(s) of observations in the sample(s) for
 #' rsignrank. Default is 1.
 #' @param .initial_value Numeric. Starting value of the walk. Default is 0.
@@ -40,8 +40,6 @@
 #' is 0.8.
 #' @param .dimensions Integer. Number of dimensions (1, 2, or 3). Default is
 #' 1.
-#' @return A data frame with the random walks and cumulative statistics as
-#' columns.
 #'
 #' @examples
 #' set.seed(123)
@@ -86,11 +84,17 @@ random_wilcoxon_sr_walk <- function(.num_walks = 25, .nn = 100, .n = 1,
 
   # Defensive checks
   if (.num_walks < 0) {
-    rlang::abort("nn cannot be less than 0", use_cli_format = TRUE)
+    rlang::abort(".num_walks cannot be less than 0", use_cli_format = TRUE)
   }
-  if (any(.n < 0)) {
-    rlang::abort("n cannot be less than 0", use_cli_format = TRUE)
+
+  if (.n < 0) {
+    rlang::abort(".n cannot be less than 0", use_cli_format = TRUE)
   }
+
+  if (.nn < 0) {
+    rlang::abort(".nn cannot be less than 0", use_cli_format = TRUE)
+  }
+
   if (.sample_size < 0 || .sample_size > 1) {
     rlang::abort(
       ".sample_size cannot be less than 0 or more than 1",

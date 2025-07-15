@@ -80,8 +80,8 @@ visualization.
 The \code{random_wilcoxon_sr_walk} function generates multiple random walks in
 1, 2, or 3 dimensions. Each walk is a sequence of steps where each step is
 a random draw from the Wilcoxon signed-rank distribution using
-\code{stats::rsignrank()}. The user can specify the number of walks (\code{nn}), the
-number of steps in each walk (\code{n}), and the number of dimensions. The
+\code{stats::rsignrank()}. The user can specify the number of steps/periods (\code{nn}),
+the number of samples in each walk (\code{n}), and the number of dimensions. The
 function also allows for sampling a proportion of the steps and optionally
 sampling with replacement.
 }
