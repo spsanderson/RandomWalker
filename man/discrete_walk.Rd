@@ -85,7 +85,8 @@ Other Generator Functions:
 \code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
 \code{\link{random_weibull_walk}()},
-\code{\link{random_wilcox_walk}()}
+\code{\link{random_wilcox_walk}()},
+\code{\link{random_wilcoxon_sr_walk}()}
 
 Other Discrete Distribution: 
 \code{\link{random_smirnov_walk}()},

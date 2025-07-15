@@ -22,6 +22,9 @@ None
     using the Student's t-distribution.
 5.  Fix #175 - Add function `random_smirnov_walk()` to generate a random
     walk using the Smirnov distribution.
+6.  Fix #174 - Add function `random_wilcoxon_sr_walk()` to generate a
+    random walk using the Wilcoxon signed-rank test with a specified
+    number of steps.
 
 ## Minor Fixes and Improvements
 

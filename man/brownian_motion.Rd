@@ -85,7 +85,8 @@ Other Generator Functions:
 \code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
 \code{\link{random_weibull_walk}()},
-\code{\link{random_wilcox_walk}()}
+\code{\link{random_wilcox_walk}()},
+\code{\link{random_wilcoxon_sr_walk}()}
 
 Other Continuous Distribution: 
 \code{\link{geometric_brownian_motion}()},
@@ -93,7 +94,8 @@ Other Continuous Distribution:
 \code{\link{random_normal_walk}()},
 \code{\link{random_t_walk}()},
 \code{\link{random_uniform_walk}()},
-\code{\link{random_weibull_walk}()}
+\code{\link{random_weibull_walk}()},
+\code{\link{random_wilcoxon_sr_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH
