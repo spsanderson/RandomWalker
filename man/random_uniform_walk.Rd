@@ -100,8 +100,7 @@ Other Continuous Distribution:
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
 \code{\link{random_t_walk}()},
-\code{\link{random_weibull_walk}()},
-\code{\link{random_wilcoxon_sr_walk}()}
+\code{\link{random_weibull_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH

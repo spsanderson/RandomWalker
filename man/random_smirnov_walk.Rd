@@ -97,7 +97,8 @@ Other Generator Functions:
 
 Other Discrete Distribution: 
 \code{\link{discrete_walk}()},
-\code{\link{random_wilcox_walk}()}
+\code{\link{random_wilcox_walk}()},
+\code{\link{random_wilcoxon_sr_walk}()}
 }
 \author{
 Steven P. Sanderson II, MPH

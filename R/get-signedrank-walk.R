@@ -1,8 +1,7 @@
-
 #' Generate Multiple Random Wilcoxon Signed-Rank Walks
 #'
 #' @family Generator Functions
-#' @family Continuous Distribution
+#' @family Discrete Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
