@@ -92,15 +92,21 @@ generate. Default is 25.</p></dd>
 
 
 <dt id="arg--size">.size<a class="anchor" aria-label="anchor" href="#arg--size"></a></dt>
-<dd><p>Integer. Number of successful trials or dispersion parameter. Default is 1.</p></dd>
+<dd><p>Integer. Number of successful trials or dispersion parameter. Default is 1.
+This must also match the number of dimensions, for example if <code>.dimensions = 3</code>, then
+.size must be a vector of length 3 like <code>c(1, 2, 3)</code>.</p></dd>
 
 
 <dt id="arg--prob">.prob<a class="anchor" aria-label="anchor" href="#arg--prob"></a></dt>
-<dd><p>Numeric. Probability of success in each trial (0 &lt; prob &lt;= 1). Default is 0.5.</p></dd>
+<dd><p>Numeric. Probability of success in each trial (0 &lt; prob &lt;= 1). Default is 0.5.
+This must also match the number of dimensions, for example if <code>.dimensions = 3</code>, then
+.prob must be a vector of length 3 like <code>c(0.5, 0.7, 0.9)</code>.</p></dd>
 
 
 <dt id="arg--mu">.mu<a class="anchor" aria-label="anchor" href="#arg--mu"></a></dt>
-<dd><p>Numeric. Alternative parametrization via mean. Default is NULL.</p></dd>
+<dd><p>Numeric. Alternative parametrization via mean. Default is NULL.
+This must also match the number of dimensions, for example if <code>.dimensions = 3</code>, then
+.mu must be a vector of length 3 like <code>c(1, 2, 3)</code>.</p></dd>
 
 
 <dt id="arg--initial-value">.initial_value<a class="anchor" aria-label="anchor" href="#arg--initial-value"></a></dt>
