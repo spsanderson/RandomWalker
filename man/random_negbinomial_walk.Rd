@@ -85,9 +85,12 @@ set.seed(123)
 random_negbinomial_walk()
 
 set.seed(123)
-random_negbinomial_walk(.dimensions = 3, .size = c(1,2,3), .prob = c(0.5,0.7,0.9)) |>
-   head() |>
-   t()
+random_negbinomial_walk(.dimensions = 3,
+  .size = c(1,2,3),
+  .prob = c(0.5,0.7,0.9)
+  ) |>
+  head() |>
+  t()
 
 }
 \seealso{
