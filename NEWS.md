@@ -27,6 +27,8 @@ None
     number of steps.
 7.  Fix #173 - Add function `random_poisson_walk()` to generate a
     random walk using the Poisson distribution.
+8.  Fix #172 - Add function `random_negbinomial_walk()` to generate a
+    random walk using the Negative Binomial distribution.
 
 ## Minor Fixes and Improvements
 

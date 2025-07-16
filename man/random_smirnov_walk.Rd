@@ -87,6 +87,7 @@ Other Generator Functions:
 \code{\link{brownian_motion}()},
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_negbinomial_walk}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
 \code{\link{random_poisson_walk}()},
@@ -98,6 +99,7 @@ Other Generator Functions:
 
 Other Discrete Distribution: 
 \code{\link{discrete_walk}()},
+\code{\link{random_negbinomial_walk}()},
 \code{\link{random_poisson_walk}()},
 \code{\link{random_wilcox_walk}()},
 \code{\link{random_wilcoxon_sr_walk}()}
