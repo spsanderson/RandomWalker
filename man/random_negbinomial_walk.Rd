@@ -23,11 +23,17 @@ generate. Default is 25.}
 
 \item{.n}{Integer. Number of random variables to return for each walk. Default is 100.}
 
-\item{.size}{Integer. Number of successful trials or dispersion parameter. Default is 1.}
+\item{.size}{Integer. Number of successful trials or dispersion parameter. Default is 1.
+This must also match the number of dimensions, for example if \code{.dimensions = 3}, then
+.size must be a vector of length 3 like \code{c(1, 2, 3)}.}
 
-\item{.prob}{Numeric. Probability of success in each trial (0 < prob <= 1). Default is 0.5.}
+\item{.prob}{Numeric. Probability of success in each trial (0 < prob <= 1). Default is 0.5.
+This must also match the number of dimensions, for example if \code{.dimensions = 3}, then
+.prob must be a vector of length 3 like \code{c(0.5, 0.7, 0.9)}.}
 
-\item{.mu}{Numeric. Alternative parametrization via mean. Default is NULL.}
+\item{.mu}{Numeric. Alternative parametrization via mean. Default is NULL.
+This must also match the number of dimensions, for example if \code{.dimensions = 3}, then
+.mu must be a vector of length 3 like \code{c(1, 2, 3)}.}
 
 \item{.initial_value}{Numeric. Starting value of the walk. Default is 0.}
 
