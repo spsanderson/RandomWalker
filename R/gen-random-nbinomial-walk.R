@@ -120,6 +120,16 @@ random_negbinomial_walk <- function(.num_walks = 25, .n = 100,
       use_cli_format = TRUE
     )
   }
+  # Fix from PR #202
+  if (length(.size) != .dimensions) {
+    rlang::abort("The length of .size must be equal to .dimensions.", use_cli_format = TRUE)
+  }
+  if (!is.null(.prob) && length(.prob) != .dimensions) {
+    rlang::abort("The length of .prob must be equal to .dimensions.", use_cli_format = TRUE)
+  }
+  if (!is.null(.mu) && length(.mu) != .dimensions) {
+    rlang::abort("The length of .mu must be equal to .dimensions.", use_cli_format = TRUE)
+  }
 
   # Variables
   num_walks     <- as.integer(.num_walks)
@@ -154,10 +164,8 @@ random_negbinomial_walk <- function(.num_walks = 25, .n = 100,
         # Generate negative binomial samples
         if (!is.null(prob)) {
           vals <- stats::rnbinom(n, size = size, prob = prob)
-        } else if (!is.null(mu)) {
-          vals <- stats::rnbinom(n, size = size, mu = mu)
         } else {
-          stop("Either prob or mu must be provided.")
+          vals <- stats::rnbinom(n, size = size, mu = mu)
         }
         # Optionally sample from the generated values
         if (samp) {
