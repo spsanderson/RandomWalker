@@ -79,6 +79,7 @@ discrete_walk(.dimensions = 3) |>
 Other Generator Functions: 
 \code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_multinomial_walk}()},
 \code{\link{random_negbinomial_walk}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
@@ -91,6 +92,7 @@ Other Generator Functions:
 \code{\link{random_wilcoxon_sr_walk}()}
 
 Other Discrete Distribution: 
+\code{\link{random_multinomial_walk}()},
 \code{\link{random_negbinomial_walk}()},
 \code{\link{random_poisson_walk}()},
 \code{\link{random_smirnov_walk}()},
