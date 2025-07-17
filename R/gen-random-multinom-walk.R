@@ -76,9 +76,6 @@ random_multinomial_walk <- function(.num_walks = 25, .n = 100, .size = 3,
   if (!.dimensions %in% c(1, 2, 3)) {
     rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli_format = TRUE)
   }
-  if (length(.prob) != .n) {
-    rlang::abort("Length of .prob must equal .n", use_cli_format = TRUE)
-  }
 
   # Variables
   num_walks     <- as.integer(.num_walks)
@@ -153,4 +150,4 @@ random_multinomial_walk <- function(.num_walks = 25, .n = 100, .size = 3,
 
   # Return the result
   return(res)
-  }
+}
