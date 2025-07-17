@@ -12,10 +12,17 @@ subset_walks(.data, .type = "max")
 \item{.type}{A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.}
 }
 \value{
-A data frame containing the subsetted walk.
+A data frame containing the subset walk.
 }
 \description{
-This function subsets random walks to identify the walk with the maximum or minimum value.
+This function subsets random walks to identify the walk with the
+maximum or minimum value.
+}
+\details{
+The \code{subset_walks} function takes a data frame containing random
+walks and subsets it to return the walk with the maximum or minimum value
+based on the specified type. It requires that the input data frame contains
+columns \code{walk_number} and \code{y}.
 }
 \examples{
 df <- rw30()

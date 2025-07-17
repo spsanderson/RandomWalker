@@ -38,4 +38,3 @@ Other Utility Functions:
 Steven P. Sanderson II, MPH
 }
 \concept{Utility Functions}
-\keyword{internal}
