@@ -567,8 +567,6 @@ get_attributes <- function(.data){
 #' @details The `rand_walk_column_names` function takes a data frame as input and
 #' returns the rand walk data with column names.
 #'
-#' @keywords internal
-#'
 #' @param .rand_data A data frame from which column names are to be extracted.
 #' @param .dim_names The dimnames passed from the rand walk function.
 #'
@@ -605,12 +603,18 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @description This function subsets random walks to identify the walk with the maximum or minimum value.
+#' @description This function subsets random walks to identify the walk with the
+#' maximum or minimum value.
+#'
+#' @details The `subset_walks` function takes a data frame containing random
+#' walks and subsets it to return the walk with the maximum or minimum value
+#' based on the specified type. It requires that the input data frame contains
+#' columns `walk_number` and `y`.
 #'
 #' @param .data A data frame containing random walks. It must have columns `walk_number` and `y`.
 #' @param .type A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.
 #'
-#' @return A data frame containing the subsetted walk.
+#' @return A data frame containing the subset walk.
 #'
 #' @examples
 #' df <- rw30()
