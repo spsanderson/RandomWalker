@@ -31,6 +31,8 @@ None
     random walk using the Negative Binomial distribution.
 9.  Fix #171 - Add function `random_multinomial_walk()` to generate a 
     random walk using the Multinomial distribution.
+10. Fix #170 - Add function `random_logistic_walk()` to generate a random
+    walk using the Logistic distribution.
 
 ## Minor Fixes and Improvements
 
