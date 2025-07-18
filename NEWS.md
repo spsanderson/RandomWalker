@@ -33,6 +33,8 @@ None
     random walk using the Multinomial distribution.
 10. Fix #170 - Add function `random_logistic_walk()` to generate a random
     walk using the Logistic distribution.
+11. Fix #169 - Add function `random_lognormal_walk()` to generate a random
+    walk using the Log-Normal distribution.
 
 ## Minor Fixes and Improvements
 

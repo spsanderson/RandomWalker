@@ -105,6 +105,7 @@ Other Generator Functions:
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_logistic_walk}()},
+\code{\link{random_lognormal_walk}()},
 \code{\link{random_multinomial_walk}()},
 \code{\link{random_normal_drift_walk}()},
 \code{\link{random_normal_walk}()},
