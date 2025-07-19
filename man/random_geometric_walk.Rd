@@ -82,6 +82,7 @@ Other Generator Functions:
 \code{\link{random_binomial_walk}()},
 \code{\link{random_chisquared_walk}()},
 \code{\link{random_f_walk}()},
+\code{\link{random_gamma_walk}()},
 \code{\link{random_hypergeometric_walk}()},
 \code{\link{random_logistic_walk}()},
 \code{\link{random_lognormal_walk}()},

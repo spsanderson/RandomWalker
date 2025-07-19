@@ -45,6 +45,8 @@ None
     using the Chi-Squared distribution.
 16. Fix #164 - Add function `random_binomial_walk()` to generate a random walk using
     the Binomial distribution.
+17. Fix #163 - Add function `random_gamma_walk()` to generate a random walk using
+    the Gamma distribution.
 
 ## Minor Fixes and Improvements
 
