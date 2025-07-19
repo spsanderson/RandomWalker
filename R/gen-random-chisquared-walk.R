@@ -63,10 +63,10 @@ random_chisquared_walk <- function(
   .initial_value = 0, .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1
 ) {
   # Defensive checks
-  if (.num_walks < 0) {
+  if (.num_walks <= 0) {
     rlang::abort(".num_walks cannot be less than 0", use_cli_format = TRUE)
   }
-  if (.n < 0) {
+  if (.n <= 0) {
     rlang::abort(".n cannot be less than 0", use_cli_format = TRUE)
   }
   if (.df < 0) {
