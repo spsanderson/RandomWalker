@@ -60,9 +60,8 @@
 #'
 #' @export
 random_hypergeometric_walk <- function(
-  .num_walks = 25, .nn = 100, .m = 50, .n = 50, .k = 10,
-  .initial_value = 0, .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1
-) {
+    .num_walks = 25, .nn = 100, .m = 50, .n = 50, .k = 10,
+    .initial_value = 0, .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1) {
   # Defensive checks
   if (.num_walks < 0) {
     rlang::abort(".num_walks cannot be less than 0", use_cli_format = TRUE)
@@ -79,24 +78,28 @@ random_hypergeometric_walk <- function(
   if (!.dimensions %in% c(1, 2, 3)) {
     rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli_format = TRUE)
   }
+  if (.k > (.m + .n)) {
+    rlang::abort("`.k` cannot be greater than the sum of `.m` and `.n`.", use_cli_format = TRUE)
+  }
 
   # Variables
-  num_walks     <- as.integer(.num_walks)
-  nn            <- as.integer(.nn)
-  m             <- as.integer(.m)
-  n             <- as.integer(.n)
-  k             <- as.integer(.k)
+  num_walks <- as.integer(.num_walks)
+  nn <- as.integer(.nn)
+  m <- as.integer(.m)
+  n <- as.integer(.n)
+  k <- as.integer(.k)
   initial_value <- as.numeric(.initial_value)
-  replace       <- as.logical(.replace)
-  samp          <- as.logical(.samp)
-  samp_size     <- round(.sample_size * nn, 0)
-  periods       <- if (samp) samp_size else nn
+  replace <- as.logical(.replace)
+  samp <- as.logical(.samp)
+  samp_size <- round(.sample_size * nn, 0)
+  periods <- if (samp) samp_size else nn
 
   # Define dimension names
   dim_names <- switch(.dimensions,
-                      `1` = c("y"),
-                      `2` = c("x", "y"),
-                      `3` = c("x", "y", "z"))
+    `1` = c("y"),
+    `2` = c("x", "y"),
+    `3` = c("x", "y", "z")
+  )
 
   # Function to generate a single random walk
   generate_walk <- function(walk_num) {
@@ -137,18 +140,18 @@ random_hypergeometric_walk <- function(
     dplyr::ungroup()
 
   # Add attributes
-  attr(res, "nn")            <- nn
-  attr(res, "num_walks")     <- num_walks
-  attr(res, "m")             <- m
-  attr(res, "n")             <- n
-  attr(res, "k")             <- k
+  attr(res, "nn") <- nn
+  attr(res, "num_walks") <- num_walks
+  attr(res, "m") <- m
+  attr(res, "n") <- n
+  attr(res, "k") <- k
   attr(res, "initial_value") <- initial_value
-  attr(res, "replace")       <- replace
-  attr(res, "samp")          <- samp
-  attr(res, "samp_size")     <- samp_size
-  attr(res, "periods")       <- periods
-  attr(res, "fns")           <- "random_hypergeometric_walk"
-  attr(res, "dimensions")    <- .dimensions
+  attr(res, "replace") <- replace
+  attr(res, "samp") <- samp
+  attr(res, "samp_size") <- samp_size
+  attr(res, "periods") <- periods
+  attr(res, "fns") <- "random_hypergeometric_walk"
+  attr(res, "dimensions") <- .dimensions
 
   # Return the result
   return(res)
