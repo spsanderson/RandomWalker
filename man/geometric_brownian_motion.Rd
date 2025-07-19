@@ -96,6 +96,7 @@ geometric_brownian_motion(.dimensions = 3) |>
 Other Generator Functions: 
 \code{\link{brownian_motion}()},
 \code{\link{discrete_walk}()},
+\code{\link{random_f_walk}()},
 \code{\link{random_geometric_walk}()},
 \code{\link{random_hypergeometric_walk}()},
 \code{\link{random_logistic_walk}()},
@@ -114,6 +115,7 @@ Other Generator Functions:
 
 Other Continuous Distribution: 
 \code{\link{brownian_motion}()},
+\code{\link{random_f_walk}()},
 \code{\link{random_logistic_walk}()},
 \code{\link{random_lognormal_walk}()},
 \code{\link{random_normal_drift_walk}()},

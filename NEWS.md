@@ -39,6 +39,8 @@ None
     walk using the Hypergeometric distribution.
 13. Fix #167 - Add function `random_geometric_walk()` to generate a
     random walk using the geometric distribution.
+14. Fix #166 - Add function `random_f_walk()` to generate a random walk using
+    the F-distribution.
 
 ## Minor Fixes and Improvements
 
