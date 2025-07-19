@@ -41,6 +41,8 @@ None
     random walk using the geometric distribution.
 14. Fix #166 - Add function `random_f_walk()` to generate a random walk using
     the F-distribution.
+15. Fix #165 - Add function `random_chisquared_walk()` to generate a random walk
+    using the Chi-Squared distribution.
 
 ## Minor Fixes and Improvements
 
