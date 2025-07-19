@@ -1,4 +1,4 @@
-#' Generate Multiple Random Hypergeometric Walks in Multiple Dimensions
+#' Generate Multiple Random Geometric Walks in Multiple Dimensions
 #'
 #' @family Generator Functions
 #' @family Discrete Distribution
@@ -6,25 +6,23 @@
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @description
-#' The `random_hypergeometric_walk` function generates multiple random walks using the hypergeometric distribution via `rhyper()`.
-#' The user can specify the number of walks, the number of steps in each walk, and the urn parameters (m, n, k).
+#' The `random_geometric_walk` function generates multiple random walks using the geometric distribution via `rgeom()`.
+#' The user can specify the number of walks, the number of steps in each walk, and the probability of success in each trial.
 #' The function also allows for sampling a proportion of the steps and optionally sampling with replacement.
 #'
 #' @details
-#' This function generates random walks where each step is drawn from the hypergeometric distribution using `rhyper()`.
-#' The user can control the number of walks, steps per walk, and the urn parameters: m (white balls), n (black balls), and k (balls drawn).
+#' This function generates random walks where each step is drawn from the geometric distribution using `rgeom()`.
+#' The user can control the number of walks, steps per walk, and the probability of success (`prob`).
 #' The function supports 1, 2, or 3 dimensions, and augments the output with cumulative statistics for each walk.
 #' Sampling can be performed with or without replacement, and a proportion of steps can be sampled if desired.
 #'
 #' @param .num_walks An integer specifying the number of random walks to generate. Default is 25.
-#' @param .nn An integer specifying the number of observations per walk. Default is 100.
-#' @param .m An integer specifying the number of white balls in the urn. Default is 50.
-#' @param .n An integer specifying the number of black balls in the urn. Default is 50.
-#' @param .k An integer specifying the number of balls drawn from the urn. Default is 10.
+#' @param .n An integer specifying the number of observations per walk. Default is 100.
+#' @param .prob A numeric value specifying the probability of success in each trial. Must be 0 < .prob <= 1. Default is 0.5.
 #' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
-#' @param .samp A logical value indicating whether to sample the hypergeometric values. Default is TRUE.
+#' @param .samp A logical value indicating whether to sample the geometric values. Default is TRUE.
 #' @param .replace A logical value indicating whether sampling is with replacement. Default is TRUE.
-#' @param .sample_size A numeric value between 0 and 1 specifying the proportion of `.nn` to sample. Default is 0.8.
+#' @param .sample_size A numeric value between 0 and 1 specifying the proportion of `.n` to sample. Default is 0.8.
 #' @param .dimensions An integer specifying the number of dimensions (1, 2, or 3). Default is 1.
 #'
 #' @return A tibble containing the generated random walks with columns depending on the number of dimensions:
@@ -40,7 +38,7 @@
 #' \itemize{
 #'   \item `walk_number`: Factor representing the walk number.
 #'   \item `x`: Step index.
-#'   \item `y`: Hypergeometric distribution values.
+#'   \item `y`: Geometric distribution values.
 #'   \item `cum_sum`: Cumulative sum of `y`.
 #'   \item `cum_prod`: Cumulative product of `y`.
 #'   \item `cum_min`: Cumulative minimum of `y`.
@@ -51,26 +49,27 @@
 #'
 #' @examples
 #' set.seed(123)
-#' random_hypergeometric_walk()
+#' random_geometric_walk()
 #'
 #' set.seed(123)
-#' random_hypergeometric_walk(.dimensions = 2) |>
+#' random_geometric_walk(.dimensions = 2) |>
 #'   head() |>
 #'   t()
 #'
 #' @export
-random_hypergeometric_walk <- function(
-    .num_walks = 25, .nn = 100, .m = 50, .n = 50, .k = 10,
-    .initial_value = 0, .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1) {
+random_geometric_walk <- function(
+  .num_walks = 25, .n = 100, .prob = 0.5,
+  .initial_value = 0, .samp = TRUE, .replace = TRUE, .sample_size = 0.8, .dimensions = 1
+) {
   # Defensive checks
   if (.num_walks < 0) {
     rlang::abort(".num_walks cannot be less than 0", use_cli_format = TRUE)
   }
-  if (.nn < 0) {
-    rlang::abort(".nn cannot be less than 0", use_cli_format = TRUE)
+  if (.n < 0) {
+    rlang::abort(".n cannot be less than 0", use_cli_format = TRUE)
   }
-  if (.m < 0 || .n < 0 || .k < 0) {
-    rlang::abort(".m, .n, and .k must be non-negative integers", use_cli_format = TRUE)
+  if (.prob <= 0 || .prob > 1) {
+    rlang::abort(".prob must be in the interval (0, 1]", use_cli_format = TRUE)
   }
   if (.sample_size < 0 || .sample_size > 1) {
     rlang::abort(".sample_size cannot be less than 0 or more than 1", use_cli_format = TRUE)
@@ -78,37 +77,31 @@ random_hypergeometric_walk <- function(
   if (!.dimensions %in% c(1, 2, 3)) {
     rlang::abort("Number of dimensions must be 1, 2, or 3.", use_cli_format = TRUE)
   }
-  if (.k > (.m + .n)) {
-    rlang::abort("`.k` cannot be greater than the sum of `.m` and `.n`.", use_cli_format = TRUE)
-  }
 
   # Variables
   num_walks     <- as.integer(.num_walks)
-  nn            <- as.integer(.nn)
-  m             <- as.integer(.m)
   n             <- as.integer(.n)
-  k             <- as.integer(.k)
+  prob          <- as.numeric(.prob)
   initial_value <- as.numeric(.initial_value)
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
-  samp_size     <- round(.sample_size * nn, 0)
-  periods       <- if (samp) samp_size else nn
+  samp_size     <- round(.sample_size * n, 0)
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
-    `1` = c("y"),
-    `2` = c("x", "y"),
-    `3` = c("x", "y", "z")
-  )
+                      `1` = c("y"),
+                      `2` = c("x", "y"),
+                      `3` = c("x", "y", "z"))
 
   # Function to generate a single random walk
   generate_walk <- function(walk_num) {
     rand_steps <- purrr::map(
       dim_names,
       ~ if (samp) {
-        sample(stats::rhyper(nn, m, n, k), size = periods, replace = replace)
+        sample(stats::rgeom(n, prob), size = periods, replace = replace)
       } else {
-        stats::rhyper(periods, m, n, k)
+        stats::rgeom(periods, prob)
       }
     )
     rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
@@ -140,17 +133,15 @@ random_hypergeometric_walk <- function(
     dplyr::ungroup()
 
   # Add attributes
-  attr(res, "nn")            <- nn
-  attr(res, "num_walks")     <- num_walks
-  attr(res, "m")             <- m
   attr(res, "n")             <- n
-  attr(res, "k")             <- k
+  attr(res, "num_walks")     <- num_walks
+  attr(res, "prob")          <- prob
   attr(res, "initial_value") <- initial_value
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
   attr(res, "periods")       <- periods
-  attr(res, "fns")           <- "random_hypergeometric_walk"
+  attr(res, "fns")           <- "random_geometric_walk"
   attr(res, "dimensions")    <- .dimensions
 
   # Return the result
