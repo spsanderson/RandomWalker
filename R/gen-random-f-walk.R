@@ -103,17 +103,19 @@ random_f_walk <- function(
   generate_walk <- function(walk_num) {
     rand_steps <- purrr::map(
       dim_names,
-      ~ if (samp) {
-        if (is.null(ncp)) {
-          sample((stats::rchisq(n, df1)/df1)/(stats::rchisq(n, df2)/df2), size = periods, replace = replace)
-        } else {
-          sample(stats::rf(n, df1, df2, ncp = ncp), size = periods, replace = replace)
+      ~ {
+        generate_f_values <- function(n_vals) {
+          if (is.null(ncp)) {
+            (stats::rchisq(n_vals, df1) / df1) / (stats::rchisq(n_vals, df2) / df2)
+          } else {
+            stats::rf(n_vals, df1, df2, ncp = ncp)
+          }
         }
-      } else {
-        if (is.null(ncp)) {
-          (stats::rchisq(periods, df1)/df1)/(stats::rchisq(periods, df2)/df2)
+
+        if (samp) {
+          sample(generate_f_values(n), size = periods, replace = replace)
         } else {
-          stats::rf(periods, df1, df2, ncp = ncp)
+          generate_f_values(periods)
         }
       }
     )
