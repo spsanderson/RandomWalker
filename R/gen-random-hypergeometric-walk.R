@@ -83,16 +83,16 @@ random_hypergeometric_walk <- function(
   }
 
   # Variables
-  num_walks <- as.integer(.num_walks)
-  nn <- as.integer(.nn)
-  m <- as.integer(.m)
-  n <- as.integer(.n)
-  k <- as.integer(.k)
+  num_walks     <- as.integer(.num_walks)
+  nn            <- as.integer(.nn)
+  m             <- as.integer(.m)
+  n             <- as.integer(.n)
+  k             <- as.integer(.k)
   initial_value <- as.numeric(.initial_value)
-  replace <- as.logical(.replace)
-  samp <- as.logical(.samp)
-  samp_size <- round(.sample_size * nn, 0)
-  periods <- if (samp) samp_size else nn
+  replace       <- as.logical(.replace)
+  samp          <- as.logical(.samp)
+  samp_size     <- round(.sample_size * nn, 0)
+  periods       <- if (samp) samp_size else nn
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -140,18 +140,18 @@ random_hypergeometric_walk <- function(
     dplyr::ungroup()
 
   # Add attributes
-  attr(res, "nn") <- nn
-  attr(res, "num_walks") <- num_walks
-  attr(res, "m") <- m
-  attr(res, "n") <- n
-  attr(res, "k") <- k
+  attr(res, "nn")            <- nn
+  attr(res, "num_walks")     <- num_walks
+  attr(res, "m")             <- m
+  attr(res, "n")             <- n
+  attr(res, "k")             <- k
   attr(res, "initial_value") <- initial_value
-  attr(res, "replace") <- replace
-  attr(res, "samp") <- samp
-  attr(res, "samp_size") <- samp_size
-  attr(res, "periods") <- periods
-  attr(res, "fns") <- "random_hypergeometric_walk"
-  attr(res, "dimensions") <- .dimensions
+  attr(res, "replace")       <- replace
+  attr(res, "samp")          <- samp
+  attr(res, "samp_size")     <- samp_size
+  attr(res, "periods")       <- periods
+  attr(res, "fns")           <- "random_hypergeometric_walk"
+  attr(res, "dimensions")    <- .dimensions
 
   # Return the result
   return(res)
