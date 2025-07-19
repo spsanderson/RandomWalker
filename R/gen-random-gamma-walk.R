@@ -108,17 +108,17 @@ random_gamma_walk <- function(
   generate_walk <- function(walk_num) {
     rand_steps <- purrr::map(
       dim_names,
-      ~ if (samp) {
-        if (!is.null(rate)) {
-          sample(stats::rgamma(n, shape = shape, rate = rate), size = periods, replace = replace)
+      ~ {
+        draws <- if (!is.null(rate)) {
+          stats::rgamma(if (samp) n else periods, shape = shape, rate = rate)
         } else {
-          sample(stats::rgamma(n, shape = shape, scale = scale), size = periods, replace = replace)
+          stats::rgamma(if (samp) n else periods, shape = shape, scale = scale)
         }
-      } else {
-        if (!is.null(rate)) {
-          stats::rgamma(periods, shape = shape, rate = rate)
+
+        if (samp) {
+          sample(draws, size = periods, replace = replace)
         } else {
-          stats::rgamma(periods, shape = shape, scale = scale)
+          draws
         }
       }
     )
