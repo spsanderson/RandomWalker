@@ -84,6 +84,7 @@ Other Generator Functions:
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_chisquared_walk}()},
 \code{\link{random_f_walk}()},
+\code{\link{random_gamma_walk}()},
 \code{\link{random_geometric_walk}()},
 \code{\link{random_hypergeometric_walk}()},
 \code{\link{random_logistic_walk}()},
