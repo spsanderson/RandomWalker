@@ -43,6 +43,8 @@ None
     the F-distribution.
 15. Fix #165 - Add function `random_chisquared_walk()` to generate a random walk
     using the Chi-Squared distribution.
+16. Fix #164 - Add function `random_binomial_walk()` to generate a random walk using
+    the Binomial distribution.
 
 ## Minor Fixes and Improvements
 
