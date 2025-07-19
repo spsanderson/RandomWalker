@@ -65,8 +65,7 @@
 #'   \item `x`, `y`, `z`: If `.dimensions = 3`, the values of the walk in three dimensions.
 #' }
 #'
-#' The following are also returned based upon how many dimensions there are and
-#' could be any of x, y and or z:
+#' The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
 #' \itemize{
 #'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
 #'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.

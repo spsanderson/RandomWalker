@@ -39,13 +39,11 @@
 #'
 #' The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
 #' \itemize{
-#'   \item `walk_number`: Factor representing the walk number.
-#'   \item `x`: Step index.
-#'   \item `y`: Uniform distribution values.
-#'   \item `cum_sum`: Cumulative sum of `y`.
-#'   \item `cum_prod`: Cumulative product of `y`.
-#'   \item `cum_min`: Cumulative minimum of `y`.
-#'   \item `cum_max`: Cumulative maximum of `y`.
+#'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_min`: Cumulative minimum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_max`: Cumulative maximum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_mean`: Cumulative mean of `dplyr::all_of(.dimensions)`.
 #' }
 #'
 #' The tibble includes attributes for the function parameters.
