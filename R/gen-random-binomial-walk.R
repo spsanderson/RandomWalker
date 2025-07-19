@@ -67,7 +67,7 @@ random_binomial_walk <- function(
   if (.n <= 0) {
     rlang::abort(".n must be greater than 0", use_cli_format = TRUE)
   }
-  if (.size <= 0) {
+  if (.size < 0) {
     rlang::abort(".size must be zero or more", use_cli_format = TRUE)
   }
   if (.prob < 0 || .prob > 1) {
