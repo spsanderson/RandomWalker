@@ -35,6 +35,8 @@ None
     walk using the Logistic distribution.
 11. Fix #169 - Add function `random_lognormal_walk()` to generate a random
     walk using the Log-Normal distribution.
+12. Fix #168 - Add function `random_hypergeometric_walk()` to generate a 
+    walk using the Hypergeometric distribution.
 
 ## Minor Fixes and Improvements
 
