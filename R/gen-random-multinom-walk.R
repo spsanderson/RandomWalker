@@ -51,6 +51,15 @@
 #'     \item Cumulative statistics: cum_sum, cum_prod, cum_min, cum_max, cum_mean.
 #'   }
 #'
+#' The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
+#' \itemize{
+#'   \item `cum_sum`: Cumulative sum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_prod`: Cumulative product of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_min`: Cumulative minimum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_max`: Cumulative maximum of `dplyr::all_of(.dimensions)`.
+#'   \item `cum_mean`: Cumulative mean of `dplyr::all_of(.dimensions)`.
+#' }
+#'
 #' @export
 random_multinomial_walk <- function(.num_walks = 25, .n = 100, .size = 3,
                                     .prob = rep(1/3, .n), .initial_value = 0,

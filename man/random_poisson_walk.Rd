@@ -49,8 +49,7 @@ two dimensions.
 in three dimensions.
 }
 
-The following are also returned based upon how many dimensions there are and
-could be any of x, y and or z:
+The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
 \itemize{
 \item \code{cum_sum}: Cumulative sum of \code{dplyr::all_of(.dimensions)}.
 \item \code{cum_prod}: Cumulative product of \code{dplyr::all_of(.dimensions)}.

@@ -43,6 +43,15 @@ A tibble containing the generated random walks with columns:
 \item \code{value}: Value of the walk at each step.
 \item Cumulative statistics: cum_sum, cum_prod, cum_min, cum_max, cum_mean.
 }
+
+The following are also returned based upon how many dimensions there are and could be any of x, y and or z:
+\itemize{
+\item \code{cum_sum}: Cumulative sum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_prod}: Cumulative product of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_min}: Cumulative minimum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_max}: Cumulative maximum of \code{dplyr::all_of(.dimensions)}.
+\item \code{cum_mean}: Cumulative mean of \code{dplyr::all_of(.dimensions)}.
+}
 }
 \description{
 A multinomial random walk is a stochastic process in which each step is drawn

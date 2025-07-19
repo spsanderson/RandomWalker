@@ -117,6 +117,11 @@ resulting data frame includes cumulative statistics for each walk.</p>
 <li><p><code>step_number</code>: Step index.</p></li>
 <li><p><code>value</code>: Value of the walk at each step.</p></li>
 <li><p>Cumulative statistics: cum_sum, cum_prod, cum_min, cum_max, cum_mean.</p></li>
+</ul><p>The following are also returned based upon how many dimensions there are and could be any of x, y and or z:</p><ul><li><p><code>cum_sum</code>: Cumulative sum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_prod</code>: Cumulative product of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_min</code>: Cumulative minimum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_max</code>: Cumulative maximum of <code>dplyr::all_of(.dimensions)</code>.</p></li>
+<li><p><code>cum_mean</code>: Cumulative mean of <code>dplyr::all_of(.dimensions)</code>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
