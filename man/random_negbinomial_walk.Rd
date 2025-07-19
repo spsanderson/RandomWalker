@@ -104,6 +104,7 @@ Other Generator Functions:
 \code{\link{brownian_motion}()},
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_hypergeometric_walk}()},
 \code{\link{random_logistic_walk}()},
 \code{\link{random_lognormal_walk}()},
 \code{\link{random_multinomial_walk}()},
@@ -119,6 +120,7 @@ Other Generator Functions:
 
 Other Discrete Distribution: 
 \code{\link{discrete_walk}()},
+\code{\link{random_hypergeometric_walk}()},
 \code{\link{random_multinomial_walk}()},
 \code{\link{random_poisson_walk}()},
 \code{\link{random_smirnov_walk}()},
