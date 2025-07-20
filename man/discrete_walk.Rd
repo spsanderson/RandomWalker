@@ -78,6 +78,7 @@ discrete_walk(.dimensions = 3) |>
 Other Generator Functions: 
 \code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_beta_walk}()},
 \code{\link{random_binomial_walk}()},
 \code{\link{random_cauchy_walk}()},
 \code{\link{random_chisquared_walk}()},
