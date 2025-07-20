@@ -89,6 +89,7 @@ Other Generator Functions:
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_binomial_walk}()},
+\code{\link{random_cauchy_walk}()},
 \code{\link{random_chisquared_walk}()},
 \code{\link{random_exponential_walk}()},
 \code{\link{random_gamma_walk}()},
@@ -111,6 +112,7 @@ Other Generator Functions:
 Other Continuous Distribution: 
 \code{\link{brownian_motion}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_cauchy_walk}()},
 \code{\link{random_chisquared_walk}()},
 \code{\link{random_exponential_walk}()},
 \code{\link{random_gamma_walk}()},

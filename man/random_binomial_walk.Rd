@@ -82,6 +82,7 @@ Other Generator Functions:
 \code{\link{brownian_motion}()},
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
+\code{\link{random_cauchy_walk}()},
 \code{\link{random_chisquared_walk}()},
 \code{\link{random_exponential_walk}()},
 \code{\link{random_f_walk}()},
