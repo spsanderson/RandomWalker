@@ -118,11 +118,11 @@ random_cauchy_walk <- function(
     rand_steps <- purrr::pmap(
       list(dim_names, location, scale),
       function(dim, loc, sc) {
-        if (samp) {
+        if (samp && replace) {
+          stats::rcauchy(periods, location = loc, scale = sc)
+        } else {
           sample(stats::rcauchy(n, location = loc, scale = sc), size = periods,
                  replace = replace)
-        } else {
-          stats::rcauchy(periods, location = loc, scale = sc)
         }
       }
     )
