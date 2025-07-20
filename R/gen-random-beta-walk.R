@@ -70,7 +70,7 @@ random_beta_walk <- function(
   .dimensions = 1
 ) {
   # Defensive checks
-  if (.num_walks < 0) {
+  if (.num_walks <= 0) {
     rlang::abort(".num_walks cannot be less than 0", use_cli_format = TRUE)
   }
   if (.n < 1) {
