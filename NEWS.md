@@ -47,6 +47,8 @@ None
     the Binomial distribution.
 17. Fix #163 - Add function `random_gamma_walk()` to generate a random walk using
     the Gamma distribution.
+18. Fix #162 - Add function `random_exponential_walk()` to generate a random walk using
+    the Exponential distribution.
 
 ## Minor Fixes and Improvements
 
