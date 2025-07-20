@@ -85,7 +85,7 @@ random_exponential_walk <- function(
   replace       <- as.logical(.replace)
   samp          <- as.logical(.samp)
   samp_size     <- round(.sample_size * n, 0)
-  t       <- if (samp) samp_size else n
+  periods       <- if (samp) samp_size else n
 
   # Define dimension names
   dim_names <- switch(.dimensions,
@@ -97,7 +97,8 @@ random_exponential_walk <- function(
   if (length(rate) == 1) {
     rate <- rep(rate, .dimensions)
   } else if (length(rate) != .dimensions) {
-    rlang::abort("Length of .rate vector must match number of dimensions.", use_cli_format = TRUE)
+    rlang::abort("Length of .rate vector must match number of dimensions.",
+                 use_cli_format = TRUE)
   }
 
   # Function to generate a single random walk
@@ -106,12 +107,12 @@ random_exponential_walk <- function(
       dim_names,
       rate,
       ~ if (samp) {
-        sample(stats::rexp(n, rate = .y), size = t, replace = replace)
+        sample(stats::rexp(n, rate = .y), size = periods, replace = replace)
       } else {
-        stats::rexp(t, rate = .y)
+        stats::rexp(periods, rate = .y)
       }
     )
-    rand_walk_column_names(rand_steps, dim_names, walk_num, t)
+    rand_walk_column_names(rand_steps, dim_names, walk_num, periods)
   }
 
   # Generate all walks
@@ -147,7 +148,7 @@ random_exponential_walk <- function(
   attr(res, "replace")       <- replace
   attr(res, "samp")          <- samp
   attr(res, "samp_size")     <- samp_size
-  attr(res, "periods")       <- t
+  attr(res, "periods")       <- periods
   attr(res, "fns")           <- "random_exponential_walk"
   attr(res, "dimensions")    <- .dimensions
 
