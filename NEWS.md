@@ -49,6 +49,8 @@ None
     the Gamma distribution.
 18. Fix #162 - Add function `random_exponential_walk()` to generate a random walk using
     the Exponential distribution.
+19. Fix #161 - Add function `random_cauchy_walk()` to generate a random walk using
+    the Cauchy distribution.
 
 ## Minor Fixes and Improvements
 
