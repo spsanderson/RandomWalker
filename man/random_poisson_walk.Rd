@@ -96,6 +96,7 @@ Other Generator Functions:
 \code{\link{random_binomial_walk}()},
 \code{\link{random_cauchy_walk}()},
 \code{\link{random_chisquared_walk}()},
+\code{\link{random_displacement_walk}()},
 \code{\link{random_exponential_walk}()},
 \code{\link{random_f_walk}()},
 \code{\link{random_gamma_walk}()},
@@ -117,6 +118,7 @@ Other Generator Functions:
 Other Discrete Distribution: 
 \code{\link{discrete_walk}()},
 \code{\link{random_binomial_walk}()},
+\code{\link{random_displacement_walk}()},
 \code{\link{random_geometric_walk}()},
 \code{\link{random_hypergeometric_walk}()},
 \code{\link{random_multinomial_walk}()},

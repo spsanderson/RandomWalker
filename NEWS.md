@@ -53,6 +53,8 @@ None
     the Cauchy distribution.
 20. Fix #160 - Add function `random_beta_walk()` to generate a random walk using
     the Beta distribution.
+21. Fix #193 - Add function `random_displacement_walk()` to generate a random walk using
+    a custom displacement function.
 
 ## Minor Fixes and Improvements
 
