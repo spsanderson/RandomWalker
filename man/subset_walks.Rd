@@ -4,12 +4,14 @@
 \alias{subset_walks}
 \title{Subset Walks by Extreme Values}
 \usage{
-subset_walks(.data, .type = "max")
+subset_walks(.data, .type = "max", .value = "y")
 }
 \arguments{
-\item{.data}{A data frame containing random walks. It must have columns \code{walk_number} and \code{y}.}
+\item{.data}{A data frame containing random walks. It must have columns \code{walk_number} and the specified value column.}
 
 \item{.type}{A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.}
+
+\item{.value}{A character string specifying the column name to use for finding extreme values. Defaults to "y".}
 }
 \value{
 A data frame containing the subset walk.
@@ -22,13 +24,20 @@ maximum or minimum value.
 The \code{subset_walks} function takes a data frame containing random
 walks and subsets it to return the walk with the maximum or minimum value
 based on the specified type. It requires that the input data frame contains
-columns \code{walk_number} and \code{y}.
+columns \code{walk_number} and the specified value column.
 }
 \examples{
+set.seed(123)
 df <- rw30()
 subset_walks(df, .type = "max")
 subset_walks(df, .type = "min")
 subset_walks(df, .type = "both")
+
+# Example with a specific value column
+set.seed(123)
+discrete_walk() |>
+  subset_walks(.type = "both", .value = "cum_sum_y") |>
+  visualize_walks(.pluck = 2)
 
 }
 \seealso{
