@@ -609,10 +609,11 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' @details The `subset_walks` function takes a data frame containing random
 #' walks and subsets it to return the walk with the maximum or minimum value
 #' based on the specified type. It requires that the input data frame contains
-#' columns `walk_number` and `y`.
+#' columns `walk_number` and the specified value column.
 #'
-#' @param .data A data frame containing random walks. It must have columns `walk_number` and `y`.
+#' @param .data A data frame containing random walks. It must have columns `walk_number` and the specified value column.
 #' @param .type A character string specifying the type of subset: "max" for maximum value, "min" for minimum value, or "both" for both maximum and minimum values.
+#' @param .value A character string specifying the column name to use for finding extreme values. Defaults to "y".
 #'
 #' @return A data frame containing the subset walk.
 #'
@@ -621,6 +622,7 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' subset_walks(df, .type = "max")
 #' subset_walks(df, .type = "min")
 #' subset_walks(df, .type = "both")
+#' subset_walks(df, .type = "max", .value = "cum_sum")
 #'
 #' @name subset_walks
 NULL
@@ -628,20 +630,20 @@ NULL
 #' @rdname subset_walks
 #'
 #' @export
-subset_walks <- function(.data, .type = "max") {
+subset_walks <- function(.data, .type = "max", .value = "y") {
   if (!.type %in% c("max", "min", "both")) {
     rlang::abort("Invalid .type. Choose from 'max', 'min', or 'both'.")
   }
 
   if (.type == "max") {
-    max_row <- .data[which.max(.data$y), ]
+    max_row <- .data[which.max(.data[[.value]]), ]
     return(.data[.data$walk_number == max_row$walk_number, ])
   } else if (.type == "min") {
-    max_row <- .data[which.min(.data$y), ]
-    return(.data[.data$walk_number == max_row$walk_number, ])
+    min_row <- .data[which.min(.data[[.value]]), ]
+    return(.data[.data$walk_number == min_row$walk_number, ])
   } else if (.type == "both") {
-    max_row <- .data[which.max(.data$y), ]
-    min_row <- .data[which.min(.data$y), ]
+    max_row <- .data[which.max(.data[[.value]]), ]
+    min_row <- .data[which.min(.data[[.value]]), ]
     max_walk <- .data[.data$walk_number == max_row$walk_number, ]
     min_walk <- .data[.data$walk_number == min_row$walk_number, ]
     return(dplyr::bind_rows(max_walk, min_walk))
