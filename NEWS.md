@@ -58,7 +58,8 @@ None
 
 ## Minor Fixes and Improvements
 
-None
+1. Fix #231 - Update `subset_walks()` to allow for a new parameter of `.value`
+   to specify the column to subset by. It defaults to "y"
 
 # RandomWalker 0.3.0
 
