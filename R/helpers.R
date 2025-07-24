@@ -618,11 +618,17 @@ rand_walk_column_names <- function(.rand_data, .dim_names, .num_sims, .t) {
 #' @return A data frame containing the subset walk.
 #'
 #' @examples
+#' set.seed(123)
 #' df <- rw30()
 #' subset_walks(df, .type = "max")
 #' subset_walks(df, .type = "min")
 #' subset_walks(df, .type = "both")
-#' subset_walks(df, .type = "max", .value = "cum_sum")
+#'
+#' # Example with a specific value column
+#' set.seed(123)
+#' discrete_walk() |>
+#'   subset_walks(.type = "both", .value = "cum_sum_y") |>
+#'   visualize_walks(.pluck = 2)
 #'
 #' @name subset_walks
 NULL

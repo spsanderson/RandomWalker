@@ -27,11 +27,17 @@ based on the specified type. It requires that the input data frame contains
 columns \code{walk_number} and the specified value column.
 }
 \examples{
+set.seed(123)
 df <- rw30()
 subset_walks(df, .type = "max")
 subset_walks(df, .type = "min")
 subset_walks(df, .type = "both")
-subset_walks(df, .type = "max", .value = "cum_sum")
+
+# Example with a specific value column
+set.seed(123)
+discrete_walk() |>
+  subset_walks(.type = "both", .value = "cum_sum_y") |>
+  visualize_walks(.pluck = 2)
 
 }
 \seealso{
