@@ -10,6 +10,10 @@ rand_walk_column_names(.rand_data, .dim_names, .num_sims, .t)
 \item{.rand_data}{A data frame from which column names are to be extracted.}
 
 \item{.dim_names}{The dimnames passed from the rand walk function.}
+
+\item{.num_sims}{The number of simulations.}
+
+\item{.t}{Ther periods in the walk}
 }
 \description{
 This function generates the column names of a rand walk
