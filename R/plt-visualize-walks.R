@@ -72,7 +72,7 @@
 #' # Use .pluck to pick just one visualization
 #' set.seed(123)
 #' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
-#'  visualize_walks(.pluck = "cum_sum")
+#'  visualize_walks(.pluck = c(1, 3))
 #'
 #' @name visualize_walks
 NULL
@@ -192,36 +192,56 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
     plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10)
   )
 
-  # Handle the `.pluck` option for selecting a specific plot
-  if (.pluck != FALSE) {
-    .pluck_n <- switch(
-      .pluck,
-      "y"        = 1,
-      "cum_sum"  = 2,
-      "cum_prod" = 3,
-      "cum_min"  = 4,
-      "cum_max"  = 5,
-      "cum_mean" = 6,
+  # Handle the `.pluck` option for selecting one or more plots
+  if (!identical(.pluck, FALSE)) {
+    # Accept .pluck as indices or names
+    if (is.numeric(.pluck)) {
+      pluck_indices <- as.integer(.pluck)
+      if (any(pluck_indices < 1 | pluck_indices > length(plots))) {
+        rlang::abort(
+          message = "One or more indices in `.pluck` are out of range.",
+          use_cli_format = TRUE
+        )
+      }
+    } else if (is.character(.pluck)) {
+      name_map <- c("y", "cum_sum", "cum_prod", "cum_min", "cum_max", "cum_mean")
+      pluck_indices <- match(.pluck, name_map)
+      if (any(is.na(pluck_indices))) {
+        rlang::abort(
+          message = "One or more names in `.pluck` are invalid.",
+          use_cli_format = TRUE
+        )
+      }
+    } else {
       rlang::abort(
-        message        = "Invalid parameter value for `.pluck`",
+        message = "`.pluck` must be a numeric vector of indices or a character vector of names.",
         use_cli_format = TRUE
       )
-    )
+    }
 
-    # Return the plucked plot with annotations
-    plucked_plot <- plots[[.pluck_n]] + plot_annotations
+    plucked_plots_list <- lapply(pluck_indices, function(idx) plots[[idx]])
 
-    # If interactive, return the interactive version of the plucked plot
+    # Combine plots if multiple are selected, otherwise use the single plot
+    combined_plot <- if (length(plucked_plots_list) > 1) {
+      patchwork::wrap_plots(plucked_plots_list)
+    } else {
+      plucked_plots_list[[1]]
+    }
+
+    # Add annotations to the final plot object
+    combined_plot <- combined_plot + plot_annotations
+
+    # Handle interactive vs. non-interactive return
     if (.interactive == TRUE) {
       return(
         ggiraph::girafe(
-          ggobj   = plucked_plot + plot_theme,
+          ggobj   = combined_plot + plot_theme,
           options = plot_options
         )
       )
     }
 
-    return(plucked_plot)
+    return(combined_plot)
   }
 
   # Patchwork for the default version of the visualization

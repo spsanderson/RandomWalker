@@ -60,6 +60,8 @@ None
 
 1. Fix #231 - Update `subset_walks()` to allow for a new parameter of `.value`
    to specify the column to subset by. It defaults to "y"
+2. Fix #132 - Update `visualize_walks()` to allow `.pluck` to accept a vector of
+   column names to pluck multiple graphs.
 
 # RandomWalker 0.3.0
 

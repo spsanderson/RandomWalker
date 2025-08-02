@@ -83,7 +83,7 @@ random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 # Use .pluck to pick just one visualization
 set.seed(123)
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
- visualize_walks(.pluck = "cum_sum")
+ visualize_walks(.pluck = c(1, 3))
 
 }
 \author{
