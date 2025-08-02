@@ -72,7 +72,7 @@
 #' # Use .pluck to pick just one visualization
 #' set.seed(123)
 #' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
-#'  visualize_walks(.pluck = "cum_sum")
+#'  visualize_walks(.pluck = c(1, 3))
 #'
 #' @name visualize_walks
 NULL
@@ -219,33 +219,29 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
       )
     }
 
-    plucked_plots <- lapply(pluck_indices, function(idx) plots[[idx]] + plot_annotations)
+    plucked_plots_list <- lapply(pluck_indices, function(idx) plots[[idx]])
 
-    # If interactive, return the interactive version of the plucked plot(s)
-    if (.interactive == TRUE) {
-      if (length(plucked_plots) > 1) {
-        return(
-          ggiraph::girafe(
-            ggobj   = patchwork::wrap_plots(plucked_plots) + plot_theme,
-            options = plot_options
-          )
-        )
-      } else {
-        return(
-          ggiraph::girafe(
-            ggobj   = plucked_plots[[1]] + plot_theme,
-            options = plot_options
-          )
-        )
-      }
-    }
-
-    # Non-interactive: combine or return single
-    if (length(plucked_plots) > 1) {
-      return(patchwork::wrap_plots(plucked_plots))
+    # Combine plots if multiple are selected, otherwise use the single plot
+    combined_plot <- if (length(plucked_plots_list) > 1) {
+      patchwork::wrap_plots(plucked_plots_list)
     } else {
-      return(plucked_plots[[1]])
+      plucked_plots_list[[1]]
     }
+
+    # Add annotations to the final plot object
+    combined_plot <- combined_plot + plot_annotations
+
+    # Handle interactive vs. non-interactive return
+    if (.interactive == TRUE) {
+      return(
+        ggiraph::girafe(
+          ggobj   = combined_plot + plot_theme,
+          options = plot_options
+        )
+      )
+    }
+
+    return(combined_plot)
   }
 
   # Patchwork for the default version of the visualization
