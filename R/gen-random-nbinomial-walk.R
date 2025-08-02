@@ -149,7 +149,7 @@ random_negbinomial_walk <- function(.num_walks = 25, .n = 100,
                       `3` = c("x", "y", "z"))
 
   # --- Combine parameters into a data frame for pmap ---
-  param_df <- tibble::tibble(
+  param_df <- dplyr::tibble(
     size = size,
     prob = prob,
     mu   = mu

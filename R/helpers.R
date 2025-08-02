@@ -569,6 +569,8 @@ get_attributes <- function(.data){
 #'
 #' @param .rand_data A data frame from which column names are to be extracted.
 #' @param .dim_names The dimnames passed from the rand walk function.
+#' @param .num_sims The number of simulations.
+#' @param .t Ther periods in the walk
 #'
 #' @name rand_walk_column_names
 NULL

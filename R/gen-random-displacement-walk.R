@@ -85,7 +85,7 @@ random_displacement_walk <- function(
       }
       num <- num + 1
     }
-    res <- tibble::tibble(
+    res <- dplyr::tibble(
       walk_number = factor(walk_num, levels = 1:num_walks),
       step_number = 0:n
     ) |>
