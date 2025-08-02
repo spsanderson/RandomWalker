@@ -192,36 +192,60 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
     plot.margin  = ggplot2::margin(t = 10, r = 10, b = 0, l = 10)
   )
 
-  # Handle the `.pluck` option for selecting a specific plot
-  if (.pluck != FALSE) {
-    .pluck_n <- switch(
-      .pluck,
-      "y"        = 1,
-      "cum_sum"  = 2,
-      "cum_prod" = 3,
-      "cum_min"  = 4,
-      "cum_max"  = 5,
-      "cum_mean" = 6,
-      rlang::abort(
-        message        = "Invalid parameter value for `.pluck`",
-        use_cli_format = TRUE
-      )
-    )
-
-    # Return the plucked plot with annotations
-    plucked_plot <- plots[[.pluck_n]] + plot_annotations
-
-    # If interactive, return the interactive version of the plucked plot
-    if (.interactive == TRUE) {
-      return(
-        ggiraph::girafe(
-          ggobj   = plucked_plot + plot_theme,
-          options = plot_options
+  # Handle the `.pluck` option for selecting one or more plots
+  if (!identical(.pluck, FALSE)) {
+    # Accept .pluck as indices or names
+    if (is.numeric(.pluck)) {
+      pluck_indices <- as.integer(.pluck)
+      if (any(pluck_indices < 1 | pluck_indices > length(plots))) {
+        rlang::abort(
+          message = "One or more indices in `.pluck` are out of range.",
+          use_cli_format = TRUE
         )
+      }
+    } else if (is.character(.pluck)) {
+      name_map <- c("y", "cum_sum", "cum_prod", "cum_min", "cum_max", "cum_mean")
+      pluck_indices <- match(.pluck, name_map)
+      if (any(is.na(pluck_indices))) {
+        rlang::abort(
+          message = "One or more names in `.pluck` are invalid.",
+          use_cli_format = TRUE
+        )
+      }
+    } else {
+      rlang::abort(
+        message = "`.pluck` must be a numeric vector of indices or a character vector of names.",
+        use_cli_format = TRUE
       )
     }
 
-    return(plucked_plot)
+    plucked_plots <- lapply(pluck_indices, function(idx) plots[[idx]] + plot_annotations)
+
+    # If interactive, return the interactive version of the plucked plot(s)
+    if (.interactive == TRUE) {
+      if (length(plucked_plots) > 1) {
+        return(
+          ggiraph::girafe(
+            ggobj   = patchwork::wrap_plots(plucked_plots) + plot_theme,
+            options = plot_options
+          )
+        )
+      } else {
+        return(
+          ggiraph::girafe(
+            ggobj   = plucked_plots[[1]] + plot_theme,
+            options = plot_options
+          )
+        )
+      }
+    }
+
+    # Non-interactive: combine or return single
+    if (length(plucked_plots) > 1) {
+      return(patchwork::wrap_plots(plucked_plots))
+    } else {
+      return(plucked_plots[[1]])
+    }
   }
 
   # Patchwork for the default version of the visualization
