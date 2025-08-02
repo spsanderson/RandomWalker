@@ -1,5 +1,5 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 2 note
+0 errors | 0 warnings | 1 note
 
-* This is a minor release 0.3.0
+* This is a major release 1.0.0
