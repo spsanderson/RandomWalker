@@ -1,3 +1,5 @@
+# RandomWalker (development version)
+
 ---
 editor_options: 
   markdown: 
@@ -62,6 +64,10 @@ None
    to specify the column to subset by. It defaults to "y"
 2. Fix #132 - Update `visualize_walks()` to allow `.pluck` to accept a vector of
    column names to pluck multiple graphs.
+   
+## Release Blog Post
+
+<https://www.spsanderson.com/steveondata/posts/2025-08-19/>
 
 # RandomWalker 0.3.0
 
