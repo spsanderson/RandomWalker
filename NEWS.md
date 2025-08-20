@@ -1,10 +1,24 @@
-# RandomWalker (development version)
-
 ---
 editor_options: 
   markdown: 
     wrap: 72
 ---
+
+# RandomWalker (development version)
+
+## Breaking Changes
+
+None
+
+## New Features
+
+1. Fix #235 - Add function `custom_walk()` to generate a random walk
+   using a custom displacement function.
+
+## Minor Fixes and Improvements
+
+None
+
 # RandomWalker 1.0.0
 
 
