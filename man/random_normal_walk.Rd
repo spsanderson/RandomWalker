@@ -76,6 +76,7 @@ random_normal_walk(.dimensions = 3) |>
 \seealso{
 Other Generator Functions: 
 \code{\link{brownian_motion}()},
+\code{\link{custom_walk}()},
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_beta_walk}()},

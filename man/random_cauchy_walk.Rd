@@ -79,6 +79,7 @@ random_cauchy_walk(.dimensions = 3, .location = c(0, 1, 2), .scale = c(1, 2, 3))
 \seealso{
 Other Generator Functions: 
 \code{\link{brownian_motion}()},
+\code{\link{custom_walk}()},
 \code{\link{discrete_walk}()},
 \code{\link{geometric_brownian_motion}()},
 \code{\link{random_beta_walk}()},

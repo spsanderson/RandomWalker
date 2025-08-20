@@ -1,7 +1,7 @@
 #' Generate Multiple Custom Random Walks in Multiple Dimensions
 #'
 #' @family Generator Functions
-#' @family Custom Distribution
+#' @family Custom Distributions
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -17,12 +17,12 @@
 #' and return a single numeric value representing the step displacement. The function
 #' will be called repeatedly to generate the required number of steps for each walk
 #' and dimension.
-#' 
+#'
 #' The resulting data structure follows the same pattern as other walk generation
 #' functions in this package, including cumulative statistics and proper attribute
 #' setting for further analysis and visualization.
 #'
-#' @param .n An integer specifying the number of steps in each walk. Default is 1000.
+#' @param .n An integer specifying the number of steps in each walk. Default is 100.
 #' @param .num_walks An integer specifying the number of random walks to generate. Default is 25.
 #' @param .initial_value A numeric value indicating the initial value of the walks. Default is 0.
 #' @param .dimensions An integer specifying the number of dimensions (1, 2, or 3). Default is 1.
@@ -69,7 +69,7 @@ NULL
 #' @export
 #' @rdname custom_walk
 
-custom_walk <- function(.n = 1000, .num_walks = 25, .initial_value = 0, 
+custom_walk <- function(.n = 100, .num_walks = 25, .initial_value = 0,
                         .dimensions = 1, .custom_fns) {
 
   # Tidyeval ----

@@ -24,6 +24,9 @@ reference:
      -  has_concept("Auto Random Walk")
   -  title: Generator Functions
      desc: Functions that generate modifiable random walks
+  -  subtitle: Custom Generating Functions
+     contents:
+     -  has_concept("Custom Distributions")
   -  subtitle: Continuous Generating Functions
      contents:
      -  has_concept("Continuous Distribution")
