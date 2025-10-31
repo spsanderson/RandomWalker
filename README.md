@@ -32,7 +32,7 @@ Install the stable version from CRAN:
 install.packages("RandomWalker")
 ```
 
-Or get the development version from GitHub:
+Or get the development version from GitHub for the latest features and bug fixes:
 
 ```r
 # install.packages("devtools")
@@ -75,7 +75,7 @@ rw30() |>
   visualize_walks()
 ```
 
-<img src="man/figures/README-random_walk_visual_example-1.png" alt="Visualize a Random Walk of 30 simulations showing multiple traces" width="100%" />
+<img src="man/figures/README-random_walk_visual_example-1.png" alt="Line plot showing 30 different random walk paths over time with varying trajectories" width="100%" />
 
 ### Summarize Statistics
 
