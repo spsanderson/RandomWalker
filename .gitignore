@@ -50,3 +50,8 @@ rsconnect/
 .Rproj.user
 inst/doc
 #docs
+
+# Compiled object files
+*.o
+*.so
+*.dll

@@ -36,5 +36,7 @@ Suggests:
     rmarkdown,
     stats,
     ggplot2,
-    tidyselect
+    tidyselect,
+    Rcpp
+LinkingTo: Rcpp
 VignetteBuilder: knitr
