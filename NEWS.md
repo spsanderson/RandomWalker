@@ -17,7 +17,7 @@ None
 
 ## Minor Fixes and Improvements
 
-None
+1. Fix #252 - Update generating functions resulting in a 2.8x speed up or 82% faster.
 
 # RandomWalker 1.0.0
 
