@@ -61,27 +61,52 @@
 </div>
 <!-- badges: start -->
 
-<p>The goal of RandomWalker is to allow users to easily create Random Walks of different types that are compatible with the <code>tidyverse</code> suite of packages. The package is currently in the experimental stage of development.</p>
+<blockquote>
+<p><strong>Generate random walks of various types with tidyverse compatibility</strong></p>
+</blockquote>
+<p>RandomWalker is a comprehensive R package that makes it easy to generate, visualize, and analyze random walks. Whether you’re modeling stock prices, simulating particle movements, or exploring stochastic processes, RandomWalker provides a unified, tidyverse-compatible interface with extensive distribution support.</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="sparkles-key-features">✨ Key Features<a class="anchor" aria-label="anchor" href="#sparkles-key-features"></a>
 </h2>
-<p>You can install the released version of {TidyDensity} from CRAN with:</p>
+<ul>
+<li>
+<strong>🎲 27+ Distribution Types</strong>: Generate random walks from Normal, Brownian Motion, Geometric Brownian Motion, Cauchy, Beta, Gamma, Poisson, and many more distributions</li>
+<li>
+<strong>📐 Multi-Dimensional Support</strong>: Create walks in 1D, 2D, or 3D space</li>
+<li>
+<strong>📊 Rich Visualizations</strong>: Built-in plotting functions with support for both static and interactive visualizations</li>
+<li>
+<strong>📈 Statistical Analysis</strong>: Comprehensive summary statistics including cumulative functions, confidence intervals, and distance metrics</li>
+<li>
+<strong>🔧 Tidyverse Compatible</strong>: Works seamlessly with dplyr, tidyr, and ggplot2</li>
+<li>
+<strong>⚡ Easy to Use</strong>: Sensible defaults with extensive customization options</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="package-installation">📦 Installation<a class="anchor" aria-label="anchor" href="#package-installation"></a>
+</h2>
+<p>Install the stable version from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"RandomWalker"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the development version of RandomWalker from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>Or get the development version from GitHub for the latest features and bug fixes:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"spsanderson/RandomWalker"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="rocket-quick-start">🚀 Quick Start<a class="anchor" aria-label="anchor" href="#rocket-quick-start"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<div class="section level3">
+<h3 id="generate-30-random-walks">Generate 30 Random Walks<a class="anchor" aria-label="anchor" href="#generate-30-random-walks"></a>
+</h3>
+<p>The <code><a href="reference/rw30.html">rw30()</a></code> function provides a quick way to generate 30 random walks with 100 steps each:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.spsanderson.com/RandomWalker/">RandomWalker</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span>
-<span><span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate random walks</span></span>
+<span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">walks</span>, <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 3</span></span>
 <span><span class="co">#&gt;    walk_number step_number      y</span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;</span></span>
@@ -95,14 +120,23 @@
 <span><span class="co">#&gt;  8 1                     8  1.02 </span></span>
 <span><span class="co">#&gt;  9 1                     9 -1.18 </span></span>
 <span><span class="co">#&gt; 10 1                    10 -0.772</span></span></code></pre></div>
-<p>Here is a basic visualization of a Random Walk:</p>
+</div>
+<div class="section level3">
+<h3 id="visualize-random-walks">Visualize Random Walks<a class="anchor" aria-label="anchor" href="#visualize-random-walks"></a>
+</h3>
+<p>Create beautiful visualizations with a single function call:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-random_walk_visual_example-1.png" alt="Visualize a Random Walk of 30 simulations" width="100%"></p>
-<p>Here is a basic summary of the random walks:</p>
+<p><img src="reference/figures/README-random_walk_visual_example-1.png" alt="Line plot showing 30 different random walk paths over time with varying trajectories" width="100%"></p>
+</div>
+<div class="section level3">
+<h3 id="summarize-statistics">Summarize Statistics<a class="anchor" aria-label="anchor" href="#summarize-statistics"></a>
+</h3>
+<p>Get comprehensive statistical summaries of your random walks:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="co"># Overall summary</span></span>
+<span><span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 16</span></span>
 <span><span class="co">#&gt;   fns   fns_name dimensions mean_val median range quantile_lo quantile_hi</span></span>
@@ -111,9 +145,11 @@
 <span><span class="co">#&gt; # ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span>
 <span></span>
+<span><span class="co"># Summary by walk</span></span>
 <span><span class="fu"><a href="reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 30 × 17</span></span>
+<span>  <span class="fu"><a href="reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 17</span></span>
 <span><span class="co">#&gt;    walk_number fns   fns_name dimensions mean_val median range quantile_lo</span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;       &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt;  1 1           rw30  Rw30              1     9.18   7.69 21.0       -0.513</span></span>
@@ -126,10 +162,268 @@
 <span><span class="co">#&gt;  8 8           rw30  Rw30              1    -5.87  -5.96 11.2       -9.81 </span></span>
 <span><span class="co">#&gt;  9 9           rw30  Rw30              1    -6.68  -6.53 15.5      -14.6  </span></span>
 <span><span class="co">#&gt; 10 10          rw30  Rw30              1    -6.93  -4.43 22.6      -20.4  </span></span>
-<span><span class="co">#&gt; # ℹ 20 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="dart-common-use-cases">🎯 Common Use Cases<a class="anchor" aria-label="anchor" href="#dart-common-use-cases"></a>
+</h2>
+<div class="section level3">
+<h3 id="id_1-custom-random-walks-with-specific-distributions">1. Custom Random Walks with Specific Distributions<a class="anchor" aria-label="anchor" href="#id_1-custom-random-walks-with-specific-distributions"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Normal walk with custom parameters</span></span>
+<span><span class="fu"><a href="reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span></span>
+<span>  .num_walks <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  .n <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>  .mu <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  .sd <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  .initial_value <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Geometric Brownian Motion (great for stock prices!)</span></span>
+<span><span class="fu"><a href="reference/geometric_brownian_motion.html">geometric_brownian_motion</a></span><span class="op">(</span></span>
+<span>  .num_walks <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  .n <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  .mu <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  .sigma <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  .initial_value <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_2-multi-dimensional-random-walks">2. Multi-Dimensional Random Walks<a class="anchor" aria-label="anchor" href="#id_2-multi-dimensional-random-walks"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 2D random walk</span></span>
+<span><span class="fu"><a href="reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">3</span>, .n <span class="op">=</span> <span class="fl">100</span>, .dimensions <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 8</span></span>
+<span><span class="co">#&gt;    walk_number step_number      x      y cum_sum_x cum_sum_y cum_prod_x cum_prod_y</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 1                     1  0      0          0         0          0          0    </span></span>
+<span><span class="co">#&gt;  2 1                     2  0.106  0.197      0.106     0.197      0.106      0.197</span></span>
+<span><span class="co">#&gt;  3 1                     3 -0.148 -0.024     -0.042     0.173     -0.0157    -0.005</span></span>
+<span></span>
+<span><span class="co"># 3D random walk</span></span>
+<span><span class="fu"><a href="reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">2</span>, .n <span class="op">=</span> <span class="fl">50</span>, .dimensions <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 11</span></span>
+<span><span class="co">#&gt;    walk_number step_number      x      y      z cum_sum_x cum_sum_y cum_sum_z</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 1                     1  0      0      0          0         0         0    </span></span>
+<span><span class="co">#&gt;  2 1                     2  0.106  0.197 -0.031      0.106     0.197    -0.031</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="id_3-discrete-random-walks">3. Discrete Random Walks<a class="anchor" aria-label="anchor" href="#id_3-discrete-random-walks"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Discrete walk with upper/lower bounds</span></span>
+<span><span class="fu"><a href="reference/discrete_walk.html">discrete_walk</a></span><span class="op">(</span></span>
+<span>  .num_walks <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  .n <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  .upper_bound <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  .lower_bound <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  .upper_probability <span class="op">=</span> <span class="fl">0.55</span>,</span>
+<span>  .initial_value <span class="op">=</span> <span class="fl">0</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="books-available-random-walk-types">📚 Available Random Walk Types<a class="anchor" aria-label="anchor" href="#books-available-random-walk-types"></a>
+</h2>
+<p>RandomWalker supports a wide variety of random walk types:</p>
+<div class="section level3">
+<h3 id="continuous-distributions">Continuous Distributions<a class="anchor" aria-label="anchor" href="#continuous-distributions"></a>
+</h3>
+<ul>
+<li>
+<strong>Normal</strong>: <code><a href="reference/random_normal_walk.html">random_normal_walk()</a></code>, <code><a href="reference/random_normal_drift_walk.html">random_normal_drift_walk()</a></code>
+</li>
+<li>
+<strong>Brownian Motion</strong>: <code><a href="reference/brownian_motion.html">brownian_motion()</a></code>, <code><a href="reference/geometric_brownian_motion.html">geometric_brownian_motion()</a></code>
+</li>
+<li>
+<strong>Beta</strong>: <code><a href="reference/random_beta_walk.html">random_beta_walk()</a></code>
+</li>
+<li>
+<strong>Cauchy</strong>: <code><a href="reference/random_cauchy_walk.html">random_cauchy_walk()</a></code>
+</li>
+<li>
+<strong>Chi-Squared</strong>: <code><a href="reference/random_chisquared_walk.html">random_chisquared_walk()</a></code>
+</li>
+<li>
+<strong>Exponential</strong>: <code><a href="reference/random_exponential_walk.html">random_exponential_walk()</a></code>
+</li>
+<li>
+<strong>F-Distribution</strong>: <code><a href="reference/random_f_walk.html">random_f_walk()</a></code>
+</li>
+<li>
+<strong>Gamma</strong>: <code><a href="reference/random_gamma_walk.html">random_gamma_walk()</a></code>
+</li>
+<li>
+<strong>Log-Normal</strong>: <code><a href="reference/random_lognormal_walk.html">random_lognormal_walk()</a></code>
+</li>
+<li>
+<strong>Logistic</strong>: <code><a href="reference/random_logistic_walk.html">random_logistic_walk()</a></code>
+</li>
+<li>
+<strong>Student’s t</strong>: <code><a href="reference/random_t_walk.html">random_t_walk()</a></code>
+</li>
+<li>
+<strong>Uniform</strong>: <code><a href="reference/random_uniform_walk.html">random_uniform_walk()</a></code>
+</li>
+<li>
+<strong>Weibull</strong>: <code><a href="reference/random_weibull_walk.html">random_weibull_walk()</a></code>
+</li>
+<li><strong>And more!</strong></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="discrete-distributions">Discrete Distributions<a class="anchor" aria-label="anchor" href="#discrete-distributions"></a>
+</h3>
+<ul>
+<li>
+<strong>Binomial</strong>: <code><a href="reference/random_binomial_walk.html">random_binomial_walk()</a></code>
+</li>
+<li>
+<strong>Discrete</strong>: <code><a href="reference/discrete_walk.html">discrete_walk()</a></code>
+</li>
+<li>
+<strong>Geometric</strong>: <code><a href="reference/random_geometric_walk.html">random_geometric_walk()</a></code>
+</li>
+<li>
+<strong>Hypergeometric</strong>: <code><a href="reference/random_hypergeometric_walk.html">random_hypergeometric_walk()</a></code>
+</li>
+<li>
+<strong>Multinomial</strong>: <code><a href="reference/random_multinomial_walk.html">random_multinomial_walk()</a></code>
+</li>
+<li>
+<strong>Negative Binomial</strong>: <code><a href="reference/random_negbinomial_walk.html">random_negbinomial_walk()</a></code>
+</li>
+<li>
+<strong>Poisson</strong>: <code><a href="reference/random_poisson_walk.html">random_poisson_walk()</a></code>
+</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="custom-walks">Custom Walks<a class="anchor" aria-label="anchor" href="#custom-walks"></a>
+</h3>
+<ul>
+<li>
+<strong>Custom Displacement</strong>: <code><a href="reference/custom_walk.html">custom_walk()</a></code>, <code><a href="reference/random_displacement_walk.html">random_displacement_walk()</a></code>
+</li>
+</ul>
+</div>
+</div>
+<div class="section level2">
+<h2 id="hammer_and_wrench-key-functions">🛠️ Key Functions<a class="anchor" aria-label="anchor" href="#hammer_and_wrench-key-functions"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="43%">
+<col width="56%">
+</colgroup>
+<thead><tr>
+<th>Function</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code><a href="reference/rw30.html">rw30()</a></code></td>
+<td>Quickly generate 30 random walks</td>
+</tr>
+<tr>
+<td><code><a href="reference/visualize_walks.html">visualize_walks()</a></code></td>
+<td>Create visualizations (static or interactive)</td>
+</tr>
+<tr>
+<td><code><a href="reference/summarize_walks.html">summarize_walks()</a></code></td>
+<td>Generate comprehensive statistics</td>
+</tr>
+<tr>
+<td><code><a href="reference/subset_walks.html">subset_walks()</a></code></td>
+<td>Subset walks by max/min values</td>
+</tr>
+<tr>
+<td><code><a href="reference/euclidean_distance.html">euclidean_distance()</a></code></td>
+<td>Calculate distances in multi-dimensional walks</td>
+</tr>
+<tr>
+<td><code><a href="reference/confidence_interval.html">confidence_interval()</a></code></td>
+<td>Compute confidence intervals</td>
+</tr>
+<tr>
+<td><code><a href="reference/running_quantile.html">running_quantile()</a></code></td>
+<td>Calculate running quantiles</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="open_book-documentation">📖 Documentation<a class="anchor" aria-label="anchor" href="#open_book-documentation"></a>
+</h2>
+<ul>
+<li>
+<strong>Getting Started Guide</strong>: See <code><a href="articles/getting-started.html">vignette("getting-started")</a></code>
+</li>
+<li>
+<strong>Function Reference</strong>: <a href="https://www.spsanderson.com/RandomWalker/">Online Documentation</a>
+</li>
+<li>
+<strong>Package Website</strong>: <a href="https://www.spsanderson.com/RandomWalker/">RandomWalker</a>
+</li>
+<li>
+<strong>News and Updates</strong>: Check <a href="NEWS.html">NEWS.md</a> for latest changes</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="handshake-contributing">🤝 Contributing<a class="anchor" aria-label="anchor" href="#handshake-contributing"></a>
+</h2>
+<p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>
+</div>
+<div class="section level2">
+<h2 id="page_facing_up-license">📄 License<a class="anchor" aria-label="anchor" href="#page_facing_up-license"></a>
+</h2>
+<p>This package is licensed under the MIT License. See <a href="LICENSE.html">LICENSE.md</a> for details.</p>
+</div>
+<div class="section level2">
+<h2 id="busts_in_silhouette-authors">👥 Authors<a class="anchor" aria-label="anchor" href="#busts_in_silhouette-authors"></a>
+</h2>
+<ul>
+<li>
+<strong>Steven P. Sanderson II, MPH</strong> - <em>Author, Creator, Maintainer</em> - <a href="https://github.com/spsanderson" class="external-link">GitHub</a>
+</li>
+<li>
+<strong>Antti Rask</strong> - <em>Contributor</em> - Visualization functions</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="telephone_receiver-getting-help">📞 Getting Help<a class="anchor" aria-label="anchor" href="#telephone_receiver-getting-help"></a>
+</h2>
+<ul>
+<li>
+<strong>Bug Reports</strong>: <a href="https://github.com/spsanderson/RandomWalker/issues" class="external-link">GitHub Issues</a>
+</li>
+<li>
+<strong>Questions</strong>: Use GitHub Discussions or Stack Overflow with the <code>randomwalker</code> tag</li>
+<li>
+<strong>Website</strong>: <a href="https://www.spsanderson.com/RandomWalker/">https://www.spsanderson.com/RandomWalker/</a>
+</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="star2-citation">🌟 Citation<a class="anchor" aria-label="anchor" href="#star2-citation"></a>
+</h2>
+<p>If you use RandomWalker in your research, please cite:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"RandomWalker"</span><span class="op">)</span></span></code></pre></div>
+<hr>
+<p><strong>Made with ❤️ for the R community</strong></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -169,8 +463,8 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=RandomWalker" class="external-link"><img src="http://www.r-pkg.org/badges/version/RandomWalker" alt="CRAN_Status_Badge"></a></li>
-<li><a href="href%7Bhttps://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="lifecycle-stable.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://kentcdodds.github.io/makeapullrequest.com/" class="external-link"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://makeapullrequest.com" class="external-link"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></li>
 </ul>
 </div>
 
