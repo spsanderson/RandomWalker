@@ -27,6 +27,8 @@ knitr::opts_chunk$set(
 
 > **Generate random walks of various types with tidyverse compatibility**
 
+To view the full wiki, click here: [Full RandomWalker Wiki](https://github.com/spsanderson/RandomWalker/blob/main/wiki/Home.md)
+
 RandomWalker is a comprehensive R package that makes it easy to generate, visualize, and analyze random walks. Whether you're modeling stock prices, simulating particle movements, or exploring stochastic processes, RandomWalker provides a unified, tidyverse-compatible interface with extensive distribution support.
 
 ## ✨ Key Features
