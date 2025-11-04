@@ -30,7 +30,7 @@ RandomWalker is a comprehensive R package that provides a unified, tidyverse-com
 
 ### Advanced Topics
 - **[Visualization Guide](Visualization-Guide.md)** - Creating beautiful plots
-- **[Statistical Analysis](Statistical-Analysis-Guide.md)** - Computing summary statistics
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Computing summary statistics
 - **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 - **[Performance Tips](Performance-Tips.md)** - Optimize your code
 
