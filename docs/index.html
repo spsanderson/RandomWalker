@@ -64,6 +64,7 @@
 <blockquote>
 <p><strong>Generate random walks of various types with tidyverse compatibility</strong></p>
 </blockquote>
+<p>To view the full wiki, click here: <a href="https://github.com/spsanderson/RandomWalker/blob/main/wiki/Home.md" class="external-link">Full RandomWalker Wiki</a></p>
 <p>RandomWalker is a comprehensive R package that makes it easy to generate, visualize, and analyze random walks. Whether you’re modeling stock prices, simulating particle movements, or exploring stochastic processes, RandomWalker provides a unified, tidyverse-compatible interface with extensive distribution support.</p>
 <div class="section level2">
 <h2 id="sparkles-key-features">✨ Key Features<a class="anchor" aria-label="anchor" href="#sparkles-key-features"></a>
@@ -111,15 +112,15 @@
 <span><span class="co">#&gt;    walk_number step_number      y</span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt;  1 1                     1  0    </span></span>
-<span><span class="co">#&gt;  2 1                     2  1.06 </span></span>
-<span><span class="co">#&gt;  3 1                     3  0.977</span></span>
-<span><span class="co">#&gt;  4 1                     4  1.86 </span></span>
-<span><span class="co">#&gt;  5 1                     5  0.859</span></span>
-<span><span class="co">#&gt;  6 1                     6  1.15 </span></span>
-<span><span class="co">#&gt;  7 1                     7  0.708</span></span>
-<span><span class="co">#&gt;  8 1                     8  1.02 </span></span>
-<span><span class="co">#&gt;  9 1                     9 -1.18 </span></span>
-<span><span class="co">#&gt; 10 1                    10 -0.772</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 1                     2 -0.315</span></span>
+<span><span class="co">#&gt;  3 1                     3  0.413</span></span>
+<span><span class="co">#&gt;  4 1                     4 -0.351</span></span>
+<span><span class="co">#&gt;  5 1                     5 -1.53 </span></span>
+<span><span class="co">#&gt;  6 1                     6 -2.44 </span></span>
+<span><span class="co">#&gt;  7 1                     7 -3.19 </span></span>
+<span><span class="co">#&gt;  8 1                     8 -3.58 </span></span>
+<span><span class="co">#&gt;  9 1                     9 -4.95 </span></span>
+<span><span class="co">#&gt; 10 1                    10 -3.75</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="visualize-random-walks">Visualize Random Walks<a class="anchor" aria-label="anchor" href="#visualize-random-walks"></a>
@@ -141,7 +142,7 @@
 <span><span class="co">#&gt; # A tibble: 1 × 16</span></span>
 <span><span class="co">#&gt;   fns   fns_name dimensions mean_val median range quantile_lo quantile_hi</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 rw30  Rw30              1    0.715  0.783  43.6       -10.8        13.3</span></span>
+<span><span class="co">#&gt; 1 rw30  Rw30              1   -0.624 -0.900  49.1       -13.9        18.7</span></span>
 <span><span class="co">#&gt; # ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span>
 <span></span>
@@ -152,16 +153,16 @@
 <span><span class="co">#&gt; # A tibble: 10 × 17</span></span>
 <span><span class="co">#&gt;    walk_number fns   fns_name dimensions mean_val median range quantile_lo</span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;       &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 1           rw30  Rw30              1     9.18   7.69 21.0       -0.513</span></span>
-<span><span class="co">#&gt;  2 2           rw30  Rw30              1   -11.2  -11.5  21.3      -19.4  </span></span>
-<span><span class="co">#&gt;  3 3           rw30  Rw30              1    -3.04  -1.97 13.9       -9.88 </span></span>
-<span><span class="co">#&gt;  4 4           rw30  Rw30              1     2.28   1.39 14.5       -3.82 </span></span>
-<span><span class="co">#&gt;  5 5           rw30  Rw30              1    10.9    8.44 20.8        1.88 </span></span>
-<span><span class="co">#&gt;  6 6           rw30  Rw30              1    -6.00  -5.96 15.2      -14.5  </span></span>
-<span><span class="co">#&gt;  7 7           rw30  Rw30              1     4.36   4.55  9.30      -0.333</span></span>
-<span><span class="co">#&gt;  8 8           rw30  Rw30              1    -5.87  -5.96 11.2       -9.81 </span></span>
-<span><span class="co">#&gt;  9 9           rw30  Rw30              1    -6.68  -6.53 15.5      -14.6  </span></span>
-<span><span class="co">#&gt; 10 10          rw30  Rw30              1    -6.93  -4.43 22.6      -20.4  </span></span>
+<span><span class="co">#&gt;  1 1           rw30  Rw30              1    3.88   3.90  10.6       -0.636</span></span>
+<span><span class="co">#&gt;  2 2           rw30  Rw30              1    0.848  0.922 10.4       -3.85 </span></span>
+<span><span class="co">#&gt;  3 3           rw30  Rw30              1    3.32   3.09  10.2       -0.536</span></span>
+<span><span class="co">#&gt;  4 4           rw30  Rw30              1   -3.40  -3.30  10.2       -7.30 </span></span>
+<span><span class="co">#&gt;  5 5           rw30  Rw30              1    7.28   7.04  13.7        1.10 </span></span>
+<span><span class="co">#&gt;  6 6           rw30  Rw30              1   -8.04  -9.73  19.2      -18.0  </span></span>
+<span><span class="co">#&gt;  7 7           rw30  Rw30              1   -2.50  -2.56  11.3       -6.96 </span></span>
+<span><span class="co">#&gt;  8 8           rw30  Rw30              1   -0.348 -0.426  7.21      -3.41 </span></span>
+<span><span class="co">#&gt;  9 9           rw30  Rw30              1    7.19   5.56  16.2        1.44 </span></span>
+<span><span class="co">#&gt; 10 10          rw30  Rw30              1    1.42   1.44  12.8       -4.34 </span></span>
 <span><span class="co">#&gt; # ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></code></pre></div>
@@ -182,8 +183,10 @@
 <span>  .sd <span class="op">=</span> <span class="fl">0.1</span>,</span>
 <span>  .initial_value <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
+<span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-custom_examples-1.png" width="100%"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># Geometric Brownian Motion (great for stock prices!)</span></span>
 <span><span class="fu"><a href="reference/geometric_brownian_motion.html">geometric_brownian_motion</a></span><span class="op">(</span></span>
 <span>  .num_walks <span class="op">=</span> <span class="fl">10</span>,</span>
@@ -193,34 +196,56 @@
 <span>  .initial_value <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-custom_examples-2.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="id_2-multi-dimensional-random-walks">2. Multi-Dimensional Random Walks<a class="anchor" aria-label="anchor" href="#id_2-multi-dimensional-random-walks"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 2D random walk</span></span>
 <span><span class="fu"><a href="reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">3</span>, .n <span class="op">=</span> <span class="fl">100</span>, .dimensions <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 8</span></span>
-<span><span class="co">#&gt;    walk_number step_number      x      y cum_sum_x cum_sum_y cum_prod_x cum_prod_y</span></span>
-<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 1                     1  0      0          0         0          0          0    </span></span>
-<span><span class="co">#&gt;  2 1                     2  0.106  0.197      0.106     0.197      0.106      0.197</span></span>
-<span><span class="co">#&gt;  3 1                     3 -0.148 -0.024     -0.042     0.173     -0.0157    -0.005</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 14</span></span>
+<span><span class="co">#&gt;    walk_number step_number        x       y cum_sum_x cum_prod_x cum_min_x</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 1                     1  0.0268  -0.0711    0.0268          0    0.0268</span></span>
+<span><span class="co">#&gt;  2 1                     2  0.0268   0.0582    0.0536          0    0.0268</span></span>
+<span><span class="co">#&gt;  3 1                     3 -0.195   -0.0251   -0.141           0   -0.195 </span></span>
+<span><span class="co">#&gt;  4 1                     4 -0.0504  -0.148    -0.192           0   -0.195 </span></span>
+<span><span class="co">#&gt;  5 1                     5  0.00382  0.0865   -0.188           0   -0.195 </span></span>
+<span><span class="co">#&gt;  6 1                     6  0.131    0.139    -0.0567          0   -0.195 </span></span>
+<span><span class="co">#&gt;  7 1                     7  0.0420   0.0549   -0.0148          0   -0.195 </span></span>
+<span><span class="co">#&gt;  8 1                     8  0.0384  -0.0772    0.0236          0   -0.195 </span></span>
+<span><span class="co">#&gt;  9 1                     9 -0.258    0.149    -0.234           0   -0.258 </span></span>
+<span><span class="co">#&gt; 10 1                    10 -0.195    0.144    -0.429           0   -0.258 </span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: cum_max_x &lt;dbl&gt;, cum_mean_x &lt;dbl&gt;, cum_sum_y &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cum_prod_y &lt;dbl&gt;, cum_min_y &lt;dbl&gt;, cum_max_y &lt;dbl&gt;, cum_mean_y &lt;dbl&gt;</span></span>
 <span></span>
 <span><span class="co"># 3D random walk</span></span>
 <span><span class="fu"><a href="reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">2</span>, .n <span class="op">=</span> <span class="fl">50</span>, .dimensions <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 11</span></span>
-<span><span class="co">#&gt;    walk_number step_number      x      y      z cum_sum_x cum_sum_y cum_sum_z</span></span>
-<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 1                     1  0      0      0          0         0         0    </span></span>
-<span><span class="co">#&gt;  2 1                     2  0.106  0.197 -0.031      0.106     0.197    -0.031</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 10 × 20</span></span>
+<span><span class="co">#&gt;    walk_number step_number       x        y       z cum_sum_x cum_prod_x</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;             &lt;int&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 1                     1  0.190   0.147    0.0425     0.190          0</span></span>
+<span><span class="co">#&gt;  2 1                     2 -0.0333 -0.0159   0.0287     0.157          0</span></span>
+<span><span class="co">#&gt;  3 1                     3  0.124  -0.0312   0.0523     0.281          0</span></span>
+<span><span class="co">#&gt;  4 1                     4 -0.0133 -0.00990 -0.0491     0.267          0</span></span>
+<span><span class="co">#&gt;  5 1                     5  0.0863 -0.0759  -0.106      0.354          0</span></span>
+<span><span class="co">#&gt;  6 1                     6 -0.0173 -0.0564   0.0971     0.336          0</span></span>
+<span><span class="co">#&gt;  7 1                     7  0.0345 -0.0564  -0.0301     0.371          0</span></span>
+<span><span class="co">#&gt;  8 1                     8  0.0345  0.222    0.108      0.405          0</span></span>
+<span><span class="co">#&gt;  9 1                     9 -0.0566 -0.0325   0.0971     0.349          0</span></span>
+<span><span class="co">#&gt; 10 1                    10  0.104   0.199    0.123      0.453          0</span></span>
+<span><span class="co">#&gt; # ℹ 13 more variables: cum_min_x &lt;dbl&gt;, cum_max_x &lt;dbl&gt;, cum_mean_x &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cum_sum_y &lt;dbl&gt;, cum_prod_y &lt;dbl&gt;, cum_min_y &lt;dbl&gt;, cum_max_y &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cum_mean_y &lt;dbl&gt;, cum_sum_z &lt;dbl&gt;, cum_prod_z &lt;dbl&gt;, cum_min_z &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   cum_max_z &lt;dbl&gt;, cum_mean_z &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_3-discrete-random-walks">3. Discrete Random Walks<a class="anchor" aria-label="anchor" href="#id_3-discrete-random-walks"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Discrete walk with upper/lower bounds</span></span>
 <span><span class="fu"><a href="reference/discrete_walk.html">discrete_walk</a></span><span class="op">(</span></span>
 <span>  .num_walks <span class="op">=</span> <span class="fl">5</span>,</span>
@@ -231,6 +256,7 @@
 <span>  .initial_value <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-discrete_examples-1.png" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
@@ -325,8 +351,8 @@
 </h2>
 <table class="table">
 <colgroup>
-<col width="43%">
-<col width="56%">
+<col width="34%">
+<col width="65%">
 </colgroup>
 <thead><tr>
 <th>Function</th>
@@ -412,7 +438,7 @@
 <li>
 <strong>Questions</strong>: Use GitHub Discussions or Stack Overflow with the <code>randomwalker</code> tag</li>
 <li>
-<strong>Website</strong>: <a href="https://www.spsanderson.com/RandomWalker/">https://www.spsanderson.com/RandomWalker/</a>
+<strong>Website</strong>: <a href="https://www.spsanderson.com/RandomWalker/" class="uri">https://www.spsanderson.com/RandomWalker/</a>
 </li>
 </ul>
 </div>
@@ -420,7 +446,7 @@
 <h2 id="star2-citation">🌟 Citation<a class="anchor" aria-label="anchor" href="#star2-citation"></a>
 </h2>
 <p>If you use RandomWalker in your research, please cite:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"RandomWalker"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 <p><strong>Made with ❤️ for the R community</strong></p>
