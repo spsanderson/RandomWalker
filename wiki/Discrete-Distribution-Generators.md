@@ -685,12 +685,12 @@ walk |>
 
 ## Next Steps
 
-- **[Continuous Distribution Generators](Continuous-Distribution-Generators)** - Explore continuous distributions
-- **[Custom Walks](Custom-Walks)** - Create your own displacement functions
-- **[Visualization Guide](Visualization-Guide)** - Create beautiful plots
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze your walks
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** - Explore continuous distributions
+- **[Custom Walks](Custom-Walks.md)** - Create your own displacement functions
+- **[Visualization Guide](Visualization-Guide.md)** - Create beautiful plots
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze your walks
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 
 ---
 
-**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples)** page!
+**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples.md)** page!

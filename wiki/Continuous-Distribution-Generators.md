@@ -773,11 +773,11 @@ random_weibull_walk(.num_walks = 10, .shape = 2) |>
 
 ## Next Steps
 
-- **[Discrete Distribution Generators](Discrete-Distribution-Generators)** - Explore discrete distributions
-- **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** - Work in 2D and 3D
-- **[Visualization Guide](Visualization-Guide)** - Create beautiful plots
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Discrete Distribution Generators](Discrete-Distribution-Generators.md)** - Explore discrete distributions
+- **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Work in 2D and 3D
+- **[Visualization Guide](Visualization-Guide.md)** - Create beautiful plots
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 
 ---
 
-**Need help choosing?** Check out the **[FAQ](FAQ)** or **[Use Cases](Use-Cases-and-Examples)** for guidance!
+**Need help choosing?** Check out the **[FAQ](FAQ.md)** or **[Use Cases](Use-Cases-and-Examples.md)** for guidance!
