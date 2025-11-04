@@ -553,10 +553,10 @@ For questions (not bugs):
 
 ## Useful Resources
 
-- **[FAQ](FAQ)** - Common questions
-- **[API Reference](API-Reference)** - Function documentation
+- **[FAQ](FAQ.md)** - Common questions
+- **[API Reference](API-Reference.md)** - Function documentation
 - **[GitHub Issues](https://github.com/spsanderson/RandomWalker/issues)** - Bug reports
-- **[Installation Guide](Installation)** - Detailed installation help
+- **[Installation Guide](Installation.md)** - Detailed installation help
 
 ---
 

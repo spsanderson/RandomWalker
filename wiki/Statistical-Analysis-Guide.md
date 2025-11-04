@@ -618,11 +618,11 @@ t.test(steps, mu = 0)
 
 ## Next Steps
 
-- **[Visualization Guide](Visualization-Guide)** - Visualize your analysis
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
-- **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** - Analyze spatial walks
-- **[API Reference](API-Reference)** - Complete function documentation
+- **[Visualization Guide](Visualization-Guide.md)** - Visualize your analysis
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
+- **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Analyze spatial walks
+- **[API Reference](API-Reference.md)** - Complete function documentation
 
 ---
 
-**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples)** page!
+**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples.md)** page!

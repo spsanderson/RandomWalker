@@ -280,15 +280,15 @@ R -e "install.packages('RandomWalker')"
 ## Next Steps
 
 Now that you have RandomWalker installed, check out:
-- **[Quick Start Guide](Quick-Start-Guide)** - Learn the basics
-- **[Basic Concepts](Basic-Concepts)** - Understand random walks
-- **[API Reference](API-Reference)** - Explore all functions
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Learn the basics
+- **[Basic Concepts](Basic-Concepts.md)** - Understand random walks
+- **[API Reference](API-Reference.md)** - Explore all functions
 
 ## Getting Help with Installation
 
 If you encounter issues not covered here:
 
-1. Check the [Troubleshooting Guide](Troubleshooting)
+1. Check the [Troubleshooting Guide](Troubleshooting.md)
 2. Search [GitHub Issues](https://github.com/spsanderson/RandomWalker/issues)
 3. Ask in [GitHub Discussions](https://github.com/spsanderson/RandomWalker/discussions)
 4. Open a new issue with:
@@ -299,4 +299,4 @@ If you encounter issues not covered here:
 
 ---
 
-**Installation successful?** Head to the **[Quick Start Guide](Quick-Start-Guide)** to begin using RandomWalker!
+**Installation successful?** Head to the **[Quick Start Guide](Quick-Start-Guide.md)** to begin using RandomWalker!

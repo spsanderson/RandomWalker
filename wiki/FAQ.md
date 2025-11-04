@@ -34,7 +34,7 @@ install.packages("RandomWalker")
 devtools::install_github("spsanderson/RandomWalker")
 ```
 
-See the **[Installation Guide](Installation)** for more details.
+See the **[Installation Guide](Installation.md)** for more details.
 
 ### What R version do I need?
 
@@ -78,7 +78,7 @@ random_normal_walk(
 )
 ```
 
-See **[Continuous Distribution Generators](Continuous-Distribution-Generators)** for all options.
+See **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** for all options.
 
 ### Can I set a seed for reproducibility?
 
@@ -147,7 +147,7 @@ custom_walk(
 )
 ```
 
-See **[Custom Walks](Custom-Walks)** for more details.
+See **[Custom Walks](Custom-Walks.md)** for more details.
 
 ## Multi-Dimensional Questions
 
@@ -171,7 +171,7 @@ ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
   theme_minimal()
 ```
 
-See **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** for comprehensive examples.
+See **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** for comprehensive examples.
 
 ### What's the difference between x, y in 1D vs 2D walks?
 
@@ -498,8 +498,8 @@ result <- my_algorithm(test_data)
 
 ### Where can I find more examples?
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Basic examples
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Basic examples
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 - **[Vignette](https://www.spsanderson.com/RandomWalker/articles/getting-started.html)** - Comprehensive tutorial
 
 ### Where do I report bugs?
@@ -535,7 +535,7 @@ Yes! We welcome contributions:
 - Documentation improvements
 - Examples and tutorials
 
-See **[Contributing Guide](Contributing-Guide)** for details.
+See **[Contributing Guide](Contributing-Guide.md)** for details.
 
 ### How do I suggest a new feature?
 

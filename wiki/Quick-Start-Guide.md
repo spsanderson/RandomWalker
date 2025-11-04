@@ -398,12 +398,12 @@ test_data <- discrete_walk(
 
 Now that you know the basics, explore more advanced topics:
 
-- **[Continuous Distribution Generators](Continuous-Distribution-Generators)** - Explore all continuous distributions
-- **[Discrete Distribution Generators](Discrete-Distribution-Generators)** - Work with discrete distributions
-- **[Visualization Guide](Visualization-Guide)** - Master plotting techniques
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Deep dive into analysis
-- **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** - Advanced spatial modeling
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** - Explore all continuous distributions
+- **[Discrete Distribution Generators](Discrete-Distribution-Generators.md)** - Work with discrete distributions
+- **[Visualization Guide](Visualization-Guide.md)** - Master plotting techniques
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Deep dive into analysis
+- **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Advanced spatial modeling
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 
 ## Getting Help
 
@@ -415,4 +415,4 @@ Now that you know the basics, explore more advanced topics:
 
 ---
 
-**Ready for more?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples)** page for real-world applications!
+**Ready for more?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples.md)** page for real-world applications!

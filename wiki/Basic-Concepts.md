@@ -426,10 +426,10 @@ walks |>
 
 Now that you understand the basics:
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Start using RandomWalker
-- **[Continuous Distribution Generators](Continuous-Distribution-Generators)** - Explore distributions
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze properties
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Start using RandomWalker
+- **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** - Explore distributions
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze properties
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 
 ## Further Reading
 
@@ -452,4 +452,4 @@ Now that you understand the basics:
 
 ---
 
-**Ready to generate walks?** Head to the **[Quick Start Guide](Quick-Start-Guide)**!
+**Ready to generate walks?** Head to the **[Quick Start Guide](Quick-Start-Guide.md)**!

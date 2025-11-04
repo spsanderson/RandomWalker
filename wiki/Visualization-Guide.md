@@ -603,11 +603,11 @@ walks |>
 
 ## Next Steps
 
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze your visualizations
-- **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** - Visualize 2D and 3D walks
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
-- **[API Reference](API-Reference)** - Complete function documentation
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze your visualizations
+- **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Visualize 2D and 3D walks
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
+- **[API Reference](API-Reference.md)** - Complete function documentation
 
 ---
 
-**Want more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples)** page!
+**Want more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples.md)** page!

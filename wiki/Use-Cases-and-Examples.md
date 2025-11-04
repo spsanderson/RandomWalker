@@ -647,10 +647,10 @@ ggplot(tibble(value = steps), aes(x = value)) +
 
 ## Next Steps
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Learn the basics
-- **[Visualization Guide](Visualization-Guide)** - Create better plots
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Deeper analysis
-- **[API Reference](API-Reference)** - Function documentation
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Learn the basics
+- **[Visualization Guide](Visualization-Guide.md)** - Create better plots
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Deeper analysis
+- **[API Reference](API-Reference.md)** - Function documentation
 
 ---
 
