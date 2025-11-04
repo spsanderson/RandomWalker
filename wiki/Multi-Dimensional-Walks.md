@@ -640,11 +640,11 @@ ggplot(walk_bounded, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
 
 ## Next Steps
 
-- **[Visualization Guide](Visualization-Guide)** - More visualization techniques
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze spatial data
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - More real-world applications
-- **[API Reference](API-Reference)** - Complete function documentation
+- **[Visualization Guide](Visualization-Guide.md)** - More visualization techniques
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze spatial data
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - More real-world applications
+- **[API Reference](API-Reference.md)** - Complete function documentation
 
 ---
 
-**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples)** page!
+**Need more examples?** Check out the **[Use Cases and Examples](Use-Cases-and-Examples.md)** page!

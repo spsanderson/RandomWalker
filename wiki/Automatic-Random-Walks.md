@@ -507,11 +507,11 @@ max_excursion |>
 
 Once you're comfortable with `rw30()`, explore:
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Learn more random walk functions
-- **[Continuous Distribution Generators](Continuous-Distribution-Generators)** - Explore all distributions
-- **[Visualization Guide](Visualization-Guide)** - Create better plots
-- **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze your walks
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Learn more random walk functions
+- **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** - Explore all distributions
+- **[Visualization Guide](Visualization-Guide.md)** - Create better plots
+- **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze your walks
 
 ---
 
-**Ready for more control?** Check out **[Continuous Distribution Generators](Continuous-Distribution-Generators)** for customizable random walks!
+**Ready for more control?** Check out **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** for customizable random walks!

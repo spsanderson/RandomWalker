@@ -34,7 +34,7 @@ install.packages("RandomWalker")
 devtools::install_github("spsanderson/RandomWalker")
 ```
 
-See the **[Installation Guide](Installation)** for more details.
+See the **[Installation Guide](Installation.md)** for more details.
 
 ### What R version do I need?
 
@@ -47,7 +47,7 @@ Try installing dependencies manually:
 install.packages(c("dplyr", "tidyr", "purrr", "rlang", "patchwork", "NNS", "ggiraph"))
 ```
 
-See **[Installation - Troubleshooting](Installation#troubleshooting-installation-issues)** for more solutions.
+See **[Installation - Troubleshooting](Installation.md#troubleshooting-installation-issues)** for more solutions.
 
 ## Usage Questions
 
@@ -78,7 +78,7 @@ random_normal_walk(
 )
 ```
 
-See **[Continuous Distribution Generators](Continuous-Distribution-Generators)** for all options.
+See **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** for all options.
 
 ### Can I set a seed for reproducibility?
 
@@ -106,7 +106,7 @@ It depends on your use case:
 - **Heavy tails**: `random_cauchy_walk()` or `random_t_walk()`
 - **Count data**: `random_poisson_walk()`
 
-See **[Comparison Guide](Continuous-Distribution-Generators#comparison-guide)** for more details.
+See **[Comparison Guide](Continuous-Distribution-Generators.md#comparison-guide)** for more details.
 
 ### What's the difference between `random_normal_walk()` and `brownian_motion()`?
 
@@ -147,7 +147,7 @@ custom_walk(
 )
 ```
 
-See **[Custom Walks](Custom-Walks)** for more details.
+See **[Custom Walks](Custom-Walks.md)** for more details.
 
 ## Multi-Dimensional Questions
 
@@ -171,7 +171,7 @@ ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
   theme_minimal()
 ```
 
-See **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** for comprehensive examples.
+See **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** for comprehensive examples.
 
 ### What's the difference between x, y in 1D vs 2D walks?
 
@@ -464,7 +464,7 @@ stock_prices <- geometric_brownian_motion(
 )
 ```
 
-See **[Use Cases - Financial Modeling](Use-Cases-and-Examples#financial-modeling)**.
+See **[Use Cases - Financial Modeling](Use-Cases-and-Examples.md#financial-modeling)**.
 
 ### How do I simulate particle diffusion?
 
@@ -477,7 +477,7 @@ particles <- brownian_motion(
 )
 ```
 
-See **[Use Cases - Physics](Use-Cases-and-Examples#physics-simulation)**.
+See **[Use Cases - Physics](Use-Cases-and-Examples.md#physics-simulation)**.
 
 ### How do I test an algorithm?
 
@@ -498,8 +498,8 @@ result <- my_algorithm(test_data)
 
 ### Where can I find more examples?
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Basic examples
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Basic examples
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
 - **[Vignette](https://www.spsanderson.com/RandomWalker/articles/getting-started.html)** - Comprehensive tutorial
 
 ### Where do I report bugs?
@@ -535,7 +535,7 @@ Yes! We welcome contributions:
 - Documentation improvements
 - Examples and tutorials
 
-See **[Contributing Guide](Contributing-Guide)** for details.
+See **[Contributing Guide](Contributing-Guide.md)** for details.
 
 ### How do I suggest a new feature?
 
@@ -576,4 +576,4 @@ Check [NEWS.md](https://github.com/spsanderson/RandomWalker/blob/master/NEWS.md)
 
 ---
 
-**Didn't find your answer?** Check the **[Troubleshooting Guide](Troubleshooting)** or ask on [GitHub Discussions](https://github.com/spsanderson/RandomWalker/discussions)!
+**Didn't find your answer?** Check the **[Troubleshooting Guide](Troubleshooting.md)** or ask on [GitHub Discussions](https://github.com/spsanderson/RandomWalker/discussions)!

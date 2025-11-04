@@ -17,31 +17,31 @@ RandomWalker is a comprehensive R package that provides a unified, tidyverse-com
 ## 🚀 Quick Navigation
 
 ### Getting Started
-- **[Installation](Installation)** - How to install the package
-- **[Quick Start Guide](Quick-Start-Guide)** - Get up and running in minutes
-- **[Basic Concepts](Basic-Concepts)** - Understanding random walks
+- **[Installation](Installation.md)** - How to install the package
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Get up and running in minutes
+- **[Basic Concepts](Basic-Concepts.md)** - Understanding random walks
 
 ### Function Guides
-- **[Automatic Random Walks](Automatic-Random-Walks)** - Using `rw30()` for instant results
-- **[Continuous Distributions](Continuous-Distribution-Generators)** - Normal, Brownian, Gamma, Beta, and more
-- **[Discrete Distributions](Discrete-Distribution-Generators)** - Binomial, Poisson, Geometric, and more
-- **[Custom Walks](Custom-Walks)** - Create walks with custom displacement functions
-- **[Multi-Dimensional Walks](Multi-Dimensional-Walks)** - Working in 2D and 3D space
+- **[Automatic Random Walks](Automatic-Random-Walks.md)** - Using `rw30()` for instant results
+- **[Continuous Distributions](Continuous-Distribution-Generators.md)** - Normal, Brownian, Gamma, Beta, and more
+- **[Discrete Distributions](Discrete-Distribution-Generators.md)** - Binomial, Poisson, Geometric, and more
+- **[Custom Walks](Custom-Walks.md)** - Create walks with custom displacement functions
+- **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Working in 2D and 3D space
 
 ### Advanced Topics
-- **[Visualization Guide](Visualization-Guide)** - Creating beautiful plots
-- **[Statistical Analysis](Statistical-Analysis-Guide)** - Computing summary statistics
-- **[Use Cases and Examples](Use-Cases-and-Examples)** - Real-world applications
-- **[Performance Tips](Performance-Tips)** - Optimize your code
+- **[Visualization Guide](Visualization-Guide.md)** - Creating beautiful plots
+- **[Statistical Analysis](Statistical-Analysis-Guide.md)** - Computing summary statistics
+- **[Use Cases and Examples](Use-Cases-and-Examples.md)** - Real-world applications
+- **[Performance Tips](Performance-Tips.md)** - Optimize your code
 
 ### Reference
-- **[API Reference](API-Reference)** - Complete function documentation
-- **[FAQ](FAQ)** - Frequently Asked Questions
-- **[Troubleshooting](Troubleshooting)** - Common issues and solutions
+- **[API Reference](API-Reference.md)** - Complete function documentation
+- **[FAQ](FAQ.md)** - Frequently Asked Questions
+- **[Troubleshooting](Troubleshooting.md)** - Common issues and solutions
 
 ### Contributing
-- **[Contributing Guide](Contributing-Guide)** - How to contribute to the project
-- **[Development Setup](Development-Setup)** - Setting up your development environment
+- **[Contributing Guide](Contributing-Guide.md)** - How to contribute to the project
+- **[Development Setup](Development-Setup.md)** - Setting up your development environment
 
 ## 💡 Key Features
 
@@ -97,13 +97,13 @@ Works seamlessly with:
 
 If you're new to RandomWalker, we recommend following this learning path:
 
-1. **[Installation](Installation)** - Install the package
-2. **[Quick Start Guide](Quick-Start-Guide)** - Learn the basics
-3. **[Automatic Random Walks](Automatic-Random-Walks)** - Use `rw30()` for quick results
-4. **[Continuous Distribution Generators](Continuous-Distribution-Generators)** - Explore different distributions
-5. **[Visualization Guide](Visualization-Guide)** - Create beautiful plots
-6. **[Statistical Analysis Guide](Statistical-Analysis-Guide)** - Analyze your walks
-7. **[Use Cases and Examples](Use-Cases-and-Examples)** - See real-world applications
+1. **[Installation](Installation.md)** - Install the package
+2. **[Quick Start Guide](Quick-Start-Guide.md)** - Learn the basics
+3. **[Automatic Random Walks](Automatic-Random-Walks.md)** - Use `rw30()` for quick results
+4. **[Continuous Distribution Generators](Continuous-Distribution-Generators.md)** - Explore different distributions
+5. **[Visualization Guide](Visualization-Guide.md)** - Create beautiful plots
+6. **[Statistical Analysis Guide](Statistical-Analysis-Guide.md)** - Analyze your walks
+7. **[Use Cases and Examples](Use-Cases-and-Examples.md)** - See real-world applications
 
 ## 🎯 Common Use Cases
 
@@ -131,4 +131,4 @@ citation("RandomWalker")
 
 ---
 
-**Ready to get started?** Head over to the **[Installation](Installation)** page to begin your journey with RandomWalker!
+**Ready to get started?** Head over to the **[Installation](Installation.md)** page to begin your journey with RandomWalker!

@@ -642,11 +642,11 @@ attributes(walks)
 
 ## See Also
 
-- **[Quick Start Guide](Quick-Start-Guide)** - Get started quickly
-- **[Continuous Distributions](Continuous-Distribution-Generators)** - Detailed distribution guide
-- **[Discrete Distributions](Discrete-Distribution-Generators)** - Discrete distribution guide
-- **[Visualization Guide](Visualization-Guide)** - Advanced plotting
-- **[Statistical Analysis](Statistical-Analysis-Guide)** - Analysis techniques
-- **[FAQ](FAQ)** - Common questions
+- **[Quick Start Guide](Quick-Start-Guide.md)** - Get started quickly
+- **[Continuous Distributions](Continuous-Distribution-Generators.md)** - Detailed distribution guide
+- **[Discrete Distributions](Discrete-Distribution-Generators.md)** - Discrete distribution guide
+- **[Visualization Guide](Visualization-Guide.md)** - Advanced plotting
+- **[Statistical Analysis](Statistical-Analysis-Guide.md)** - Analysis techniques
+- **[FAQ](FAQ.md)** - Common questions
 
 **Online Documentation:** https://www.spsanderson.com/RandomWalker/
