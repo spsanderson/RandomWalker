@@ -25,7 +25,6 @@ RandomWalker is a comprehensive R package that provides a unified, tidyverse-com
 - **[Automatic Random Walks](Automatic-Random-Walks.md)** - Using `rw30()` for instant results
 - **[Continuous Distributions](Continuous-Distribution-Generators.md)** - Normal, Brownian, Gamma, Beta, and more
 - **[Discrete Distributions](Discrete-Distribution-Generators.md)** - Binomial, Poisson, Geometric, and more
-- **[Custom Walks](Custom-Walks.md)** - Create walks with custom displacement functions
 - **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** - Working in 2D and 3D space
 
 ### Advanced Topics
