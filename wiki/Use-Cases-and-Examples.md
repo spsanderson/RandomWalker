@@ -127,7 +127,7 @@ option_value <- stock_paths |>
   group_by(walk_number) |>
   slice_max(step_number) |>
   mutate(
-    payoff = pmax(cum_prod - K, 0)  # Call option payoff
+    payoff = pmax(cum_prod_y - K, 0)  # Call option payoff
   ) |>
   summarize(
     option_price = mean(payoff) * exp(-r * T)  # Discount to present
