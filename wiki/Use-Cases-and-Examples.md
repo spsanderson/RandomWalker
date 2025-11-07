@@ -41,7 +41,7 @@ outcomes <- stock_sim |>
   group_by(walk_number) |>
   slice_max(step_number, n = 1) |>
   mutate(
-    final_price = cum_prod,
+    final_price = cum_prod_y,
     return_pct = (final_price - 100) / 100 * 100
   )
 
