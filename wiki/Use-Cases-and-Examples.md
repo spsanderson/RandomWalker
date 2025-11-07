@@ -75,7 +75,7 @@ portfolio_sim <- geometric_brownian_motion(
 final_values <- portfolio_sim |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_prod)
+  pull(cum_prod_y)
 
 # 95% VaR (5% worst case)
 var_95 <- quantile(final_values, 0.05)
