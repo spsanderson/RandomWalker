@@ -163,21 +163,25 @@ rw30() |>
 ### Pattern 3: Finding Extremes
 
 ```r
+library(RandomWalker)
+library(dplyr)
+library(ggplot2)
+
 # Walk that went highest
 max_walk <- rw30() |>
-  subset_walks(.value = "cum_sum", .subset_type = "max")
+  subset_walks(.value = "y", .type = "max")
 
 # Walk that went lowest
 min_walk <- rw30() |>
-  subset_walks(.value = "cum_sum", .subset_type = "min")
+  subset_walks(.value = "y", .type = "min")
 
 # Compare extremes
 library(patchwork)
 
-p1 <- max_walk |> visualize_walks(.pluck = "cum_sum") +
+p1 <- max_walk |> visualize_walks() +
   labs(title = "Highest Walk")
 
-p2 <- min_walk |> visualize_walks(.pluck = "cum_sum") +
+p2 <- min_walk |> visualize_walks() +
   labs(title = "Lowest Walk")
 
 p1 / p2
