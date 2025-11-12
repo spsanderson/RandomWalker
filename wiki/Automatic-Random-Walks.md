@@ -153,9 +153,9 @@ rw30() |>
 rw30() |>
   group_by(walk_number) |>
   summarize(
-    final_value = last(cum_sum),
-    max_value = max(cum_sum),
-    min_value = min(cum_sum),
+    final_value = last(y),
+    max_value = max(y),
+    min_value = min(y),
     volatility = sd(y)
   )
 ```
