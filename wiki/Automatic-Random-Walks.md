@@ -107,7 +107,7 @@ sd(walks$y)
 walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum) |>
+  pull(y) |>
   range()
 ```
 
