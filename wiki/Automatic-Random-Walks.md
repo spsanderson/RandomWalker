@@ -134,9 +134,6 @@ attributes(walks)
 # One line to plot
 rw30() |> visualize_walks()
 
-# Focus on specific aspect
-rw30() |> visualize_walks(.pluck = "cum_sum")
-
 # Interactive exploration
 rw30() |> visualize_walks(.interactive = TRUE)
 ```
