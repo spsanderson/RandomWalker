@@ -223,7 +223,7 @@ walks <- rw30()
 walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  ggplot(aes(x = cum_sum)) +
+  ggplot(aes(x = y)) +
   geom_histogram(bins = 15, fill = "steelblue", alpha = 0.7) +
   geom_vline(xintercept = 0, color = "red", linetype = "dashed") +
   theme_minimal() +
@@ -244,7 +244,7 @@ walks <- rw30()
 variance_by_step <- walks |>
   group_by(step_number) |>
   summarize(
-    variance = var(cum_sum),
+    variance = var(y),
     theoretical = step_number  # For N(0,1), var = n
   )
 
