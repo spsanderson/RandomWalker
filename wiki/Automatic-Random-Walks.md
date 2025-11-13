@@ -456,7 +456,7 @@ walks <- rw30()
 
 first_crossing <- walks |>
   group_by(walk_number) |>
-  filter(cum_sum >= 5) |>
+  filter(cumsum(y) >= 5) |>
   slice_min(step_number, n = 1) |>
   select(walk_number, first_crossing_time = step_number)
 
