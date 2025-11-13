@@ -414,7 +414,7 @@ walks <- rw30()
 # Show that mean displacement is zero
 walks |>
   group_by(step_number) |>
-  summarize(mean_position = mean(cum_sum)) |>
+  summarize(mean_position = mean(cumsum(y))) |>
   ggplot(aes(x = step_number, y = mean_position)) +
   geom_line(color = "blue", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
@@ -429,10 +429,11 @@ walks |>
 # Show that standard deviation grows as sqrt(n)
 walks |>
   group_by(step_number) |>
-  summarize(
-    sd_position = sd(cum_sum),
+  reframe(
+    sd_position = sd(cumsum(y)),
     theoretical = sqrt(step_number)
   ) |>
+  ungroup() |>
   ggplot(aes(x = step_number)) +
   geom_line(aes(y = sd_position, color = "Observed"), linewidth = 1) +
   geom_line(aes(y = theoretical, color = "Theoretical"), linewidth = 1, linetype = "dashed") +
