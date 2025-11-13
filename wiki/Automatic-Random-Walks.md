@@ -487,9 +487,9 @@ walks <- rw30()
 max_excursion <- walks |>
   group_by(walk_number) |>
   summarize(
-    max_positive = max(cum_sum),
-    max_negative = min(cum_sum),
-    max_excursion = max(abs(cum_sum))
+    max_positive = max(cumsum(y)),
+    max_negative = min(cumsum(y)),
+    max_excursion = max(abs(cumsum(y)))
   )
 
 # Visualize
