@@ -217,7 +217,7 @@ Focus on specific aspects of your walks:
 
 ```r
 # Show only cumulative sum
-rw30() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
 
 # Show multiple specific attributes
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
