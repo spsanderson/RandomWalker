@@ -300,7 +300,7 @@ my_displacement <- function() {
 # Generate walk
 custom_walk(
   .num_walks = 10,
-  .displacement_fn = my_displacement
+  .custom_fns = my_displacement
 )
 ```
 
