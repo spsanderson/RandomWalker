@@ -309,11 +309,34 @@ identical(walk1, walk2)  # TRUE
 Each random walk has metadata stored as attributes:
 
 ```r
-walks <- rw30()
-atb <- attributes(walks)
+walks <- rw30()
+atb <- get_attributes(walks)
 
-# View attributes (excluding row names)
-atb[!names(atb) %in% c("row.names")]
+# View attributes (excluding row names) which get_attributes strips out
+atb
+$names
+[1] "walk_number" "step_number" "y"          
+
+$class
+[1] "tbl_df"     "tbl"        "data.frame"
+
+$num_walks
+[1] 30
+
+$num_steps
+[1] 100
+
+$mu
+[1] 0
+
+$sd
+[1] 1
+
+$fns
+[1] "rw30"
+
+$dimension
+[1] 1
 ```
 
 Common attributes include:
