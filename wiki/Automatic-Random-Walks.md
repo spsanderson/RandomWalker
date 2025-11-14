@@ -100,7 +100,7 @@ Since steps are drawn from N(0,1):
 # Mean of steps should be ≈ 0
 mean(walks$y)
 
-# Standard deviation should be ≈ 1
+# Standard deviation is 1 for the function, but it returns the cumsum of y so it won't show as 1
 sd(walks$y)
 
 # Final positions vary widely
@@ -185,12 +185,19 @@ p2 <- min_walk |> visualize_walks() +
   labs(title = "Lowest Walk")
 
 p1 / p2
+
+# Or
+rw30() |>
+  subset_walks(.value = "y", .type = "both") |>
+  visualize_walks() +
+  labs(title = "Highest Walk")
 ```
 
 ### Pattern 4: Filtering and Subsetting
 
 ```r
 library(dplyr)
+library(ggplot2)
 
 walks <- rw30()
 
@@ -207,8 +214,11 @@ walks |>
 # Find walks that crossed zero
 walks |>
   group_by(walk_number) |>
-  filter(any(cum_sum < 0) & any(cum_sum > 0)) |>
-  visualize_walks(.alpha = 0.5)
+  filter(any(cumsum(y) < 0) & any(cumsum(y) > 0)) |> 
+  ungroup() |>
+  ggplot(aes(x = step_number, y = cumsum(y), group = walk_number, color = walk_number)) +
+  geom_line() +
+  labs(title = "Walks That Crossed Zero")
 ```
 
 ### Pattern 5: Teaching Demonstrations
@@ -243,7 +253,7 @@ walks <- rw30()
 
 variance_by_step <- walks |>
   group_by(step_number) |>
-  summarize(
+  reframe(
     variance = var(y),
     theoretical = step_number  # For N(0,1), var = n
   )
