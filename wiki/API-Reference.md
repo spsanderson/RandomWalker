@@ -347,8 +347,8 @@ rw30() |> visualize_walks(.alpha = 0.3)
 rw30() |> visualize_walks(.interactive = TRUE)
 
 # Select specific panels
-rw30() |> visualize_walks(.pluck = "cum_sum")
-rw30() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
 ```
 
 ---
