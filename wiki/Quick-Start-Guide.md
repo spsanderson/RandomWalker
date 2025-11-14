@@ -381,7 +381,7 @@ stock_price |> visualize_walks(.alpha = 0.3)
 
 # Analyze outcomes
 stock_price |>
-  summarize_walks(.value = cum_prod, .group_var = walk_number) |>
+  summarize_walks(.value = cum_prod_y, .group_var = walk_number) |>
   summarize(
     prob_profit = mean(max_val > 100),
     avg_return = mean((max_val - 100) / 100)
