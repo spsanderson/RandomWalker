@@ -407,13 +407,11 @@ Extract walks with extreme values.
 
 **Examples:**
 ```r
-walks <- rw30()
-
 # Walk with maximum value
-walks |> subset_walks(.value = "cum_sum", .subset_type = "max")
+walks |> subset_walks(.value = "y", .type = "max")
 
 # Walk with minimum value
-walks |> subset_walks(.value = "cum_sum", .subset_type = "min")
+walks |> subset_walks(.value = "y", .type = "min")
 ```
 
 ---
@@ -440,7 +438,7 @@ x <- rnorm(1000, mean = 10, sd = 2)
 confidence_interval(x)
 
 # 99% CI
-confidence_interval(x, .alpha = 0.01)
+confidence_interval(x, .interval = 0.01)
 ```
 
 ### `running_quantile()`
@@ -455,8 +453,33 @@ Calculate running quantile at each position.
 
 **Example:**
 ```r
-x <- rnorm(100)
-running_quantile(x, .probs = 0.5)  # Running median
+> x <- rnorm(100)
++ running_quantile(x, .probs = 0.5, .window = 5)  # Running median
+  [1] -0.19894418 -0.25852015 -0.19894418 -0.31809612 -0.31809612 -0.02270902  0.52090972
+  [8]  0.52090972  0.52090972 -0.72550051 -0.72550051 -0.72550051  0.45220561  0.45220561
+ [15]  0.50983021  0.50983021  0.05596606  0.05596606  0.50983021  0.05596606  0.05596606
+ [22] -0.12008473 -0.58463937 -0.58463937 -0.58463937 -0.63442491 -0.65270698 -0.65270698
+ [29] -0.65270698  0.42195944  0.84123625  0.84123625  0.42195944 -0.24946066 -0.64684783
+ [36] -0.64684783 -0.64684783 -0.23669397 -0.11321492 -0.11321492 -0.23669397 -0.23669397
+ [43] -0.23992295 -0.23992295 -0.23992295  1.29775469  0.19777121  0.79751891  0.19777121
+ [50]  0.19777121  0.19777121  0.47686952  0.47686952  0.52574535  0.52574535  0.52574535
+ [57]  0.52574535  0.49575829 -0.16393963 -0.16393963 -0.16393963 -0.16393963 -0.45888676
+ [64] -0.45888676 -0.45888676 -0.45888676 -0.30529488  0.97961268  0.97961268 -0.30529488
+ [71]  0.39658084 -0.49772674 -0.77811982 -0.49772674 -0.49772674 -0.49772674  0.06343848
+ [78]  0.19131427  0.06343848  0.21797560  0.40787127  0.70009628  0.40787127  0.40787127
+ [85]  1.17282323  0.30790627  0.30790627  0.30790627  0.70520446  0.70520446  0.90434019
+ [92]  0.90434019  0.90434019  0.86559035 -0.36360786 -0.49572506 -0.49572506 -0.49572506
+ [99] -0.63631542 -0.47442633
+attr(,"window")
+[1] 5
+attr(,"probs")
+[1] 0.5
+attr(,"type")
+[1] 7
+attr(,"rule")
+[1] "quantile"
+attr(,"align")
+[1] "center"
 ```
 
 ### `euclidean_distance()`
@@ -471,7 +494,7 @@ Calculate Euclidean distance from origin for multi-dimensional walks.
 **Example:**
 ```r
 walk_2d <- random_normal_walk(.dimensions = 2)
-walk_2d |> euclidean_distance()
+walk_2d |> euclidean_distance(.x = x, .y = y)
 ```
 
 ### Cumulative Functions
@@ -531,8 +554,31 @@ Get attributes without row names.
 
 **Example:**
 ```r
-walks <- rw30()
+walks <- rw30()
 get_attributes(walks)
+$names
+[1] "walk_number" "step_number" "y"          
+
+$class
+[1] "tbl_df"     "tbl"        "data.frame"
+
+$num_walks
+[1] 30
+
+$num_steps
+[1] 100
+
+$mu
+[1] 0
+
+$sd
+[1] 1
+
+$fns
+[1] "rw30"
+
+$dimension
+[1] 1
 ```
 
 ---
