@@ -206,7 +206,7 @@ For multi-dimensional walks, calculate Euclidean distance:
 
 ```r
 walk_2d |>
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = y)
 ```
 
 ## Advanced Visualization Options
@@ -376,7 +376,7 @@ particle <- brownian_motion(
 
 # Calculate distance from origin
 particle |>
-  euclidean_distance() |>
+  euclidean_distance(.x = x, .y = z) |>
   visualize_walks()
 ```
 
