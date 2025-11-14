@@ -32,7 +32,7 @@ rw30()
 - `walk_number`: Factor identifying each walk
 - `step_number`: Integer step counter (1-100)
 - `y`: Random walk values
-- `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`: Cumulative functions
+- `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`: Cumulative functions can be added but are not returned
 
 **Examples:**
 ```r
