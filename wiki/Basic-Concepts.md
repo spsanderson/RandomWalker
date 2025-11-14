@@ -133,7 +133,7 @@ walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
 walks |>
   group_by(step_number) |>
-  summarize(mean_position = mean(cum_sum)) |>
+  summarize(mean_position = mean(cum_sum_y)) |>
   pull(mean_position) |>
   abs() |>
   max()  # Should be close to 0
@@ -151,7 +151,7 @@ walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
 walks |>
   group_by(step_number) |>
-  summarize(
+  reframe(
     variance = var(cum_sum),
     theoretical = step_number
   ) |>
@@ -169,9 +169,9 @@ Expected distance grows as √n:
 walks_2d <- random_normal_walk(.num_walks = 100, .n = 500, .dimensions = 2)
 
 walks_2d |>
-  euclidean_distance() |>
+  euclidean_distance(.x = x, .y = y) |>
   group_by(step_number) |>
-  summarize(
+  reframe(
     mean_distance = mean(distance),
     theoretical = sqrt(step_number)
   ) |>
@@ -353,21 +353,21 @@ walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
 # Property 1: Mean = 0
 walks |>
-  summarize(overall_mean = mean(cum_sum))
+  summarize(overall_mean = mean(cum_sum_y))
 
 # Property 2: Variance = n
 walks |>
-  filter(step_number == 100) |>
+  filter(step_number == 80) |>
   summarize(
-    variance = var(cum_sum),
-    theoretical = 100
+    variance = var(cum_sum_y),
+    theoretical = 80
   )
 
 # Property 3: Distance ∝ √n
 walks |>
   group_by(step_number) |>
   summarize(
-    mean_abs_position = mean(abs(cum_sum)),
+    mean_abs_position = mean(abs(cum_sum_y)),
     theoretical = sqrt(2/pi) * sqrt(step_number)  # Exact for normal
   )
 ```
@@ -384,7 +384,7 @@ walks <- random_normal_walk(.num_walks = 10000, .n = 100)
 final_pos <- walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 # Plot
 tibble(position = final_pos) |>
@@ -414,7 +414,7 @@ walks <- random_normal_walk(.num_walks = 100, .n = 100)
 # Find walks ending near 10
 similar_end <- walks |>
   group_by(walk_number) |>
-  filter(step_number == 100, abs(cum_sum - 10) < 1)
+  filter(step_number == 80, abs(cum_sum_y - 10) < 1)
 
 # Plot their paths - very different!
 walks |>
