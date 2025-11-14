@@ -268,9 +268,10 @@ random_normal_walk(.num_walks = 10, .n = 100) |>
 # Add custom calculations
 random_normal_walk(.num_walks = 5, .n = 100, .initial_value = 100) |>
   mutate(
-    pct_change = (cum_sum - lag(cum_sum)) / lag(cum_sum) * 100,
-    is_positive = cum_sum > 100
-  )
+    pct_change = (cum_sum_y - lag(cum_sum_y)) / lag(cum_sum_y) * 100,
+    is_positive = cum_sum_y > 100
+  ) |>
+  select(walk_number, step_number, cum_sum_y, pct_change, is_positive)
 ```
 
 ## Subset Walks by Values
