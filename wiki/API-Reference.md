@@ -388,7 +388,10 @@ walks |> summarize_walks(.value = y)
 walks |> summarize_walks(.value = y, .group_var = walk_number)
 
 # Cumulative sum
-walks |> summarize_walks(.value = cum_sum)
+# Cumulative sum
+walks |>
+  mutate(cum_sum = cumsum(y)) |>
+  summarize_walks(.value = cum_sum)
 ```
 
 ### `subset_walks()`
