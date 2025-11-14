@@ -281,11 +281,11 @@ Find walks with specific characteristics:
 ```r
 # Get walks with maximum value
 rw30() |> 
-  subset_walks(.value = "y", .subset_type = "max")
+  subset_walks(.value = "y", .type = "max")
 
 # Get walks with minimum value
 rw30() |> 
-  subset_walks(.value = "y", .subset_type = "min")
+  subset_walks(.value = "y", .type = "min")
 ```
 
 ## Reproducibility with Seeds
