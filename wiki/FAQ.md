@@ -184,7 +184,7 @@ See **[Multi-Dimensional Walks](Multi-Dimensional-Walks.md)** for comprehensive 
 Yes, use `euclidean_distance()`:
 ```r
 walk_2d <- random_normal_walk(.dimensions = 2)
-walk_2d |> euclidean_distance()
+walk_2d |> euclidean_distance(.x = x, .y = y)
 ```
 
 ## Visualization Questions
@@ -201,10 +201,10 @@ rw30() |> visualize_walks(.interactive = TRUE)
 Use `.pluck`:
 ```r
 # Single panel
-rw30() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
 
 # Multiple panels
-rw30() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
+random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
 ```
 
 ### How do I adjust transparency?
@@ -282,10 +282,10 @@ walks |>
 walks <- rw30()
 
 # Get walk with maximum final value
-max_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "max")
+max_walk <- walks |> subset_walks(.value = "y", .type = "max")
 
 # Get walk with minimum final value
-min_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "min")
+min_walk <- walks |> subset_walks(.value = "y", .type = "min")
 ```
 
 ## Performance Questions
@@ -325,7 +325,7 @@ library(furrr)
 
 plan(multisession, workers = 4)
 
-walks_list <- future_map(1:10, ~random_normal_walk(.num_walks = 100))
+walks_list <- future_map(1:10, ~random_normal_walk(.num_walks = 100), set.seed(123))
 ```
 
 ## Data Structure Questions
@@ -342,8 +342,8 @@ A tibble (tidyverse-compatible data frame) with columns:
 
 ```r
 walks <- rw30()
-atb <- attributes(walks)
-atb[!names(atb) %in% c("row.names")]
+atb <- get_attributes(walks)
+atb
 ```
 
 Common attributes: `fns`, `num_walks`, `n`, `initial_value`, distribution parameters.
@@ -391,13 +391,6 @@ walk_2d |> summarize_walks(.value = y)
 walk_2d |> summarize_walks(.value = cum_sum_y)
 ```
 
-### "Package X is not available"
-
-Install the missing package:
-```r
-install.packages("package_name")
-```
-
 ## Integration Questions
 
 ### Does RandomWalker work with dplyr?
@@ -408,7 +401,7 @@ library(dplyr)
 
 random_normal_walk(.num_walks = 10) |>
   filter(step_number > 50) |>
-  mutate(positive = cum_sum > 0) |>
+  mutate(positive = cum_sum_y > 0) |>
   group_by(walk_number) |>
   summarize(prop_positive = mean(positive))
 ```
