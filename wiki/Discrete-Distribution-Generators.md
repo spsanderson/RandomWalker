@@ -41,7 +41,7 @@ discrete_walk(
   .upper_bound = 1,
   .lower_bound = -1,
   .upper_probability = 0.5,
-  .initial_value = 0,
+  .initial_value = 100,
   .dimensions = 1
 )
 ```
@@ -99,7 +99,7 @@ gambler <- discrete_walk(
 )
 
 gambler |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number) |>
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number) |>
   summarize(
     prob_ruin = mean(min_val <= 0),
     avg_final = mean(max_val)
@@ -120,6 +120,9 @@ random_binomial_walk(
   .size = 10,
   .prob = 0.5,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -185,6 +188,9 @@ random_geometric_walk(
   .n = 100,
   .prob = 0.5,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -240,18 +246,21 @@ Random walk for sampling without replacement.
 ```r
 random_hypergeometric_walk(
   .num_walks = 25,
-  .n = 100,
-  .m = 10,
-  .n_param = 7,
-  .k = 8,
+  .nn = 100,
+  .m = 50,
+  .n = 50,
+  .k = 10,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
 
 **Parameters:**
 - `.m` - Number of white balls in urn
-- `.n_param` - Number of black balls in urn
+- `.n` - Number of black balls in urn
 - `.k` - Number of balls drawn
 
 **Properties:**
@@ -271,16 +280,16 @@ random_hypergeometric_walk(
 random_hypergeometric_walk(
   .num_walks = 10,
   .m = 50,      # 50 white balls
-  .n_param = 50,  # 50 black balls
+  .n = 50,  # 50 black balls
   .k = 10       # Draw 10 balls
 ) |> visualize_walks()
 
 # Quality inspection
 inspection <- random_hypergeometric_walk(
   .num_walks = 100,
-  .n = 50,
+  .nn = 50,
   .m = 5,        # 5 defective items
-  .n_param = 95,   # 95 good items
+  .n = 95,       # 95 good items
   .k = 10        # Sample 10 items
 )
 
@@ -300,9 +309,12 @@ Random walk with multiple outcome categories.
 random_multinomial_walk(
   .num_walks = 25,
   .n = 100,
-  .size = 10,
-  .prob = c(0.3, 0.4, 0.3),
+  .size = 3,
+  .prob = rep(1/3, .n),
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -327,8 +339,9 @@ random_multinomial_walk(
 # Dice rolling (6 outcomes)
 random_multinomial_walk(
   .num_walks = 10,
-  .size = 100,  # Roll 100 times
-  .prob = rep(1/6, 6)  # Fair die
+  .n = 100,  # Roll 100 times
+  .size = 1,  # One die per roll
+  .prob = rep(1/6, 100)  # Fair die
 ) |> visualize_walks()
 
 # Market share simulation
@@ -336,7 +349,7 @@ market_share <- random_multinomial_walk(
   .num_walks = 50,
   .n = 52,  # Weekly for a year
   .size = 1000,  # Total customers
-  .prob = c(0.4, 0.35, 0.25)  # Three competitors
+  .prob = rep(c(0.2, 0.2, 0.35, 0.25), 13)  # Three competitors
 )
 
 market_share |> visualize_walks()
@@ -353,10 +366,13 @@ Random walk based on negative binomial (number of failures before r successes).
 random_negbinomial_walk(
   .num_walks = 25,
   .n = 100,
-  .size = 10,
+  .size = 1,
   .prob = 0.5,
   .mu = NULL,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -415,6 +431,9 @@ random_poisson_walk(
   .n = 100,
   .lambda = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -456,7 +475,7 @@ arrivals <- random_poisson_walk(
 )
 
 arrivals |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number) |>
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number) |>
   summarize(
     avg_daily_calls = mean(max_val),
     max_daily_calls = max(max_val),
@@ -476,15 +495,18 @@ random_wilcox_walk(
   .num_walks = 25,
   .n = 100,
   .m = 10,
-  .n_param = 10,
+  .k = 10,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
 
 **Parameters:**
 - `.m` - Number of observations in first group
-- `.n_param` - Number of observations in second group
+- `.k` - Number of observations in second group
 
 **Use Cases:**
 - Nonparametric hypothesis testing
@@ -496,7 +518,7 @@ random_wilcox_walk(
 random_wilcox_walk(
   .num_walks = 10,
   .m = 20,
-  .n_param = 20
+  .k = 10
 ) |> visualize_walks()
 ```
 
@@ -508,15 +530,19 @@ Random walk based on Wilcoxon signed rank statistic.
 ```r
 random_wilcoxon_sr_walk(
   .num_walks = 25,
-  .n = 100,
-  .n_param = 10,
+  .nn = 100,
+  .n = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
 
 **Parameters:**
-- `.n_param` - Number of observations
+- `.nn` - Number of observations
+- `.n`  - Integer or vector. Number(s) of observations in the sample(s) for rsignrank. Default is 1.
 
 **Use Cases:**
 - Paired samples testing
@@ -527,7 +553,7 @@ random_wilcoxon_sr_walk(
 ```r
 random_wilcoxon_sr_walk(
   .num_walks = 10,
-  .n_param = 20
+  .n= 20
 ) |> visualize_walks()
 ```
 
@@ -542,14 +568,21 @@ Random walk based on Kolmogorov-Smirnov statistic distribution.
 random_smirnov_walk(
   .num_walks = 25,
   .n = 100,
-  .n_param = 10,
+  .sizes = c(1, 1),
+  .z = NULL,
+  .alternative = "two.sided",
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
 
 **Parameters:**
-- `.n_param` - Sample size
+- `.sizes` - 	A numeric vector of length 2 specifying the sizes parameter for rsmirnov. Default is c(1, 1).
+- `.z`     -  Optional numeric vector for the z parameter in rsmirnov. Default is NULL.
+- `.alternative` - One of "two.sided" (default), "less", or "greater". Indicates the type of test statistic. 
 
 **Use Cases:**
 - Goodness-of-fit testing
@@ -560,7 +593,7 @@ random_smirnov_walk(
 ```r
 random_smirnov_walk(
   .num_walks = 10,
-  .n_param = 50
+  .sizes = c(5,10)
 ) |> visualize_walks()
 ```
 
@@ -610,7 +643,7 @@ traffic <- random_poisson_walk(
 )
 
 traffic |>
-  summarize_walks(.value = cum_sum) |>
+  summarize_walks(.value = cum_sum_y) |>
   pull(max_val) |>
   mean()  # Total annual views
 ```
@@ -621,9 +654,9 @@ traffic |>
 # Defect sampling (Hypergeometric)
 quality <- random_hypergeometric_walk(
   .num_walks = 1000,
-  .n = 50,  # 50 inspections
+  .nn = 50,  # 50 inspections
   .m = 10,   # 10 defective in lot
-  .n_param = 90,  # 90 good in lot
+  .n = 90,  # 90 good in lot
   .k = 5     # Sample 5 items
 )
 
