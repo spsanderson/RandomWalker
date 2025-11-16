@@ -131,8 +131,7 @@ Standard Brownian motion (Wiener process) - the foundation of stochastic calculu
 brownian_motion(
   .num_walks = 25,
   .n = 100,
-  .mu = 0,
-  .sigma = 1,
+  .delta_time = 1,
   .initial_value = 0,
   .dimensions = 1
 )
@@ -162,8 +161,7 @@ brownian_motion(.num_walks = 10) |>
 brownian_motion(
   .num_walks = 50,
   .n = 252,
-  .mu = 0.05,
-  .sigma = 0.2,
+  .delta_time = 0.05,
   .initial_value = 100
 ) |> visualize_walks(.alpha = 0.3)
 ```
@@ -178,8 +176,9 @@ geometric_brownian_motion(
   .num_walks = 25,
   .n = 100,
   .mu = 0,
-  .sigma = 1,
+  .sigma = 0.1,
   .initial_value = 100,
+  .delta_time = 0.003,
   .dimensions = 1
 )
 ```
@@ -221,7 +220,7 @@ stock_sim |> visualize_walks(.alpha = 0.1)
 
 # Analyze outcomes
 stock_sim |>
-  summarize_walks(.value = cum_prod, .group_var = walk_number) |>
+  summarize_walks(.value = cum_prod_y, .group_var = walk_number) |>
   summarize(
     median_price = median(max_val),
     prob_profit = mean(max_val > 100),
@@ -240,10 +239,13 @@ Random walk based on the beta distribution (bounded between 0 and 1).
 random_beta_walk(
   .num_walks = 25,
   .n = 100,
-  .shape1 = 1,
-  .shape2 = 1,
+  .shape1 = 2,
+  .shape2 = 2,
   .ncp = 0,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -309,6 +311,9 @@ random_cauchy_walk(
   .location = 0,
   .scale = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -359,9 +364,12 @@ Random walk based on chi-squared distribution (always positive).
 random_chisquared_walk(
   .num_walks = 25,
   .n = 100,
-  .df = 1,
+  .df = 5,
   .ncp = 0,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -406,6 +414,9 @@ random_exponential_walk(
   .n = 100,
   .rate = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -451,10 +462,13 @@ Random walk based on F-distribution (ratio of chi-squared variables).
 random_f_walk(
   .num_walks = 25,
   .n = 100,
-  .df1 = 1,
-  .df2 = 1,
-  .ncp = 0,
+  .df1 = 5,
+  .df2 = 5,
+  .ncp = NULL,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -487,9 +501,12 @@ random_gamma_walk(
   .num_walks = 25,
   .n = 100,
   .shape = 1,
-  .rate = 1,
-  .scale = 1/rate,
+  .scale = 1,
+  .rate = NULL,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -535,6 +552,9 @@ random_lognormal_walk(
   .meanlog = 0,
   .sdlog = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -574,6 +594,9 @@ random_logistic_walk(
   .location = 0,
   .scale = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -600,9 +623,12 @@ Random walk with t-distribution (adjustable tail heaviness).
 random_t_walk(
   .num_walks = 25,
   .n = 100,
-  .df = 1,
-  .ncp = 0,
+  .df = 5,
   .initial_value = 0,
+  .ncp = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -647,6 +673,9 @@ random_uniform_walk(
   .min = 0,
   .max = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
@@ -686,6 +715,9 @@ random_weibull_walk(
   .shape = 1,
   .scale = 1,
   .initial_value = 0,
+  .samp = TRUE,
+  .replace = TRUE,
+  .sample_size = 0.8,
   .dimensions = 1
 )
 ```
