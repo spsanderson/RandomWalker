@@ -21,6 +21,8 @@ navbar:
       menu:
         - text: "Home Wiki"
           href: articles/home.html
+        - text: "Basic Concepts"
+          href: articles/basic-concepts.html
         - text: "API Reference"
           href: articles/api-reference.html
         - text: "Automatic Random Walks"
