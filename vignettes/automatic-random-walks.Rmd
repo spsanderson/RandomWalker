@@ -76,12 +76,8 @@ rw30()
 - `walk_number`: Factor (1-30) identifying each walk
 - `step_number`: Integer (1-100) for each step
 - `y`: The random walk values
-- `cum_sum`: Cumulative sum
-- `cum_prod`: Cumulative product
-- `cum_min`: Cumulative minimum
-- `cum_max`: Cumulative maximum
-- `cum_mean`: Cumulative mean
 
+*Note: Cumulative columns such as `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, and `cum_mean` are not included by default. You can add them using `rand_walk_helper()` or tidyverse operations if needed.*
 ## Understanding the Output
 
 ### Walk Structure
