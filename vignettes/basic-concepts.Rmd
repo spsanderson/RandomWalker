@@ -111,11 +111,8 @@ Continuous-time random walk:
 ```{r brownian_motion}
 brownian_motion(
   .num_walks = 10,
-  .mu = 0,      # Drift
-  .sigma = 1    # Volatility
+  .delta_time = 1
 ) |> head(10)
-```
-
 **Properties:**
 - Continuous in time
 - Normally distributed increments
