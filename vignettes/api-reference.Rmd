@@ -464,7 +464,7 @@ Calculate confidence interval for a vector.
 
 **Parameters:**
 - `.x`: Numeric vector
-- `.alpha`: Significance level (default: 0.05 for 95% CI)
+- `.interval`: Confidence level (default: 0.95 for 95% CI)
 
 **Returns:** Tibble with columns:
 - `mean`: Mean value
