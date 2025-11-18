@@ -2,9 +2,10 @@ pandoc: 3.6.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  api-reference: api-reference.html
   getting-started: getting-started.html
   home: home.html
-last_built: 2025-11-18T13:35Z
+last_built: 2025-11-18T14:15Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles
