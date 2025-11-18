@@ -20,6 +20,7 @@ library(RandomWalker)
 
 ```{r logo, echo=FALSE, out.width="147px", out.height="170px"}
 knitr::include_graphics(system.file("man/figures/logo.png", package = "RandomWalker"))
+```
 
 Welcome to the **RandomWalker** Wiki! This comprehensive guide will help you master the RandomWalker R package for generating, visualizing, and analyzing random walks.
 
