@@ -21,6 +21,8 @@ navbar:
       menu:
         - text: "Home Wiki"
           href: articles/home.html
+        - text: "API Reference"
+          href: articles/api-reference.html
 
 reference:
   -  title: Automatic Random Walks
