@@ -390,7 +390,7 @@ walks <- rw30()
 # Show that mean displacement is zero
 walks |>
   group_by(step_number) |>
-  summarize(mean_position = mean(cum_sum)) |>
+  summarize(mean_position = mean(y)) |>
   ggplot(aes(x = step_number, y = mean_position)) +
   geom_line(color = "blue", linewidth = 1) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
