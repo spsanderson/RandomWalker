@@ -94,7 +94,7 @@ Steps have a non-zero mean (bias in one direction):
 ```{r drift_walk}
 random_normal_drift_walk(
   .num_walks = 10,
-  .mu = 0.1  # Positive drift
+  .drift = 0.1  # Positive drift
 ) |> head(10)
 ```
 
