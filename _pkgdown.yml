@@ -16,6 +16,11 @@ navbar:
       href: reference/index.html
     - text: "News"
       href: news/index.html
+    - text: "Articles"
+      href: articles/index.html
+      menu:
+        - text: "Home Wiki"
+          href: articles/home.html
 
 reference:
   -  title: Automatic Random Walks
