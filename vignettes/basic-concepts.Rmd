@@ -113,6 +113,8 @@ brownian_motion(
   .num_walks = 10,
   .delta_time = 1
 ) |> head(10)
+```
+
 **Properties:**
 - Continuous in time
 - Normally distributed increments
@@ -426,7 +428,7 @@ walks <- random_normal_walk(.num_walks = 100, .n = 100)
 # Find walks ending near 10
 similar_end <- walks |>
   group_by(walk_number) |>
-  filter(step_number == 80, abs(cum_sum_y - 10) < 1)
+  filter(step_number == 80, abs(cum_sum_y - 1) < 0.5)
 
 # Plot their paths - very different!
 walks |>

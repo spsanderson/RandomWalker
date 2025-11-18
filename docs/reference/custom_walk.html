@@ -28,6 +28,7 @@ create random walks with any type of step distribution."><meta property="og:imag
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/home.html">Home Wiki</a></li>
+    <li><a class="dropdown-item" href="../articles/basic-concepts.html">Basic Concepts</a></li>
     <li><a class="dropdown-item" href="../articles/api-reference.html">API Reference</a></li>
     <li><a class="dropdown-item" href="../articles/automatic-random-walks.html">Automatic Random Walks</a></li>
   </ul></li>
@@ -179,21 +180,21 @@ setting for further analysis and visualization.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">custom_walk</span><span class="op">(</span>.n <span class="op">=</span> <span class="fl">50</span>, .num_walks <span class="op">=</span> <span class="fl">3</span>, .dimensions <span class="op">=</span> <span class="fl">2</span>, .custom_fns <span class="op">=</span> <span class="va">biased_displacement</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    walk_number step_number      x       y cum_sum_x cum_prod_x cum_min_x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1                     1 -<span style="color: #BB0000;">0.130</span>  0.071<span style="text-decoration: underline;">5</span>    -<span style="color: #BB0000;">0.130</span>          0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1                     2  1.66   0.057<span style="text-decoration: underline;">1</span>     1.53           0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1                     3  0.171  1.47       1.70           0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1                     4  0.229 -<span style="color: #BB0000;">0.126</span>      1.93           0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1                     5  1.82   1.62       3.74           0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1                     6  0.561 -<span style="color: #BB0000;">1.45</span>       4.30           0    -<span style="color: #BB0000;">0.130</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1                     7 -<span style="color: #BB0000;">1.17</span>   0.685      3.14           0    -<span style="color: #BB0000;">1.17</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1                     8 -<span style="color: #BB0000;">0.587</span>  0.224      2.55           0    -<span style="color: #BB0000;">1.17</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1                     9 -<span style="color: #BB0000;">0.346</span>  0.316      2.21           0    -<span style="color: #BB0000;">1.17</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1                    10  1.32   0.480      3.53           0    -<span style="color: #BB0000;">1.17</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    walk_number step_number      x       y cum_sum_x cum_sum_y cum_prod_x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1                     1 -<span style="color: #BB0000;">0.130</span>  0.071<span style="text-decoration: underline;">5</span>    -<span style="color: #BB0000;">0.130</span>    0.071<span style="text-decoration: underline;">5</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1                     2  1.66   0.057<span style="text-decoration: underline;">1</span>     1.53     0.129           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1                     3  0.171  1.47       1.70     1.60            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1                     4  0.229 -<span style="color: #BB0000;">0.126</span>      1.93     1.47            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1                     5  1.82   1.62       3.74     3.09            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1                     6  0.561 -<span style="color: #BB0000;">1.45</span>       4.30     1.64            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1                     7 -<span style="color: #BB0000;">1.17</span>   0.685      3.14     2.32            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1                     8 -<span style="color: #BB0000;">0.587</span>  0.224      2.55     2.55            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1                     9 -<span style="color: #BB0000;">0.346</span>  0.316      2.21     2.86            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1                    10  1.32   0.480      3.53     3.34            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: cum_max_x &lt;dbl&gt;, cum_mean_x &lt;dbl&gt;, cum_sum_y &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cum_prod_y &lt;dbl&gt;, cum_min_y &lt;dbl&gt;, cum_max_y &lt;dbl&gt;, cum_mean_y &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: cum_prod_y &lt;dbl&gt;, cum_min_x &lt;dbl&gt;, cum_min_y &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   cum_max_x &lt;dbl&gt;, cum_max_y &lt;dbl&gt;, cum_mean_x &lt;dbl&gt;, cum_mean_y &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
