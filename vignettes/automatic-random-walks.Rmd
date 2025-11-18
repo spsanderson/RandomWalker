@@ -1,0 +1,500 @@
+---
+title: "Automatic Random Walks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Automatic Random Walks}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4
+)
+```
+
+```{r setup, echo=FALSE, message=FALSE}
+library(RandomWalker)
+library(dplyr)
+library(ggplot2)
+```
+
+The simplest way to generate random walks with RandomWalker is using the automatic function `rw30()`.
+
+## Overview
+
+RandomWalker provides `rw30()` as a quick way to generate random walks without specifying any parameters. This is perfect for:
+
+- Quick demonstrations
+- Learning and teaching
+- Prototyping
+- Exploratory analysis
+
+## The rw30() Function
+
+### Basic Usage
+
+```{r basic_usage}
+# Generate 30 random walks
+walks <- rw30()
+
+# View the data
+head(walks, 10)
+```
+
+### What rw30() Does
+
+The `rw30()` function:
+1. Generates **30 random walks**
+2. Each with **100 steps**
+3. Using **normal distribution** (mean = 0, sd = 1)
+4. Starting at **0**
+5. Returns a **tidy tibble**
+
+It's equivalent to:
+```{r equivalent, eval=FALSE}
+random_normal_walk(
+  .num_walks = 30,
+  .n = 100,
+  .mu = 0,
+  .sd = 1,
+  .initial_value = 0,
+  .dimensions = 1
+)
+```
+
+### Output Structure
+
+```{r output_structure}
+rw30()
+```
+
+**Columns:**
+- `walk_number`: Factor (1-30) identifying each walk
+- `step_number`: Integer (1-100) for each step
+- `y`: The random walk values
+- `cum_sum`: Cumulative sum
+- `cum_prod`: Cumulative product
+- `cum_min`: Cumulative minimum
+- `cum_max`: Cumulative maximum
+- `cum_mean`: Cumulative mean
+
+## Understanding the Output
+
+### Walk Structure
+
+Each walk consists of 100 steps:
+```{r walk_structure}
+walks <- rw30()
+
+# Count steps per walk
+walks |>
+  group_by(walk_number) |>
+  summarize(n_steps = n()) |>
+  head()
+```
+
+### Random Walk Behavior
+
+Since steps are drawn from N(0,1):
+```{r behavior}
+# Mean of steps should be ≈ 0
+mean(walks$y)
+
+# Standard deviation
+sd(walks$y)
+
+# Final positions vary widely
+walks |>
+  group_by(walk_number) |>
+  slice_max(step_number) |>
+  pull(y) |>
+  range()
+```
+
+### Attributes
+
+The function stores metadata:
+```{r attributes}
+walks <- rw30()
+atb <- attributes(walks)
+atb[!names(atb) %in% c("row.names", "class")]
+```
+
+## Common Usage Patterns
+
+### Pattern 1: Quick Visualization
+
+```{r pattern1_viz}
+# One line to plot
+rw30() |> visualize_walks()
+```
+
+```{r pattern1_interactive, eval=FALSE}
+# Interactive exploration
+rw30() |> visualize_walks(.interactive = TRUE)
+```
+
+### Pattern 2: Statistical Analysis
+
+```{r pattern2_stats}
+# Overall statistics
+rw30() |> summarize_walks(.value = y) |>
+  head()
+
+# By walk
+rw30() |>
+  summarize_walks(.value = y, .group_var = walk_number) |>
+  head(10)
+```
+
+```{r pattern2_custom}
+# Custom analysis
+rw30() |>
+  group_by(walk_number) |>
+  summarize(
+    final_value = last(y),
+    max_value = max(y),
+    min_value = min(y),
+    volatility = sd(y)
+  ) |>
+  head(10)
+```
+
+### Pattern 3: Finding Extremes
+
+```{r pattern3_extremes}
+# Walk that went highest
+max_walk <- rw30() |>
+  subset_walks(.value = "y", .type = "max")
+
+# Walk that went lowest
+min_walk <- rw30() |>
+  subset_walks(.value = "y", .type = "min")
+
+# Visualize extremes
+max_walk |> visualize_walks()
+```
+
+### Pattern 4: Filtering and Subsetting
+
+```{r pattern4_filtering}
+walks <- rw30()
+
+# Get only first 10 walks
+walks |>
+  filter(walk_number %in% as.character(1:10)) |>
+  visualize_walks()
+```
+
+```{r pattern4_steps}
+# Get steps 50-100 only
+walks |>
+  filter(step_number >= 50) |>
+  visualize_walks()
+```
+
+### Pattern 5: Teaching Demonstrations
+
+```{r pattern5_teaching}
+# Show variability
+walks <- rw30()
+
+# Distribution of final positions
+walks |>
+  group_by(walk_number) |>
+  slice_max(step_number) |>
+  ggplot(aes(x = y)) +
+  geom_histogram(bins = 15, fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Final Positions",
+    subtitle = "30 random walks, 100 steps each",
+    x = "Final Position",
+    y = "Count"
+  )
+```
+
+### Pattern 6: Comparing to Theory
+
+```{r pattern6_theory}
+# Test if variance grows linearly with steps
+walks <- rw30()
+
+variance_by_step <- walks |>
+  group_by(step_number) |>
+  reframe(
+    variance = var(y),
+    theoretical = step_number  # For N(0,1), var = n
+  )
+
+ggplot(variance_by_step, aes(x = step_number)) +
+  geom_line(aes(y = variance, color = "Observed"), linewidth = 1) +
+  geom_line(aes(y = theoretical, color = "Theoretical"), linewidth = 1, linetype = "dashed") +
+  scale_color_manual(values = c("Observed" = "blue", "Theoretical" = "red")) +
+  theme_minimal() +
+  labs(
+    title = "Variance Growth in Random Walk",
+    subtitle = "Observed vs Theoretical (Var = n)",
+    x = "Step Number",
+    y = "Variance",
+    color = ""
+  )
+```
+
+## When to Use rw30()
+
+### ✅ Use rw30() When:
+
+- **Learning**: First time using RandomWalker
+- **Demos**: Quick demonstrations
+- **Teaching**: Showing random walk concepts
+- **Prototyping**: Testing visualization or analysis code
+- **Exploratory**: Quick data exploration
+
+### ❌ Don't Use rw30() When:
+
+- **Custom parameters needed**: Use `random_normal_walk()` instead
+- **Different distribution**: Use specific generator functions
+- **Different number of walks**: rw30() always generates 30
+- **Multi-dimensional**: rw30() is 1D only
+- **Production code**: Use explicit generator functions for clarity
+
+## Limitations
+
+### Fixed Parameters
+
+`rw30()` has no parameters, which means:
+
+```{r limitations_params, eval=FALSE}
+# ❌ Can't change number of walks
+# rw30(.num_walks = 50)  # Error!
+
+# ✅ Use random_normal_walk() instead
+random_normal_walk(.num_walks = 50)
+
+# ❌ Can't change number of steps
+# rw30(.n = 200)  # Error!
+
+# ✅ Use random_normal_walk() instead
+random_normal_walk(.n = 200)
+
+# ❌ Can't change distribution parameters
+# rw30(.mu = 0.1)  # Error!
+
+# ✅ Use random_normal_walk() instead
+random_normal_walk(.mu = 0.1)
+```
+
+### Only Normal Distribution
+
+`rw30()` uses normal distribution exclusively:
+
+```{r limitations_dist, eval=FALSE}
+# ❌ Can't use other distributions
+# rw30(.distribution = "cauchy")  # Not possible!
+
+# ✅ Use specific generator functions
+random_cauchy_walk(.num_walks = 30)
+geometric_brownian_motion(.num_walks = 30)
+discrete_walk(.num_walks = 30)
+```
+
+### Only 1D
+
+`rw30()` generates 1D walks only:
+
+```{r limitations_dim, eval=FALSE}
+# ❌ Can't create 2D walks
+# rw30(.dimensions = 2)  # Error!
+
+# ✅ Use random_normal_walk()
+random_normal_walk(.num_walks = 30, .dimensions = 2)
+```
+
+## Alternatives to rw30()
+
+When `rw30()` doesn't fit your needs:
+
+### For Custom Parameters
+
+```{r alternatives_custom, eval=FALSE}
+# Instead of rw30()
+random_normal_walk(
+  .num_walks = 30,
+  .n = 100,
+  .mu = 0,
+  .sd = 1,
+  .initial_value = 0
+)
+
+# With custom parameters
+random_normal_walk(
+  .num_walks = 50,
+  .n = 200,
+  .mu = 0.05,
+  .sd = 0.5,
+  .initial_value = 100
+)
+```
+
+### For Different Distributions
+
+```{r alternatives_dist, eval=FALSE}
+# Geometric Brownian Motion (like rw30 but for stocks)
+geometric_brownian_motion(
+  .num_walks = 30,
+  .n = 100,
+  .initial_value = 100
+)
+
+# Heavy-tailed walks
+random_cauchy_walk(
+  .num_walks = 30,
+  .n = 100
+)
+
+# Discrete walks
+discrete_walk(
+  .num_walks = 30,
+  .n = 100
+)
+```
+
+### For Multi-Dimensional
+
+```{r alternatives_multidim, eval=FALSE}
+# 2D walks
+random_normal_walk(
+  .num_walks = 30,
+  .n = 100,
+  .dimensions = 2
+)
+
+# 3D walks
+random_normal_walk(
+  .num_walks = 30,
+  .n = 100,
+  .dimensions = 3
+)
+```
+
+## Complete Examples
+
+### Example 1: Teaching Random Walk Properties
+
+```{r example1_mean}
+# Generate walks
+walks <- rw30()
+
+# Show that mean displacement is zero
+walks |>
+  group_by(step_number) |>
+  summarize(mean_position = mean(cum_sum)) |>
+  ggplot(aes(x = step_number, y = mean_position)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  theme_minimal() +
+  labs(
+    title = "Mean Position Over Time",
+    subtitle = "Averages to zero (red line)",
+    x = "Step",
+    y = "Mean Position"
+  )
+```
+
+```{r example1_sd}
+# Show that standard deviation grows as sqrt(n)
+walks |>
+  group_by(step_number) |>
+  reframe(
+    sd_position = sd(cum_sum),
+    theoretical = sqrt(step_number)
+  ) |>
+  ungroup() |>
+  ggplot(aes(x = step_number)) +
+  geom_line(aes(y = sd_position, color = "Observed"), linewidth = 1) +
+  geom_line(aes(y = theoretical, color = "Theoretical"), linewidth = 1, linetype = "dashed") +
+  scale_color_manual(values = c("Observed" = "blue", "Theoretical" = "red")) +
+  theme_minimal() +
+  labs(
+    title = "Standard Deviation Growth",
+    subtitle = "Should follow sqrt(n) (red dashed line)",
+    x = "Step",
+    y = "Standard Deviation",
+    color = ""
+  )
+```
+
+### Example 2: First Passage Time
+
+```{r example2_passage}
+# Find when walks first cross a threshold
+walks <- rw30()
+
+first_crossing <- walks |>
+  group_by(walk_number) |>
+  filter(cum_sum >= 5) |>
+  slice_min(step_number, n = 1) |>
+  select(walk_number, first_crossing_time = step_number)
+
+# Some walks may never cross
+n_crossed <- nrow(first_crossing)
+cat(sprintf("%d out of 30 walks crossed 5\n", n_crossed))
+
+# Distribution of first crossing times
+if (n_crossed > 0) {
+  ggplot(first_crossing, aes(x = first_crossing_time)) +
+    geom_histogram(bins = 20, fill = "steelblue", alpha = 0.7) +
+    theme_minimal() +
+    labs(
+      title = "First Passage Time Distribution",
+      subtitle = "Time to first cross level 5",
+      x = "Step Number",
+      y = "Count"
+    )
+}
+```
+
+### Example 3: Maximum Excursion
+
+```{r example3_excursion}
+# Find maximum distance from origin
+walks <- rw30()
+
+max_excursion <- walks |>
+  group_by(walk_number) |>
+  summarize(
+    max_positive = max(cum_sum),
+    max_negative = min(cum_sum),
+    max_excursion = max(abs(cum_sum))
+  )
+
+# Visualize
+max_excursion |>
+  ggplot(aes(x = max_excursion)) +
+  geom_histogram(bins = 15, fill = "steelblue", alpha = 0.7) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Maximum Excursions",
+    subtitle = "Maximum absolute distance from origin",
+    x = "Maximum Excursion",
+    y = "Count"
+  )
+```
+
+## Next Steps
+
+Once you're comfortable with `rw30()`, explore:
+
+- **Getting Started Guide** - Learn more random walk functions with `vignette("getting-started")`
+- **Function Reference** - Explore all distributions at the [package website](https://www.spsanderson.com/RandomWalker/reference/index.html)
+- **Home Wiki** - Learn about visualization and statistical analysis with `vignette("home")`
+
+---
+
+**Ready for more control?** Check out the function reference for customizable random walks!

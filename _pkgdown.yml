@@ -23,6 +23,8 @@ navbar:
           href: articles/home.html
         - text: "API Reference"
           href: articles/api-reference.html
+        - text: "Automatic Random Walks"
+          href: articles/automatic-random-walks.html
 
 reference:
   -  title: Automatic Random Walks
