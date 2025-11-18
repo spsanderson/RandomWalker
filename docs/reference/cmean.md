@@ -21,8 +21,8 @@ A numeric vector
 ## Details
 
 A function to return the cumulative mean of a vector. It uses
-[`dplyr::cummean()`](https://rdrr.io/pkg/dplyr/man/cumall.html) as the
-basis of the function.
+[`dplyr::cummean()`](https://dplyr.tidyverse.org/reference/cumall.html)
+as the basis of the function.
 
 ## See also
 

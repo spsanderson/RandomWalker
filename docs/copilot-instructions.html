@@ -23,6 +23,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="articles/home.html">Home Wiki</a></li>
     <li><a class="dropdown-item" href="articles/api-reference.html">API Reference</a></li>
+    <li><a class="dropdown-item" href="articles/automatic-random-walks.html">Automatic Random Walks</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json"></form></li>
@@ -85,7 +86,7 @@
 <ol style="list-style-type: decimal"><li>
 <p><strong>Document Functions</strong> (ALWAYS required after function changes):</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/document.html" class="external-link">document</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">document</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul><li>Generates man/ documentation files from roxygen2 comments</li>
 <li>Updates NAMESPACE file with exports/imports</li>
 <li>Must be run after any function signature or documentation changes</li>
@@ -113,7 +114,7 @@
 <li>
 <p><strong>Install Locally</strong> (for testing):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </li>
 </ol></div>
 <div class="section level3">
@@ -121,7 +122,7 @@
 <p><strong>README Generation</strong> (ALWAYS update README.Rmd, not README.md):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Edit README.Rmd, then generate README.md</span></span>
-<span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rmarkdown/man/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"README.Rmd"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"README.Rmd"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Website Generation</strong> (after significant changes):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pkgdown/man/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -132,19 +133,19 @@
 <div class="section level3">
 <h3 id="testing-and-validation">Testing and Validation<a class="anchor" aria-label="anchor" href="#testing-and-validation"></a></h3>
 <p><strong>Note</strong>: This package currently has no formal test suite (no tests/ directory).</p>
-<p><strong>Manual Testing Approach</strong>: 1. Load the package: <code><a href="https://rdrr.io/pkg/devtools/man/load_all.html" class="external-link">devtools::load_all()</a></code> 2. Test core functions manually: ```r library(RandomWalker)</p>
+<p><strong>Manual Testing Approach</strong>: 1. Load the package: <code><a href="https://devtools.r-lib.org/reference/load_all.html" class="external-link">devtools::load_all()</a></code> 2. Test core functions manually: ```r library(RandomWalker)</p>
 <p># Test basic functionality result &lt;- rw30() head(result, 10)</p>
 <p># Test visualization result |&gt; visualize_walks()</p>
 <p># Test summary functions result |&gt; summarize_walks(.value = y) ```</p>
 <p><strong>Example Validation</strong> (ALWAYS run examples after changes):</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/run_examples.html" class="external-link">run_examples</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/run_examples.html" class="external-link">run_examples</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="common-build-issues-and-solutions">Common Build Issues and Solutions<a class="anchor" aria-label="anchor" href="#common-build-issues-and-solutions"></a></h3>
 <p><strong>Issue</strong>: “Non-ASCII characters in R code” - <strong>Solution</strong>: Ensure all R files use UTF-8 encoding - Check with: <code>tools::showNonASCII(readLines("R/filename.R"))</code></p>
 <p><strong>Issue</strong>: “Undeclared global variables” - <strong>Solution</strong>: Add variables to <code>R/00_global_variables.R</code> - Pattern: <code>globalVariables(c("variable_name"))</code></p>
-<p><strong>Issue</strong>: Documentation not updating - <strong>Solution</strong>: Delete man/ files and run <code><a href="https://rdrr.io/pkg/devtools/man/document.html" class="external-link">devtools::document()</a></code> again - Ensure roxygen2 comments use proper format</p>
+<p><strong>Issue</strong>: Documentation not updating - <strong>Solution</strong>: Delete man/ files and run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> again - Ensure roxygen2 comments use proper format</p>
 </div>
 </div>
 <div class="section level2">
@@ -191,7 +192,7 @@
 <div class="section level3">
 <h3 id="validation-and-continuous-integration">Validation and Continuous Integration<a class="anchor" aria-label="anchor" href="#validation-and-continuous-integration"></a></h3>
 <p><strong>No Automated CI</strong>: This repository has no GitHub Actions or automated testing.</p>
-<p><strong>Manual Validation Steps</strong>: 1. <code><a href="https://rdrr.io/pkg/devtools/man/check.html" class="external-link">devtools::check()</a></code> must pass with 0 errors, 0 warnings 2. All examples must run without errors 3. README.Rmd must knit successfully 4. Visual inspection of plots from <code><a href="reference/visualize_walks.html">visualize_walks()</a></code></p>
+<p><strong>Manual Validation Steps</strong>: 1. <code><a href="https://devtools.r-lib.org/reference/check.html" class="external-link">devtools::check()</a></code> must pass with 0 errors, 0 warnings 2. All examples must run without errors 3. README.Rmd must knit successfully 4. Visual inspection of plots from <code><a href="reference/visualize_walks.html">visualize_walks()</a></code></p>
 </div>
 <div class="section level3">
 <h3 id="dependencies-and-integration">Dependencies and Integration<a class="anchor" aria-label="anchor" href="#dependencies-and-integration"></a></h3>
@@ -201,7 +202,7 @@
 <div class="section level3">
 <h3 id="file-change-patterns">File Change Patterns<a class="anchor" aria-label="anchor" href="#file-change-patterns"></a></h3>
 <p><strong>When Adding New Random Walk Functions</strong>: 1. Create new <code>gen-random-{name}-walk.R</code> file 2. Follow existing parameter patterns (<code>.num_walks</code>, <code>.n</code>, etc.) 3. Use <code><a href="reference/rand_walk_helper.html">rand_walk_helper()</a></code> for cumulative columns 4. Add <code>@family Generator Functions</code> and distribution family tags 5. Update <code>_pkgdown.yml</code> reference section if needed</p>
-<p><strong>When Modifying Existing Functions</strong>: 1. ALWAYS maintain backward compatibility 2. Update documentation with <code>@param</code> descriptions 3. Test with existing examples in documentation 4. Regenerate documentation with <code><a href="https://rdrr.io/pkg/devtools/man/document.html" class="external-link">devtools::document()</a></code></p>
+<p><strong>When Modifying Existing Functions</strong>: 1. ALWAYS maintain backward compatibility 2. Update documentation with <code>@param</code> descriptions 3. Test with existing examples in documentation 4. Regenerate documentation with <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code></p>
 <p><strong>When Adding Utility Functions</strong>: 1. Add to appropriate existing file or create new file 2. Use <code>@family Utility Functions</code> tag 3. Export only if intended for end users</p>
 </div>
 </div>

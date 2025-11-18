@@ -111,7 +111,7 @@ pkgdown::build_site()
 directory).
 
 **Manual Testing Approach**: 1. Load the package:
-[`devtools::load_all()`](https://rdrr.io/pkg/devtools/man/load_all.html)
+[`devtools::load_all()`](https://devtools.r-lib.org/reference/load_all.html)
 2. Test core functions manually: \`\`\`r library(RandomWalker)
 
 \# Test basic functionality result \<- rw30() head(result, 10)
@@ -138,7 +138,7 @@ to `R/00_global_variables.R` - Pattern:
 
 **Issue**: Documentation not updating - **Solution**: Delete man/ files
 and run
-[`devtools::document()`](https://rdrr.io/pkg/devtools/man/document.html)
+[`devtools::document()`](https://devtools.r-lib.org/reference/document.html)
 again - Ensure roxygen2 comments use proper format
 
 ## Project Layout and Architecture
@@ -220,9 +220,10 @@ documentation - Include `@family` tags for grouping - Include
 testing.
 
 **Manual Validation Steps**: 1.
-[`devtools::check()`](https://rdrr.io/pkg/devtools/man/check.html) must
-pass with 0 errors, 0 warnings 2. All examples must run without errors
-3. README.Rmd must knit successfully 4. Visual inspection of plots from
+[`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
+must pass with 0 errors, 0 warnings 2. All examples must run without
+errors 3. README.Rmd must knit successfully 4. Visual inspection of
+plots from
 [`visualize_walks()`](https://www.spsanderson.com/RandomWalker/reference/visualize_walks.md)
 
 ### Dependencies and Integration
@@ -248,7 +249,7 @@ needed
 **When Modifying Existing Functions**: 1. ALWAYS maintain backward
 compatibility 2. Update documentation with `@param` descriptions 3. Test
 with existing examples in documentation 4. Regenerate documentation with
-[`devtools::document()`](https://rdrr.io/pkg/devtools/man/document.html)
+[`devtools::document()`](https://devtools.r-lib.org/reference/document.html)
 
 **When Adding Utility Functions**: 1. Add to appropriate existing file
 or create new file 2. Use `@family Utility Functions` tag 3. Export only
