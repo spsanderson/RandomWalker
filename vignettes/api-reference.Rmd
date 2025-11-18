@@ -441,7 +441,7 @@ Extract walks with extreme values.
 **Parameters:**
 - `.data`: Random walk data (tibble)
 - `.value`: Column name to subset by (default: "y")
-- `.subset_type`: Type of subset ("max" or "min")
+- `.type`: Type of subset ("max", "min", or "both")
 
 **Returns:** Tibble containing only the selected walk
 
