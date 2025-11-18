@@ -403,12 +403,12 @@ tibble::tibble(position = final_pos) |>
   ggplot(aes(x = position)) +
   geom_histogram(aes(y = after_stat(density)), bins = 50,
                  fill = "steelblue", alpha = 0.7) +
-  stat_function(fun = dnorm, args = list(mean = 0, sd = 10),
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
                 color = "red", linewidth = 1) +
   theme_minimal() +
   labs(
     title = "Distribution of Final Positions (n=100)",
-    subtitle = "Theoretical N(0, 100) in red",
+    subtitle = "Theoretical N(0, 1) in red",
     x = "Final Position",
     y = "Density"
   )
