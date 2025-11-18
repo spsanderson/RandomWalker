@@ -486,6 +486,7 @@ Calculate running quantile at each position.
 **Parameters:**
 - `.x`: Numeric vector
 - `.probs`: Probability value (0-1)
+- `.window`: Window size (positive integer; number of points to include in each running quantile calculation)
 
 **Returns:** Numeric vector of same length
 
