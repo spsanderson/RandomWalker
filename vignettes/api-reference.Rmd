@@ -467,10 +467,8 @@ Calculate confidence interval for a vector.
 - `.interval`: Confidence level (default: 0.95 for 95% CI)
 
 **Returns:** Tibble with columns:
-- `mean`: Mean value
-- `ci_lower`: Lower confidence bound
-- `ci_upper`: Upper confidence bound
-- `sd`: Standard deviation
+- `lower`: Lower confidence bound
+- `upper`: Upper confidence bound
 
 **Example:**
 ```r
