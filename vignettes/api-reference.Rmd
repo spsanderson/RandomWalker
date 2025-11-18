@@ -448,10 +448,10 @@ Extract walks with extreme values.
 **Examples:**
 ```r
 # Walk with maximum value
-walks |> subset_walks(.value = "y", .type = "max")
+walks |> subset_walks(.type = "max", .value = "y")
 
 # Walk with minimum value
-walks |> subset_walks(.value = "y", .type = "min")
+walks |> subset_walks(.type = "min", .value = "y")
 ```
 
 ---
