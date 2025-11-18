@@ -23,6 +23,8 @@ None
 
 ## RandomWalker 1.0.0
 
+CRAN release: 2025-08-18
+
 ### Breaking Changes
 
 None
@@ -157,6 +159,8 @@ None
 
 ## RandomWalker 0.3.0
 
+CRAN release: 2025-05-06
+
 ### Breaking Changes
 
 1.  Fix
@@ -194,6 +198,8 @@ None
 <https://www.spsanderson.com/steveondata/posts/2025-05-09/>
 
 ## RandomWalker 0.2.0
+
+CRAN release: 2024-10-23
 
 ### Breaking Changes
 
@@ -250,6 +256,8 @@ None
 <https://www.spsanderson.com/steveondata/posts/2024-10-24/>
 
 ## RandomWalker 0.1.0
+
+CRAN release: 2024-09-15
 
 ### Breaking Changes
 

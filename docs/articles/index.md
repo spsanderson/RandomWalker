@@ -4,6 +4,8 @@
 
 - [RandomWalker API
   Reference](https://www.spsanderson.com/RandomWalker/articles/api-reference.md):
+- [Automatic Random
+  Walks](https://www.spsanderson.com/RandomWalker/articles/automatic-random-walks.md):
 - [Getting Started with
   RandomWalker](https://www.spsanderson.com/RandomWalker/articles/getting-started.md):
 - [RandomWalker Wiki -
