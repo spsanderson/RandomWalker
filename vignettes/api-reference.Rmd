@@ -478,7 +478,7 @@ x <- rnorm(1000, mean = 10, sd = 2)
 confidence_interval(x)
 
 # 99% CI
-confidence_interval(x, .interval = 0.01)
+confidence_interval(x, .interval = 0.99)
 ```
 
 ### `running_quantile()`
