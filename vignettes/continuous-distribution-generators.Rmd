@@ -128,6 +128,7 @@ random_normal_drift_walk(
 ```
 
 **Key Difference from `random_normal_walk()`:**
+- `.drift` - Drift term added to each step (default: 0.1)
 - Adds explicit drift term: `drift + random_step`
 - More pronounced trending behavior
 - Better for modeling processes with clear directional movement
