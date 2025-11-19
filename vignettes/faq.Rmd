@@ -72,7 +72,7 @@ install.packages(c("dplyr", "tidyr", "purrr", "rlang", "patchwork", "NNS", "ggir
 
 ### How do I generate a simple random walk?
 
-```{r simple_walk_example, fig.alt="Simple random walk using rw30 function"}
+```{r simple_walk_example}
 library(RandomWalker)
 rw30() |> head(10)  # Generates 30 walks with 100 steps each
 ```
