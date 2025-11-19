@@ -362,7 +362,7 @@ market_share <- random_multinomial_walk(
   .num_walks = 50,
   .n = 52,  # Weekly for a year
   .size = 1000,  # Total customers
-  .prob = rep(c(0.2, 0.2, 0.35, 0.25), 13)  # Three competitors
+  .prob = rep(c(0.2, 0.2, 0.35, 0.25), 13)  # Four competitors
 )
 
 market_share |> visualize_walks()
