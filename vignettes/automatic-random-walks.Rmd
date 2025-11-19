@@ -124,7 +124,7 @@ atb[!names(atb) %in% c("row.names", "class")]
 
 ### Pattern 1: Quick Visualization
 
-```{r pattern1_viz}
+```{r pattern1_viz, fig.alt="Line plot showing 30 random walks over 100 steps each. Each walk is represented by a different colored line starting at zero and fluctuating randomly over time. The x-axis shows step number and the y-axis shows the walk values."}
 # One line to plot
 rw30() |> visualize_walks()
 ```
@@ -162,7 +162,7 @@ rw30() |>
 
 ### Pattern 3: Finding Extremes
 
-```{r pattern3_extremes}
+```{r pattern3_extremes, fig.alt="Line plot showing a single random walk that reached the highest maximum value among 30 walks. The line shows the walk's trajectory from start to finish, highlighting the extreme positive excursion."}
 # Walk that went highest
 max_walk <- rw30() |>
   subset_walks(.value = "y", .type = "max")
@@ -177,7 +177,7 @@ max_walk |> visualize_walks()
 
 ### Pattern 4: Filtering and Subsetting
 
-```{r pattern4_filtering}
+```{r pattern4_filtering, fig.alt="Line plot showing a subset of 10 random walks out of 30, filtered to display only walks numbered 1 through 10. Each walk is shown as a colored line progressing over 100 steps."}
 walks <- rw30()
 
 # Get only first 10 walks
@@ -186,7 +186,7 @@ walks |>
   visualize_walks()
 ```
 
-```{r pattern4_steps}
+```{r pattern4_steps, fig.alt="Line plot showing 30 random walks displaying only steps 50 through 100, showing the latter half of each walk's trajectory. The walks continue from their positions at step 50 rather than starting from zero."}
 # Get steps 50-100 only
 walks |>
   filter(step_number >= 50) |>
@@ -195,7 +195,7 @@ walks |>
 
 ### Pattern 5: Teaching Demonstrations
 
-```{r pattern5_teaching}
+```{r pattern5_teaching, fig.alt="Histogram showing the distribution of final positions from 30 random walks after 100 steps. The distribution is centered around zero (marked by a red dashed vertical line) and shows a roughly bell-shaped spread of final values."}
 # Show variability
 walks <- rw30()
 
@@ -217,7 +217,7 @@ walks |>
 
 ### Pattern 6: Comparing to Theory
 
-```{r pattern6_theory}
+```{r pattern6_theory, fig.alt="Line plot comparing observed variance (blue solid line) versus theoretical variance (red dashed line) as a function of step number. The observed variance closely tracks the theoretical prediction that variance equals the number of steps, demonstrating the sqrt(n) scaling of random walk spread."}
 # Test if variance grows linearly with steps
 walks <- rw30()
 
@@ -383,7 +383,7 @@ random_normal_walk(
 
 ### Example 1: Teaching Random Walk Properties
 
-```{r example1_mean}
+```{r example1_mean, fig.alt="Line plot showing the mean position across all 30 walks as a function of step number. The mean fluctuates around zero (marked by a red dashed horizontal line), demonstrating that random walks have zero expected displacement."}
 # Generate walks
 walks <- rw30()
 
@@ -403,7 +403,7 @@ walks |>
   )
 ```
 
-```{r example1_sd}
+```{r example1_sd, fig.alt="Line plot comparing observed standard deviation (blue solid line) versus theoretical standard deviation (red dashed line) as a function of step number. The observed standard deviation closely follows the theoretical sqrt(n) relationship, demonstrating that random walk spread grows as the square root of time."}
 # Show that standard deviation grows as sqrt(n)
 walks |>
   group_by(step_number) |>
@@ -428,7 +428,7 @@ walks |>
 
 ### Example 2: First Passage Time
 
-```{r example2_passage}
+```{r example2_passage, fig.alt="Histogram showing the distribution of first passage times - the step number at which walks first crossed the threshold value of 5. Only walks that successfully crossed the threshold are included, showing when they first exceeded the boundary."}
 # Find when walks first cross a threshold
 walks <- rw30()
 
@@ -458,7 +458,7 @@ if (n_crossed > 0) {
 
 ### Example 3: Maximum Excursion
 
-```{r example3_excursion}
+```{r example3_excursion, fig.alt="Histogram showing the distribution of maximum excursions - the largest absolute distance each walk reached from the origin during its 100 steps. The distribution shows how far walks typically strayed from their starting point."}
 # Find maximum distance from origin
 walks <- rw30()
 
