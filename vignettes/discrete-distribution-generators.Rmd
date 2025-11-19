@@ -352,7 +352,7 @@ random_multinomial_walk(
   .num_walks = 10,
   .n = 100,  # Roll 100 times
   .size = 1,  # One die per roll
-  .prob = rep(1/6, 100)  # Fair die
+  .prob = rep(1/6, 6)  # Fair die: 6 categories
 ) |> visualize_walks()
 ```
 
