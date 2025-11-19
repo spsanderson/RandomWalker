@@ -158,7 +158,7 @@ my_displacement <- function() {
 custom_walk(
   .num_walks = 10,
   .n = 100,
-  .displacement_fn = my_displacement
+  .custom_fns = my_displacement
 )
 ```
 
