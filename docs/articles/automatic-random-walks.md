@@ -176,7 +176,11 @@ atb[!names(atb) %in% c("row.names", "class")]
 rw30() |> visualize_walks()
 ```
 
-![](automatic-random-walks_files/figure-html/pattern1_viz-1.png)
+![Line plot showing 30 random walks over 100 steps each. Each walk is
+represented by a different colored line starting at zero and fluctuating
+randomly over time. The x-axis shows step number and the y-axis shows
+the walk
+values.](automatic-random-walks_files/figure-html/pattern1_viz-1.png)
 
 ``` r
 # Interactive exploration
@@ -273,7 +277,10 @@ min_walk <- rw30() |>
 max_walk |> visualize_walks()
 ```
 
-![](automatic-random-walks_files/figure-html/pattern3_extremes-1.png)
+![Line plot showing a single random walk that reached the highest
+maximum value among 30 walks. The line shows the walk's trajectory from
+start to finish, highlighting the extreme positive
+excursion.](automatic-random-walks_files/figure-html/pattern3_extremes-1.png)
 
 ### Pattern 4: Filtering and Subsetting
 
@@ -286,7 +293,10 @@ walks |>
   visualize_walks()
 ```
 
-![](automatic-random-walks_files/figure-html/pattern4_filtering-1.png)
+![Line plot showing a subset of 10 random walks out of 30, filtered to
+display only walks numbered 1 through 10. Each walk is shown as a
+colored line progressing over 100
+steps.](automatic-random-walks_files/figure-html/pattern4_filtering-1.png)
 
 ``` r
 # Get steps 50-100 only
@@ -295,7 +305,10 @@ walks |>
   visualize_walks()
 ```
 
-![](automatic-random-walks_files/figure-html/pattern4_steps-1.png)
+![Line plot showing 30 random walks displaying only steps 50 through
+100, showing the latter half of each walk's trajectory. The walks
+continue from their positions at step 50 rather than starting from
+zero.](automatic-random-walks_files/figure-html/pattern4_steps-1.png)
 
 ### Pattern 5: Teaching Demonstrations
 
@@ -319,7 +332,11 @@ walks |>
   )
 ```
 
-![](automatic-random-walks_files/figure-html/pattern5_teaching-1.png)
+![Histogram showing the distribution of final positions from 30 random
+walks after 100 steps. The distribution is centered around zero (marked
+by a red dashed vertical line) and shows a roughly bell-shaped spread of
+final
+values.](automatic-random-walks_files/figure-html/pattern5_teaching-1.png)
 
 ### Pattern 6: Comparing to Theory
 
@@ -348,7 +365,12 @@ ggplot(variance_by_step, aes(x = step_number)) +
   )
 ```
 
-![](automatic-random-walks_files/figure-html/pattern6_theory-1.png)
+![Line plot comparing observed variance (blue solid line) versus
+theoretical variance (red dashed line) as a function of step number. The
+observed variance closely tracks the theoretical prediction that
+variance equals the number of steps, demonstrating that variance grows
+linearly with the number of
+steps.](automatic-random-walks_files/figure-html/pattern6_theory-1.png)
 
 ## When to Use rw30()
 
@@ -518,7 +540,10 @@ walks |>
   )
 ```
 
-![](automatic-random-walks_files/figure-html/example1_mean-1.png)
+![Line plot showing the mean position across all 30 walks as a function
+of step number. The mean fluctuates around zero (marked by a red dashed
+horizontal line), demonstrating that random walks have zero expected
+displacement.](automatic-random-walks_files/figure-html/example1_mean-1.png)
 
 ``` r
 # Show that standard deviation grows as sqrt(n)
@@ -543,7 +568,12 @@ walks |>
   )
 ```
 
-![](automatic-random-walks_files/figure-html/example1_sd-1.png)
+![Line plot comparing observed standard deviation (blue solid line)
+versus theoretical standard deviation (red dashed line) as a function of
+step number. The observed standard deviation closely follows the
+theoretical sqrt(n) relationship, demonstrating that random walk spread
+grows as the square root of
+time.](automatic-random-walks_files/figure-html/example1_sd-1.png)
 
 ### Example 2: First Passage Time
 
@@ -576,7 +606,11 @@ if (n_crossed > 0) {
 }
 ```
 
-![](automatic-random-walks_files/figure-html/example2_passage-1.png)
+![Histogram showing the distribution of first passage times - the step
+number at which walks first crossed the threshold value of 5. Only walks
+that successfully crossed the threshold are included, showing when they
+first exceeded the
+boundary.](automatic-random-walks_files/figure-html/example2_passage-1.png)
 
 ### Example 3: Maximum Excursion
 
@@ -605,7 +639,11 @@ max_excursion |>
   )
 ```
 
-![](automatic-random-walks_files/figure-html/example3_excursion-1.png)
+![Histogram showing the distribution of maximum excursions - the largest
+absolute distance each walk reached from the origin during its 100
+steps. The distribution shows how far walks typically strayed from their
+starting
+point.](automatic-random-walks_files/figure-html/example3_excursion-1.png)
 
 ## Next Steps
 

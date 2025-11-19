@@ -1,6 +1,9 @@
 # RandomWalker Wiki - Home
 
-![](../reference/figures/logo.png)
+![RandomWalker package logo featuring a hexagonal design with abstract
+paths representing random walks, symbolizing the package's functionality
+for generating and analyzing stochastic
+processes.](../reference/figures/logo.png)
 
 Welcome to the **RandomWalker** Wiki! This comprehensive guide will help
 you master the RandomWalker R package for generating, visualizing, and

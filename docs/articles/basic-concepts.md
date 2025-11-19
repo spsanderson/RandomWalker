@@ -39,7 +39,11 @@ coin_walk <- discrete_walk(
 coin_walk |> visualize_walks(.pluck = "cum_sum")
 ```
 
-![](basic-concepts_files/figure-html/coin_flip_example-1.png)
+![Line plot showing a single random walk simulating coin flips over 100
+steps. The walk moves up or down by 1 with equal probability at each
+step, starting from position 0. The x-axis shows the step number and the
+y-axis shows the cumulative sum
+position.](basic-concepts_files/figure-html/coin_flip_example-1.png)
 
 ### Real-World Analogies
 
@@ -479,7 +483,13 @@ tibble::tibble(position = final_pos) |>
   )
 ```
 
-![](basic-concepts_files/figure-html/final_position_dist-1.png)
+![Histogram showing the distribution of final positions for 10,000
+random walks after 100 steps each. The histogram uses blue bars showing
+the empirical density, overlaid with a red curve representing the
+theoretical normal distribution N(0, 1). The distribution is centered
+near 0 with spread approximately 1, demonstrating that final positions
+follow a normal
+distribution.](basic-concepts_files/figure-html/final_position_dist-1.png)
 
 ### Example 3: Path Dependency
 
@@ -502,7 +512,12 @@ walks |>
   visualize_walks(.pluck = "cum_sum", .alpha = 0.5)
 ```
 
-![](basic-concepts_files/figure-html/path_dependency-1.png)
+![Line plot showing multiple random walk trajectories that pass through
+similar positions (near 1 at step 80) but take very different paths.
+Each semi-transparent line shows the complete 100-step trajectory of one
+walk, demonstrating path dependency - walks passing through the same
+point can have very different histories and
+futures.](basic-concepts_files/figure-html/path_dependency-1.png)
 
 ## Next Steps
 

@@ -317,7 +317,7 @@ Asset allocation simulations - Monte Carlo risk analysis</p>
 <code class="sourceCode R"><span><span class="co"># Analyze outcomes</span></span>
 <span><span class="va">stock_sim</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_prod_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span>,</span>
 <span>    prob_profit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">max_val</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span>,</span>
 <span>    prob_loss_50 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">min_val</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span></span>
