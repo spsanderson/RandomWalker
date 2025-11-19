@@ -433,11 +433,10 @@ Random walks are **path-dependent** - the ending doesn't tell you the route:
 
 ```{r path_dependency, fig.width=7, fig.height=4}
 #| fig.alt: >
-#|   Line plot showing multiple random walk trajectories that all end at similar
-#|   positions (near 1 at step 80) but take very different paths to get there.
-#|   Each semi-transparent line represents one walk, demonstrating path dependency -
-#|   walks can reach the same endpoint through vastly different routes. Some walks
-#|   show large excursions above or below the final position before converging.
+#|   Line plot showing multiple random walk trajectories that pass through similar positions
+#|   (near 1 at step 80) but take very different paths. Each semi-transparent line shows the
+#|   complete 100-step trajectory of one walk, demonstrating path dependency - walks passing
+#|   through the same point can have very different histories and futures.
 # Generate walks ending at similar positions
 set.seed(123)
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
