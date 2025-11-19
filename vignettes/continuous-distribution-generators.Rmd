@@ -165,13 +165,13 @@ brownian_motion(
 ```
 
 **Parameters:**
-- `.mu` - Drift coefficient (default: 0)
-- `.sigma` - Volatility coefficient (default: 1)
+- `.num_walks` - Number of walks to generate (default: 25)
+- `.n` - Number of steps per walk (default: 100)
+- `.delta_time` - Time increment per step (default: 1)
+- `.initial_value` - Starting value for each walk (default: 0)
+- `.dimensions` - Number of dimensions (default: 1)
 
 **Mathematical Form:**
-```
-dX(t) = μ dt + σ dW(t)
-```
 
 **Use Cases:**
 - Financial mathematics (Black-Scholes model)
