@@ -30,6 +30,7 @@ RandomWalker provides a comprehensive suite of random walk generators based on c
 - [Common Parameters](#common-parameters)
 - [Normal Distribution](#normal-distribution)
 - [Brownian Motion](#brownian-motion)
+- [Geometric Brownian Motion](#geometric-brownian-motion)
 - [Beta Distribution](#beta-distribution)
 - [Cauchy Distribution](#cauchy-distribution)
 - [Chi-Squared Distribution](#chi-squared-distribution)
