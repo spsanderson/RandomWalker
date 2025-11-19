@@ -33,6 +33,7 @@ also allows for sampling a proportion of the steps and optionally sampling with 
     <li><a class="dropdown-item" href="../articles/basic-concepts.html">Basic Concepts</a></li>
     <li><a class="dropdown-item" href="../articles/api-reference.html">API Reference</a></li>
     <li><a class="dropdown-item" href="../articles/automatic-random-walks.html">Automatic Random Walks</a></li>
+    <li><a class="dropdown-item" href="../articles/continuous-distribution-generators.html">Continuous Distribution Generators</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -214,19 +215,19 @@ Sampling can be performed with or without replacement, and a proportion of steps
 <span class="r-out co"><span class="r-pr">#&gt;</span> y           " 6.251703" " 2.808596" "10.032219" " 2.673512" " 7.037088"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> z           "4.398359"  "4.509466"  "4.602653"  "5.202429"  "2.000208" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_x   " 5.08244"  "10.57383"  "13.31047"  "21.32907"  "29.54049" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   " 6.251703" " 9.060299" "19.092518" "21.766030" "28.803118"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   " 4.398359" " 8.907825" "13.510477" "18.712907" "20.713115"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_x  "0"         "0"         "0"         "0"         "0"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"         "0"         "0"         "0"         "0"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"         "0"         "0"         "0"         "0"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_x   "5.082440"  "5.082440"  "2.736640"  "2.736640"  "2.736640" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "6.251703"  "2.808596"  "2.808596"  "2.673512"  "2.673512" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "4.398359"  "4.398359"  "4.398359"  "4.398359"  "2.000208" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_x   "5.082440"  "5.491392"  "5.491392"  "8.018600"  "8.211414" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   " 6.251703" " 6.251703" "10.032219" "10.032219" "10.032219"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "4.398359"  "4.509466"  "4.602653"  "5.202429"  "5.202429" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_x  "5.082440"  "5.286916"  "4.436824"  "5.332268"  "5.908097" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   " 6.251703" " 9.060299" "19.092518" "21.766030" "28.803118"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"         "0"         "0"         "0"         "0"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "6.251703"  "2.808596"  "2.808596"  "2.673512"  "2.673512" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   " 6.251703" " 6.251703" "10.032219" "10.032219" "10.032219"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_y  "6.251703"  "4.530150"  "6.364173"  "5.441508"  "5.760624" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   " 4.398359" " 8.907825" "13.510477" "18.712907" "20.713115"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"         "0"         "0"         "0"         "0"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "4.398359"  "4.398359"  "4.398359"  "4.398359"  "2.000208" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "4.398359"  "4.509466"  "4.602653"  "5.202429"  "5.202429" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_z  "4.398359"  "4.453912"  "4.503492"  "4.678227"  "4.142623" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             [,6]       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> walk_number "1"        </span>
@@ -235,19 +236,19 @@ Sampling can be performed with or without replacement, and a proportion of steps
 <span class="r-out co"><span class="r-pr">#&gt;</span> y           " 5.917235"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> z           "2.784157" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_x   "30.76254" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   "34.720353"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   "23.497272"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_x  "0"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_x   "1.222056" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "2.673512" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "2.000208" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_x   "8.211414" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   "10.032219"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "5.202429" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_x  "5.127091" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_y   "34.720353"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_y  "0"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_y   "2.673512" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_y   "10.032219"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_y  "5.786726" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_sum_z   "23.497272"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_prod_z  "0"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_min_z   "2.000208" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cum_max_z   "5.202429" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cum_mean_z  "3.916212" </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

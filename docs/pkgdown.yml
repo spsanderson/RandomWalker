@@ -5,9 +5,10 @@ articles:
   api-reference: api-reference.html
   automatic-random-walks: automatic-random-walks.html
   basic-concepts: basic-concepts.html
+  continuous-distribution-generators: continuous-distribution-generators.html
   getting-started: getting-started.html
   home: home.html
-last_built: 2025-11-18T17:06Z
+last_built: 2025-11-19T02:23Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles
