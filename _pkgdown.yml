@@ -27,6 +27,8 @@ navbar:
           href: articles/api-reference.html
         - text: "Automatic Random Walks"
           href: articles/automatic-random-walks.html
+        - text: "Continuous Distribution Generators"
+          href: articles/continuous-distribution-generators.html
 
 reference:
   -  title: Automatic Random Walks
