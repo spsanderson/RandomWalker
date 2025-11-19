@@ -217,7 +217,7 @@ walks |>
 
 ### Pattern 6: Comparing to Theory
 
-```{r pattern6_theory, fig.alt="Line plot comparing observed variance (blue solid line) versus theoretical variance (red dashed line) as a function of step number. The observed variance closely tracks the theoretical prediction that variance equals the number of steps, demonstrating the sqrt(n) scaling of random walk spread."}
+```{r pattern6_theory, fig.alt="Line plot comparing observed variance (blue solid line) versus theoretical variance (red dashed line) as a function of step number. The observed variance closely tracks the theoretical prediction that variance equals the number of steps, demonstrating that variance grows linearly with the number of steps."}
 # Test if variance grows linearly with steps
 walks <- rw30()
 
