@@ -154,19 +154,19 @@ custom_walk(.n = 100, .num_walks = 5, .custom_fns = biased_displacement)
 set.seed(123)
 custom_walk(.n = 50, .num_walks = 3, .dimensions = 2, .custom_fns = biased_displacement)
 #> # A tibble: 150 × 14
-#>    walk_number step_number      x       y cum_sum_x cum_sum_y cum_prod_x
-#>    <fct>             <int>  <dbl>   <dbl>     <dbl>     <dbl>      <dbl>
-#>  1 1                     1 -0.130  0.0715    -0.130    0.0715          0
-#>  2 1                     2  1.66   0.0571     1.53     0.129           0
-#>  3 1                     3  0.171  1.47       1.70     1.60            0
-#>  4 1                     4  0.229 -0.126      1.93     1.47            0
-#>  5 1                     5  1.82   1.62       3.74     3.09            0
-#>  6 1                     6  0.561 -1.45       4.30     1.64            0
-#>  7 1                     7 -1.17   0.685      3.14     2.32            0
-#>  8 1                     8 -0.587  0.224      2.55     2.55            0
-#>  9 1                     9 -0.346  0.316      2.21     2.86            0
-#> 10 1                    10  1.32   0.480      3.53     3.34            0
+#>    walk_number step_number      x       y cum_sum_x cum_prod_x cum_min_x
+#>    <fct>             <int>  <dbl>   <dbl>     <dbl>      <dbl>     <dbl>
+#>  1 1                     1 -0.130  0.0715    -0.130          0    -0.130
+#>  2 1                     2  1.66   0.0571     1.53           0    -0.130
+#>  3 1                     3  0.171  1.47       1.70           0    -0.130
+#>  4 1                     4  0.229 -0.126      1.93           0    -0.130
+#>  5 1                     5  1.82   1.62       3.74           0    -0.130
+#>  6 1                     6  0.561 -1.45       4.30           0    -0.130
+#>  7 1                     7 -1.17   0.685      3.14           0    -1.17 
+#>  8 1                     8 -0.587  0.224      2.55           0    -1.17 
+#>  9 1                     9 -0.346  0.316      2.21           0    -1.17 
+#> 10 1                    10  1.32   0.480      3.53           0    -1.17 
 #> # ℹ 140 more rows
-#> # ℹ 7 more variables: cum_prod_y <dbl>, cum_min_x <dbl>, cum_min_y <dbl>,
-#> #   cum_max_x <dbl>, cum_max_y <dbl>, cum_mean_x <dbl>, cum_mean_y <dbl>
+#> # ℹ 7 more variables: cum_max_x <dbl>, cum_mean_x <dbl>, cum_sum_y <dbl>,
+#> #   cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>, cum_mean_y <dbl>
 ```
