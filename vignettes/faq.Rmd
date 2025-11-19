@@ -94,7 +94,7 @@ random_normal_walk(
   .mu = 0,
   .sd = 1,
   .initial_value = 0
-)
+) |> visualize_walks()
 ```
 
 ### Can I set a seed for reproducibility?
