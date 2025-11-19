@@ -564,7 +564,7 @@ random_wilcoxon_sr_walk(
 ```{r wilcoxon_sr_walk_example, fig.alt="Wilcoxon signed rank random walk for paired samples testing"}
 random_wilcoxon_sr_walk(
   .num_walks = 10,
-  .n= 20
+  .n = 20
 ) |> visualize_walks()
 ```
 
