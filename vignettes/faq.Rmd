@@ -167,7 +167,7 @@ custom_walk(
 ### How do I create a 2D random walk?
 
 Add `.dimensions = 2`:
-```{r twod_example, fig.alt="2D random walk showing spatial movement"}
+```{r twod_example}
 random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
 ```
 
