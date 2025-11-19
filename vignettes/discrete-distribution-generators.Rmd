@@ -653,9 +653,20 @@ traffic <- random_poisson_walk(
   .lambda = 1000  # Average daily views
 )
 
+# Visualize cumulative page views for a sample of walks
+traffic |>
+  dplyr::filter(walk_number %in% levels(traffic$walk_number)[1:10]) |>
+  visualize_walks(.value = cum_sum_y) +
+  ggplot2::labs(
+    title = "Cumulative Website Page Views (Poisson Random Walk)",
+    x = "Day",
+    y = "Cumulative Page Views"
+  )
+
+# Compute total annual views (summary statistic)
 traffic |>
   summarize_walks(.value = cum_sum_y) |>
-  pull(max_val) |>
+  dplyr::pull(max_val) |>
   mean()  # Total annual views
 ```
 
