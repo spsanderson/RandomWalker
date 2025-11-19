@@ -19,6 +19,10 @@ library(RandomWalker)
 ```
 
 ```{r logo, echo=FALSE, out.width="147px", out.height="170px"}
+#| fig.alt: >
+#|   RandomWalker package logo featuring a hexagonal design with abstract paths
+#|   representing random walks, symbolizing the package's functionality for generating
+#|   and analyzing stochastic processes.
 knitr::include_graphics("../man/figures/logo.png")
 ```
 

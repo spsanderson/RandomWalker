@@ -47,6 +47,11 @@ Imagine flipping a coin:
 After 10 flips, you might be at position +2, -4, or anywhere else. This is a random walk!
 
 ```{r coin_flip_example, fig.width=7, fig.height=4}
+#| fig.alt: >
+#|   Line plot showing a single random walk simulating coin flips over 100 steps.
+#|   The walk moves up or down by 1 with equal probability at each step, starting
+#|   from position 0. The x-axis shows the step number and the y-axis shows the
+#|   cumulative sum position.
 # Coin flip random walk
 coin_walk <- discrete_walk(
   .num_walks = 1,
@@ -391,6 +396,12 @@ walks |>
 ### Example 2: Distribution of Final Position
 
 ```{r final_position_dist, fig.width=7, fig.height=4}
+#| fig.alt: >
+#|   Histogram showing the distribution of final positions for 10,000 random walks
+#|   after 100 steps each. The histogram uses blue bars showing the empirical density,
+#|   overlaid with a red curve representing the theoretical normal distribution
+#|   N(0, 1). The distribution is centered near 0 with spread approximately 1,
+#|   demonstrating that final positions follow a normal distribution.
 # Generate walks
 walks <- random_normal_walk(.num_walks = 10000, .n = 100)
 
@@ -421,6 +432,11 @@ tibble::tibble(position = final_pos) |>
 Random walks are **path-dependent** - the ending doesn't tell you the route:
 
 ```{r path_dependency, fig.width=7, fig.height=4}
+#| fig.alt: >
+#|   Line plot showing multiple random walk trajectories that pass through similar positions
+#|   (near 1 at step 80) but take very different paths. Each semi-transparent line shows the
+#|   complete 100-step trajectory of one walk, demonstrating path dependency - walks passing
+#|   through the same point can have very different histories and futures.
 # Generate walks ending at similar positions
 set.seed(123)
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
