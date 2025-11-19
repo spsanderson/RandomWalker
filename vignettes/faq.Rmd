@@ -443,6 +443,7 @@ stock_prices <- geometric_brownian_motion(
   .sigma = 0.25,  # 25% volatility
   .initial_value = 100
 )
+visualize_walks(stock_prices)
 ```
 
 ### How do I simulate particle diffusion?
