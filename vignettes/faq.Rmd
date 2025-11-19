@@ -274,6 +274,13 @@ max_walk <- walks |> subset_walks(.value = "y", .type = "max")
 
 # Get walk with minimum final value
 min_walk <- walks |> subset_walks(.value = "y", .type = "min")
+
+# Visualize both walks together
+combined <- dplyr::bind_rows(
+  dplyr::mutate(max_walk, type = "Maximum"),
+  dplyr::mutate(min_walk, type = "Minimum")
+)
+visualize_walks(combined, .color = type, .title = "Maximum and Minimum Walks")
 ```
 
 ## Performance Questions
