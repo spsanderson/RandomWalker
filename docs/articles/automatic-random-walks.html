@@ -170,8 +170,8 @@ needed.</em> ## Understanding the Output</p>
 <span></span>
 <span><span class="co"># Count steps per walk</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>n_steps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>n_steps <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
 <span><span class="co">#&gt;   walk_number n_steps</span></span>
@@ -198,9 +198,9 @@ needed.</em> ## Understanding the Output</p>
 <span></span>
 <span><span class="co"># Final positions vary widely</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] -21.96226  23.86830</span></span></code></pre></div>
 </div>
@@ -243,7 +243,7 @@ needed.</em> ## Understanding the Output</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># One line to plot</span></span>
 <span><span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern1_viz-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern1_viz-1.png" class="r-plt" alt="Line plot showing 30 random walks over 100 steps each. Each walk is represented by a different colored line starting at zero and fluctuating randomly over time. The x-axis shows step number and the y-axis shows the walk values." width="672"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Interactive exploration</span></span>
 <span><span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.interactive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
@@ -299,9 +299,9 @@ needed.</em> ## Understanding the Output</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Custom analysis</span></span>
 <span><span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
-<span>    final_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>    final_value <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    max_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    min_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    volatility <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
@@ -335,7 +335,7 @@ needed.</em> ## Understanding the Output</p>
 <span></span>
 <span><span class="co"># Visualize extremes</span></span>
 <span><span class="va">max_walk</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern3_extremes-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern3_extremes-1.png" class="r-plt" alt="Line plot showing a single random walk that reached the highest maximum value among 30 walks. The line shows the walk's trajectory from start to finish, highlighting the extreme positive excursion." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="pattern-4-filtering-and-subsetting">Pattern 4: Filtering and Subsetting<a class="anchor" aria-label="anchor" href="#pattern-4-filtering-and-subsetting"></a>
@@ -345,15 +345,15 @@ needed.</em> ## Understanding the Output</p>
 <span></span>
 <span><span class="co"># Get only first 10 walks</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern4_filtering-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern4_filtering-1.png" class="r-plt" alt="Line plot showing a subset of 10 random walks out of 30, filtered to display only walks numbered 1 through 10. Each walk is shown as a colored line progressing over 100 steps." width="672"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get steps 50-100 only</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">&gt;=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">&gt;=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern4_steps-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern4_steps-1.png" class="r-plt" alt="Line plot showing 30 random walks displaying only steps 50 through 100, showing the latter half of each walk's trajectory. The walks continue from their positions at step 50 rather than starting from zero." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="pattern-5-teaching-demonstrations">Pattern 5: Teaching Demonstrations<a class="anchor" aria-label="anchor" href="#pattern-5-teaching-demonstrations"></a>
@@ -364,8 +364,8 @@ needed.</em> ## Understanding the Output</p>
 <span></span>
 <span><span class="co"># Distribution of final positions</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">15</span>, fill <span class="op">=</span> <span class="st">"steelblue"</span>, alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"red"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -376,7 +376,7 @@ needed.</em> ## Understanding the Output</p>
 <span>    x <span class="op">=</span> <span class="st">"Final Position"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern5_teaching-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern5_teaching-1.png" class="r-plt" alt="Histogram showing the distribution of final positions from 30 random walks after 100 steps. The distribution is centered around zero (marked by a red dashed vertical line) and shows a roughly bell-shaped spread of final values." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="pattern-6-comparing-to-theory">Pattern 6: Comparing to Theory<a class="anchor" aria-label="anchor" href="#pattern-6-comparing-to-theory"></a>
@@ -386,8 +386,8 @@ needed.</em> ## Understanding the Output</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">variance_by_step</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
 <span>    variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="va">step_number</span>  <span class="co"># For N(0,1), var = n</span></span>
 <span>  <span class="op">)</span></span>
@@ -404,7 +404,7 @@ needed.</em> ## Understanding the Output</p>
 <span>    y <span class="op">=</span> <span class="st">"Variance"</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/pattern6_theory-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/pattern6_theory-1.png" class="r-plt" alt="Line plot comparing observed variance (blue solid line) versus theoretical variance (red dashed line) as a function of step number. The observed variance closely tracks the theoretical prediction that variance equals the number of steps, demonstrating that variance grows linearly with the number of steps." width="672"></p>
 </div>
 </div>
 <div class="section level2">
@@ -579,8 +579,8 @@ for clarity</li>
 <span></span>
 <span><span class="co"># Show that mean displacement is zero</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>mean_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>mean_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">step_number</span>, y <span class="op">=</span> <span class="va">mean_position</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -591,16 +591,16 @@ for clarity</li>
 <span>    x <span class="op">=</span> <span class="st">"Step"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Mean Position"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/example1_mean-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/example1_mean-1.png" class="r-plt" alt="Line plot showing the mean position across all 30 walks as a function of step number. The mean fluctuates around zero (marked by a red dashed horizontal line), demonstrating that random walks have zero expected displacement." width="672"></p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Show that standard deviation grows as sqrt(n)</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
 <span>    sd_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">step_number</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">sd_position</span>, color <span class="op">=</span> <span class="st">"Observed"</span><span class="op">)</span>, linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">theoretical</span>, color <span class="op">=</span> <span class="st">"Theoretical"</span><span class="op">)</span>, linewidth <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -613,7 +613,7 @@ for clarity</li>
 <span>    y <span class="op">=</span> <span class="st">"Standard Deviation"</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/example1_sd-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/example1_sd-1.png" class="r-plt" alt="Line plot comparing observed standard deviation (blue solid line) versus theoretical standard deviation (red dashed line) as a function of step number. The observed standard deviation closely follows the theoretical sqrt(n) relationship, demonstrating that random walk spread grows as the square root of time." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="example-2-first-passage-time">Example 2: First Passage Time<a class="anchor" aria-label="anchor" href="#example-2-first-passage-time"></a>
@@ -623,10 +623,10 @@ for clarity</li>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">first_crossing</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_min</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, first_crossing_time <span class="op">=</span> <span class="va">step_number</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">y</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_min</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, first_crossing_time <span class="op">=</span> <span class="va">step_number</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Some walks may never cross</span></span>
 <span><span class="va">n_crossed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">first_crossing</span><span class="op">)</span></span>
@@ -645,7 +645,7 @@ for clarity</li>
 <span>      y <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/example2_passage-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/example2_passage-1.png" class="r-plt" alt="Histogram showing the distribution of first passage times - the step number at which walks first crossed the threshold value of 5. Only walks that successfully crossed the threshold are included, showing when they first exceeded the boundary." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="example-3-maximum-excursion">Example 3: Maximum Excursion<a class="anchor" aria-label="anchor" href="#example-3-maximum-excursion"></a>
@@ -655,8 +655,8 @@ for clarity</li>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rw30.html">rw30</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">max_excursion</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    max_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    max_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    max_excursion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
@@ -673,7 +673,7 @@ for clarity</li>
 <span>    x <span class="op">=</span> <span class="st">"Maximum Excursion"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="automatic-random-walks_files/figure-html/example3_excursion-1.png" class="r-plt" width="672"></p>
+<p><img src="automatic-random-walks_files/figure-html/example3_excursion-1.png" class="r-plt" alt="Histogram showing the distribution of maximum excursions - the largest absolute distance each walk reached from the origin during its 100 steps. The distribution shows how far walks typically strayed from their starting point." width="672"></p>
 </div>
 </div>
 <div class="section level2">

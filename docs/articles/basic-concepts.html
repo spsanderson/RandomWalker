@@ -115,7 +115,7 @@ This is a random walk!</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">coin_walk</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="basic-concepts_files/figure-html/coin_flip_example-1.png" class="r-plt" width="672"></p>
+<p><img src="basic-concepts_files/figure-html/coin_flip_example-1.png" class="r-plt" alt="Line plot showing a single random walk simulating coin flips over 100 steps. The walk moves up or down by 1 with equal probability at each step, starting from position 0. The x-axis shows the step number and the y-axis shows the cumulative sum position." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="real-world-analogies">Real-World Analogies<a class="anchor" aria-label="anchor" href="#real-world-analogies"></a>
@@ -259,7 +259,7 @@ prices - Log-normal distribution - Percentage changes are normal</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1000</span>, .n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>overall_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>overall_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   overall_mean</span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -275,8 +275,8 @@ prices - Log-normal distribution - Percentage changes are normal</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1000</span>, .n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="fl">80</span></span>
 <span>  <span class="op">)</span></span>
@@ -296,12 +296,12 @@ prices - Log-normal distribution - Percentage changes are normal</p>
 <span></span>
 <span><span class="va">walks_2d</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/euclidean_distance.html">euclidean_distance</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">x</span>, .y <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html" class="external-link">reframe</a></span><span class="op">(</span></span>
 <span>    mean_distance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">50</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">50</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 3</span></span></span>
 <span><span class="co">#&gt;    step_number mean_distance theoretical</span></span>
@@ -408,7 +408,7 @@ product)</li>
 <span></span>
 <span><span class="co"># 4. Add more cumulative functions</span></span>
 <span><span class="va">walk_data</span> <span class="op">&lt;-</span> <span class="va">walk_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    cum_prod <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumprod</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">y</span><span class="op">)</span>,</span>
 <span>    cum_min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cummin</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    cum_max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cummax</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
@@ -605,7 +605,7 @@ Distance: <code>sqrt(cum_sum_x² + cum_sum_y²)</code></p>
 <span></span>
 <span><span class="co"># Property 1: Mean = 0</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>overall_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>overall_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   overall_mean</span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -613,8 +613,8 @@ Distance: <code>sqrt(cum_sum_x² + cum_sum_y²)</code></p>
 <span></span>
 <span><span class="co"># Property 2: Variance = n</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="fl">80</span></span>
 <span>  <span class="op">)</span></span>
@@ -625,12 +625,12 @@ Distance: <code>sqrt(cum_sum_x² + cum_sum_y²)</code></p>
 <span></span>
 <span><span class="co"># Property 3: Distance ∝ √n</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    mean_abs_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    theoretical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">/</span><span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span>  <span class="co"># Exact for normal</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">20</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">20</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in</span></span>
 <span><span class="co">#&gt; dplyr 1.1.0.</span></span>
@@ -660,9 +660,9 @@ Distance: <code>sqrt(cum_sum_x² + cum_sum_y²)</code></p>
 <span></span>
 <span><span class="co"># Get final positions</span></span>
 <span><span class="va">final_pos</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot</span></span>
 <span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>position <span class="op">=</span> <span class="va">final_pos</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -678,7 +678,7 @@ Distance: <code>sqrt(cum_sum_x² + cum_sum_y²)</code></p>
 <span>    x <span class="op">=</span> <span class="st">"Final Position"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Density"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="basic-concepts_files/figure-html/final_position_dist-1.png" class="r-plt" width="672"></p>
+<p><img src="basic-concepts_files/figure-html/final_position_dist-1.png" class="r-plt" alt="Histogram showing the distribution of final positions for 10,000 random walks after 100 steps each. The histogram uses blue bars showing the empirical density, overlaid with a red curve representing the theoretical normal distribution N(0, 1). The distribution is centered near 0 with spread approximately 1, demonstrating that final positions follow a normal distribution." width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="example-3-path-dependency">Example 3: Path Dependency<a class="anchor" aria-label="anchor" href="#example-3-path-dependency"></a>
@@ -692,14 +692,14 @@ tell you the route:</p>
 <span></span>
 <span><span class="co"># Find walks ending near 10</span></span>
 <span><span class="va">similar_end</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">step_number</span> <span class="op">==</span> <span class="fl">80</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot their paths - very different!</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">similar_end</span><span class="op">$</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">similar_end</span><span class="op">$</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum"</span>, .alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="basic-concepts_files/figure-html/path_dependency-1.png" class="r-plt" width="672"></p>
+<p><img src="basic-concepts_files/figure-html/path_dependency-1.png" class="r-plt" alt="Line plot showing multiple random walk trajectories that pass through similar positions (near 1 at step 80) but take very different paths. Each semi-transparent line shows the complete 100-step trajectory of one walk, demonstrating path dependency - walks passing through the same point can have very different histories and futures." width="672"></p>
 </div>
 </div>
 <div class="section level2">
