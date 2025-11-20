@@ -280,7 +280,8 @@ combined <- dplyr::bind_rows(
   dplyr::mutate(max_walk, type = "Maximum"),
   dplyr::mutate(min_walk, type = "Minimum")
 )
-visualize_walks(combined, .color = type, .title = "Maximum and Minimum Walks")
+visualize_walks(combined, .pluck = "y") +
+  ggplot2::facet_wrap(~type)
 ```
 
 ## Performance Questions
@@ -444,7 +445,7 @@ p +
 Use Geometric Brownian Motion:
 ```{r stock_example, fig.alt="Stock price simulation using geometric Brownian motion"}
 stock_prices <- geometric_brownian_motion(
-  .num_walks = 1000,
+  .num_walks = 100,
   .n = 252,  # Trading days
   .mu = 0.08,  # 8% expected return
   .sigma = 0.25,  # 25% volatility

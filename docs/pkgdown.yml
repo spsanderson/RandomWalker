@@ -6,9 +6,11 @@ articles:
   automatic-random-walks: automatic-random-walks.html
   basic-concepts: basic-concepts.html
   continuous-distribution-generators: continuous-distribution-generators.html
+  discrete-distribution-generators: discrete-distribution-generators.html
+  faq: faq.html
   getting-started: getting-started.html
   home: home.html
-last_built: 2025-11-19T02:56Z
+last_built: 2025-11-20T03:05Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles
