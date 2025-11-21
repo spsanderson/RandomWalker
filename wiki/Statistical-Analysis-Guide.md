@@ -448,10 +448,10 @@ Extract walks with extreme values:
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
 # Get walk with maximum final value
-max_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "max")
+max_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "max")
 
 # Get walk with minimum final value
-min_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "min")
+min_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "min")
 
 # Visualize extremes
 library(patchwork)
