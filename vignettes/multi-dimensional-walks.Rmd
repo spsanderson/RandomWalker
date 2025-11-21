@@ -68,7 +68,6 @@ A multi-dimensional random walk extends the concept of a 1D random walk into hig
 All random walk generator functions support the `.dimensions` parameter:
 
 ```{r basic_syntax}
-library(RandomWalker)
 
 # 1D walk (default)
 walk_1d <- random_normal_walk(.num_walks = 5, .n = 100, .dimensions = 1)
