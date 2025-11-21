@@ -152,8 +152,6 @@ names(walk_3d)
 ### Basic 2D Trajectory Plot
 
 ```{r basic_2d_plot, fig.alt="2D random walk trajectories showing multiple walks with start points marked as white circles and end points as red triangles"}
-library(ggplot2)
-library(dplyr)
 
 # Generate 2D walk
 walk_2d <- random_normal_walk(.num_walks = 10, .n = 200, .dimensions = 2)
