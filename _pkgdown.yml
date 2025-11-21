@@ -33,6 +33,8 @@ navbar:
           href: articles/discrete-distribution-generators.html
         - text: "Multi-Dimensional Walks"
           href: articles/multi-dimensional-walks.html
+        - text: "Statistical Analysis Guide"
+          href: articles/statistical-analysis-guide.html
         - text: "Frequently Asked Questions (FAQ)"
           href: articles/faq.html
 
