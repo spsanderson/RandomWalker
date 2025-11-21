@@ -262,8 +262,8 @@ ci_by_step <- walks |>
 library(ggplot2)
 
 ggplot(ci_by_step, aes(x = step_number)) +
-  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.3, fill = "steelblue") +
-  geom_line(aes(y = mean), color = "darkblue", linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.3, fill = "steelblue") +
+  geom_line(aes(y = rowMeans(ci_by_step[,2:3], TRUE)), color = "darkblue", linewidth = 1) +
   theme_minimal() +
   labs(
     title = "Mean Random Walk with 95% Confidence Interval",
