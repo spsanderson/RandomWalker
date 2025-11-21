@@ -381,7 +381,7 @@ walks_with_distance |>
 walks_3d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 3)
 
 # Calculate distance
-walks_with_dist <- walks_3d |> euclidean_distance()
+walks_with_dist <- walks_3d |> euclidean_distance(.x = x, .y = z)
 
 # Analyze distance evolution
 distance_stats <- walks_with_dist |>
@@ -421,7 +421,7 @@ walks <- discrete_walk(.num_walks = 100, .n = 1000, .initial_value = 0)
 # Find first passage time to level 10
 first_passage <- walks |>
   group_by(walk_number) |>
-  filter(cum_sum >= 10) |>
+  filter(cum_sum_y >= 10) |>
   slice_min(step_number, n = 1) |>
   select(walk_number, first_passage_time = step_number)
 
