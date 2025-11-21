@@ -61,15 +61,15 @@ walks |>
 
 ```r
 # Summarize cumulative sum
-walks |> summarize_walks(.value = cum_sum)
+walks |> summarize_walks(.value = cum_sum_y)
 
 # Summarize cumulative product
 geometric_brownian_motion(.num_walks = 30, .initial_value = 100) |>
-  summarize_walks(.value = cum_prod)
+  summarize_walks(.value = cum_prod_y)
 
 # Summarize by group
 walks |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number)
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number)
 ```
 
 ### Understanding Output Columns
