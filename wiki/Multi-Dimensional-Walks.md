@@ -87,7 +87,7 @@ random_exponential_walk(.num_walks = 5, .n = 300, .dimensions = 3)
 
 **1D Walk Columns:**
 ```
-walk_number, step_number, y, cum_sum, cum_prod, cum_min, cum_max, cum_mean
+walk_number, step_number, y, cum_sum_y, cum_prod_y, cum_min_y, cum_max_y, cum_mean_y
 ```
 
 **2D Walk Columns:**
@@ -363,7 +363,7 @@ walk_2d <- random_normal_walk(.num_walks = 10, .n = 500, .dimensions = 2)
 
 # Calculate distance
 walk_with_distance <- walk_2d %>%
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = y)
 
 # Visualize distance over time
 library(ggplot2)
@@ -389,7 +389,7 @@ walk_3d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 3)
 
 # Calculate distance
 walk_with_distance <- walk_3d %>%
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = z)
 
 # Analyze distance distribution at specific steps
 library(dplyr)
@@ -397,7 +397,7 @@ library(dplyr)
 distance_at_steps <- walk_with_distance %>%
   filter(step_number %in% c(100, 250, 500, 1000)) %>%
   group_by(step_number) %>%
-  summarize(
+  reframe(
     mean_dist = mean(distance),
     sd_dist = sd(distance),
     theoretical_mean = sqrt(step_number)
@@ -419,7 +419,7 @@ walk_2d <- random_normal_walk(.num_walks = 500, .n = 200, .dimensions = 2)
 final_positions <- walk_2d %>%
   group_by(walk_number) %>%
   slice_max(step_number) %>%
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = y)
 
 # Plot radial distribution
 ggplot(final_positions, aes(x = distance)) +
@@ -477,13 +477,13 @@ ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
 particles <- brownian_motion(
   .num_walks = 50,
   .n = 1000,
-  .sigma = 0.1,
+  .delta_time = 0.1,
   .dimensions = 2
 )
 
 # Visualize
 particles %>%
-  euclidean_distance() %>%
+  euclidean_distance(.x = x, .y = y) %>%
   ggplot(aes(x = step_number, y = distance, color = walk_number)) +
   geom_line(alpha = 0.3) +
   stat_summary(aes(group = 1), fun = mean, geom = "line",
@@ -504,8 +504,7 @@ particles %>%
 drone_path <- brownian_motion(
   .num_walks = 1,
   .n = 500,
-  .mu = 0.01,  # Slight drift
-  .sigma = 0.5,
+  .delta_time = 0.5,
   .initial_value = 100,  # Start at 100m altitude
   .dimensions = 3
 )
