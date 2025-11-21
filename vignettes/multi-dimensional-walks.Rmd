@@ -421,7 +421,7 @@ distance_at_steps <- walk_with_distance %>%
   reframe(
     mean_dist = mean(distance),
     sd_dist = sd(distance),
-    theoretical_mean = sqrt(step_number)
+    theoretical_mean = sqrt(3 * step_number)
   )
 
 print(distance_at_steps)
