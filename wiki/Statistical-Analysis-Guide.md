@@ -112,7 +112,7 @@ stock_sim <- geometric_brownian_motion(
 
 # Get final price statistics
 final_prices <- stock_sim |>
-  summarize_walks(.value = cum_prod, .group_var = walk_number) |>
+  summarize_walks(.value = cum_prod_y, .group_var = walk_number) |>
   pull(max_val)
 
 # Analyze outcomes
