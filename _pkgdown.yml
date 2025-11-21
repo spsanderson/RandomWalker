@@ -31,6 +31,8 @@ navbar:
           href: articles/continuous-distribution-generators.html
         - text: "Discrete Distribution Generators"
           href: articles/discrete-distribution-generators.html
+        - text: "Multi-Dimensional Walks"
+          href: articles/multi-dimensional-walks.html
         - text: "Frequently Asked Questions (FAQ)"
           href: articles/faq.html
 
