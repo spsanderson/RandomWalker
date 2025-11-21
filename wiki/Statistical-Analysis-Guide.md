@@ -300,16 +300,16 @@ walks <- random_normal_walk(.num_walks = 100, .n = 100)
 # Calculate running median (50th percentile)
 walks_with_median <- walks |>
   group_by(step_number) |>
-  mutate(median_at_step = running_quantile(y, .probs = 0.5)) |>
+  mutate(median_at_step = running_quantile(y, .probs = 0.5, .window = 5)) |>
   ungroup()
 
 # Calculate running quartiles
 walks_with_quartiles <- walks |>
   group_by(step_number) |>
   mutate(
-    q25 = running_quantile(y, .probs = 0.25),
-    q50 = running_quantile(y, .probs = 0.50),
-    q75 = running_quantile(y, .probs = 0.75)
+    q25 = running_quantile(y, .probs = 0.25, .window = 5),
+    q50 = running_quantile(y, .probs = 0.50, .window = 5),
+    q75 = running_quantile(y, .probs = 0.75, .window = 5)
   ) |>
   ungroup()
 ```
@@ -360,7 +360,7 @@ walks_2d <- random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
 
 # Calculate Euclidean distance
 walks_with_distance <- walks_2d |>
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = y)
 
 # Visualize distance over time
 walks_with_distance |>
