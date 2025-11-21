@@ -392,11 +392,11 @@ library(ggplot2)
 ggplot(walk_with_distance, aes(x = step_number, y = distance, color = walk_number)) +
   geom_line(alpha = 0.7) +
   # Add theoretical expectation
-  geom_line(aes(y = sqrt(step_number)), color = "black", linetype = "dashed", linewidth = 1) +
+  geom_line(aes(y = sqrt(2 * step_number)), color = "black", linetype = "dashed", linewidth = 1) +
   theme_minimal() +
   labs(
     title = "Distance from Origin in 2D Random Walk",
-    subtitle = "Dashed line shows theoretical E[distance] = sqrt(n)",
+    subtitle = "Dashed line shows theoretical E[distance] = sqrt(2n)",
     x = "Step",
     y = "Euclidean Distance"
   )
