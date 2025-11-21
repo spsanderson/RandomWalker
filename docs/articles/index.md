@@ -20,3 +20,5 @@
   Home](https://www.spsanderson.com/RandomWalker/articles/home.md):
 - [Multi-Dimensional
   Walks](https://www.spsanderson.com/RandomWalker/articles/multi-dimensional-walks.md):
+- [Statistical Analysis
+  Guide](https://www.spsanderson.com/RandomWalker/articles/statistical-analysis-guide.md):
