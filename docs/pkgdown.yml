@@ -11,7 +11,8 @@ articles:
   getting-started: getting-started.html
   home: home.html
   multi-dimensional-walks: multi-dimensional-walks.html
-last_built: 2025-11-21T12:48Z
+  statistical-analysis-guide: statistical-analysis-guide.html
+last_built: 2025-11-21T16:58Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles
