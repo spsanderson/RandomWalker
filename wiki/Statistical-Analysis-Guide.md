@@ -531,7 +531,7 @@ library(dplyr)
 walk <- random_normal_walk(.num_walks = 1, .n = 1000)
 
 # Calculate variance ratio
-values <- walk |> pull(cum_sum)
+values <- walk |> pull(cum_sum_y)
 
 # Variance of k-differences
 k <- 10
