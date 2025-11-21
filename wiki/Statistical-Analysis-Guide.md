@@ -167,20 +167,20 @@ walks <- random_normal_walk(.num_walks = 10, .n = 100, .initial_value = 100)
 
 # Cumulative functions are already in the data
 walks |>
-  select(walk_number, step_number, y, cum_sum, cum_prod, cum_min, cum_max, cum_mean) |>
+  select(walk_number, step_number, y, starts_with("cum_")) |>
   head(10)
 
 # Analyze cumulative sum
 walks |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number)
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number)
 
 # Track maximum ever reached
 walks |>
   group_by(walk_number) |>
   summarize(
-    max_ever = max(cum_max),
-    min_ever = min(cum_min),
-    final_value = last(cum_sum)
+    max_ever = max(cum_max_y),
+    min_ever = min(cum_min_y),
+    final_value = last(cum_sum_y)
   )
 ```
 
