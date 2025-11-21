@@ -202,8 +202,8 @@ walks_extended <- walks |>
     # Cumulative absolute sum
     cum_abs_sum = cumsum(abs(y)),
     # Running maximum drawdown
-    running_peak = cummax(cum_sum),
-    drawdown = (cum_sum - running_peak) / running_peak,
+    running_peak = cummax(cum_sum_y),
+    drawdown = (cum_sum_y - running_peak) / running_peak,
     max_drawdown = cummin(drawdown)
   ) |>
   ungroup()
