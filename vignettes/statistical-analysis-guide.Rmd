@@ -424,12 +424,12 @@ distance_stats <- walks_with_dist |>
 distance_stats |>
   ggplot(aes(x = step_number)) +
   geom_line(aes(y = mean_dist, color = "Observed"), linewidth = 1) +
-  geom_line(aes(y = sqrt(step_number), color = "Theory"), linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = sqrt(3 * step_number), color = "Theory"), linewidth = 1, linetype = "dashed") +
   scale_color_manual(values = c("Observed" = "blue", "Theory" = "red")) +
   theme_minimal() +
   labs(
     title = "Mean Distance vs Theoretical Prediction",
-    subtitle = "Distance ~ sqrt(n) for standard Brownian motion",
+    subtitle = "Distance ~ sqrt(3n) for 3D Brownian motion",
     x = "Step",
     y = "Distance",
     color = ""
