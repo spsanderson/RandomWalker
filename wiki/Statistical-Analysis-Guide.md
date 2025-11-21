@@ -547,6 +547,7 @@ print(paste("Variance Ratio:", round(vr, 3), "| Expected:", k))
 
 ```r
 library(dplyr)
+library(NNS)
 
 # Generate stock price simulation
 prices <- geometric_brownian_motion(
@@ -560,8 +561,8 @@ prices <- geometric_brownian_motion(
 # Calculate returns
 returns <- prices |>
   mutate(
-    log_return = log(cum_prod / lag(cum_prod)),
-    simple_return = (cum_prod - lag(cum_prod)) / lag(cum_prod)
+    log_return = log(cum_prod_y / lag(cum_prod_y)),
+    simple_return = (cum_prod_y - lag(cum_prod_y)) / lag(cum_prod_y)
   ) |>
   filter(!is.na(log_return))
 
@@ -571,8 +572,8 @@ returns |>
     mean_return = mean(log_return) * 252,  # Annualized
     volatility = sd(log_return) * sqrt(252),  # Annualized
     sharpe_ratio = mean_return / volatility,
-    skewness = moments::skewness(log_return),
-    kurtosis = moments::kurtosis(log_return)
+    skewness = NNS::NNS.moments(log_return)[["skewness"]],
+    kurtosis = NNS::NNS.moments(log_return)[["kurtosis"]]
   )
 ```
 
@@ -591,12 +592,12 @@ cauchy_walks <- random_cauchy_walk(.num_walks = 50, .n = 100)
 normal_final <- normal_walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 cauchy_final <- cauchy_walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 # Wilcoxon rank-sum test (non-parametric)
 wilcox.test(normal_final, cauchy_final)
