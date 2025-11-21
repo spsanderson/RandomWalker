@@ -281,7 +281,7 @@ walks <- random_normal_walk(.num_walks = 1000, .n = 100, .initial_value = 100)
 final_values <- walks |>
   group_by(walk_number) |>
   slice_max(step_number, n = 1) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 # Calculate confidence interval
 confidence_interval(final_values)
