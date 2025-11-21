@@ -236,10 +236,10 @@ confidence_interval(x)
 #> 1  10.0     9.88     10.1  2.01
 
 # Calculate 99% CI
-confidence_interval(x, .alpha = 0.01)
+confidence_interval(x, .interval = 0.01)
 
 # Calculate 90% CI
-confidence_interval(x, .alpha = 0.10)
+confidence_interval(x, .interval = 0.10)
 ```
 
 ### Confidence Intervals for Random Walks
