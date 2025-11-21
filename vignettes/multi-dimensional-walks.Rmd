@@ -661,10 +661,9 @@ ggplot(walk_bounded, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
 For more information on RandomWalker, explore these resources:
 
 - **Getting Started** - Introduction to random walks
-- **Visualization Guide** - More visualization techniques
-- **Use Cases and Examples** - More real-world applications
+- **Basic Concepts** - Core ideas and terminology
+- **Continuous Distribution Generators** - Walks based on continuous distributions
+- **Discrete Distribution Generators** - Walks based on discrete distributions
+- **FAQ** - Frequently asked questions
 - **API Reference** - Complete function documentation
-
----
-
 **Need more examples?** Check out the package documentation and vignettes for additional use cases and applications!
