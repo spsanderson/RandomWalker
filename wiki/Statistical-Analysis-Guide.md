@@ -61,15 +61,15 @@ walks |>
 
 ```r
 # Summarize cumulative sum
-walks |> summarize_walks(.value = cum_sum)
+walks |> summarize_walks(.value = cum_sum_y)
 
 # Summarize cumulative product
 geometric_brownian_motion(.num_walks = 30, .initial_value = 100) |>
-  summarize_walks(.value = cum_prod)
+  summarize_walks(.value = cum_prod_y)
 
 # Summarize by group
 walks |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number)
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number)
 ```
 
 ### Understanding Output Columns
@@ -112,7 +112,7 @@ stock_sim <- geometric_brownian_motion(
 
 # Get final price statistics
 final_prices <- stock_sim |>
-  summarize_walks(.value = cum_prod, .group_var = walk_number) |>
+  summarize_walks(.value = cum_prod_y, .group_var = walk_number) |>
   pull(max_val)
 
 # Analyze outcomes
@@ -167,20 +167,20 @@ walks <- random_normal_walk(.num_walks = 10, .n = 100, .initial_value = 100)
 
 # Cumulative functions are already in the data
 walks |>
-  select(walk_number, step_number, y, cum_sum, cum_prod, cum_min, cum_max, cum_mean) |>
+  select(walk_number, step_number, y, starts_with("cum_")) |>
   head(10)
 
 # Analyze cumulative sum
 walks |>
-  summarize_walks(.value = cum_sum, .group_var = walk_number)
+  summarize_walks(.value = cum_sum_y, .group_var = walk_number)
 
 # Track maximum ever reached
 walks |>
   group_by(walk_number) |>
   summarize(
-    max_ever = max(cum_max),
-    min_ever = min(cum_min),
-    final_value = last(cum_sum)
+    max_ever = max(cum_max_y),
+    min_ever = min(cum_min_y),
+    final_value = last(cum_sum_y)
   )
 ```
 
@@ -202,8 +202,8 @@ walks_extended <- walks |>
     # Cumulative absolute sum
     cum_abs_sum = cumsum(abs(y)),
     # Running maximum drawdown
-    running_peak = cummax(cum_sum),
-    drawdown = (cum_sum - running_peak) / running_peak,
+    running_peak = cummax(cum_sum_y),
+    drawdown = (cum_sum_y - running_peak) / running_peak,
     max_drawdown = cummin(drawdown)
   ) |>
   ungroup()
@@ -236,10 +236,10 @@ confidence_interval(x)
 #> 1  10.0     9.88     10.1  2.01
 
 # Calculate 99% CI
-confidence_interval(x, .alpha = 0.01)
+confidence_interval(x, .interval = 0.01)
 
 # Calculate 90% CI
-confidence_interval(x, .alpha = 0.10)
+confidence_interval(x, .interval = 0.10)
 ```
 
 ### Confidence Intervals for Random Walks
@@ -262,8 +262,8 @@ ci_by_step <- walks |>
 library(ggplot2)
 
 ggplot(ci_by_step, aes(x = step_number)) +
-  geom_ribbon(aes(ymin = ci_lower, ymax = ci_upper), alpha = 0.3, fill = "steelblue") +
-  geom_line(aes(y = mean), color = "darkblue", linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.3, fill = "steelblue") +
+  geom_line(aes(y = rowMeans(ci_by_step[,2:3], TRUE)), color = "darkblue", linewidth = 1) +
   theme_minimal() +
   labs(
     title = "Mean Random Walk with 95% Confidence Interval",
@@ -281,7 +281,7 @@ walks <- random_normal_walk(.num_walks = 1000, .n = 100, .initial_value = 100)
 final_values <- walks |>
   group_by(walk_number) |>
   slice_max(step_number, n = 1) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 # Calculate confidence interval
 confidence_interval(final_values)
@@ -300,16 +300,16 @@ walks <- random_normal_walk(.num_walks = 100, .n = 100)
 # Calculate running median (50th percentile)
 walks_with_median <- walks |>
   group_by(step_number) |>
-  mutate(median_at_step = running_quantile(y, .probs = 0.5)) |>
+  mutate(median_at_step = running_quantile(y, .probs = 0.5, .window = 5)) |>
   ungroup()
 
 # Calculate running quartiles
 walks_with_quartiles <- walks |>
   group_by(step_number) |>
   mutate(
-    q25 = running_quantile(y, .probs = 0.25),
-    q50 = running_quantile(y, .probs = 0.50),
-    q75 = running_quantile(y, .probs = 0.75)
+    q25 = running_quantile(y, .probs = 0.25, .window = 5),
+    q50 = running_quantile(y, .probs = 0.50, .window = 5),
+    q75 = running_quantile(y, .probs = 0.75, .window = 5)
   ) |>
   ungroup()
 ```
@@ -360,7 +360,7 @@ walks_2d <- random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
 
 # Calculate Euclidean distance
 walks_with_distance <- walks_2d |>
-  euclidean_distance()
+  euclidean_distance(.x = x, .y = y)
 
 # Visualize distance over time
 walks_with_distance |>
@@ -381,7 +381,7 @@ walks_with_distance |>
 walks_3d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 3)
 
 # Calculate distance
-walks_with_dist <- walks_3d |> euclidean_distance()
+walks_with_dist <- walks_3d |> euclidean_distance(.x = x, .y = z)
 
 # Analyze distance evolution
 distance_stats <- walks_with_dist |>
@@ -421,7 +421,7 @@ walks <- discrete_walk(.num_walks = 100, .n = 1000, .initial_value = 0)
 # Find first passage time to level 10
 first_passage <- walks |>
   group_by(walk_number) |>
-  filter(cum_sum >= 10) |>
+  filter(cum_sum_y >= 10) |>
   slice_min(step_number, n = 1) |>
   select(walk_number, first_passage_time = step_number)
 
@@ -448,10 +448,10 @@ Extract walks with extreme values:
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
 # Get walk with maximum final value
-max_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "max")
+max_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "max")
 
 # Get walk with minimum final value
-min_walk <- walks |> subset_walks(.value = "cum_sum", .subset_type = "min")
+min_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "min")
 
 # Visualize extremes
 library(patchwork)
@@ -473,16 +473,16 @@ library(dplyr)
 # Find walks that cross a threshold
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
-# Identify walks that reached 110
-crossed_110 <- walks |>
+# Identify walks that reached 102
+crossed_102 <- walks |>
   group_by(walk_number) |>
-  filter(any(cum_sum >= 110)) |>
+  filter(any(cum_sum_y >= 102)) |>
   pull(walk_number) |>
   unique()
 
 # Extract and visualize those walks
 walks |>
-  filter(walk_number %in% crossed_110) |>
+  filter(walk_number %in% crossed_102) |>
   visualize_walks(.pluck = "cum_sum", .alpha = 0.3)
 ```
 
@@ -531,7 +531,7 @@ library(dplyr)
 walk <- random_normal_walk(.num_walks = 1, .n = 1000)
 
 # Calculate variance ratio
-values <- walk |> pull(cum_sum)
+values <- walk |> pull(cum_sum_y)
 
 # Variance of k-differences
 k <- 10
@@ -547,6 +547,7 @@ print(paste("Variance Ratio:", round(vr, 3), "| Expected:", k))
 
 ```r
 library(dplyr)
+library(NNS)
 
 # Generate stock price simulation
 prices <- geometric_brownian_motion(
@@ -560,8 +561,8 @@ prices <- geometric_brownian_motion(
 # Calculate returns
 returns <- prices |>
   mutate(
-    log_return = log(cum_prod / lag(cum_prod)),
-    simple_return = (cum_prod - lag(cum_prod)) / lag(cum_prod)
+    log_return = log(cum_prod_y / lag(cum_prod_y)),
+    simple_return = (cum_prod_y - lag(cum_prod_y)) / lag(cum_prod_y)
   ) |>
   filter(!is.na(log_return))
 
@@ -571,8 +572,8 @@ returns |>
     mean_return = mean(log_return) * 252,  # Annualized
     volatility = sd(log_return) * sqrt(252),  # Annualized
     sharpe_ratio = mean_return / volatility,
-    skewness = moments::skewness(log_return),
-    kurtosis = moments::kurtosis(log_return)
+    skewness = NNS::NNS.moments(log_return)[["skewness"]],
+    kurtosis = NNS::NNS.moments(log_return)[["kurtosis"]]
   )
 ```
 
@@ -591,12 +592,12 @@ cauchy_walks <- random_cauchy_walk(.num_walks = 50, .n = 100)
 normal_final <- normal_walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 cauchy_final <- cauchy_walks |>
   group_by(walk_number) |>
   slice_max(step_number) |>
-  pull(cum_sum)
+  pull(cum_sum_y)
 
 # Wilcoxon rank-sum test (non-parametric)
 wilcox.test(normal_final, cauchy_final)
