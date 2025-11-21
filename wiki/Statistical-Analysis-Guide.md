@@ -473,16 +473,16 @@ library(dplyr)
 # Find walks that cross a threshold
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
-# Identify walks that reached 110
-crossed_110 <- walks |>
+# Identify walks that reached 102
+crossed_102 <- walks |>
   group_by(walk_number) |>
-  filter(any(cum_sum >= 110)) |>
+  filter(any(cum_sum_y >= 102)) |>
   pull(walk_number) |>
   unique()
 
 # Extract and visualize those walks
 walks |>
-  filter(walk_number %in% crossed_110) |>
+  filter(walk_number %in% crossed_102) |>
   visualize_walks(.pluck = "cum_sum", .alpha = 0.3)
 ```
 
