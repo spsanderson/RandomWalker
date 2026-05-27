@@ -17,7 +17,7 @@ This function takes in a vector as it's input and will return the skewness
 of that vector. The length of this vector must be at least four numbers. The
 skewness explains the 'tailedness' of the distribution of data.
 
-\verb{((1/n) * sum(x - mu\})^3) / ((()1/n) * sum(x - mu)^2)^(3/2)}
+\deqn{\frac{\frac{1}{n} \sum (x - \mu)^3}{\left(\frac{1}{n} \sum (x - \mu)^2\right)^{3/2}}}
 }
 \details{
 A function to return the skewness of a vector.
