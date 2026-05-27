@@ -17,7 +17,7 @@ This function takes in a vector as it's input and will return the kurtosis
 of that vector. The length of this vector must be at least four numbers. The
 kurtosis explains the sharpness of the peak of a distribution of data.
 
-\verb{((1/n) * sum(x - mu\})^4) / ((()1/n) * sum(x - mu)^2)^2}
+\deqn{\frac{\frac{1}{n} \sum (x - \mu)^4}{\left(\frac{1}{n} \sum (x - \mu)^2\right)^2}}
 }
 \details{
 A function to return the kurtosis of a vector.

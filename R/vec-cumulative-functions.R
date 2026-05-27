@@ -363,7 +363,7 @@ crange <- function(.x) {
 #' of that vector. The length of this vector must be at least four numbers. The
 #' kurtosis explains the sharpness of the peak of a distribution of data.
 #'
-#' `((1/n) * sum(x - mu})^4) / ((()1/n) * sum(x - mu)^2)^2`
+#' \deqn{\frac{\frac{1}{n} \sum (x - \mu)^4}{\left(\frac{1}{n} \sum (x - \mu)^2\right)^2}}
 #'
 #' @param .x A numeric vector of length four or more.
 #'
@@ -420,7 +420,7 @@ kurtosis_vec <- function(.x) {
 #' of that vector. The length of this vector must be at least four numbers. The
 #' skewness explains the 'tailedness' of the distribution of data.
 #'
-#' `((1/n) * sum(x - mu})^3) / ((()1/n) * sum(x - mu)^2)^(3/2)`
+#' \deqn{\frac{\frac{1}{n} \sum (x - \mu)^3}{\left(\frac{1}{n} \sum (x - \mu)^2\right)^{3/2}}}
 #'
 #' @param .x A numeric vector of length four or more.
 #'
