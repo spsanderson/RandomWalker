@@ -16,7 +16,7 @@ A numeric vector
 A function to return the cumulative mean of a vector.
 }
 \details{
-A function to return the cumulative mean of a vector. It uses \code{\link[dplyr:cumall]{dplyr::cummean()}}
+A function to return the cumulative mean of a vector. It uses \code{\link[dplyr:cummean]{dplyr::cummean()}}
 as the basis of the function.
 }
 \examples{
@@ -26,19 +26,19 @@ cmean(x)
 
 }
 \seealso{
-Other Vector Function: 
-\code{\link{cgmean}()},
-\code{\link{chmean}()},
-\code{\link{ckurtosis}()},
-\code{\link{cmedian}()},
-\code{\link{crange}()},
-\code{\link{csd}()},
-\code{\link{cskewness}()},
-\code{\link{cvar}()},
-\code{\link{euclidean_distance}()},
-\code{\link{kurtosis_vec}()},
-\code{\link{rw_range}()},
-\code{\link{skewness_vec}()}
+Other Vector Function:
+\code{\link[=cgmean]{cgmean()}},
+\code{\link[=chmean]{chmean()}},
+\code{\link[=ckurtosis]{ckurtosis()}},
+\code{\link[=cmedian]{cmedian()}},
+\code{\link[=crange]{crange()}},
+\code{\link[=csd]{csd()}},
+\code{\link[=cskewness]{cskewness()}},
+\code{\link[=cvar]{cvar()}},
+\code{\link[=euclidean_distance]{euclidean_distance()}},
+\code{\link[=kurtosis_vec]{kurtosis_vec()}},
+\code{\link[=rw_range]{rw_range()}},
+\code{\link[=skewness_vec]{skewness_vec()}}
 }
 \author{
 Steven P. Sanderson II, MPH
