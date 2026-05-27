@@ -26,19 +26,19 @@ chmean(x)
 
 }
 \seealso{
-Other Vector Function: 
-\code{\link{cgmean}()},
-\code{\link{ckurtosis}()},
-\code{\link{cmean}()},
-\code{\link{cmedian}()},
-\code{\link{crange}()},
-\code{\link{csd}()},
-\code{\link{cskewness}()},
-\code{\link{cvar}()},
-\code{\link{euclidean_distance}()},
-\code{\link{kurtosis_vec}()},
-\code{\link{rw_range}()},
-\code{\link{skewness_vec}()}
+Other Vector Function:
+\code{\link[=cgmean]{cgmean()}},
+\code{\link[=ckurtosis]{ckurtosis()}},
+\code{\link[=cmean]{cmean()}},
+\code{\link[=cmedian]{cmedian()}},
+\code{\link[=crange]{crange()}},
+\code{\link[=csd]{csd()}},
+\code{\link[=cskewness]{cskewness()}},
+\code{\link[=cvar]{cvar()}},
+\code{\link[=euclidean_distance]{euclidean_distance()}},
+\code{\link[=kurtosis_vec]{kurtosis_vec()}},
+\code{\link[=rw_range]{rw_range()}},
+\code{\link[=skewness_vec]{skewness_vec()}}
 }
 \author{
 Steven P. Sanderson II, MPH

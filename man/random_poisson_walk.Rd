@@ -88,45 +88,45 @@ random_poisson_walk(.dimensions = 3, .lambda = c(1, 2, 3)) |>
 
 }
 \seealso{
-Other Generator Functions: 
-\code{\link{brownian_motion}()},
-\code{\link{custom_walk}()},
-\code{\link{discrete_walk}()},
-\code{\link{geometric_brownian_motion}()},
-\code{\link{random_beta_walk}()},
-\code{\link{random_binomial_walk}()},
-\code{\link{random_cauchy_walk}()},
-\code{\link{random_chisquared_walk}()},
-\code{\link{random_displacement_walk}()},
-\code{\link{random_exponential_walk}()},
-\code{\link{random_f_walk}()},
-\code{\link{random_gamma_walk}()},
-\code{\link{random_geometric_walk}()},
-\code{\link{random_hypergeometric_walk}()},
-\code{\link{random_logistic_walk}()},
-\code{\link{random_lognormal_walk}()},
-\code{\link{random_multinomial_walk}()},
-\code{\link{random_negbinomial_walk}()},
-\code{\link{random_normal_drift_walk}()},
-\code{\link{random_normal_walk}()},
-\code{\link{random_smirnov_walk}()},
-\code{\link{random_t_walk}()},
-\code{\link{random_uniform_walk}()},
-\code{\link{random_weibull_walk}()},
-\code{\link{random_wilcox_walk}()},
-\code{\link{random_wilcoxon_sr_walk}()}
+Other Generator Functions:
+\code{\link[=brownian_motion]{brownian_motion()}},
+\code{\link[=custom_walk]{custom_walk()}},
+\code{\link[=discrete_walk]{discrete_walk()}},
+\code{\link[=geometric_brownian_motion]{geometric_brownian_motion()}},
+\code{\link[=random_beta_walk]{random_beta_walk()}},
+\code{\link[=random_binomial_walk]{random_binomial_walk()}},
+\code{\link[=random_cauchy_walk]{random_cauchy_walk()}},
+\code{\link[=random_chisquared_walk]{random_chisquared_walk()}},
+\code{\link[=random_displacement_walk]{random_displacement_walk()}},
+\code{\link[=random_exponential_walk]{random_exponential_walk()}},
+\code{\link[=random_f_walk]{random_f_walk()}},
+\code{\link[=random_gamma_walk]{random_gamma_walk()}},
+\code{\link[=random_geometric_walk]{random_geometric_walk()}},
+\code{\link[=random_hypergeometric_walk]{random_hypergeometric_walk()}},
+\code{\link[=random_logistic_walk]{random_logistic_walk()}},
+\code{\link[=random_lognormal_walk]{random_lognormal_walk()}},
+\code{\link[=random_multinomial_walk]{random_multinomial_walk()}},
+\code{\link[=random_negbinomial_walk]{random_negbinomial_walk()}},
+\code{\link[=random_normal_drift_walk]{random_normal_drift_walk()}},
+\code{\link[=random_normal_walk]{random_normal_walk()}},
+\code{\link[=random_smirnov_walk]{random_smirnov_walk()}},
+\code{\link[=random_t_walk]{random_t_walk()}},
+\code{\link[=random_uniform_walk]{random_uniform_walk()}},
+\code{\link[=random_weibull_walk]{random_weibull_walk()}},
+\code{\link[=random_wilcox_walk]{random_wilcox_walk()}},
+\code{\link[=random_wilcoxon_sr_walk]{random_wilcoxon_sr_walk()}}
 
-Other Discrete Distribution: 
-\code{\link{discrete_walk}()},
-\code{\link{random_binomial_walk}()},
-\code{\link{random_displacement_walk}()},
-\code{\link{random_geometric_walk}()},
-\code{\link{random_hypergeometric_walk}()},
-\code{\link{random_multinomial_walk}()},
-\code{\link{random_negbinomial_walk}()},
-\code{\link{random_smirnov_walk}()},
-\code{\link{random_wilcox_walk}()},
-\code{\link{random_wilcoxon_sr_walk}()}
+Other Discrete Distribution:
+\code{\link[=discrete_walk]{discrete_walk()}},
+\code{\link[=random_binomial_walk]{random_binomial_walk()}},
+\code{\link[=random_displacement_walk]{random_displacement_walk()}},
+\code{\link[=random_geometric_walk]{random_geometric_walk()}},
+\code{\link[=random_hypergeometric_walk]{random_hypergeometric_walk()}},
+\code{\link[=random_multinomial_walk]{random_multinomial_walk()}},
+\code{\link[=random_negbinomial_walk]{random_negbinomial_walk()}},
+\code{\link[=random_smirnov_walk]{random_smirnov_walk()}},
+\code{\link[=random_wilcox_walk]{random_wilcox_walk()}},
+\code{\link[=random_wilcoxon_sr_walk]{random_wilcoxon_sr_walk()}}
 }
 \author{
 Steven P. Sanderson II, MPH

@@ -61,19 +61,19 @@ lines(result, col = "red")
 
 }
 \seealso{
-Other Utility Functions: 
-\code{\link{confidence_interval}()},
-\code{\link{convert_snake_to_title_case}()},
-\code{\link{generate_caption}()},
-\code{\link{get_attributes}()},
-\code{\link{rand_walk_column_names}()},
-\code{\link{rand_walk_helper}()},
-\code{\link{std_cum_max_augment}()},
-\code{\link{std_cum_mean_augment}()},
-\code{\link{std_cum_min_augment}()},
-\code{\link{std_cum_prod_augment}()},
-\code{\link{std_cum_sum_augment}()},
-\code{\link{subset_walks}()}
+Other Utility Functions:
+\code{\link[=confidence_interval]{confidence_interval()}},
+\code{\link[=convert_snake_to_title_case]{convert_snake_to_title_case()}},
+\code{\link[=generate_caption]{generate_caption()}},
+\code{\link[=get_attributes]{get_attributes()}},
+\code{\link[=rand_walk_column_names]{rand_walk_column_names()}},
+\code{\link[=rand_walk_helper]{rand_walk_helper()}},
+\code{\link[=std_cum_max_augment]{std_cum_max_augment()}},
+\code{\link[=std_cum_mean_augment]{std_cum_mean_augment()}},
+\code{\link[=std_cum_min_augment]{std_cum_min_augment()}},
+\code{\link[=std_cum_prod_augment]{std_cum_prod_augment()}},
+\code{\link[=std_cum_sum_augment]{std_cum_sum_augment()}},
+\code{\link[=subset_walks]{subset_walks()}}
 }
 \author{
 Steven P. Sanderson II, MPH
