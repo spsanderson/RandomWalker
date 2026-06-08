@@ -385,7 +385,7 @@ walks |>
 # Property 3: Distance ∝ √n
 walks |>
   group_by(step_number) |>
-  summarize(
+  reframe(
     mean_abs_position = mean(abs(cum_sum_y)),
     theoretical = sqrt(2/pi) * sqrt(step_number)  # Exact for normal
   ) |>
