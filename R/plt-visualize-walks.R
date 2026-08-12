@@ -29,22 +29,26 @@
 #' not by setting `.interactive` to TRUE. The function uses the `ggiraph`
 #' package for making the patches interactive.
 #'
-#' If you want to visualize only one of the attributes, you can choose use one of
-#' these values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`) for
-#' the `.pluck` parameter.
+#' If you want to visualize only one of the attributes, use `.pluck` with a
+#' numeric plot index or the exact column name to plot. Generator functions with
+#' cumulative statistics use dimension-suffixed column names such as
+#' `cum_sum_y`, `cum_sum_x`, and `cum_sum_z`. Short cumulative aliases such as
+#' `cum_sum` are also accepted when they match exactly one plotted column.
 #'
 #' @param .data The input data. Assumed to be created by one of the random walk
 #' functions in the RandomWalker package, but can be any data frame or tibble
-#' that contains columns `walk_number`, `x`, and one or more numeric columns
-#' like `y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max` and `cum_mean`, for
-#' instance.
+#' that contains columns `walk_number`, `step_number`, and one or more numeric
+#' columns like `y`, `x`, `z`, `cum_sum_y`, `cum_prod_y`, `cum_min_y`,
+#' `cum_max_y`, and `cum_mean_y`, for instance.
 #' @param .alpha The alpha value for all the line charts in the visualization.
 #' Values range from 0 to 1. Default is 0.7.
 #' @param .interactive A boolean value. TRUE if you want the patches to be
 #' interactive. FALSE if you don't. Default is FALSE.
-#' @param .pluck If you want to visualize only one of the You can choose one of
-#' the values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`).
-#' Default is FALSE.
+#' @param .pluck If you want to visualize only one or more plots, supply a
+#' numeric vector of plot indices or a character vector of plotted column names.
+#' Exact column names such as `y`, `cum_sum_y`, or `cum_sum_x` are supported.
+#' Short cumulative aliases such as `cum_sum` are supported only when they match
+#' exactly one plotted column. Default is FALSE.
 #'
 #' @return A patchwork composed of 1 or more patches
 #'
@@ -73,6 +77,11 @@
 #' set.seed(123)
 #' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 #'  visualize_walks(.pluck = c(1, 3))
+#'
+#' # Use an exact suffixed cumulative column name
+#' set.seed(123)
+#' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
+#'  visualize_walks(.pluck = "cum_sum_y")
 #'
 #' @name visualize_walks
 NULL
@@ -204,14 +213,39 @@ visualize_walks <- function(.data, .alpha = 0.7, .interactive = FALSE, .pluck = 
         )
       }
     } else if (is.character(.pluck)) {
-      name_map <- c("y", "cum_sum", "cum_prod", "cum_min", "cum_max", "cum_mean")
-      pluck_indices <- match(.pluck, name_map)
-      if (any(is.na(pluck_indices))) {
+      valid_names <- paste(plot_vars, collapse = ", ")
+      resolve_pluck_name <- function(pluck_name) {
+        exact_match <- match(pluck_name, plot_vars)
+        if (!is.na(exact_match)) {
+          return(exact_match)
+        }
+
+        alias_matches <- which(startsWith(plot_vars, paste0(pluck_name, "_")))
+
+        if (length(alias_matches) == 1) {
+          return(alias_matches)
+        }
+
+        if (length(alias_matches) > 1) {
+          rlang::abort(
+            message = paste0(
+              "The `.pluck` name `", pluck_name, "` is ambiguous. ",
+              "Use an exact column name. Valid names are: ", valid_names, "."
+            ),
+            use_cli_format = TRUE
+          )
+        }
+
         rlang::abort(
-          message = "One or more names in `.pluck` are invalid.",
+          message = paste0(
+            "One or more names in `.pluck` are invalid. ",
+            "Valid names are: ", valid_names, "."
+          ),
           use_cli_format = TRUE
         )
       }
+
+      pluck_indices <- vapply(.pluck, resolve_pluck_name, integer(1))
     } else {
       rlang::abort(
         message = "`.pluck` must be a numeric vector of indices or a character vector of names.",

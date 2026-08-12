@@ -685,7 +685,7 @@ crossed_102 <- walks |>
 # Extract and visualize those walks
 walks |>
   filter(walk_number %in% crossed_102) |>
-  visualize_walks(.pluck = "cum_sum", .alpha = 0.3)
+  visualize_walks(.pluck = "cum_sum_y", .alpha = 0.3)
 ```
 
 ![Multi-line plot showing all random walks that crossed the threshold of

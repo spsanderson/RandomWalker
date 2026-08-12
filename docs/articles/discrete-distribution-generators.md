@@ -669,7 +669,7 @@ traffic <- random_poisson_walk(
 # Visualize cumulative page views for a sample of walks
 traffic |>
   dplyr::filter(walk_number %in% levels(traffic$walk_number)[1:10]) |>
-  visualize_walks(.pluck = "cum_sum") +
+  visualize_walks(.pluck = "cum_sum_y") +
   ggplot2::labs(
     title = "Cumulative Website Page Views (Poisson Random Walk)",
     x = "Day",

@@ -73,7 +73,7 @@ rw30() |> visualize_walks(.interactive = TRUE, .alpha = 0.5)
 
 # Focus on specific panels
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
-  visualize_walks(.interactive = TRUE, .pluck = c("cum_sum", "cum_mean"))
+  visualize_walks(.interactive = TRUE, .pluck = c("cum_sum_y", "cum_mean_y"))
 ```
 
 ### When to Use Interactive Plots
@@ -145,20 +145,20 @@ rw30() |> visualize_walks(.pluck = "y")
 
 # Show only cumulative sum
 random_normal_walk(.num_walks = 10, .initial_value = 100) |>
-  visualize_walks(.pluck = "cum_sum")
+  visualize_walks(.pluck = "cum_sum_y")
 
 # Show only cumulative product
 geometric_brownian_motion(.num_walks = 10, .initial_value = 100) |>
-  visualize_walks(.pluck = "cum_prod")
+  visualize_walks(.pluck = "cum_prod_y")
 ```
 
 **Available Attributes:**
 - `"y"` - Original walk values
-- `"cum_sum"` - Cumulative sum
-- `"cum_prod"` - Cumulative product
-- `"cum_min"` - Cumulative minimum
-- `"cum_max"` - Cumulative maximum
-- `"cum_mean"` - Cumulative mean
+- `"cum_sum_y"` - Cumulative sum for the y dimension
+- `"cum_prod_y"` - Cumulative product for the y dimension
+- `"cum_min_y"` - Cumulative minimum for the y dimension
+- `"cum_max_y"` - Cumulative maximum for the y dimension
+- `"cum_mean_y"` - Cumulative mean for the y dimension
 
 ### Pluck Multiple Attributes
 
@@ -167,14 +167,15 @@ Create custom panel layouts:
 ```r
 # Two panels: original and cumulative sum
 random_normal_walk(.num_walks = 10, .initial_value = 100) |>
-  visualize_walks(.pluck = c("y", "cum_sum"))
+  visualize_walks(.pluck = c("y", "cum_sum_y"))
 
 # Three panels: min, mean, max
-rw30() |> visualize_walks(.pluck = c("cum_min", "cum_mean", "cum_max"))
+random_normal_walk(.num_walks = 10) |>
+  visualize_walks(.pluck = c("cum_min_y", "cum_mean_y", "cum_max_y"))
 
 # Focus on products and sums
 geometric_brownian_motion(.num_walks = 10) |>
-  visualize_walks(.pluck = c("cum_sum", "cum_prod"))
+  visualize_walks(.pluck = c("cum_sum_y", "cum_prod_y"))
 ```
 
 ### Pluck with Custom Arrangement
@@ -188,8 +189,8 @@ walks <- random_normal_walk(.num_walks = 10, .initial_value = 100)
 
 # Get individual plots
 p1 <- walks |> visualize_walks(.pluck = "y")
-p2 <- walks |> visualize_walks(.pluck = "cum_sum")
-p3 <- walks |> visualize_walks(.pluck = "cum_prod")
+p2 <- walks |> visualize_walks(.pluck = "cum_sum_y")
+p3 <- walks |> visualize_walks(.pluck = "cum_prod_y")
 
 # Custom arrangement
 p1 / (p2 | p3)  # Top row: y, Bottom row: cum_sum and cum_prod side by side
@@ -213,13 +214,13 @@ Create publication-quality layouts:
 ```r
 library(patchwork)
 
-walks <- rw30()
+walks <- random_normal_walk()
 
 # Extract individual panels
 p_y <- walks |> visualize_walks(.pluck = "y")
-p_sum <- walks |> visualize_walks(.pluck = "cum_sum")
-p_min <- walks |> visualize_walks(.pluck = "cum_min")
-p_max <- walks |> visualize_walks(.pluck = "cum_max")
+p_sum <- walks |> visualize_walks(.pluck = "cum_sum_y")
+p_min <- walks |> visualize_walks(.pluck = "cum_min_y")
+p_max <- walks |> visualize_walks(.pluck = "cum_max_y")
 
 # Horizontal layout
 p_y | p_sum | p_min | p_max
@@ -447,14 +448,14 @@ walks |> visualize_walks(.interactive = TRUE, .alpha = 0.5)
 **For publications:**
 ```r
 # Use static with high DPI, focus on key aspects
-walks |> visualize_walks(.pluck = c("y", "cum_sum"), .alpha = 0.7)
+walks |> visualize_walks(.pluck = c("y", "cum_sum_y"), .alpha = 0.7)
 ggsave("figure1.pdf", width = 10, height = 6)
 ```
 
 **For presentations:**
 ```r
 # Use interactive or clean static with fewer walks
-walks |> visualize_walks(.interactive = TRUE, .pluck = "cum_sum")
+walks |> visualize_walks(.interactive = TRUE, .pluck = "cum_sum_y")
 ```
 
 ### Performance Tips
@@ -518,7 +519,7 @@ cauchy <- random_cauchy_walk(.num_walks = 10) |>
   labs(title = "Cauchy Walk (Heavy Tails)")
 
 geometric <- geometric_brownian_motion(.num_walks = 10, .initial_value = 100) |>
-  visualize_walks(.pluck = "cum_prod") +
+  visualize_walks(.pluck = "cum_prod_y") +
   labs(title = "Geometric Brownian Motion")
 
 # Combine
@@ -556,11 +557,11 @@ rw30() |> visualize_walks(.pluck = "y") + my_theme
 library(patchwork)
 
 p1 <- random_normal_walk(.num_walks = 10, .initial_value = 0) |>
-  visualize_walks(.pluck = "cum_sum") +
+  visualize_walks(.pluck = "cum_sum_y") +
   labs(title = "Starting at 0")
 
 p2 <- random_normal_walk(.num_walks = 10, .initial_value = 100) |>
-  visualize_walks(.pluck = "cum_sum") +
+  visualize_walks(.pluck = "cum_sum_y") +
   labs(title = "Starting at 100")
 
 p1 / p2
@@ -572,7 +573,7 @@ p1 / p2
 # Generate many walks and show spread
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
 
-walks |> visualize_walks(.alpha = 0.1, .pluck = "cum_sum")
+walks |> visualize_walks(.alpha = 0.1, .pluck = "cum_sum_y")
 ```
 
 ### Pattern 3: Highlight Specific Walks

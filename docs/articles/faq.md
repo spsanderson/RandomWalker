@@ -244,7 +244,7 @@ Use `.pluck`:
 
 ``` r
 # Single panel
-random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
 ```
 
 ![Single panel visualization showing cumulative
@@ -252,7 +252,7 @@ sum](faq_files/figure-html/pluck_example-1.png)
 
 ``` r
 # Multiple panels
-random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
+random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum_y", "cum_mean_y"))
 ```
 
 ![Multiple panel visualization showing y, cumulative sum, and cumulative
@@ -524,7 +524,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   output$walks_plot <- renderPlot({
     random_normal_walk(.num_walks = input$num_walks) |>
-      visualize_walks(.pluck = "cum_sum")
+      visualize_walks(.pluck = "cum_sum_y")
   })
 }
 

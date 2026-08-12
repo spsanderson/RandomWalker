@@ -16,9 +16,9 @@ visualize_walks(.data, .alpha = 0.7, .interactive = FALSE, .pluck = FALSE)
 
   The input data. Assumed to be created by one of the random walk
   functions in the RandomWalker package, but can be any data frame or
-  tibble that contains columns `walk_number`, `x`, and one or more
-  numeric columns like `y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`
-  and `cum_mean`, for instance.
+  tibble that contains columns `walk_number`, `step_number`, and one or
+  more numeric columns like `y`, `x`, `z`, `cum_sum_y`, `cum_prod_y`,
+  `cum_min_y`, `cum_max_y`, and `cum_mean_y`, for instance.
 
 - .alpha:
 
@@ -32,9 +32,11 @@ visualize_walks(.data, .alpha = 0.7, .interactive = FALSE, .pluck = FALSE)
 
 - .pluck:
 
-  If you want to visualize only one of the You can choose one of the
-  values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`, `cum_mean`).
-  Default is FALSE.
+  If you want to visualize only one or more plots, supply a numeric
+  vector of plot indices or a character vector of plotted column names.
+  Exact column names such as `y`, `cum_sum_y`, or `cum_sum_x` are
+  supported. Short cumulative aliases such as `cum_sum` are supported
+  only when they match exactly one plotted column. Default is FALSE.
 
 ## Value
 
@@ -69,9 +71,12 @@ You can also choose whether you want the visualization to be interactive
 or not by setting `.interactive` to TRUE. The function uses the
 `ggiraph` package for making the patches interactive.
 
-If you want to visualize only one of the attributes, you can choose use
-one of these values (`y`, `cum_sum`, `cum_prod`, `cum_min`, `cum_max`,
-`cum_mean`) for the `.pluck` parameter.
+If you want to visualize only one of the attributes, use `.pluck` with a
+numeric plot index or the exact column name to plot. Generator functions
+with cumulative statistics use dimension-suffixed column names such as
+`cum_sum_y`, `cum_sum_x`, and `cum_sum_z`. Short cumulative aliases such
+as `cum_sum` are also accepted when they match exactly one plotted
+column.
 
 ## Author
 
@@ -108,5 +113,10 @@ random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 set.seed(123)
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
  visualize_walks(.pluck = c(1, 3))
+
+# Use an exact suffixed cumulative column name
+set.seed(123)
+random_normal_walk(.num_walks = 5, .initial_value = 100) |>
+ visualize_walks(.pluck = "cum_sum_y")
 
 ```
