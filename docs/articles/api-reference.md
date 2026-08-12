@@ -344,10 +344,11 @@ Create comprehensive visualizations of random walks.
 
 **Parameters:** - `.data`: Random walk data (tibble) - `.alpha`: Line
 transparency, 0-1 (default: 0.7) - `.interactive`: Boolean, create
-interactive plot (default: FALSE) - `.pluck`: Select specific attributes
-to plot (default: FALSE shows all) - Options: `"y"`, `"cum_sum"`,
-`"cum_prod"`, `"cum_min"`, `"cum_max"`, `"cum_mean"` - Can be a vector:
-`c("y", "cum_sum")`
+interactive plot (default: FALSE) - `.pluck`: Select specific columns to
+plot (default: FALSE shows all) - Use exact plotted column names such as
+`"y"`, `"cum_sum_y"`, `"cum_sum_x"`, or `"cum_sum_z"` - Short cumulative
+aliases such as `"cum_sum"` work only when they match exactly one plotted
+column - Can be a vector: `c("y", "cum_sum_y")`
 
 **Returns:** - Static mode: ggplot2/patchwork object - Interactive mode:
 ggiraph object
@@ -375,8 +376,8 @@ transparency](api-reference_files/figure-html/visualize_alpha-1.png)
 rw30() |> visualize_walks(.interactive = TRUE)
 
 # Select specific panels
-random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
-random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
+random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum_y", "cum_mean_y"))
 ```
 
 ------------------------------------------------------------------------
@@ -637,8 +638,9 @@ All generator functions return a tibble with consistent structure:
 
 ``` r
 # A tibble: N × 8
-  walk_number step_number     y cum_sum cum_prod cum_min cum_max cum_mean
-  <fct>             <int> <dbl>   <dbl>    <dbl>   <dbl>   <dbl>    <dbl>
+  walk_number step_number     y cum_sum_y cum_prod_y cum_min_y cum_max_y
+  <fct>             <int> <dbl>     <dbl>      <dbl>     <dbl>     <dbl>
+  # ... with 1 more column: cum_mean_y
 ```
 
 **2D Walks:**

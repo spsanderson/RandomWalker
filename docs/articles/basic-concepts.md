@@ -36,7 +36,7 @@ coin_walk <- discrete_walk(
   .upper_probability = 0.5
 )
 
-coin_walk |> visualize_walks(.pluck = "cum_sum")
+coin_walk |> visualize_walks(.pluck = "cum_sum_y")
 ```
 
 ![Line plot showing a single random walk simulating coin flips over 100
@@ -509,7 +509,7 @@ similar_end <- walks |>
 # Plot their paths - very different!
 walks |>
   filter(walk_number %in% similar_end$walk_number) |>
-  visualize_walks(.pluck = "cum_sum", .alpha = 0.5)
+  visualize_walks(.pluck = "cum_sum_y", .alpha = 0.5)
 ```
 
 ![Line plot showing multiple random walk trajectories that pass through

@@ -206,7 +206,7 @@ walks |>
 
 **Solution 3:** Focus on specific aspect
 ```r
-walks |> visualize_walks(.pluck = "cum_sum")
+walks |> visualize_walks(.pluck = "cum_sum_y")
 ```
 
 ### Problem: Interactive Plot Not Interactive

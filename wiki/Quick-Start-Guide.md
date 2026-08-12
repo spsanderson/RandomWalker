@@ -217,11 +217,11 @@ Focus on specific aspects of your walks:
 
 ```r
 # Show only cumulative sum
-random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
 
 # Show multiple specific attributes
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
-  visualize_walks(.pluck = c("y", "cum_sum"))
+  visualize_walks(.pluck = c("y", "cum_sum_y"))
 ```
 
 ### Adjust Plot Aesthetics

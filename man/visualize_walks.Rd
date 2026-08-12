@@ -9,9 +9,9 @@ visualize_walks(.data, .alpha = 0.7, .interactive = FALSE, .pluck = FALSE)
 \arguments{
 \item{.data}{The input data. Assumed to be created by one of the random walk
 functions in the RandomWalker package, but can be any data frame or tibble
-that contains columns \code{walk_number}, \code{x}, and one or more numeric columns
-like \code{y}, \code{cum_sum}, \code{cum_prod}, \code{cum_min}, \code{cum_max} and \code{cum_mean}, for
-instance.}
+that contains columns \code{walk_number}, \code{step_number}, and one or more numeric
+columns like \code{y}, \code{x}, \code{z}, \code{cum_sum_y}, \code{cum_prod_y}, \code{cum_min_y},
+\code{cum_max_y}, and \code{cum_mean_y}, for instance.}
 
 \item{.alpha}{The alpha value for all the line charts in the visualization.
 Values range from 0 to 1. Default is 0.7.}
@@ -19,9 +19,11 @@ Values range from 0 to 1. Default is 0.7.}
 \item{.interactive}{A boolean value. TRUE if you want the patches to be
 interactive. FALSE if you don't. Default is FALSE.}
 
-\item{.pluck}{If you want to visualize only one of the You can choose one of
-the values (\code{y}, \code{cum_sum}, \code{cum_prod}, \code{cum_min}, \code{cum_max}, \code{cum_mean}).
-Default is FALSE.}
+\item{.pluck}{If you want to visualize only one or more plots, supply a
+numeric vector of plot indices or a character vector of plotted column names.
+Exact column names such as \code{y}, \code{cum_sum_y}, or \code{cum_sum_x} are supported.
+Short cumulative aliases such as \code{cum_sum} are supported only when they match
+exactly one plotted column. Default is FALSE.}
 }
 \value{
 A patchwork composed of 1 or more patches
@@ -55,9 +57,11 @@ You can also choose whether you want the visualization to be interactive or
 not by setting \code{.interactive} to TRUE. The function uses the \code{ggiraph}
 package for making the patches interactive.
 
-If you want to visualize only one of the attributes, you can choose use one of
-these values (\code{y}, \code{cum_sum}, \code{cum_prod}, \code{cum_min}, \code{cum_max}, \code{cum_mean}) for
-the \code{.pluck} parameter.
+If you want to visualize only one of the attributes, use \code{.pluck} with a
+numeric plot index or the exact column name to plot. Generator functions with
+cumulative statistics use dimension-suffixed column names such as
+\code{cum_sum_y}, \code{cum_sum_x}, and \code{cum_sum_z}. Short cumulative aliases such as
+\code{cum_sum} are also accepted when they match exactly one plotted column.
 }
 \examples{
 # Generate random walks and visualize the result
@@ -84,6 +88,11 @@ random_normal_walk(.num_walks = 5, .initial_value = 100) |>
 set.seed(123)
 random_normal_walk(.num_walks = 5, .initial_value = 100) |>
  visualize_walks(.pluck = c(1, 3))
+
+# Use an exact suffixed cumulative column name
+set.seed(123)
+random_normal_walk(.num_walks = 5, .initial_value = 100) |>
+ visualize_walks(.pluck = "cum_sum_y")
 
 }
 \author{

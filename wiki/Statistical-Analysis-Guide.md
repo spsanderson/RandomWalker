@@ -456,10 +456,10 @@ min_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "min")
 # Visualize extremes
 library(patchwork)
 
-p_max <- max_walk |> visualize_walks(.pluck = "cum_sum") +
+p_max <- max_walk |> visualize_walks(.pluck = "cum_sum_y") +
   labs(title = "Maximum Final Value Walk")
 
-p_min <- min_walk |> visualize_walks(.pluck = "cum_sum") +
+p_min <- min_walk |> visualize_walks(.pluck = "cum_sum_y") +
   labs(title = "Minimum Final Value Walk")
 
 p_max / p_min
@@ -483,7 +483,7 @@ crossed_102 <- walks |>
 # Extract and visualize those walks
 walks |>
   filter(walk_number %in% crossed_102) |>
-  visualize_walks(.pluck = "cum_sum", .alpha = 0.3)
+  visualize_walks(.pluck = "cum_sum_y", .alpha = 0.3)
 ```
 
 ## Advanced Analysis

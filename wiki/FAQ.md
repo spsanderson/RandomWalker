@@ -201,10 +201,10 @@ rw30() |> visualize_walks(.interactive = TRUE)
 Use `.pluck`:
 ```r
 # Single panel
-random_normal_walk() |> visualize_walks(.pluck = "cum_sum")
+random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
 
 # Multiple panels
-random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum", "cum_mean"))
+random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum_y", "cum_mean_y"))
 ```
 
 ### How do I adjust transparency?
@@ -421,7 +421,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   output$walks_plot <- renderPlot({
     random_normal_walk(.num_walks = input$num_walks) |>
-      visualize_walks(.pluck = "cum_sum")
+      visualize_walks(.pluck = "cum_sum_y")
   })
 }
 

@@ -34,7 +34,7 @@ stock_sim <- geometric_brownian_motion(
 
 # Visualize scenarios
 stock_sim |>
-  visualize_walks(.alpha = 0.05, .pluck = "cum_prod")
+  visualize_walks(.alpha = 0.05, .pluck = "cum_prod_y")
 
 # Analyze outcomes
 outcomes <- stock_sim |>
@@ -370,7 +370,7 @@ population <- random_normal_walk(
 
 # Visualize with extinction threshold
 population |>
-  visualize_walks(.pluck = "cum_sum") +
+  visualize_walks(.pluck = "cum_sum_y") +
   geom_hline(yintercept = 0, color = "red", linetype = "dashed", linewidth = 1) +
   labs(
     title = "Population Dynamics with Environmental Stochasticity",
@@ -401,7 +401,7 @@ infections <- random_poisson_walk(
 
 # Cumulative infections
 infections |>
-  visualize_walks(.pluck = "cum_sum") +
+  visualize_walks(.pluck = "cum_sum_y") +
   labs(
     title = "Epidemic Spread Over Time",
     subtitle = "Cumulative infections from Poisson process",
