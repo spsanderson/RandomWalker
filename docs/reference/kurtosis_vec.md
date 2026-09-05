@@ -5,7 +5,8 @@ kurtosis of that vector. The length of this vector must be at least four
 numbers. The kurtosis explains the sharpness of the peak of a
 distribution of data.
 
-`((1/n) * sum(x - mu})^4) / ((()1/n) * sum(x - mu)^2)^2`
+\$\$\frac{\frac{1}{n} \sum (x - \mu)^4}{\left(\frac{1}{n} \sum (x -
+\mu)^2\right)^2}\$\$
 
 ## Usage
 

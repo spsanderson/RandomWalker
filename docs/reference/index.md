@@ -20,6 +20,8 @@ Functions that generate modifiable random walks
 
 - [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md)
   : Brownian Motion
+- [`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md)
+  : Double Pendulum Walk
 - [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md)
   : Geometric Brownian Motion
 - [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md)
@@ -78,6 +80,10 @@ Functions that generate modifiable random walks
 
 Functions that visualise random walks
 
+- [`animate_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/animate_double_pendulum.md)
+  : Animate a Double Pendulum
+- [`plot_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/plot_double_pendulum.md)
+  : Plot a Double Pendulum Trajectory
 - [`visualize_walks()`](https://www.spsanderson.com/RandomWalker/reference/visualize_walks.md)
   : Visualize Walks
 

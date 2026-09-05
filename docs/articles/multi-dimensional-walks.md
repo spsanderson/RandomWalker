@@ -45,6 +45,7 @@ All random walk generator functions support the `.dimensions` parameter:
 
 ``` r
 
+
 # 1D walk (default)
 walk_1d <- random_normal_walk(.num_walks = 5, .n = 100, .dimensions = 1)
 
@@ -60,6 +61,7 @@ walk_3d <- random_normal_walk(.num_walks = 5, .n = 100, .dimensions = 3)
 Every continuous distribution generator supports 1D, 2D, and 3D:
 
 ``` r
+
 # 2D Brownian motion
 brownian_motion(.num_walks = 10, .n = 500, .dimensions = 2)
 
@@ -105,30 +107,31 @@ random_exponential_walk(.num_walks = 5, .n = 300, .dimensions = 3)
 ### Inspecting Multi-Dimensional Data
 
 ``` r
+
 # 2D walk
 walk_2d <- random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2)
 
 # View structure
 head(walk_2d, 10)
 #> # A tibble: 10 × 14
-#>    walk_number step_number       x        y cum_sum_x cum_sum_y cum_prod_x
-#>    <fct>             <int>   <dbl>    <dbl>     <dbl>     <dbl>      <dbl>
-#>  1 1                     1  0.0106  0.0769     0.0106    0.0769          0
-#>  2 1                     2  0.133   0.153      0.143     0.230           0
-#>  3 1                     3 -0.0742 -0.0912     0.0692    0.138           0
-#>  4 1                     4 -0.0562 -0.00276    0.0130    0.136           0
-#>  5 1                     5  0.214   0.0846     0.227     0.220           0
-#>  6 1                     6  0.262   0.0412     0.489     0.261           0
-#>  7 1                     7  0.0588  0.157      0.548     0.419           0
-#>  8 1                     8  0.0122 -0.127      0.560     0.291           0
-#>  9 1                     9 -0.0742 -0.0339     0.486     0.258           0
-#> 10 1                    10  0.106  -0.0705     0.592     0.187           0
-#> # ℹ 7 more variables: cum_prod_y <dbl>, cum_min_x <dbl>, cum_min_y <dbl>,
-#> #   cum_max_x <dbl>, cum_max_y <dbl>, cum_mean_x <dbl>, cum_mean_y <dbl>
+#>    walk_number step_number       x        y cum_sum_x cum_prod_x cum_min_x
+#>    <fct>             <int>   <dbl>    <dbl>     <dbl>      <dbl>     <dbl>
+#>  1 1                     1  0.0106  0.0769     0.0106          0    0.0106
+#>  2 1                     2  0.133   0.153      0.143           0    0.0106
+#>  3 1                     3 -0.0742 -0.0912     0.0692          0   -0.0742
+#>  4 1                     4 -0.0562 -0.00276    0.0130          0   -0.0742
+#>  5 1                     5  0.214   0.0846     0.227           0   -0.0742
+#>  6 1                     6  0.262   0.0412     0.489           0   -0.0742
+#>  7 1                     7  0.0588  0.157      0.548           0   -0.0742
+#>  8 1                     8  0.0122 -0.127      0.560           0   -0.0742
+#>  9 1                     9 -0.0742 -0.0339     0.486           0   -0.0742
+#> 10 1                    10  0.106  -0.0705     0.592           0   -0.0742
+#> # ℹ 7 more variables: cum_max_x <dbl>, cum_mean_x <dbl>, cum_sum_y <dbl>,
+#> #   cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>, cum_mean_y <dbl>
 names(walk_2d)
 #>  [1] "walk_number" "step_number" "x"           "y"           "cum_sum_x"  
-#>  [6] "cum_sum_y"   "cum_prod_x"  "cum_prod_y"  "cum_min_x"   "cum_min_y"  
-#> [11] "cum_max_x"   "cum_max_y"   "cum_mean_x"  "cum_mean_y"
+#>  [6] "cum_prod_x"  "cum_min_x"   "cum_max_x"   "cum_mean_x"  "cum_sum_y"  
+#> [11] "cum_prod_y"  "cum_min_y"   "cum_max_y"   "cum_mean_y"
 
 # 3D walk
 walk_3d <- random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 3)
@@ -136,27 +139,27 @@ walk_3d <- random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 3)
 # View structure
 head(walk_3d, 10)
 #> # A tibble: 10 × 20
-#>    walk_number step_number       x       y        z cum_sum_x cum_sum_y
-#>    <fct>             <int>   <dbl>   <dbl>    <dbl>     <dbl>     <dbl>
-#>  1 1                     1  0.0294 -0.0985  0.0475     0.0294   -0.0985
-#>  2 1                     2 -0.222  -0.0523  0.0483    -0.193    -0.151 
-#>  3 1                     3 -0.0533  0.178  -0.0974    -0.246     0.0267
-#>  4 1                     4 -0.0574  0.204  -0.142     -0.304     0.231 
-#>  5 1                     5  0.0642 -0.161   0.194     -0.240     0.0701
-#>  6 1                     6  0.0773  0.0458  0.0483    -0.162     0.116 
-#>  7 1                     7  0.0484  0.101   0.180     -0.114     0.216 
-#>  8 1                     8 -0.102  -0.161  -0.00401   -0.216     0.0554
-#>  9 1                     9 -0.106   0.178  -0.146     -0.322     0.233 
-#> 10 1                    10 -0.120  -0.0148  0.0507    -0.442     0.218 
-#> # ℹ 13 more variables: cum_sum_z <dbl>, cum_prod_x <dbl>, cum_prod_y <dbl>,
-#> #   cum_prod_z <dbl>, cum_min_x <dbl>, cum_min_y <dbl>, cum_min_z <dbl>,
-#> #   cum_max_x <dbl>, cum_max_y <dbl>, cum_max_z <dbl>, cum_mean_x <dbl>,
-#> #   cum_mean_y <dbl>, cum_mean_z <dbl>
+#>    walk_number step_number       x       y        z cum_sum_x cum_prod_x
+#>    <fct>             <int>   <dbl>   <dbl>    <dbl>     <dbl>      <dbl>
+#>  1 1                     1  0.0294 -0.0985  0.0475     0.0294          0
+#>  2 1                     2 -0.222  -0.0523  0.0483    -0.193           0
+#>  3 1                     3 -0.0533  0.178  -0.0974    -0.246           0
+#>  4 1                     4 -0.0574  0.204  -0.142     -0.304           0
+#>  5 1                     5  0.0642 -0.161   0.194     -0.240           0
+#>  6 1                     6  0.0773  0.0458  0.0483    -0.162           0
+#>  7 1                     7  0.0484  0.101   0.180     -0.114           0
+#>  8 1                     8 -0.102  -0.161  -0.00401   -0.216           0
+#>  9 1                     9 -0.106   0.178  -0.146     -0.322           0
+#> 10 1                    10 -0.120  -0.0148  0.0507    -0.442           0
+#> # ℹ 13 more variables: cum_min_x <dbl>, cum_max_x <dbl>, cum_mean_x <dbl>,
+#> #   cum_sum_y <dbl>, cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>,
+#> #   cum_mean_y <dbl>, cum_sum_z <dbl>, cum_prod_z <dbl>, cum_min_z <dbl>,
+#> #   cum_max_z <dbl>, cum_mean_z <dbl>
 names(walk_3d)
 #>  [1] "walk_number" "step_number" "x"           "y"           "z"          
-#>  [6] "cum_sum_x"   "cum_sum_y"   "cum_sum_z"   "cum_prod_x"  "cum_prod_y" 
-#> [11] "cum_prod_z"  "cum_min_x"   "cum_min_y"   "cum_min_z"   "cum_max_x"  
-#> [16] "cum_max_y"   "cum_max_z"   "cum_mean_x"  "cum_mean_y"  "cum_mean_z"
+#>  [6] "cum_sum_x"   "cum_prod_x"  "cum_min_x"   "cum_max_x"   "cum_mean_x" 
+#> [11] "cum_sum_y"   "cum_prod_y"  "cum_min_y"   "cum_max_y"   "cum_mean_y" 
+#> [16] "cum_sum_z"   "cum_prod_z"  "cum_min_z"   "cum_max_z"   "cum_mean_z"
 ```
 
 ## Visualizing 2D Walks
@@ -164,6 +167,7 @@ names(walk_3d)
 ### Basic 2D Trajectory Plot
 
 ``` r
+
 
 # Generate 2D walk
 walk_2d <- random_normal_walk(.num_walks = 10, .n = 200, .dimensions = 2)
@@ -192,6 +196,7 @@ triangles](multi-dimensional-walks_files/figure-html/basic_2d_plot-1.png)
 ### 2D Walk with Step Numbers
 
 ``` r
+
 # Generate single walk
 walk_2d <- random_normal_walk(.num_walks = 1, .n = 100, .dimensions = 2)
 
@@ -222,6 +227,7 @@ progression](multi-dimensional-walks_files/figure-html/step_numbers_2d-1.png)
 ### Heat Map of 2D Walk Density
 
 ``` r
+
 library(ggplot2)
 
 # Generate many walks
@@ -249,6 +255,7 @@ frequency](multi-dimensional-walks_files/figure-html/heatmap_2d-1.png)
 ### Animated 2D Walk
 
 ``` r
+
 library(ggplot2)
 library(gganimate)
 
@@ -273,6 +280,7 @@ animate(p, nframes = 100, fps = 10)
 ### 3D Scatter Plot
 
 ``` r
+
 library(plotly)
 
 # Generate 3D walk
@@ -302,6 +310,7 @@ plot_ly(
 ### 3D Interactive with Markers
 
 ``` r
+
 library(plotly)
 library(dplyr)
 
@@ -361,6 +370,7 @@ plot_ly(data = walk_with_markers) %>%
 ### 3D Projections
 
 ``` r
+
 library(ggplot2)
 library(patchwork)
 
@@ -403,6 +413,7 @@ below](multi-dimensional-walks_files/figure-html/3d_projections-1.png)
 ### Euclidean Distance from Origin
 
 ``` r
+
 library(dplyr)
 
 # 2D walk
@@ -431,6 +442,7 @@ ggplot(walk_with_distance, aes(x = step_number, y = distance, color = walk_numbe
 ### 3D Distance Analysis
 
 ``` r
+
 # 3D walk
 walk_3d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 3)
 
@@ -456,6 +468,7 @@ print(distance_at_steps)
 ### Radial Distribution Function
 
 ``` r
+
 library(dplyr)
 library(ggplot2)
 
@@ -484,6 +497,7 @@ ggplot(final_positions, aes(x = distance)) +
 ### Convex Hull (2D)
 
 ``` r
+
 library(dplyr)
 library(ggplot2)
 
@@ -520,6 +534,7 @@ ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y, color = walk_number)) +
 ### Case 1: Particle Diffusion (2D)
 
 ``` r
+
 # Simulate particle diffusion in a petri dish
 particles <- brownian_motion(
   .num_walks = 50,
@@ -547,6 +562,7 @@ particles %>%
 ### Case 2: Drone Flight Path (3D)
 
 ``` r
+
 # Simulate drone wandering in 3D space
 drone_path <- brownian_motion(
   .num_walks = 1,
@@ -587,6 +603,7 @@ plot_ly(
 ### Case 3: Animal Movement (2D)
 
 ``` r
+
 # Simulate animal foraging behavior
 # Using Cauchy walk for heavy tails (occasional long jumps)
 animal_movement <- random_cauchy_walk(
@@ -626,6 +643,7 @@ ggplot(animal_movement, aes(x = cum_sum_x, y = cum_sum_y)) +
 **For many walks or long walks in 3D:**
 
 ``` r
+
 # Reduce number of dimensions if not needed
 walk_2d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 2)
 
@@ -636,6 +654,7 @@ walk_2d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 2)
 **For visualization:**
 
 ``` r
+
 # Sample walks or steps for large datasets
 walk_large <- random_normal_walk(.num_walks = 1000, .n = 1000, .dimensions = 2)
 
@@ -653,6 +672,7 @@ walk_downsample <- walk_large %>%
 **Ensure equal aspect ratios for spatial plots:**
 
 ``` r
+
 # Good - maintains true spatial relationships
 ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y)) +
   geom_path() +
@@ -668,6 +688,7 @@ ggplot(walk_2d, aes(x = cum_sum_x, y = cum_sum_y)) +
 Implement reflecting or absorbing boundaries:
 
 ``` r
+
 # Reflecting boundary (bounce back)
 walk_2d <- random_normal_walk(.num_walks = 10, .n = 500, .dimensions = 2)
 

@@ -47,6 +47,7 @@ distribution.
 **Function Signature:**
 
 ``` r
+
 random_normal_walk(
   .num_walks = 25,
   .n = 100,
@@ -66,6 +67,7 @@ errors - Simulating natural phenomena with normal noise
 **Example:**
 
 ``` r
+
 # Basic normal walk
 random_normal_walk(.num_walks = 10, .n = 100) |>
   visualize_walks()
@@ -77,6 +79,7 @@ fluctuate randomly around the starting
 value.](continuous-distribution-generators_files/figure-html/normal_walk_basic-1.png)
 
 ``` r
+
 # With custom mean and SD
 random_normal_walk(
   .num_walks = 5,
@@ -93,6 +96,7 @@ with lower
 volatility.](continuous-distribution-generators_files/figure-html/normal_walk_custom-1.png)
 
 ``` r
+
 # 2D spatial walk
 random_normal_walk(
   .num_walks = 3,
@@ -113,6 +117,7 @@ Random walk with deterministic drift component.
 **Function Signature:**
 
 ``` r
+
 random_normal_drift_walk(
   .num_walks = 25,
   .n = 100,
@@ -132,6 +137,7 @@ Better for modeling processes with clear directional movement
 **Example:**
 
 ``` r
+
 # Compare walks with and without drift
 p1 <- random_normal_walk(.num_walks = 5, .mu = 0.1) |>
   visualize_walks(.pluck = "y") +
@@ -159,6 +165,7 @@ calculus.
 **Function Signature:**
 
 ``` r
+
 brownian_motion(
   .num_walks = 25,
   .n = 100,
@@ -182,6 +189,7 @@ for each walk (default: 0) - `.dimensions` - Number of dimensions
 **Example:**
 
 ``` r
+
 # Standard Brownian motion
 brownian_motion(.num_walks = 10) |>
   visualize_walks()
@@ -193,6 +201,7 @@ Wiener
 processes.](continuous-distribution-generators_files/figure-html/brownian_basic-1.png)
 
 ``` r
+
 # With drift and volatility
 brownian_motion(
   .num_walks = 50,
@@ -214,6 +223,7 @@ Geometric Brownian motion - the standard model for stock prices.
 **Function Signature:**
 
 ``` r
+
 geometric_brownian_motion(
   .num_walks = 25,
   .n = 100,
@@ -242,6 +252,7 @@ allocation simulations - Monte Carlo risk analysis
 **Example:**
 
 ``` r
+
 # Model stock prices
 stock_sim <- geometric_brownian_motion(
   .num_walks = 1000,
@@ -261,6 +272,7 @@ over time, remaining positive
 throughout.](continuous-distribution-generators_files/figure-html/gbm_stock_sim-1.png)
 
 ``` r
+
 # Analyze outcomes
 stock_sim |>
   summarize_walks(.value = cum_prod_y, .group_var = walk_number) |>
@@ -280,6 +292,7 @@ Random walk based on the beta distribution (bounded between 0 and 1).
 **Function Signature:**
 
 ``` r
+
 random_beta_walk(
   .num_walks = 25,
   .n = 100,
@@ -313,6 +326,7 @@ Left-skewed
 **Example:**
 
 ``` r
+
 # Symmetric beta walk
 random_beta_walk(
   .num_walks = 10,
@@ -327,6 +341,7 @@ steps bounded between 0 and
 1.](continuous-distribution-generators_files/figure-html/beta_symmetric-1.png)
 
 ``` r
+
 # Right-skewed (toward 0)
 random_beta_walk(
   .num_walks = 10,
@@ -341,6 +356,7 @@ toward lower
 values.](continuous-distribution-generators_files/figure-html/beta_skewed-1.png)
 
 ``` r
+
 # Compare different shapes
 p1 <- random_beta_walk(.shape1 = 1, .shape2 = 1) |>
   visualize_walks(.pluck = "y")
@@ -364,6 +380,7 @@ in normal distribution.
 **Function Signature:**
 
 ``` r
+
 random_cauchy_walk(
   .num_walks = 25,
   .n = 100,
@@ -390,6 +407,7 @@ Physics (resonance phenomena) - Robust statistics demonstrations
 **Example:**
 
 ``` r
+
 # Standard Cauchy walk
 random_cauchy_walk(.num_walks = 10) |>
   visualize_walks()
@@ -401,6 +419,7 @@ heavy-tailed
 distribution.](continuous-distribution-generators_files/figure-html/cauchy_basic-1.png)
 
 ``` r
+
 # Compare with normal walk
 p1 <- random_normal_walk(.num_walks = 5, .sd = 1) |>
   visualize_walks(.pluck = "y") +
@@ -427,6 +446,7 @@ Random walk based on chi-squared distribution (always positive).
 **Function Signature:**
 
 ``` r
+
 random_chisquared_walk(
   .num_walks = 25,
   .n = 100,
@@ -452,6 +472,7 @@ control - Reliability engineering
 **Example:**
 
 ``` r
+
 # Low df (very skewed)
 random_chisquared_walk(.num_walks = 10, .df = 1) |>
   visualize_walks()
@@ -463,6 +484,7 @@ always positive
 steps.](continuous-distribution-generators_files/figure-html/chisq_low_df-1.png)
 
 ``` r
+
 # Higher df (more symmetric)
 random_chisquared_walk(.num_walks = 10, .df = 10) |>
   visualize_walks()
@@ -482,6 +504,7 @@ Random walk with exponentially distributed steps (memoryless property).
 **Function Signature:**
 
 ``` r
+
 random_exponential_walk(
   .num_walks = 25,
   .n = 100,
@@ -505,6 +528,7 @@ modeling - Radioactive decay - Poisson process intervals
 **Example:**
 
 ``` r
+
 # Standard exponential
 random_exponential_walk(.num_walks = 10) |>
   visualize_walks()
@@ -515,6 +539,7 @@ distribution. The walks increase monotonically with always positive
 steps.](continuous-distribution-generators_files/figure-html/exp_basic-1.png)
 
 ``` r
+
 # Fast rate (smaller steps)
 random_exponential_walk(.num_walks = 10, .rate = 5) |>
   visualize_walks()
@@ -525,6 +550,7 @@ walks show smaller steps compared to the standard
 rate.](continuous-distribution-generators_files/figure-html/exp_fast-1.png)
 
 ``` r
+
 # Slow rate (larger steps)
 random_exponential_walk(.num_walks = 10, .rate = 0.5) |>
   visualize_walks()
@@ -543,6 +569,7 @@ Random walk based on F-distribution (ratio of chi-squared variables).
 **Function Signature:**
 
 ``` r
+
 random_f_walk(
   .num_walks = 25,
   .n = 100,
@@ -565,6 +592,7 @@ Denominator degrees of freedom - `.ncp` - Non-centrality parameter
 **Example:**
 
 ``` r
+
 random_f_walk(.num_walks = 10, .df1 = 5, .df2 = 10) |>
   visualize_walks()
 ```
@@ -583,6 +611,7 @@ Flexible distribution for positive values.
 **Function Signature:**
 
 ``` r
+
 random_gamma_walk(
   .num_walks = 25,
   .n = 100,
@@ -609,6 +638,7 @@ Reliability analysis
 **Example:**
 
 ``` r
+
 # Different shape parameters
 random_gamma_walk(.num_walks = 10, .shape = 1, .rate = 1) |>
   visualize_walks()
@@ -620,6 +650,7 @@ positive
 steps.](continuous-distribution-generators_files/figure-html/gamma_shape1-1.png)
 
 ``` r
+
 random_gamma_walk(.num_walks = 10, .shape = 5, .rate = 1) |>
   visualize_walks()
 ```
@@ -638,6 +669,7 @@ Random walk where log of steps is normally distributed.
 **Function Signature:**
 
 ``` r
+
 random_lognormal_walk(
   .num_walks = 25,
   .n = 100,
@@ -663,6 +695,7 @@ Stock prices (alternative to GBM)
 **Example:**
 
 ``` r
+
 random_lognormal_walk(.num_walks = 10) |>
   visualize_walks()
 ```
@@ -681,6 +714,7 @@ Random walk with logistic distribution (heavier tails than normal).
 **Function Signature:**
 
 ``` r
+
 random_logistic_walk(
   .num_walks = 25,
   .n = 100,
@@ -699,6 +733,7 @@ random_logistic_walk(
 **Example:**
 
 ``` r
+
 random_logistic_walk(.num_walks = 10) |>
   visualize_walks()
 ```
@@ -717,6 +752,7 @@ Random walk with t-distribution (adjustable tail heaviness).
 **Function Signature:**
 
 ``` r
+
 random_t_walk(
   .num_walks = 25,
   .n = 100,
@@ -743,6 +779,7 @@ returns modeling
 **Example:**
 
 ``` r
+
 # Heavy tails (df = 3)
 random_t_walk(.num_walks = 10, .df = 3) |>
   visualize_walks()
@@ -753,6 +790,7 @@ degrees of freedom. The walks show heavy tails with occasional large
 jumps.](continuous-distribution-generators_files/figure-html/t_heavy-1.png)
 
 ``` r
+
 # Nearly normal (df = 30)
 random_t_walk(.num_walks = 10, .df = 30) |>
   visualize_walks()
@@ -771,6 +809,7 @@ Random walk with uniformly distributed steps.
 **Function Signature:**
 
 ``` r
+
 random_uniform_walk(
   .num_walks = 25,
   .n = 100,
@@ -795,6 +834,7 @@ Carlo simulations
 **Example:**
 
 ``` r
+
 # Symmetric around 0
 random_uniform_walk(.num_walks = 10, .min = -1, .max = 1) |>
   visualize_walks()
@@ -813,6 +853,7 @@ Random walk with Weibull distribution (flexible lifetime model).
 **Function Signature:**
 
 ``` r
+
 random_weibull_walk(
   .num_walks = 25,
   .n = 100,
@@ -839,6 +880,7 @@ speed modeling - Materials science
 **Example:**
 
 ``` r
+
 # Different shape parameters
 random_weibull_walk(.num_walks = 10, .shape = 0.5) |>
   visualize_walks()
@@ -850,6 +892,7 @@ behavior with always positive
 steps.](continuous-distribution-generators_files/figure-html/weibull_low-1.png)
 
 ``` r
+
 random_weibull_walk(.num_walks = 10, .shape = 2) |>
   visualize_walks()
 ```

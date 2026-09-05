@@ -12,6 +12,8 @@
   Generators](https://www.spsanderson.com/RandomWalker/articles/continuous-distribution-generators.md):
 - [Discrete Distribution
   Generators](https://www.spsanderson.com/RandomWalker/articles/discrete-distribution-generators.md):
+- [Double Pendulum
+  Trajectories](https://www.spsanderson.com/RandomWalker/articles/double-pendulum.md):
 - [Frequently Asked Questions
   (FAQ)](https://www.spsanderson.com/RandomWalker/articles/faq.md):
 - [Getting Started with

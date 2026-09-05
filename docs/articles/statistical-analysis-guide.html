@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Statistical Analysis Guide">
 </head>
@@ -46,6 +46,7 @@
     <li><a class="dropdown-item" href="../articles/api-reference.html">API Reference</a></li>
     <li><a class="dropdown-item" href="../articles/automatic-random-walks.html">Automatic Random Walks</a></li>
     <li><a class="dropdown-item" href="../articles/continuous-distribution-generators.html">Continuous Distribution Generators</a></li>
+    <li><a class="dropdown-item" href="../articles/double-pendulum.html">Double Pendulum Trajectories</a></li>
     <li><a class="dropdown-item" href="../articles/discrete-distribution-generators.html">Discrete Distribution Generators</a></li>
     <li><a class="dropdown-item" href="../articles/multi-dimensional-walks.html">Multi-Dimensional Walks</a></li>
     <li><a class="dropdown-item" href="../articles/statistical-analysis-guide.html">Statistical Analysis Guide</a></li>
@@ -110,18 +111,15 @@ statistics:</p>
 <span></span>
 <span><span class="co"># Overall summary</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span></span>
-<span><span class="co">#&gt;   method            from</span></span>
-<span><span class="co">#&gt;   as.zoo.data.frame zoo</span></span>
 <span><span class="co">#&gt; Warning: There was 1 warning in `dplyr::summarize()`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> In argument: `geometric_mean = exp(mean(log(y)))`.</span></span>
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> NaNs produced</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
-<span><span class="co">#&gt;   fns     fns_name   obs mean_val  median range quantile_lo quantile_hi variance</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> random… Random …   100  0.001<span style="text-decoration: underline;">57</span> 0.003<span style="text-decoration: underline;">83</span> 0.600      -<span style="color: #BB0000;">0.190</span>       0.190  0.009<span style="text-decoration: underline;">35</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span></span>
+<span><span class="co">#&gt;   fns   fns_name dimensions   obs mean_val  median range quantile_lo quantile_hi</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> rand… Random …          1   100  0.001<span style="text-decoration: underline;">57</span> 0.003<span style="text-decoration: underline;">83</span> 0.600      -<span style="color: #BB0000;">0.190</span>       0.190</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary by walk</span></span>
@@ -135,15 +133,15 @@ statistics:</p>
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> NaNs produced</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Run `dplyr::last_dplyr_warnings()` to see the 29 remaining warnings.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
-<span><span class="co">#&gt;   walk_number fns              fns_name   obs mean_val  median range quantile_lo</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           random_normal_w… Random …   100  0.003<span style="text-decoration: underline;">10</span> 0.022<span style="text-decoration: underline;">5</span>  0.529      -<span style="color: #BB0000;">0.244</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           random_normal_w… Random …   100  0.012<span style="text-decoration: underline;">4</span>  0.007<span style="text-decoration: underline;">51</span> 0.455      -<span style="color: #BB0000;">0.190</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           random_normal_w… Random …   100  0.021<span style="text-decoration: underline;">8</span>  0.031<span style="text-decoration: underline;">9</span>  0.317      -<span style="color: #BB0000;">0.117</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           random_normal_w… Random …   100  0.015<span style="text-decoration: underline;">6</span>  0.034<span style="text-decoration: underline;">4</span>  0.512      -<span style="color: #BB0000;">0.202</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           random_normal_w… Random …   100 -<span style="color: #BB0000;">0.007</span><span style="color: #BB0000; text-decoration: underline;">89</span> 0.016<span style="text-decoration: underline;">5</span>  0.374      -<span style="color: #BB0000;">0.207</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           random_normal_w… Random …   100  0.007<span style="text-decoration: underline;">55</span> 0.012<span style="text-decoration: underline;">9</span>  0.479      -<span style="color: #BB0000;">0.192</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 18</span></span></span>
+<span><span class="co">#&gt;   walk_number fns   fns_name dimensions   obs mean_val  median range quantile_lo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           rand… Random …          1   100  0.003<span style="text-decoration: underline;">10</span> 0.022<span style="text-decoration: underline;">5</span>  0.529      -<span style="color: #BB0000;">0.244</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           rand… Random …          1   100  0.012<span style="text-decoration: underline;">4</span>  0.007<span style="text-decoration: underline;">51</span> 0.455      -<span style="color: #BB0000;">0.190</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           rand… Random …          1   100  0.021<span style="text-decoration: underline;">8</span>  0.031<span style="text-decoration: underline;">9</span>  0.317      -<span style="color: #BB0000;">0.117</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           rand… Random …          1   100  0.015<span style="text-decoration: underline;">6</span>  0.034<span style="text-decoration: underline;">4</span>  0.512      -<span style="color: #BB0000;">0.202</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           rand… Random …          1   100 -<span style="color: #BB0000;">0.007</span><span style="color: #BB0000; text-decoration: underline;">89</span> 0.016<span style="text-decoration: underline;">5</span>  0.374      -<span style="color: #BB0000;">0.207</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           rand… Random …          1   100  0.007<span style="text-decoration: underline;">55</span> 0.012<span style="text-decoration: underline;">9</span>  0.479      -<span style="color: #BB0000;">0.192</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
@@ -171,11 +169,11 @@ Skewness (measure of asymmetry) - <code>kurtosis</code> - Kurtosis
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> In argument: `geometric_mean = exp(mean(log(cum_sum_y)))`.</span></span>
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> NaNs produced</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
-<span><span class="co">#&gt;   fns      fns_name   obs mean_val median range quantile_lo quantile_hi variance</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> random_… Random …   100   0.071<span style="text-decoration: underline;">5</span> 0.076<span style="text-decoration: underline;">1</span>  4.98       -<span style="color: #BB0000;">1.24</span>        1.45    0.456</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span></span>
+<span><span class="co">#&gt;   fns    fns_name dimensions   obs mean_val median range quantile_lo quantile_hi</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> rando… Random …          1   100   0.071<span style="text-decoration: underline;">5</span> 0.076<span style="text-decoration: underline;">1</span>  4.98       -<span style="color: #BB0000;">1.24</span>        1.45</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summarize cumulative product</span></span>
@@ -200,15 +198,15 @@ Skewness (measure of asymmetry) - <code>kurtosis</code> - Kurtosis
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> NaNs produced</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Run `dplyr::last_dplyr_warnings()` to see the 28 remaining warnings.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
-<span><span class="co">#&gt;   walk_number fns              fns_name   obs mean_val  median range quantile_lo</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           random_normal_w… Random …   100  -<span style="color: #BB0000;">0.027</span><span style="color: #BB0000; text-decoration: underline;">2</span> -<span style="color: #BB0000;">0.015</span><span style="color: #BB0000; text-decoration: underline;">4</span> 0.998    -<span style="color: #BB0000;">0.529</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           random_normal_w… Random …   100   0.283   0.212  1.41     -<span style="color: #BB0000;">0.267</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           random_normal_w… Random …   100   1.00    1.32   1.77      0.008<span style="text-decoration: underline;">22</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           random_normal_w… Random …   100   1.13    1.24   1.58      0.102  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           random_normal_w… Random …   100  -<span style="color: #BB0000;">0.544</span>  -<span style="color: #BB0000;">0.513</span>  1.05     -<span style="color: #BB0000;">0.944</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           random_normal_w… Random …   100   0.197   0.284  0.957    -<span style="color: #BB0000;">0.287</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 18</span></span></span>
+<span><span class="co">#&gt;   walk_number fns   fns_name dimensions   obs mean_val  median range quantile_lo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           rand… Random …          1   100  -<span style="color: #BB0000;">0.027</span><span style="color: #BB0000; text-decoration: underline;">2</span> -<span style="color: #BB0000;">0.015</span><span style="color: #BB0000; text-decoration: underline;">4</span> 0.998    -<span style="color: #BB0000;">0.529</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           rand… Random …          1   100   0.283   0.212  1.41     -<span style="color: #BB0000;">0.267</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           rand… Random …          1   100   1.00    1.32   1.77      0.008<span style="text-decoration: underline;">22</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           rand… Random …          1   100   1.13    1.24   1.58      0.102  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           rand… Random …          1   100  -<span style="color: #BB0000;">0.544</span>  -<span style="color: #BB0000;">0.513</span>  1.05     -<span style="color: #BB0000;">0.944</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           rand… Random …          1   100   0.197   0.284  0.957    -<span style="color: #BB0000;">0.287</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
@@ -324,7 +322,7 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Cumulative functions are already in the data</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"cum_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"cum_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 8</span></span></span>
 <span><span class="co">#&gt;    walk_number step_number        y cum_sum_y cum_prod_y cum_min_y cum_max_y</span></span>
@@ -345,17 +343,18 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
-<span><span class="co">#&gt;   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           rand… Random …   100    101.   101.  1.50        100.0       101. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           rand… Random …   100    100.   100.  0.916        99.6       100. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           rand… Random …   100     98.9   98.9 1.82         98.3       100.0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           rand… Random …   100    100.   100.  0.861        99.7       100. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           rand… Random …   100    100.   100.  1.15        100.        101. </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           rand… Random …   100     99.8   99.8 0.894        99.4       100. </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 18</span></span></span>
+<span><span class="co">#&gt;   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           rando… Random …          1   100    101.   101.  1.50        100.0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           rando… Random …          1   100    100.   100.  0.916        99.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 3           rando… Random …          1   100     98.9   98.9 1.82         98.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 4           rando… Random …          1   100    100.   100.  0.861        99.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 5           rando… Random …          1   100    100.   100.  1.15        100. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 6           rando… Random …          1   100     99.8   99.8 0.894        99.4</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Track maximum ever reached</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
@@ -695,21 +694,23 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="co"># Show the extreme walks</span></span>
 <span><span class="va">max_walk</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span></span>
-<span><span class="co">#&gt;   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 21          rand… Random …   100     101.   101.  2.86        100.        103.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 18</span></span></span>
+<span><span class="co">#&gt;   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 21          rando… Random …          1   100     101.   101.  2.86        100.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="va">min_walk</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 17</span></span></span>
-<span><span class="co">#&gt;   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 66          rand… Random …   100     98.3   98.3  2.84        97.2        99.8</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: variance &lt;dbl&gt;, sd &lt;dbl&gt;, min_val &lt;dbl&gt;, max_val &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 18</span></span></span>
+<span><span class="co">#&gt;   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 66          rando… Random …          1   100     98.3   98.3  2.84        97.2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: quantile_hi &lt;dbl&gt;, variance &lt;dbl&gt;, sd &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   min_val &lt;dbl&gt;, max_val &lt;dbl&gt;, harmonic_mean &lt;dbl&gt;, geometric_mean &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="finding-specific-walks">Finding Specific Walks<a class="anchor" aria-label="anchor" href="#finding-specific-walks"></a>
@@ -728,7 +729,7 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="co"># Extract and visualize those walks</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">crossed_102</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum"</span>, .alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum_y"</span>, .alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="statistical-analysis-guide_files/figure-html/find_specific_walks-1.png" class="r-plt" alt="Multi-line plot showing all random walks that crossed the threshold of 102 at some point during their evolution. Multiple semi-transparent lines in different colors show the cumulative sum trajectories. The x-axis shows step numbers from 0 to 100, and the y-axis shows the cumulative sum values." width="672"></p>
 </div>
 </div>
@@ -921,7 +922,7 @@ and Examples</strong> vignette for more real-world applications!</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

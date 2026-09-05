@@ -1,0 +1,106 @@
+---
+title: "Double Pendulum Trajectories"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Double Pendulum Trajectories}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(RandomWalker)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
+  eval = requireNamespace("deSolve", quietly = TRUE))
+```
+
+## Model and units
+
+`double_pendulum_walk()` models two point masses joined by rigid, massless rods
+in a vertical plane. There is no friction or external forcing. Independent
+normal perturbations of the initial angles create an ensemble of trajectories;
+after initialization, motion is deterministic. This is not a random-waiting-time
+walk. Large-angle motion can be chaotic, so small starting differences can grow.
+
+Angles are in radians from downward vertical, angular velocities in radians per
+second, lengths in meters, masses in kilograms, and time in seconds. Both angles
+are absolute. The pivot is `(0, 0)` and positive y points upward.
+
+The optional `deSolve` package is required for simulation. Install it yourself
+before running these examples if it is unavailable. Plotting uses `ggplot2`;
+animation additionally uses `gganimate`, and GIF rendering uses `gifski`.
+
+## Repeatable trajectories
+
+```{r generate}
+set.seed(287)
+walks <- double_pendulum_walk(.num_walks = 2, .n = 101)
+head(walks)
+attr(walks, "initial_states")
+```
+
+`.n` counts observations, including time zero. With `.n = 101` and the default
+`.delta_time = 0.05`, the final observation is at five seconds. The default
+401 observations cover 20 seconds. Sampling intervals do not constrain the
+adaptive solver's internal integration steps.
+
+`x1`, `y1` locate the first bob; `x`, `y` locate the second. These are positions,
+not increments, so the generator does not add cumulative statistics.
+
+```{r deterministic}
+fixed <- double_pendulum_walk(.num_walks = 2, .n = 21, .angle_sd = 0)
+```
+
+Zero angle noise produces identical trajectories for identical initial states
+and does not consume random numbers. Set `.theta1`, `.theta2`, `.omega1`, and
+`.omega2` to choose other starts; masses, lengths, and gravity are configurable.
+
+## Plot and summarize
+
+```{r static, eval=requireNamespace("deSolve", quietly=TRUE) && requireNamespace("ggplot2", quietly=TRUE)}
+plot_double_pendulum(walks, .walk = 1)
+```
+
+The spatial plot shows the second bob's path, with equal axis scaling and color
+for elapsed time. `.walk` selects a walk label, not its position in the data.
+
+```{r integration, warning=FALSE, eval=requireNamespace("deSolve", quietly=TRUE) && requireNamespace("ggplot2", quietly=TRUE)}
+summarize_walks(walks, .value = x)
+visualize_walks(walks, .pluck = c("x", "y"))
+```
+
+`visualize_walks()` shows coordinate traces against step number. Signed
+coordinates can produce undefined geometric means in the existing summary
+function; those statistics are not changed by this generator.
+
+## Animate and save a GIF
+
+Construction returns a customizable `gganim` object and does not render or save
+files. Each sampled observation becomes a frame with both rods, bobs, a pivot,
+elapsed time, and the second bob's recent trail. Set `.trail_length = 0` to hide
+the trail; otherwise it counts positions including the current observation.
+
+The following rendering example is intentionally not run during vignette builds:
+
+```{r animation, eval=FALSE}
+animation <- animate_double_pendulum(walks, .walk = 1, .trail_length = 30)
+gif <- gganimate::animate(
+  animation,
+  nframes = attr(walks, "n"),
+  fps = 1 / attr(walks, "delta_time"),
+  width = 500, height = 500,
+  renderer = gganimate::gifski_renderer()
+)
+gganimate::anim_save("double-pendulum.gif", animation = gif)
+```
+
+Use every sampled observation and the reciprocal sampling interval as the
+frame rate to preserve simulated timing. Changing the frame rate changes playback
+speed. The display uses discrete states with fixed spatial limits and no tweening.
+
+## Numerical model
+
+The implementation uses LSODA with relative and absolute tolerances of `1e-9`.
+The equations follow the [double-pendulum derivation](https://www.myphysicslab.com/pendulum/double-pendulum-en.html)
+with angle difference `theta1 - theta2`. This corrects the reversed difference in
+the [original reference script](https://github.com/spsanderson/random_r_projects/blob/main/double_pendulum/double_pendulum.r).
+Long chaotic trajectories should not be interpreted as exact forecasts.

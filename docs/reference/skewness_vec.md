@@ -5,7 +5,8 @@ skewness of that vector. The length of this vector must be at least four
 numbers. The skewness explains the 'tailedness' of the distribution of
 data.
 
-`((1/n) * sum(x - mu})^3) / ((()1/n) * sum(x - mu)^2)^(3/2)`
+\$\$\frac{\frac{1}{n} \sum (x - \mu)^3}{\left(\frac{1}{n} \sum (x -
+\mu)^2\right)^{3/2}}\$\$
 
 ## Usage
 

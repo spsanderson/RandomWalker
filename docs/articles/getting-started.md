@@ -1,6 +1,7 @@
 # Getting Started with RandomWalker
 
 ``` r
+
 library(RandomWalker)
 #> 
 #> == Welcome to RandomWalker ========================================================
@@ -64,6 +65,7 @@ package in R.
 You can install the released version of `RandomWalker` from CRAN with:
 
 ``` r
+
 install.packages("RandomWalker")
 ```
 
@@ -71,6 +73,7 @@ You can install the development version of `RandomWalker` from
 [GitHub](https://github.com/spsanderson/RandomWalker) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("spsanderson/RandomWalker")
 ```
@@ -83,6 +86,7 @@ function from the `RandomWalker` package. This function generates a
 random walk with 30 steps.
 
 ``` r
+
 rw30() |>
   head(10)
 #> # A tibble: 10 × 3
@@ -119,6 +123,7 @@ example, let’s look at the attributes of the
 function:
 
 ``` r
+
 atb <- attributes(rw30())
 atb[!names(atb) %in% c("row.names")]
 #> $names
@@ -156,6 +161,7 @@ function. This function creates a line plot showing the path of the
 random walk over time.
 
 ``` r
+
 visualize_walks(rw30())
 ```
 

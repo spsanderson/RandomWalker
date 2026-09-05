@@ -98,6 +98,7 @@ the parameters used for the simulation.
 Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -171,19 +172,19 @@ discrete_walk(.dimensions = 3) |>
 #> y           " 1"        "-1"        "-1"        " 1"        "-1"       
 #> z           "-1"        " 1"        " 1"        " 1"        "-1"       
 #> cum_sum_x   " 99"       "100"       " 99"       "100"       "101"      
-#> cum_sum_y   "101"       "100"       " 99"       "100"       " 99"      
-#> cum_sum_z   " 99"       "100"       "101"       "102"       "101"      
 #> cum_prod_x  "0"         "0"         "0"         "0"         "0"        
-#> cum_prod_y  "200"       "  0"       "  0"       "  0"       "  0"      
-#> cum_prod_z  "0"         "0"         "0"         "0"         "0"        
 #> cum_min_x   "99"        "99"        "99"        "99"        "99"       
-#> cum_min_y   "101"       " 99"       " 99"       " 99"       " 99"      
-#> cum_min_z   "99"        "99"        "99"        "99"        "99"       
 #> cum_max_x   " 99"       "101"       "101"       "101"       "101"      
-#> cum_max_y   "101"       "101"       "101"       "101"       "101"      
-#> cum_max_z   " 99"       "101"       "101"       "101"       "101"      
 #> cum_mean_x  " 99.00000" "100.00000" " 99.66667" "100.00000" "100.20000"
+#> cum_sum_y   "101"       "100"       " 99"       "100"       " 99"      
+#> cum_prod_y  "200"       "  0"       "  0"       "  0"       "  0"      
+#> cum_min_y   "101"       " 99"       " 99"       " 99"       " 99"      
+#> cum_max_y   "101"       "101"       "101"       "101"       "101"      
 #> cum_mean_y  "101.00000" "100.00000" " 99.66667" "100.00000" " 99.80000"
+#> cum_sum_z   " 99"       "100"       "101"       "102"       "101"      
+#> cum_prod_z  "0"         "0"         "0"         "0"         "0"        
+#> cum_min_z   "99"        "99"        "99"        "99"        "99"       
+#> cum_max_z   " 99"       "101"       "101"       "101"       "101"      
 #> cum_mean_z  " 99.0000"  "100.0000"  "100.3333"  "100.5000"  "100.2000" 
 #>             [,6]       
 #> walk_number "1"        
@@ -192,18 +193,18 @@ discrete_walk(.dimensions = 3) |>
 #> y           " 1"       
 #> z           " 1"       
 #> cum_sum_x   "100"      
-#> cum_sum_y   "100"      
-#> cum_sum_z   "102"      
 #> cum_prod_x  "0"        
-#> cum_prod_y  "  0"      
-#> cum_prod_z  "0"        
 #> cum_min_x   "99"       
-#> cum_min_y   " 99"      
-#> cum_min_z   "99"       
 #> cum_max_x   "101"      
-#> cum_max_y   "101"      
-#> cum_max_z   "101"      
 #> cum_mean_x  "100.00000"
+#> cum_sum_y   "100"      
+#> cum_prod_y  "  0"      
+#> cum_min_y   " 99"      
+#> cum_max_y   "101"      
 #> cum_mean_y  "100.00000"
+#> cum_sum_z   "102"      
+#> cum_prod_z  "0"        
+#> cum_min_z   "99"       
+#> cum_max_z   "101"      
 #> cum_mean_z  "100.3333" 
 ```

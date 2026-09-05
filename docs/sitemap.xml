@@ -5,6 +5,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/basic-concepts.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/continuous-distribution-generators.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/discrete-distribution-generators.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/articles/double-pendulum.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/faq.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/getting-started.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/articles/home.html</loc></url>
@@ -17,6 +18,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/LICENSE-text.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/LICENSE.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/news/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/animate_double_pendulum.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/brownian_motion.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cgmean.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/chmean.html</loc></url>
@@ -31,6 +33,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/custom_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/cvar.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/discrete_walk.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/euclidean_distance.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/generate_caption.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.html</loc></url>
@@ -39,6 +42,7 @@
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/internal_rand_walk_helper.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/kurtosis_vec.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/name.html</loc></url>
+<url><loc>https://www.spsanderson.com/RandomWalker/reference/plot_double_pendulum.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.html</loc></url>
 <url><loc>https://www.spsanderson.com/RandomWalker/reference/random_cauchy_walk.html</loc></url>

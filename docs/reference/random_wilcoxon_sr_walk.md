@@ -110,6 +110,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -182,19 +183,19 @@ random_wilcoxon_sr_walk(.dimensions = 3) |>
 #> y           "0"         "1"         "1"         "1"         "0"        
 #> z           "0"         "1"         "0"         "0"         "1"        
 #> cum_sum_x   "1"         "1"         "2"         "3"         "4"        
-#> cum_sum_y   "0"         "1"         "2"         "3"         "3"        
-#> cum_sum_z   "0"         "1"         "1"         "1"         "2"        
 #> cum_prod_x  "0"         "0"         "0"         "0"         "0"        
-#> cum_prod_y  "0"         "0"         "0"         "0"         "0"        
-#> cum_prod_z  "0"         "0"         "0"         "0"         "0"        
 #> cum_min_x   "1"         "0"         "0"         "0"         "0"        
-#> cum_min_y   "0"         "0"         "0"         "0"         "0"        
-#> cum_min_z   "0"         "0"         "0"         "0"         "0"        
 #> cum_max_x   "1"         "1"         "1"         "1"         "1"        
-#> cum_max_y   "0"         "1"         "1"         "1"         "1"        
-#> cum_max_z   "0"         "1"         "1"         "1"         "1"        
 #> cum_mean_x  "1.0000000" "0.5000000" "0.6666667" "0.7500000" "0.8000000"
+#> cum_sum_y   "0"         "1"         "2"         "3"         "3"        
+#> cum_prod_y  "0"         "0"         "0"         "0"         "0"        
+#> cum_min_y   "0"         "0"         "0"         "0"         "0"        
+#> cum_max_y   "0"         "1"         "1"         "1"         "1"        
 #> cum_mean_y  "0.0000000" "0.5000000" "0.6666667" "0.7500000" "0.6000000"
+#> cum_sum_z   "0"         "1"         "1"         "1"         "2"        
+#> cum_prod_z  "0"         "0"         "0"         "0"         "0"        
+#> cum_min_z   "0"         "0"         "0"         "0"         "0"        
+#> cum_max_z   "0"         "1"         "1"         "1"         "1"        
 #> cum_mean_z  "0.0000000" "0.5000000" "0.3333333" "0.2500000" "0.4000000"
 #>             [,6]       
 #> walk_number "1"        
@@ -203,18 +204,18 @@ random_wilcoxon_sr_walk(.dimensions = 3) |>
 #> y           "0"        
 #> z           "1"        
 #> cum_sum_x   "5"        
-#> cum_sum_y   "3"        
-#> cum_sum_z   "3"        
 #> cum_prod_x  "0"        
-#> cum_prod_y  "0"        
-#> cum_prod_z  "0"        
 #> cum_min_x   "0"        
-#> cum_min_y   "0"        
-#> cum_min_z   "0"        
 #> cum_max_x   "1"        
-#> cum_max_y   "1"        
-#> cum_max_z   "1"        
 #> cum_mean_x  "0.8333333"
+#> cum_sum_y   "3"        
+#> cum_prod_y  "0"        
+#> cum_min_y   "0"        
+#> cum_max_y   "1"        
 #> cum_mean_y  "0.5000000"
+#> cum_sum_z   "3"        
+#> cum_prod_z  "0"        
+#> cum_min_z   "0"        
+#> cum_max_z   "1"        
 #> cum_mean_z  "0.5000000"
 ```

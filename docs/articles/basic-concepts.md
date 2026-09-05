@@ -27,6 +27,7 @@ After 10 flips, you might be at position +2, -4, or anywhere else. This
 is a random walk!
 
 ``` r
+
 # Coin flip random walk
 coin_walk <- discrete_walk(
   .num_walks = 1,
@@ -59,6 +60,7 @@ position.](basic-concepts_files/figure-html/coin_flip_example-1.png)
 Each step is ±1 with equal probability:
 
 ``` r
+
 discrete_walk(
   .num_walks = 10,
   .upper_bound = 1,
@@ -89,6 +91,7 @@ position = 0 - Variance grows linearly with time
 Steps have a non-zero mean (bias in one direction):
 
 ``` r
+
 random_normal_drift_walk(
   .num_walks = 10,
   .drift = 0.1  # Positive drift
@@ -117,6 +120,7 @@ Mean position ≠ 0 - Can model trending data
 Continuous-time random walk:
 
 ``` r
+
 brownian_motion(
   .num_walks = 10,
   .delta_time = 1
@@ -145,6 +149,7 @@ Foundation of stochastic calculus - Used in physics and finance
 Multiplicative random walk (always positive):
 
 ``` r
+
 geometric_brownian_motion(
   .num_walks = 10,
   .initial_value = 100
@@ -177,6 +182,7 @@ For a symmetric random walk starting at 0:
 **Expected value after n steps = 0**
 
 ``` r
+
 # Verify empirically
 walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
@@ -195,6 +201,7 @@ For standard random walk:
 **Variance after n steps = n**
 
 ``` r
+
 # Verify empirically
 walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
@@ -217,6 +224,7 @@ Expected distance grows as √n:
 **E\[\|position\|\] ∝ √n**
 
 ``` r
+
 # Verify with 2D walk
 walks_2d <- random_normal_walk(.num_walks = 100, .n = 500, .dimensions = 2)
 
@@ -309,6 +317,7 @@ Black-Scholes model
 ### Example: Behind the Scenes
 
 ``` r
+
 # What rw30() does internally:
 
 # 1. Generate random steps
@@ -318,7 +327,7 @@ steps <- rnorm(100, mean = 0, sd = 1)
 positions <- cumsum(c(0, steps[-100]))
 
 # 3. Add to tibble
-walk_data <- tibble::tibble(
+walk_data <- dplyr::tibble(
   step_number = 1:100,
   y = steps,
   cum_sum = positions
@@ -403,6 +412,7 @@ walk_data |> head(10)
 ### Example 1: Verify Properties
 
 ``` r
+
 # Generate many walks
 walks <- random_normal_walk(.num_walks = 1000, .n = 100)
 
@@ -429,23 +439,13 @@ walks |>
 # Property 3: Distance ∝ √n
 walks |>
   group_by(step_number) |>
-  summarize(
+  reframe(
     mean_abs_position = mean(abs(cum_sum_y)),
     theoretical = sqrt(2/pi) * sqrt(step_number)  # Exact for normal
   ) |>
   filter(step_number %% 20 == 0) |>
   head(5)
-#> Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-#> dplyr 1.1.0.
-#> ℹ Please use `reframe()` instead.
-#> ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-#>   always returns an ungrouped data frame and adjust accordingly.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
-#> `summarise()` has grouped output by 'step_number'. You can override using the
-#> `.groups` argument.
 #> # A tibble: 5 × 3
-#> # Groups:   step_number [1]
 #>   step_number mean_abs_position theoretical
 #>         <int>             <dbl>       <dbl>
 #> 1          20             0.390        3.57
@@ -458,6 +458,7 @@ walks |>
 ### Example 2: Distribution of Final Position
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 10000, .n = 100)
 
@@ -468,7 +469,7 @@ final_pos <- walks |>
   pull(cum_sum_y)
 
 # Plot
-tibble::tibble(position = final_pos) |>
+dplyr::tibble(position = final_pos) |>
   ggplot(aes(x = position)) +
   geom_histogram(aes(y = after_stat(density)), bins = 50,
                  fill = "steelblue", alpha = 0.7) +
@@ -497,6 +498,7 @@ Random walks are **path-dependent** - the ending doesn’t tell you the
 route:
 
 ``` r
+
 # Generate walks ending at similar positions
 set.seed(123)
 walks <- random_normal_walk(.num_walks = 100, .n = 100)

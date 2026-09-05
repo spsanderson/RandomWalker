@@ -127,6 +127,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -198,13 +199,13 @@ random_smirnov_walk(.dimensions = 2) |>
 #> x           "1"  "1"  "1"  "1"  "1"  "1" 
 #> y           "1"  "1"  "1"  "1"  "1"  "1" 
 #> cum_sum_x   "1"  "2"  "3"  "4"  "5"  "6" 
-#> cum_sum_y   "1"  "2"  "3"  "4"  "5"  "6" 
 #> cum_prod_x  "0"  "0"  "0"  "0"  "0"  "0" 
-#> cum_prod_y  "0"  "0"  "0"  "0"  "0"  "0" 
 #> cum_min_x   "1"  "1"  "1"  "1"  "1"  "1" 
-#> cum_min_y   "1"  "1"  "1"  "1"  "1"  "1" 
 #> cum_max_x   "1"  "1"  "1"  "1"  "1"  "1" 
-#> cum_max_y   "1"  "1"  "1"  "1"  "1"  "1" 
 #> cum_mean_x  "1"  "1"  "1"  "1"  "1"  "1" 
+#> cum_sum_y   "1"  "2"  "3"  "4"  "5"  "6" 
+#> cum_prod_y  "0"  "0"  "0"  "0"  "0"  "0" 
+#> cum_min_y   "1"  "1"  "1"  "1"  "1"  "1" 
+#> cum_max_y   "1"  "1"  "1"  "1"  "1"  "1" 
 #> cum_mean_y  "1"  "1"  "1"  "1"  "1"  "1" 
 ```

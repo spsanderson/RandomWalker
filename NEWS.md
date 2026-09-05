@@ -12,6 +12,9 @@ None
 
 ## New Features
 
+* Fix #287 - Add double-pendulum trajectories with randomized starting angles,
+  static trajectory plots, and optional animation.
+
 1. Fix #235 - Add function `custom_walk()` to generate a random walk
    using a custom displacement function.
 

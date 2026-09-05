@@ -24,27 +24,26 @@ The
 function computes comprehensive statistics:
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 30, .n = 100)
 
 # Overall summary
 walks |> summarize_walks(.value = y)
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(y)))`.
 #> Caused by warning in `log()`:
 #> ! NaNs produced
-#> # A tibble: 1 × 16
-#>   fns     fns_name   obs mean_val  median range quantile_lo quantile_hi variance
-#>   <chr>   <chr>    <int>    <dbl>   <dbl> <dbl>       <dbl>       <dbl>    <dbl>
-#> 1 random… Random …   100  0.00157 0.00383 0.600      -0.190       0.190  0.00935
-#> # ℹ 7 more variables: sd <dbl>, min_val <dbl>, max_val <dbl>,
+#> # A tibble: 1 × 17
+#>   fns   fns_name dimensions   obs mean_val  median range quantile_lo quantile_hi
+#>   <chr> <chr>         <dbl> <int>    <dbl>   <dbl> <dbl>       <dbl>       <dbl>
+#> 1 rand… Random …          1   100  0.00157 0.00383 0.600      -0.190       0.190
+#> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
 #> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
 ```
 
 ``` r
+
 # Summary by walk
 walks |>
   summarize_walks(.value = y, .group_var = walk_number) |>
@@ -56,15 +55,15 @@ walks |>
 #> Caused by warning in `log()`:
 #> ! NaNs produced
 #> ℹ Run `dplyr::last_dplyr_warnings()` to see the 29 remaining warnings.
-#> # A tibble: 6 × 17
-#>   walk_number fns              fns_name   obs mean_val  median range quantile_lo
-#>   <fct>       <chr>            <chr>    <int>    <dbl>   <dbl> <dbl>       <dbl>
-#> 1 1           random_normal_w… Random …   100  0.00310 0.0225  0.529      -0.244
-#> 2 2           random_normal_w… Random …   100  0.0124  0.00751 0.455      -0.190
-#> 3 3           random_normal_w… Random …   100  0.0218  0.0319  0.317      -0.117
-#> 4 4           random_normal_w… Random …   100  0.0156  0.0344  0.512      -0.202
-#> 5 5           random_normal_w… Random …   100 -0.00789 0.0165  0.374      -0.207
-#> 6 6           random_normal_w… Random …   100  0.00755 0.0129  0.479      -0.192
+#> # A tibble: 6 × 18
+#>   walk_number fns   fns_name dimensions   obs mean_val  median range quantile_lo
+#>   <fct>       <chr> <chr>         <dbl> <int>    <dbl>   <dbl> <dbl>       <dbl>
+#> 1 1           rand… Random …          1   100  0.00310 0.0225  0.529      -0.244
+#> 2 2           rand… Random …          1   100  0.0124  0.00751 0.455      -0.190
+#> 3 3           rand… Random …          1   100  0.0218  0.0319  0.317      -0.117
+#> 4 4           rand… Random …          1   100  0.0156  0.0344  0.512      -0.202
+#> 5 5           rand… Random …          1   100 -0.00789 0.0165  0.374      -0.207
+#> 6 6           rand… Random …          1   100  0.00755 0.0129  0.479      -0.192
 #> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
 #> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
 #> #   skewness <dbl>, kurtosis <dbl>
@@ -84,21 +83,23 @@ deviation - `min_val` - Minimum value - `max_val` - Maximum value -
 ### Analyzing Different Values
 
 ``` r
+
 # Summarize cumulative sum
 walks |> summarize_walks(.value = cum_sum_y)
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(cum_sum_y)))`.
 #> Caused by warning in `log()`:
 #> ! NaNs produced
-#> # A tibble: 1 × 16
-#>   fns      fns_name   obs mean_val median range quantile_lo quantile_hi variance
-#>   <chr>    <chr>    <int>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>    <dbl>
-#> 1 random_… Random …   100   0.0715 0.0761  4.98       -1.24        1.45    0.456
-#> # ℹ 7 more variables: sd <dbl>, min_val <dbl>, max_val <dbl>,
+#> # A tibble: 1 × 17
+#>   fns    fns_name dimensions   obs mean_val median range quantile_lo quantile_hi
+#>   <chr>  <chr>         <dbl> <int>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
+#> 1 rando… Random …          1   100   0.0715 0.0761  4.98       -1.24        1.45
+#> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
 #> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
 ```
 
 ``` r
+
 # Summarize cumulative product
 geometric_brownian_motion(.num_walks = 30, .initial_value = 100) |>
   summarize_walks(.value = cum_prod_y)
@@ -112,6 +113,7 @@ geometric_brownian_motion(.num_walks = 30, .initial_value = 100) |>
 ```
 
 ``` r
+
 # Summarize by group
 walks |>
   summarize_walks(.value = cum_sum_y, .group_var = walk_number) |>
@@ -123,15 +125,15 @@ walks |>
 #> Caused by warning in `log()`:
 #> ! NaNs produced
 #> ℹ Run `dplyr::last_dplyr_warnings()` to see the 28 remaining warnings.
-#> # A tibble: 6 × 17
-#>   walk_number fns              fns_name   obs mean_val  median range quantile_lo
-#>   <fct>       <chr>            <chr>    <int>    <dbl>   <dbl> <dbl>       <dbl>
-#> 1 1           random_normal_w… Random …   100  -0.0272 -0.0154 0.998    -0.529  
-#> 2 2           random_normal_w… Random …   100   0.283   0.212  1.41     -0.267  
-#> 3 3           random_normal_w… Random …   100   1.00    1.32   1.77      0.00822
-#> 4 4           random_normal_w… Random …   100   1.13    1.24   1.58      0.102  
-#> 5 5           random_normal_w… Random …   100  -0.544  -0.513  1.05     -0.944  
-#> 6 6           random_normal_w… Random …   100   0.197   0.284  0.957    -0.287  
+#> # A tibble: 6 × 18
+#>   walk_number fns   fns_name dimensions   obs mean_val  median range quantile_lo
+#>   <fct>       <chr> <chr>         <dbl> <int>    <dbl>   <dbl> <dbl>       <dbl>
+#> 1 1           rand… Random …          1   100  -0.0272 -0.0154 0.998    -0.529  
+#> 2 2           rand… Random …          1   100   0.283   0.212  1.41     -0.267  
+#> 3 3           rand… Random …          1   100   1.00    1.32   1.77      0.00822
+#> 4 4           rand… Random …          1   100   1.13    1.24   1.58      0.102  
+#> 5 5           rand… Random …          1   100  -0.544  -0.513  1.05     -0.944  
+#> 6 6           rand… Random …          1   100   0.197   0.284  0.957    -0.287  
 #> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
 #> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
 #> #   skewness <dbl>, kurtosis <dbl>
@@ -158,6 +160,7 @@ extreme values) - \< 3: Light tails (fewer extreme values)
 #### Example 1: Analyzing Stock Price Simulations
 
 ``` r
+
 # Simulate stock prices
 stock_sim <- geometric_brownian_motion(
   .num_walks = 1000,
@@ -190,6 +193,7 @@ tibble(final_price = final_prices) |>
 #### Example 2: Comparing Distributions
 
 ``` r
+
 # Normal vs Cauchy walks
 normal_stats <- random_normal_walk(.num_walks = 100, .n = 100) |>
   summarize_walks(.value = y) |>
@@ -235,6 +239,7 @@ each dimension (x, y, z).
 ### Using Cumulative Functions
 
 ``` r
+
 # Generate walk
 walks <- random_normal_walk(.num_walks = 10, .n = 100, .initial_value = 100)
 
@@ -259,24 +264,27 @@ walks |>
 ```
 
 ``` r
+
 # Analyze cumulative sum
 walks |>
   summarize_walks(.value = cum_sum_y, .group_var = walk_number) |>
   head()
-#> # A tibble: 6 × 17
-#>   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi
-#>   <fct>       <chr> <chr>    <int>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 1           rand… Random …   100    101.   101.  1.50        100.0       101. 
-#> 2 2           rand… Random …   100    100.   100.  0.916        99.6       100. 
-#> 3 3           rand… Random …   100     98.9   98.9 1.82         98.3       100.0
-#> 4 4           rand… Random …   100    100.   100.  0.861        99.7       100. 
-#> 5 5           rand… Random …   100    100.   100.  1.15        100.        101. 
-#> 6 6           rand… Random …   100     99.8   99.8 0.894        99.4       100. 
-#> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
-#> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
+#> # A tibble: 6 × 18
+#>   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo
+#>   <fct>       <chr>  <chr>         <dbl> <int>    <dbl>  <dbl> <dbl>       <dbl>
+#> 1 1           rando… Random …          1   100    101.   101.  1.50        100.0
+#> 2 2           rando… Random …          1   100    100.   100.  0.916        99.6
+#> 3 3           rando… Random …          1   100     98.9   98.9 1.82         98.3
+#> 4 4           rando… Random …          1   100    100.   100.  0.861        99.7
+#> 5 5           rando… Random …          1   100    100.   100.  1.15        100. 
+#> 6 6           rando… Random …          1   100     99.8   99.8 0.894        99.4
+#> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
+#> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
+#> #   skewness <dbl>, kurtosis <dbl>
 ```
 
 ``` r
+
 # Track maximum ever reached
 walks |>
   group_by(walk_number) |>
@@ -302,6 +310,7 @@ walks |>
 Add your own cumulative calculations:
 
 ``` r
+
 # Add custom cumulative functions
 walks_extended <- walks |>
   group_by(walk_number) |>
@@ -338,6 +347,7 @@ x-axis shows the step number from 0 to
 Calculate confidence intervals for a vector:
 
 ``` r
+
 # Generate data
 x <- rnorm(1000, mean = 10, sd = 2)
 
@@ -350,6 +360,7 @@ confidence_interval(x)
 ```
 
 ``` r
+
 # Calculate 99% CI
 confidence_interval(x, .interval = 0.01)
 #> # A tibble: 1 × 2
@@ -359,6 +370,7 @@ confidence_interval(x, .interval = 0.01)
 ```
 
 ``` r
+
 # Calculate 90% CI
 confidence_interval(x, .interval = 0.10)
 #> # A tibble: 1 × 2
@@ -370,6 +382,7 @@ confidence_interval(x, .interval = 0.10)
 ### Confidence Intervals for Random Walks
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
 
@@ -403,6 +416,7 @@ values.](statistical-analysis-guide_files/figure-html/ci_by_step-1.png)
 ### Confidence Intervals for Final Values
 
 ``` r
+
 # Get final values from many walks
 walks <- random_normal_walk(.num_walks = 1000, .n = 100, .initial_value = 100)
 
@@ -426,6 +440,7 @@ confidence_interval(final_values)
 Calculate quantiles at each position:
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
 
@@ -455,6 +470,7 @@ walks_with_median |>
 ```
 
 ``` r
+
 # Calculate running quartiles
 walks_with_quartiles <- walks |>
   group_by(step_number) |>
@@ -487,6 +503,7 @@ walks_with_quartiles |>
 ### Visualizing Quantile Evolution
 
 ``` r
+
 # Generate many walks
 walks <- random_normal_walk(.num_walks = 200, .n = 100)
 
@@ -530,6 +547,7 @@ values.](statistical-analysis-guide_files/figure-html/quantile_evolution-1.png)
 For multi-dimensional walks, calculate distance from origin:
 
 ``` r
+
 # 2D walk
 walks_2d <- random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
 
@@ -560,6 +578,7 @@ origin.](statistical-analysis-guide_files/figure-html/euclidean_distance-1.png)
 ### Distance Statistics
 
 ``` r
+
 # 3D walk
 walks_3d <- random_normal_walk(.num_walks = 100, .n = 1000, .dimensions = 3)
 
@@ -604,6 +623,7 @@ origin.](statistical-analysis-guide_files/figure-html/distance_stats-1.png)
 Calculate when walks first reach a threshold:
 
 ``` r
+
 # Generate walks
 walks <- discrete_walk(.num_walks = 100, .n = 1000, .initial_value = 0)
 
@@ -640,6 +660,7 @@ steps.](statistical-analysis-guide_files/figure-html/first_passage-1.png)
 Extract walks with extreme values:
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
@@ -652,26 +673,29 @@ min_walk <- walks |> subset_walks(.value = "cum_sum_y", .type = "min")
 # Show the extreme walks
 max_walk |> 
   summarize_walks(.value = cum_sum_y, .group_var = walk_number)
-#> # A tibble: 1 × 17
-#>   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi
-#>   <fct>       <chr> <chr>    <int>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 21          rand… Random …   100     101.   101.  2.86        100.        103.
-#> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
-#> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
+#> # A tibble: 1 × 18
+#>   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo
+#>   <fct>       <chr>  <chr>         <dbl> <int>    <dbl>  <dbl> <dbl>       <dbl>
+#> 1 21          rando… Random …          1   100     101.   101.  2.86        100.
+#> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
+#> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
+#> #   skewness <dbl>, kurtosis <dbl>
 
 min_walk |> 
   summarize_walks(.value = cum_sum_y, .group_var = walk_number)
-#> # A tibble: 1 × 17
-#>   walk_number fns   fns_name   obs mean_val median range quantile_lo quantile_hi
-#>   <fct>       <chr> <chr>    <int>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 66          rand… Random …   100     98.3   98.3  2.84        97.2        99.8
-#> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
-#> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
+#> # A tibble: 1 × 18
+#>   walk_number fns    fns_name dimensions   obs mean_val median range quantile_lo
+#>   <fct>       <chr>  <chr>         <dbl> <int>    <dbl>  <dbl> <dbl>       <dbl>
+#> 1 66          rando… Random …          1   100     98.3   98.3  2.84        97.2
+#> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
+#> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
+#> #   skewness <dbl>, kurtosis <dbl>
 ```
 
 ### Finding Specific Walks
 
 ``` r
+
 # Find walks that cross a threshold
 walks <- random_normal_walk(.num_walks = 100, .n = 100, .initial_value = 100)
 
@@ -700,6 +724,7 @@ values.](statistical-analysis-guide_files/figure-html/find_specific_walks-1.png)
 ### Autocorrelation Analysis
 
 ``` r
+
 # Generate walk with drift
 walks <- random_normal_drift_walk(.num_walks = 1, .n = 500, .mu = 0.1)
 
@@ -718,6 +743,7 @@ thresholds.](statistical-analysis-guide_files/figure-html/autocorrelation-1.png)
 ### Distribution Testing
 
 ``` r
+
 # Generate walks
 walks <- random_normal_walk(.num_walks = 100, .n = 100)
 
@@ -747,6 +773,7 @@ normality.](statistical-analysis-guide_files/figure-html/distribution_testing-1.
 Test for random walk hypothesis:
 
 ``` r
+
 # Generate walk
 walk <- random_normal_walk(.num_walks = 1, .n = 1000)
 
@@ -767,6 +794,7 @@ print(paste("Variance Ratio:", round(vr, 3), "| Expected:", k))
 ### Return Analysis (Financial)
 
 ``` r
+
 # Generate stock price simulation
 prices <- geometric_brownian_motion(
   .num_walks = 1,
@@ -802,6 +830,7 @@ returns |>
 ### Comparing Distributions
 
 ``` r
+
 # Generate two types of walks
 normal_walks <- random_normal_walk(.num_walks = 50, .n = 100)
 cauchy_walks <- random_cauchy_walk(.num_walks = 50, .n = 100)
@@ -828,6 +857,7 @@ wilcox.test(normal_final, cauchy_final)
 ```
 
 ``` r
+
 # Kolmogorov-Smirnov test
 ks.test(normal_final, cauchy_final)
 #> 
@@ -841,6 +871,7 @@ ks.test(normal_final, cauchy_final)
 ### Testing for Drift
 
 ``` r
+
 # Generate walk with known drift
 walks <- random_normal_drift_walk(.num_walks = 100, .n = 100, .mu = 0.1)
 

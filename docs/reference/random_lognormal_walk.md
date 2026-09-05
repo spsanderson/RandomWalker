@@ -119,6 +119,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -145,6 +146,7 @@ Other Generator Functions:
 
 Other Continuous Distribution:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_cauchy_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_cauchy_walk.md),
@@ -194,14 +196,14 @@ random_lognormal_walk(.dimensions = 2) |>
 #> x           "3.5036838" "0.5337082" "0.7218546" "5.9709924" "1.5452435"
 #> y           "1.8899865" "0.8062346" "1.1266462" "0.8874061" "0.5143921"
 #> cum_sum_x   " 3.503684" " 4.037392" " 4.759247" "10.730239" "12.275482"
-#> cum_sum_y   "1.889986"  "2.696221"  "3.822867"  "4.710273"  "5.224665" 
 #> cum_prod_x  "0"         "0"         "0"         "0"         "0"        
-#> cum_prod_y  "0"         "0"         "0"         "0"         "0"        
 #> cum_min_x   "3.5036838" "0.5337082" "0.5337082" "0.5337082" "0.5337082"
-#> cum_min_y   "1.8899865" "0.8062346" "0.8062346" "0.8062346" "0.5143921"
 #> cum_max_x   "3.503684"  "3.503684"  "3.503684"  "5.970992"  "5.970992" 
-#> cum_max_y   "1.889986"  "1.889986"  "1.889986"  "1.889986"  "1.889986" 
 #> cum_mean_x  "3.503684"  "2.018696"  "1.586416"  "2.682560"  "2.455096" 
+#> cum_sum_y   "1.889986"  "2.696221"  "3.822867"  "4.710273"  "5.224665" 
+#> cum_prod_y  "0"         "0"         "0"         "0"         "0"        
+#> cum_min_y   "1.8899865" "0.8062346" "0.8062346" "0.8062346" "0.5143921"
+#> cum_max_y   "1.889986"  "1.889986"  "1.889986"  "1.889986"  "1.889986" 
 #> cum_mean_y  "1.889986"  "1.348111"  "1.274289"  "1.177568"  "1.044933" 
 #>             [,6]       
 #> walk_number "1"        
@@ -209,13 +211,13 @@ random_lognormal_walk(.dimensions = 2) |>
 #> x           "3.9298540"
 #> y           "0.7895599"
 #> cum_sum_x   "16.205336"
-#> cum_sum_y   "6.014225" 
 #> cum_prod_x  "0"        
-#> cum_prod_y  "0"        
 #> cum_min_x   "0.5337082"
-#> cum_min_y   "0.5143921"
 #> cum_max_x   "5.970992" 
-#> cum_max_y   "1.889986" 
 #> cum_mean_x  "2.700889" 
+#> cum_sum_y   "6.014225" 
+#> cum_prod_y  "0"        
+#> cum_min_y   "0.5143921"
+#> cum_max_y   "1.889986" 
 #> cum_mean_y  "1.002371" 
 ```

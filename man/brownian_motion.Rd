@@ -79,6 +79,7 @@ brownian_motion(.dimensions = 3) |>
 Other Generator Functions:
 \code{\link[=custom_walk]{custom_walk()}},
 \code{\link[=discrete_walk]{discrete_walk()}},
+\code{\link[=double_pendulum_walk]{double_pendulum_walk()}},
 \code{\link[=geometric_brownian_motion]{geometric_brownian_motion()}},
 \code{\link[=random_beta_walk]{random_beta_walk()}},
 \code{\link[=random_binomial_walk]{random_binomial_walk()}},
@@ -105,6 +106,7 @@ Other Generator Functions:
 \code{\link[=random_wilcoxon_sr_walk]{random_wilcoxon_sr_walk()}}
 
 Other Continuous Distribution:
+\code{\link[=double_pendulum_walk]{double_pendulum_walk()}},
 \code{\link[=geometric_brownian_motion]{geometric_brownian_motion()}},
 \code{\link[=random_beta_walk]{random_beta_walk()}},
 \code{\link[=random_cauchy_walk]{random_cauchy_walk()}},

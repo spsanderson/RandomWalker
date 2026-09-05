@@ -161,6 +161,7 @@ path:
 If you use RandomWalker in your research, please cite it:
 
 ``` r
+
 citation("RandomWalker")
 ```
 
@@ -169,6 +170,7 @@ citation("RandomWalker")
 Here’s a quick example to get you started with RandomWalker:
 
 ``` r
+
 # Generate 30 random walks
 walks <- rw30()
 
@@ -186,6 +188,7 @@ head(walks)
 ```
 
 ``` r
+
 # Visualize the walks
 visualize_walks(walks)
 ```
@@ -194,13 +197,11 @@ visualize_walks(walks)
 rw30()](home_files/figure-html/visualize_example-1.png)
 
 ``` r
+
 # Get summary statistics
 walks |> 
   summarize_walks(.value = y) |>
   head()
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(y)))`.
 #> Caused by warning in `log()`:

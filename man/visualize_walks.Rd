@@ -95,6 +95,11 @@ random_normal_walk(.num_walks = 5, .initial_value = 100) |>
  visualize_walks(.pluck = "cum_sum_y")
 
 }
+\seealso{
+Other Visualization Functions:
+\code{\link[=animate_double_pendulum]{animate_double_pendulum()}},
+\code{\link[=plot_double_pendulum]{plot_double_pendulum()}}
+}
 \author{
 Antti Lennart Rask
 }
