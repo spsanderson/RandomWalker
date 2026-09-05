@@ -81,6 +81,7 @@ custom_walk(.n = 50, .num_walks = 3, .dimensions = 2, .custom_fns = biased_displ
 Other Generator Functions:
 \code{\link[=brownian_motion]{brownian_motion()}},
 \code{\link[=discrete_walk]{discrete_walk()}},
+\code{\link[=double_pendulum_walk]{double_pendulum_walk()}},
 \code{\link[=geometric_brownian_motion]{geometric_brownian_motion()}},
 \code{\link[=random_beta_walk]{random_beta_walk()}},
 \code{\link[=random_binomial_walk]{random_binomial_walk()}},

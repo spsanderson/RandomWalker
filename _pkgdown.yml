@@ -29,6 +29,8 @@ navbar:
           href: articles/automatic-random-walks.html
         - text: "Continuous Distribution Generators"
           href: articles/continuous-distribution-generators.html
+        - text: "Double Pendulum Trajectories"
+          href: articles/double-pendulum.html
         - text: "Discrete Distribution Generators"
           href: articles/discrete-distribution-generators.html
         - text: "Multi-Dimensional Walks"

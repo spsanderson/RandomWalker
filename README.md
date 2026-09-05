@@ -134,6 +134,22 @@ rw30() |>
 #> #   skewness <dbl>, kurtosis <dbl>
 ```
 
+### Double pendulum trajectories
+
+Simulate continuous-time pendulum motion from randomized starting angles.
+The solver (`deSolve`) and animation packages (`gganimate`, `gifski`) are optional.
+
+```r
+set.seed(287)
+pendulum <- double_pendulum_walk(.num_walks = 2, .n = 101)
+plot_double_pendulum(pendulum, .walk = 1)
+animation <- animate_double_pendulum(pendulum, .walk = 1)
+# Render explicitly with gganimate::animate(); construction saves no files.
+```
+
+See `vignette("double-pendulum", package = "RandomWalker")` for units,
+deterministic starts, and GIF rendering.
+
 ## 🎯 Common Use Cases
 
 ### 1. Custom Random Walks with Specific Distributions

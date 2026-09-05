@@ -290,7 +290,7 @@ steps <- rnorm(100, mean = 0, sd = 1)
 positions <- cumsum(c(0, steps[-100]))
 
 # 3. Add to tibble
-walk_data <- tibble::tibble(
+walk_data <- dplyr::tibble(
   step_number = 1:100,
   y = steps,
   cum_sum = positions
@@ -412,7 +412,7 @@ final_pos <- walks |>
   pull(cum_sum_y)
 
 # Plot
-tibble::tibble(position = final_pos) |>
+dplyr::tibble(position = final_pos) |>
   ggplot(aes(x = position)) +
   geom_histogram(aes(y = after_stat(density)), bins = 50,
                  fill = "steelblue", alpha = 0.7) +
