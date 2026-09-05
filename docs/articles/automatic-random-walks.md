@@ -21,6 +21,7 @@ parameters. This is perfect for:
 ### Basic Usage
 
 ``` r
+
 # Generate 30 random walks
 walks <- rw30()
 
@@ -52,6 +53,7 @@ Returns a **tidy tibble**
 It’s equivalent to:
 
 ``` r
+
 random_normal_walk(
   .num_walks = 30,
   .n = 100,
@@ -65,6 +67,7 @@ random_normal_walk(
 ### Output Structure
 
 ``` r
+
 rw30()
 #> # A tibble: 3,000 × 3
 #>    walk_number step_number     y
@@ -97,6 +100,7 @@ or tidyverse operations if needed.* \## Understanding the Output
 Each walk consists of 100 steps:
 
 ``` r
+
 walks <- rw30()
 
 # Count steps per walk
@@ -120,6 +124,7 @@ walks |>
 Since steps are drawn from N(0,1):
 
 ``` r
+
 # Mean of steps should be ≈ 0
 mean(walks$y)
 #> [1] 0.466777
@@ -142,6 +147,7 @@ walks |>
 The function stores metadata:
 
 ``` r
+
 walks <- rw30()
 atb <- attributes(walks)
 atb[!names(atb) %in% c("row.names", "class")]
@@ -172,6 +178,7 @@ atb[!names(atb) %in% c("row.names", "class")]
 ### Pattern 1: Quick Visualization
 
 ``` r
+
 # One line to plot
 rw30() |> visualize_walks()
 ```
@@ -183,6 +190,7 @@ the walk
 values.](automatic-random-walks_files/figure-html/pattern1_viz-1.png)
 
 ``` r
+
 # Interactive exploration
 rw30() |> visualize_walks(.interactive = TRUE)
 ```
@@ -190,12 +198,10 @@ rw30() |> visualize_walks(.interactive = TRUE)
 ### Pattern 2: Statistical Analysis
 
 ``` r
+
 # Overall statistics
 rw30() |> summarize_walks(.value = y) |>
   head()
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(y)))`.
 #> Caused by warning in `log()`:
@@ -237,6 +243,7 @@ rw30() |>
 ```
 
 ``` r
+
 # Custom analysis
 rw30() |>
   group_by(walk_number) |>
@@ -265,6 +272,7 @@ rw30() |>
 ### Pattern 3: Finding Extremes
 
 ``` r
+
 # Walk that went highest
 max_walk <- rw30() |>
   subset_walks(.value = "y", .type = "max")
@@ -285,6 +293,7 @@ excursion.](automatic-random-walks_files/figure-html/pattern3_extremes-1.png)
 ### Pattern 4: Filtering and Subsetting
 
 ``` r
+
 walks <- rw30()
 
 # Get only first 10 walks
@@ -299,6 +308,7 @@ colored line progressing over 100
 steps.](automatic-random-walks_files/figure-html/pattern4_filtering-1.png)
 
 ``` r
+
 # Get steps 50-100 only
 walks |>
   filter(step_number >= 50) |>
@@ -313,6 +323,7 @@ zero.](automatic-random-walks_files/figure-html/pattern4_steps-1.png)
 ### Pattern 5: Teaching Demonstrations
 
 ``` r
+
 # Show variability
 walks <- rw30()
 
@@ -341,6 +352,7 @@ values.](automatic-random-walks_files/figure-html/pattern5_teaching-1.png)
 ### Pattern 6: Comparing to Theory
 
 ``` r
+
 # Test if variance grows linearly with steps
 walks <- rw30()
 
@@ -400,6 +412,7 @@ steps.](automatic-random-walks_files/figure-html/pattern6_theory-1.png)
 has no parameters, which means:
 
 ``` r
+
 # ❌ Can't change number of walks
 # rw30(.num_walks = 50)  # Error!
 
@@ -425,6 +438,7 @@ random_normal_walk(.mu = 0.1)
 uses normal distribution exclusively:
 
 ``` r
+
 # ❌ Can't use other distributions
 # rw30(.distribution = "cauchy")  # Not possible!
 
@@ -440,6 +454,7 @@ discrete_walk(.num_walks = 30)
 generates 1D walks only:
 
 ``` r
+
 # ❌ Can't create 2D walks
 # rw30(.dimensions = 2)  # Error!
 
@@ -456,6 +471,7 @@ doesn’t fit your needs:
 ### For Custom Parameters
 
 ``` r
+
 # Instead of rw30()
 random_normal_walk(
   .num_walks = 30,
@@ -478,6 +494,7 @@ random_normal_walk(
 ### For Different Distributions
 
 ``` r
+
 # Geometric Brownian Motion (like rw30 but for stocks)
 geometric_brownian_motion(
   .num_walks = 30,
@@ -501,6 +518,7 @@ discrete_walk(
 ### For Multi-Dimensional
 
 ``` r
+
 # 2D walks
 random_normal_walk(
   .num_walks = 30,
@@ -521,6 +539,7 @@ random_normal_walk(
 ### Example 1: Teaching Random Walk Properties
 
 ``` r
+
 # Generate walks
 walks <- rw30()
 
@@ -546,6 +565,7 @@ horizontal line), demonstrating that random walks have zero expected
 displacement.](automatic-random-walks_files/figure-html/example1_mean-1.png)
 
 ``` r
+
 # Show that standard deviation grows as sqrt(n)
 walks |>
   group_by(step_number) |>
@@ -578,6 +598,7 @@ time.](automatic-random-walks_files/figure-html/example1_sd-1.png)
 ### Example 2: First Passage Time
 
 ``` r
+
 # Find when walks first cross a threshold
 walks <- rw30()
 
@@ -615,6 +636,7 @@ boundary.](automatic-random-walks_files/figure-html/example2_passage-1.png)
 ### Example 3: Maximum Excursion
 
 ``` r
+
 # Find maximum distance from origin
 walks <- rw30()
 

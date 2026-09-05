@@ -46,6 +46,7 @@ Steven P. Sanderson II, MPH
 ## Examples
 
 ``` r
+
 x <- mtcars$mpg
 
 crange(x)

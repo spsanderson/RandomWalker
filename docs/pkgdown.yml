@@ -1,5 +1,5 @@
-pandoc: 3.6.3
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   api-reference: api-reference.html
@@ -7,12 +7,13 @@ articles:
   basic-concepts: basic-concepts.html
   continuous-distribution-generators: continuous-distribution-generators.html
   discrete-distribution-generators: discrete-distribution-generators.html
+  double-pendulum: double-pendulum.html
   faq: faq.html
   getting-started: getting-started.html
   home: home.html
   multi-dimensional-walks: multi-dimensional-walks.html
   statistical-analysis-guide: statistical-analysis-guide.html
-last_built: 2025-11-21T16:58Z
+last_built: 2026-09-05T04:37Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles

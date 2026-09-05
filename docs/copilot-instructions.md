@@ -34,6 +34,7 @@ random walks using tidyverse-compatible functions.
 development. Install required development tools:
 
 ``` r
+
 # Install development dependencies
 install.packages(c("devtools", "roxygen2", "pkgdown", "knitr", "rmarkdown"))
 
@@ -48,6 +49,7 @@ install.packages(c("dplyr", "tidyr", "purrr", "rlang", "ggplot2", "ggiraph", "pa
 1.  **Document Functions** (ALWAYS required after function changes):
 
     ``` r
+
     devtools::document()
     ```
 
@@ -83,6 +85,7 @@ install.packages(c("dplyr", "tidyr", "purrr", "rlang", "ggplot2", "ggiraph", "pa
 4.  **Install Locally** (for testing):
 
     ``` r
+
     devtools::install()
     ```
 
@@ -91,6 +94,7 @@ install.packages(c("dplyr", "tidyr", "purrr", "rlang", "ggplot2", "ggiraph", "pa
 **README Generation** (ALWAYS update README.Rmd, not README.md):
 
 ``` r
+
 # Edit README.Rmd, then generate README.md
 rmarkdown::render("README.Rmd")
 ```
@@ -98,6 +102,7 @@ rmarkdown::render("README.Rmd")
 **Website Generation** (after significant changes):
 
 ``` r
+
 pkgdown::build_site()
 ```
 
@@ -123,6 +128,7 @@ directory).
 **Example Validation** (ALWAYS run examples after changes):
 
 ``` r
+
 devtools::run_examples()
 ```
 

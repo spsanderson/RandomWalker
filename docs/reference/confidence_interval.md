@@ -54,7 +54,7 @@ Steven P. Sanderson II, MPH
 ``` r
 confidence_interval(rnorm(100), 0.95)
 #> # A tibble: 1 × 2
-#>    lower upper
-#>    <dbl> <dbl>
-#> 1 -0.285 0.134
+#>    lower  upper
+#>    <dbl>  <dbl>
+#> 1 -0.360 0.0672
 ```

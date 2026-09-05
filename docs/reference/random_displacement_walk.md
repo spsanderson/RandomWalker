@@ -71,6 +71,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -119,14 +120,14 @@ random_displacement_walk(.n = 10, .seed = Sys.Date())
 #>    walk_number step_number     y
 #>    <fct>             <dbl> <dbl>
 #>  1 1                     1     0
-#>  2 1                     2     1
-#>  3 1                     3     0
-#>  4 1                     4    -1
-#>  5 1                     5    -3
-#>  6 1                     6    -7
-#>  7 1                     7    -9
-#>  8 1                     8    -7
-#>  9 1                     9   -10
-#> 10 1                    10   -13
+#>  2 1                     2    -3
+#>  3 1                     3     1
+#>  4 1                     4     5
+#>  5 1                     5     3
+#>  6 1                     6     4
+#>  7 1                     7     5
+#>  8 1                     8     4
+#>  9 1                     9     2
+#> 10 1                    10     6
 #> # ℹ 265 more rows
 ```

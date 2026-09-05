@@ -108,6 +108,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -180,18 +181,18 @@ random_poisson_walk(.dimensions = 3, .lambda = c(1, 2, 3)) |>
 #> y           "1"        "2"        "4"        "3"        "0"        "1"       
 #> z           "2"        "3"        "0"        "2"        "3"        "3"       
 #> cum_sum_x   " 1"       " 2"       " 3"       " 7"       "11"       "12"      
-#> cum_sum_y   " 1"       " 3"       " 7"       "10"       "10"       "11"      
-#> cum_sum_z   " 2"       " 5"       " 5"       " 7"       "10"       "13"      
 #> cum_prod_x  "0"        "0"        "0"        "0"        "0"        "0"       
-#> cum_prod_y  "0"        "0"        "0"        "0"        "0"        "0"       
-#> cum_prod_z  "0"        "0"        "0"        "0"        "0"        "0"       
 #> cum_min_x   "1"        "1"        "1"        "1"        "1"        "1"       
-#> cum_min_y   "1"        "1"        "1"        "1"        "0"        "0"       
-#> cum_min_z   "2"        "2"        "0"        "0"        "0"        "0"       
 #> cum_max_x   "1"        "1"        "1"        "4"        "4"        "4"       
-#> cum_max_y   "1"        "2"        "4"        "4"        "4"        "4"       
-#> cum_max_z   "2"        "3"        "3"        "3"        "3"        "3"       
 #> cum_mean_x  "1.00"     "1.00"     "1.00"     "1.75"     "2.20"     "2.00"    
+#> cum_sum_y   " 1"       " 3"       " 7"       "10"       "10"       "11"      
+#> cum_prod_y  "0"        "0"        "0"        "0"        "0"        "0"       
+#> cum_min_y   "1"        "1"        "1"        "1"        "0"        "0"       
+#> cum_max_y   "1"        "2"        "4"        "4"        "4"        "4"       
 #> cum_mean_y  "1.000000" "1.500000" "2.333333" "2.500000" "2.000000" "1.833333"
+#> cum_sum_z   " 2"       " 5"       " 5"       " 7"       "10"       "13"      
+#> cum_prod_z  "0"        "0"        "0"        "0"        "0"        "0"       
+#> cum_min_z   "2"        "2"        "0"        "0"        "0"        "0"       
+#> cum_max_z   "2"        "3"        "3"        "3"        "3"        "3"       
 #> cum_mean_z  "2.000000" "2.500000" "1.666667" "1.750000" "2.000000" "2.166667"
 ```

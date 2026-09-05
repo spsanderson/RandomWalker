@@ -125,6 +125,7 @@ Other Generator Functions:
 [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md),
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md),
 [`discrete_walk()`](https://www.spsanderson.com/RandomWalker/reference/discrete_walk.md),
+[`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md),
 [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md),
 [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md),
 [`random_binomial_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_binomial_walk.md),
@@ -196,13 +197,13 @@ random_hypergeometric_walk(.dimensions = 2) |>
 #> x           "6"        "5"        "6"        "7"        "7"        "6"       
 #> y           "3"        "5"        "7"        "5"        "3"        "5"       
 #> cum_sum_x   " 6"       "11"       "17"       "24"       "31"       "37"      
-#> cum_sum_y   " 3"       " 8"       "15"       "20"       "23"       "28"      
 #> cum_prod_x  "0"        "0"        "0"        "0"        "0"        "0"       
-#> cum_prod_y  "0"        "0"        "0"        "0"        "0"        "0"       
 #> cum_min_x   "6"        "5"        "5"        "5"        "5"        "5"       
-#> cum_min_y   "3"        "3"        "3"        "3"        "3"        "3"       
 #> cum_max_x   "6"        "6"        "6"        "7"        "7"        "7"       
-#> cum_max_y   "3"        "5"        "7"        "7"        "7"        "7"       
 #> cum_mean_x  "6.000000" "5.500000" "5.666667" "6.000000" "6.200000" "6.166667"
+#> cum_sum_y   " 3"       " 8"       "15"       "20"       "23"       "28"      
+#> cum_prod_y  "0"        "0"        "0"        "0"        "0"        "0"       
+#> cum_min_y   "3"        "3"        "3"        "3"        "3"        "3"       
+#> cum_max_y   "3"        "5"        "7"        "7"        "7"        "7"       
 #> cum_mean_y  "3.000000" "4.000000" "5.000000" "5.000000" "4.600000" "4.666667"
 ```

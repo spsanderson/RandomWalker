@@ -38,6 +38,7 @@ The fundamental discrete random walk with binary outcomes (up or down).
 **Function Signature:**
 
 ``` r
+
 discrete_walk(
   .num_walks = 25,
   .n = 100,
@@ -64,6 +65,7 @@ Teaching probability concepts - Binary decision modeling
 **Example:**
 
 ``` r
+
 # Unbiased walk (50/50)
 discrete_walk(
   .num_walks = 10,
@@ -76,6 +78,7 @@ discrete_walk(
 movements](discrete-distribution-generators_files/figure-html/discrete_walk_example-1.png)
 
 ``` r
+
 # Biased upward (60% up, 40% down)
 discrete_walk(
   .num_walks = 10,
@@ -88,6 +91,7 @@ discrete_walk(
 probability](discrete-distribution-generators_files/figure-html/discrete_walk_biased-1.png)
 
 ``` r
+
 # Gambler's ruin simulation
 gambler <- discrete_walk(
   .num_walks = 100,
@@ -104,9 +108,6 @@ gambler |>
     prob_ruin = mean(min_val <= 0),
     avg_final = mean(max_val)
   )
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There were 5 warnings in `dplyr::summarize()`.
 #> The first warning was:
 #> ℹ In argument: `geometric_mean = exp(mean(log(cum_sum_y)))`.
@@ -130,6 +131,7 @@ trials).
 **Function Signature:**
 
 ``` r
+
 random_binomial_walk(
   .num_walks = 25,
   .n = 100,
@@ -157,6 +159,7 @@ experiments
 **Example:**
 
 ``` r
+
 # Fair coin flips (10 per step)
 random_binomial_walk(
   .num_walks = 10,
@@ -169,6 +172,7 @@ random_binomial_walk(
 behavior](discrete-distribution-generators_files/figure-html/binomial_walk_example-1.png)
 
 ``` r
+
 # Quality control simulation
 defects <- random_binomial_walk(
   .num_walks = 50,
@@ -199,6 +203,7 @@ first success).
 **Function Signature:**
 
 ``` r
+
 random_geometric_walk(
   .num_walks = 25,
   .n = 100,
@@ -222,6 +227,7 @@ Customer conversion time - Waiting time modeling
 **Example:**
 
 ``` r
+
 # High probability (short waits)
 random_geometric_walk(
   .num_walks = 10,
@@ -233,6 +239,7 @@ random_geometric_walk(
 times](discrete-distribution-generators_files/figure-html/geometric_walk_example-1.png)
 
 ``` r
+
 # Customer conversion modeling
 conversion <- random_geometric_walk(
   .num_walks = 100,
@@ -255,6 +262,7 @@ Random walk for sampling without replacement.
 **Function Signature:**
 
 ``` r
+
 random_hypergeometric_walk(
   .num_walks = 25,
   .nn = 100,
@@ -281,6 +289,7 @@ games - Ecological sampling
 **Example:**
 
 ``` r
+
 # Drawing from an urn
 random_hypergeometric_walk(
   .num_walks = 10,
@@ -294,6 +303,7 @@ random_hypergeometric_walk(
 urn](discrete-distribution-generators_files/figure-html/hypergeometric_walk_example-1.png)
 
 ``` r
+
 # Quality inspection
 inspection <- random_hypergeometric_walk(
   .num_walks = 100,
@@ -318,6 +328,7 @@ Random walk with multiple outcome categories.
 **Function Signature:**
 
 ``` r
+
 random_multinomial_walk(
   .num_walks = 25,
   .n = 100,
@@ -343,6 +354,7 @@ Market share analysis - Classification results
 **Example:**
 
 ``` r
+
 # Dice rolling (6 outcomes)
 random_multinomial_walk(
   .num_walks = 10,
@@ -356,6 +368,7 @@ random_multinomial_walk(
 outcomes](discrete-distribution-generators_files/figure-html/multinomial_walk_example-1.png)
 
 ``` r
+
 # Market share simulation
 market_share <- random_multinomial_walk(
   .num_walks = 50,
@@ -382,6 +395,7 @@ successes).
 **Function Signature:**
 
 ``` r
+
 random_negbinomial_walk(
   .num_walks = 25,
   .n = 100,
@@ -408,6 +422,7 @@ modeling - Count data with extra variability
 **Example:**
 
 ``` r
+
 # Standard negative binomial
 random_negbinomial_walk(
   .num_walks = 10,
@@ -420,6 +435,7 @@ random_negbinomial_walk(
 data](discrete-distribution-generators_files/figure-html/negbinomial_walk_example-1.png)
 
 ``` r
+
 # Overdispersed count data
 claims <- random_negbinomial_walk(
   .num_walks = 100,
@@ -450,6 +466,7 @@ interval).
 **Function Signature:**
 
 ``` r
+
 random_poisson_walk(
   .num_walks = 25,
   .n = 100,
@@ -473,6 +490,7 @@ events - Queuing theory - Web traffic - Radioactive decay
 **Example:**
 
 ``` r
+
 # Low rate (rare events)
 random_poisson_walk(
   .num_walks = 10,
@@ -484,6 +502,7 @@ random_poisson_walk(
 events](discrete-distribution-generators_files/figure-html/poisson_walk_example-1.png)
 
 ``` r
+
 # Call center arrivals
 arrivals <- random_poisson_walk(
   .num_walks = 100,
@@ -513,6 +532,7 @@ Random walk based on Wilcoxon rank sum statistic.
 **Function Signature:**
 
 ``` r
+
 random_wilcox_walk(
   .num_walks = 25,
   .n = 100,
@@ -535,6 +555,7 @@ statistics - Distribution-free methods
 **Example:**
 
 ``` r
+
 random_wilcox_walk(
   .num_walks = 10,
   .m = 20,
@@ -552,6 +573,7 @@ Random walk based on Wilcoxon signed rank statistic.
 **Function Signature:**
 
 ``` r
+
 random_wilcoxon_sr_walk(
   .num_walks = 25,
   .nn = 100,
@@ -574,6 +596,7 @@ Matched pairs analysis
 **Example:**
 
 ``` r
+
 random_wilcoxon_sr_walk(
   .num_walks = 10,
   .n = 20
@@ -592,6 +615,7 @@ Random walk based on Kolmogorov-Smirnov statistic distribution.
 **Function Signature:**
 
 ``` r
+
 random_smirnov_walk(
   .num_walks = 25,
   .n = 100,
@@ -618,6 +642,7 @@ Nonparametric statistics
 **Example:**
 
 ``` r
+
 random_smirnov_walk(
   .num_walks = 10,
   .sizes = c(5,10)
@@ -659,6 +684,7 @@ Independent trials
 #### Example 1: Website Traffic
 
 ``` r
+
 # Daily page views (Poisson)
 traffic <- random_poisson_walk(
   .num_walks = 100,
@@ -682,6 +708,7 @@ distribution](discrete-distribution-generators_files/figure-html/traffic_example
 
 ``` r
 
+
 # Compute total annual views (summary statistic)
 traffic |>
   summarize_walks(.value = cum_sum_y) |>
@@ -693,6 +720,7 @@ traffic |>
 #### Example 2: Quality Control
 
 ``` r
+
 # Defect sampling (Hypergeometric)
 quality <- random_hypergeometric_walk(
   .num_walks = 1000,
@@ -716,6 +744,7 @@ quality |>
 #### Example 3: Customer Service
 
 ``` r
+
 # Calls until resolution (Geometric)
 resolution <- random_geometric_walk(
   .num_walks = 500,
@@ -749,6 +778,7 @@ resolution |>
 ### Validation
 
 ``` r
+
 # Check if distribution fits your expectations
 walk <- random_poisson_walk(.num_walks = 1000, .n = 100, .lambda = 5)
 

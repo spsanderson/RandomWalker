@@ -26,6 +26,7 @@ Quickly generate 30 random walks with 100 steps each.
 **Usage:**
 
 ``` r
+
 rw30()
 ```
 
@@ -41,6 +42,7 @@ functions can be added but are not returned
 **Examples:**
 
 ``` r
+
 # Generate and view
 rw30() |> head(10)
 #> # A tibble: 10 × 3
@@ -59,6 +61,7 @@ rw30() |> head(10)
 ```
 
 ``` r
+
 # Visualize
 rw30() |> visualize_walks()
 ```
@@ -67,11 +70,9 @@ rw30() |> visualize_walks()
 walks](api-reference_files/figure-html/rw30_visualize-1.png)
 
 ``` r
+
 # Analyze
 rw30() |> summarize_walks(.value = y) |> head()
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(y)))`.
 #> Caused by warning in `log()`:
@@ -107,6 +108,7 @@ deviation (default: 1)
 **Example:**
 
 ``` r
+
 random_normal_walk(.num_walks = 10, .mu = 0, .sd = 1) |> head()
 #> # A tibble: 6 × 8
 #>   walk_number step_number      y cum_sum_y cum_prod_y cum_min_y cum_max_y
@@ -313,6 +315,7 @@ that returns displacement value - `.initial_value`: Starting value
 **Example:**
 
 ``` r
+
 # Custom function
 my_displacement <- function() {
   sample(c(-2, -1, 0, 1, 2), 1, prob = c(0.1, 0.2, 0.4, 0.2, 0.1))
@@ -347,8 +350,8 @@ transparency, 0-1 (default: 0.7) - `.interactive`: Boolean, create
 interactive plot (default: FALSE) - `.pluck`: Select specific columns to
 plot (default: FALSE shows all) - Use exact plotted column names such as
 `"y"`, `"cum_sum_y"`, `"cum_sum_x"`, or `"cum_sum_z"` - Short cumulative
-aliases such as `"cum_sum"` work only when they match exactly one plotted
-column - Can be a vector: `c("y", "cum_sum_y")`
+aliases such as `"cum_sum"` work only when they match exactly one
+plotted column - Can be a vector: `c("y", "cum_sum_y")`
 
 **Returns:** - Static mode: ggplot2/patchwork object - Interactive mode:
 ggiraph object
@@ -356,6 +359,7 @@ ggiraph object
 **Examples:**
 
 ``` r
+
 # Basic visualization
 rw30() |> visualize_walks()
 ```
@@ -364,6 +368,7 @@ rw30() |> visualize_walks()
 walks](api-reference_files/figure-html/visualize_basic-1.png)
 
 ``` r
+
 # Adjust transparency
 rw30() |> visualize_walks(.alpha = 0.3)
 ```
@@ -372,6 +377,7 @@ rw30() |> visualize_walks(.alpha = 0.3)
 transparency](api-reference_files/figure-html/visualize_alpha-1.png)
 
 ``` r
+
 # Interactive (not run in vignette)
 rw30() |> visualize_walks(.interactive = TRUE)
 
@@ -403,6 +409,7 @@ maximum - `harmonic_mean`, `geometric_mean`: Alternative means -
 **Examples:**
 
 ``` r
+
 walks <- rw30()
 
 # Overall summary
@@ -420,6 +427,7 @@ walks |> summarize_walks(.value = y) |> head()
 ```
 
 ``` r
+
 # By walk
 walks |> 
   summarize_walks(.value = y, .group_var = walk_number) |> 
@@ -446,6 +454,7 @@ walks |>
 ```
 
 ``` r
+
 # Cumulative sum
 walks |>
   dplyr::mutate(cum_sum = cumsum(y)) |>
@@ -476,6 +485,7 @@ name to subset by (default: “y”) - `.type`: Type of subset (“max”,
 **Examples:**
 
 ``` r
+
 # Walk with maximum value
 walks |> subset_walks(.type = "max", .value = "y")
 
@@ -500,6 +510,7 @@ Calculate confidence interval for a vector.
 **Example:**
 
 ``` r
+
 x <- rnorm(1000, mean = 10, sd = 2)
 confidence_interval(x)
 
@@ -520,6 +531,7 @@ include in each running quantile calculation)
 **Example:**
 
 ``` r
+
 x <- rnorm(100)
 running_quantile(x, .probs = 0.5, .window = 5)  # Running median
 ```
@@ -535,6 +547,7 @@ Calculate Euclidean distance from origin for multi-dimensional walks.
 **Example:**
 
 ``` r
+
 walk_2d <- random_normal_walk(.dimensions = 2)
 walk_2d |> euclidean_distance(.x = x, .y = y)
 ```
@@ -581,6 +594,7 @@ Convert snake_case strings to Title Case.
 **Example:**
 
 ``` r
+
 convert_snake_to_title_case("random_normal_walk")
 #> "Random Normal Walk"
 
@@ -599,6 +613,7 @@ Get attributes without row names.
 **Example:**
 
 ``` r
+
 walks <- rw30()
 get_attributes(walks)
 #> $names
@@ -667,15 +682,16 @@ All generator functions return a tibble with consistent structure:
 All generated walks include attributes:
 
 ``` r
+
 walks <- random_normal_walk(.num_walks = 10, .n = 100)
 atb <- attributes(walks)
 atb[!names(atb) %in% c("row.names")]
-#> $class
-#> [1] "tbl_df"     "tbl"        "data.frame"
-#> 
 #> $names
 #> [1] "walk_number" "step_number" "y"           "cum_sum_y"   "cum_prod_y" 
 #> [6] "cum_min_y"   "cum_max_y"   "cum_mean_y" 
+#> 
+#> $class
+#> [1] "tbl_df"     "tbl"        "data.frame"
 #> 
 #> $n
 #> [1] 100

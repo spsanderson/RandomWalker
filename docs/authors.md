@@ -12,14 +12,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/spsanderson/RandomWalker/blob/HEAD/DESCRIPTION)
 
-Sanderson S, Rask A (2025). *RandomWalker: Generate Random Walks
+Sanderson S, Rask A (2026). *RandomWalker: Generate Random Walks
 Compatible with the 'tidyverse'*. R package version 1.0.0.9000,
 <https://www.spsanderson.com/RandomWalker/>.
 
     @Manual{,
       title = {RandomWalker: Generate Random Walks Compatible with the 'tidyverse'},
       author = {Steven Sanderson and Antti Rask},
-      year = {2025},
+      year = {2026},
       note = {R package version 1.0.0.9000},
       url = {https://www.spsanderson.com/RandomWalker/},
     }

@@ -31,6 +31,7 @@ projects.
 ### How do I install RandomWalker?
 
 ``` r
+
 # From CRAN (stable)
 install.packages("RandomWalker")
 
@@ -47,6 +48,7 @@ RandomWalker requires R version 4.1.0 or higher.
 Try installing dependencies manually:
 
 ``` r
+
 install.packages(c("dplyr", "tidyr", "purrr", "rlang", "patchwork", "NNS", "ggiraph"))
 ```
 
@@ -55,6 +57,7 @@ install.packages(c("dplyr", "tidyr", "purrr", "rlang", "patchwork", "NNS", "ggir
 ### How do I generate a simple random walk?
 
 ``` r
+
 library(RandomWalker)
 rw30() |> head(10)  # Generates 30 walks with 100 steps each
 #> # A tibble: 10 × 3
@@ -75,6 +78,7 @@ rw30() |> head(10)  # Generates 30 walks with 100 steps each
 ### How do I visualize my random walks?
 
 ``` r
+
 library(RandomWalker)
 rw30() |> visualize_walks()
 ```
@@ -87,6 +91,7 @@ panels](faq_files/figure-html/visualize_example-1.png)
 Use one of the generator functions:
 
 ``` r
+
 random_normal_walk(
   .num_walks = 10,
   .n = 100,
@@ -104,6 +109,7 @@ parameters](faq_files/figure-html/custom_walk_example-1.png)
 Yes:
 
 ``` r
+
 set.seed(123)
 walks <- rw30()
 
@@ -167,6 +173,7 @@ Yes! Use
 [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md):
 
 ``` r
+
 # Custom displacement function
 my_displacement <- function() {
   # Your custom logic here
@@ -187,28 +194,30 @@ custom_walk(
 Add `.dimensions = 2`:
 
 ``` r
+
 random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
 #> # A tibble: 800 × 14
-#>    walk_number step_number        x        y cum_sum_x cum_sum_y cum_prod_x
-#>    <fct>             <int>    <dbl>    <dbl>     <dbl>     <dbl>      <dbl>
-#>  1 1                     1 -0.220   -0.119      -0.220   -0.119           0
-#>  2 1                     2 -0.0624   0.0535     -0.283   -0.0658          0
-#>  3 1                     3 -0.220    0.179      -0.503    0.113           0
-#>  4 1                     4  0.146    0.0317     -0.357    0.145           0
-#>  5 1                     5 -0.0783  -0.0700     -0.435    0.0749          0
-#>  6 1                     6 -0.147   -0.00606    -0.582    0.0689          0
-#>  7 1                     7 -0.00374 -0.0842     -0.586   -0.0154          0
-#>  8 1                     8  0.170   -0.115      -0.416   -0.130           0
-#>  9 1                     9 -0.0349   0.0425     -0.451   -0.0880          0
-#> 10 1                    10 -0.0472  -0.119      -0.498   -0.207           0
+#>    walk_number step_number        x        y cum_sum_x cum_prod_x cum_min_x
+#>    <fct>             <int>    <dbl>    <dbl>     <dbl>      <dbl>     <dbl>
+#>  1 1                     1 -0.220   -0.119      -0.220          0    -0.220
+#>  2 1                     2 -0.0624   0.0535     -0.283          0    -0.220
+#>  3 1                     3 -0.220    0.179      -0.503          0    -0.220
+#>  4 1                     4  0.146    0.0317     -0.357          0    -0.220
+#>  5 1                     5 -0.0783  -0.0700     -0.435          0    -0.220
+#>  6 1                     6 -0.147   -0.00606    -0.582          0    -0.220
+#>  7 1                     7 -0.00374 -0.0842     -0.586          0    -0.220
+#>  8 1                     8  0.170   -0.115      -0.416          0    -0.220
+#>  9 1                     9 -0.0349   0.0425     -0.451          0    -0.220
+#> 10 1                    10 -0.0472  -0.119      -0.498          0    -0.220
 #> # ℹ 790 more rows
-#> # ℹ 7 more variables: cum_prod_y <dbl>, cum_min_x <dbl>, cum_min_y <dbl>,
-#> #   cum_max_x <dbl>, cum_max_y <dbl>, cum_mean_x <dbl>, cum_mean_y <dbl>
+#> # ℹ 7 more variables: cum_max_x <dbl>, cum_mean_x <dbl>, cum_sum_y <dbl>,
+#> #   cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>, cum_mean_y <dbl>
 ```
 
 ### How do I visualize 2D walks?
 
 ``` r
+
 library(ggplot2)
 
 walk_2d <- random_normal_walk(.num_walks = 10, .n = 100, .dimensions = 2)
@@ -235,6 +244,7 @@ coordinates](faq_files/figure-html/visualize_2d-1.png)
 Add `.interactive = TRUE`:
 
 ``` r
+
 rw30() |> visualize_walks(.interactive = TRUE)
 ```
 
@@ -243,6 +253,7 @@ rw30() |> visualize_walks(.interactive = TRUE)
 Use `.pluck`:
 
 ``` r
+
 # Single panel
 random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
 ```
@@ -251,6 +262,7 @@ random_normal_walk() |> visualize_walks(.pluck = "cum_sum_y")
 sum](faq_files/figure-html/pluck_example-1.png)
 
 ``` r
+
 # Multiple panels
 random_normal_walk() |> visualize_walks(.pluck = c("y", "cum_sum_y", "cum_mean_y"))
 ```
@@ -263,6 +275,7 @@ mean](faq_files/figure-html/pluck_multiple-1.png)
 Use `.alpha`:
 
 ``` r
+
 rw30() |> visualize_walks(.alpha = 0.3)  # More transparent
 rw30() |> visualize_walks(.alpha = 0.9)  # More opaque
 ```
@@ -270,6 +283,7 @@ rw30() |> visualize_walks(.alpha = 0.9)  # More opaque
 ### How do I export plots?
 
 ``` r
+
 library(ggplot2)
 
 p <- rw30() |> visualize_walks()
@@ -281,6 +295,7 @@ ggsave("my_plot.png", p, width = 12, height = 8, dpi = 300)
 Yes, using ggplot2:
 
 ``` r
+
 p <- random_normal_walk(.num_walks = 5) |>
   visualize_walks(.pluck = "y")
 
@@ -295,13 +310,11 @@ palette](faq_files/figure-html/colors_example-1.png)
 ### How do I get summary statistics?
 
 ``` r
+
 walks <- rw30()
 
 # Overall summary
 walks |> summarize_walks(.value = y)
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
 #> Warning: There was 1 warning in `dplyr::summarize()`.
 #> ℹ In argument: `geometric_mean = exp(mean(log(y)))`.
 #> Caused by warning in `log()`:
@@ -315,6 +328,7 @@ walks |> summarize_walks(.value = y)
 ```
 
 ``` r
+
 # By walk
 walks |> summarize_walks(.value = y, .group_var = walk_number) |> head()
 #> Warning: There were 29 warnings in `dplyr::summarize()`.
@@ -350,6 +364,7 @@ walks |> summarize_walks(.value = y, .group_var = walk_number) |> head()
 ### How do I subset walks by extremes?
 
 ``` r
+
 walks <- rw30()
 
 # Get walk with maximum final value
@@ -386,6 +401,7 @@ steps each - **Heavy**: 100,000+ walks with careful memory management
 4.  **Use static plots**: Disable `.interactive`
 
 ``` r
+
 # Sample walks
 walks_large |>
   filter(walk_number %in% sample(levels(walk_number), 50)) |>
@@ -402,6 +418,7 @@ walks_large |>
 The functions are vectorized, but you can use parallel processing:
 
 ``` r
+
 library(future)
 library(furrr)
 
@@ -421,6 +438,7 @@ for 2D, `x`/`y`/`z` for 3D) - Cumulative function columns
 ### How do I access attributes?
 
 ``` r
+
 walks <- rw30()
 atb <- get_attributes(walks)
 names(atb)
@@ -436,6 +454,7 @@ distribution parameters.
 Yes:
 
 ``` r
+
 # To base R data.frame
 as.data.frame(walks)
 
@@ -457,6 +476,7 @@ You forgot to specify `.value` in
 [`summarize_walks()`](https://www.spsanderson.com/RandomWalker/reference/summarize_walks.md):
 
 ``` r
+
 # Wrong
 walks |> summarize_walks()
 
@@ -470,6 +490,7 @@ You might be using a 2D/3D walk where `y` refers to a dimension. Use
 `cum_sum_y` or specify dimensions:
 
 ``` r
+
 walk_2d <- random_normal_walk(.dimensions = 2)
 
 # Wrong
@@ -486,6 +507,7 @@ walk_2d |> summarize_walks(.value = cum_sum_y)
 Yes! RandomWalker is designed for tidyverse:
 
 ``` r
+
 library(dplyr)
 
 random_normal_walk(.num_walks = 10) |>
@@ -513,6 +535,7 @@ random_normal_walk(.num_walks = 10) |>
 Yes:
 
 ``` r
+
 library(shiny)
 library(RandomWalker)
 
@@ -538,6 +561,7 @@ Yes,
 returns ggplot2 objects:
 
 ``` r
+
 library(ggplot2)
 
 p <- rw30() |> visualize_walks(.pluck = "y")
@@ -558,6 +582,7 @@ walk](faq_files/figure-html/ggplot2_example-1.png)
 Use Geometric Brownian Motion:
 
 ``` r
+
 stock_prices <- geometric_brownian_motion(
   .num_walks = 100,
   .n = 252,  # Trading days
@@ -576,6 +601,7 @@ motion](faq_files/figure-html/stock_example-1.png)
 Use Brownian Motion in 2D or 3D:
 
 ``` r
+
 particles <- brownian_motion(
   .num_walks = 50,
   .n = 1000,
@@ -588,6 +614,7 @@ particles <- brownian_motion(
 Generate synthetic data:
 
 ``` r
+
 # Generate test walks
 test_data <- discrete_walk(
   .num_walks = 1000,
@@ -621,6 +648,7 @@ result <- my_algorithm(test_data)
 ### How do I cite RandomWalker?
 
 ``` r
+
 citation("RandomWalker")
 ```
 

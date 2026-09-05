@@ -33,6 +33,7 @@ interface with extensive distribution support.
 Install the stable version from CRAN:
 
 ``` r
+
 install.packages("RandomWalker")
 ```
 
@@ -40,6 +41,7 @@ Or get the development version from GitHub for the latest features and
 bug fixes:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("spsanderson/RandomWalker")
 ```
@@ -54,6 +56,7 @@ function provides a quick way to generate 30 random walks with 100 steps
 each:
 
 ``` r
+
 library(RandomWalker)
 
 # Generate random walks
@@ -79,6 +82,7 @@ head(walks, 10)
 Create beautiful visualizations with a single function call:
 
 ``` r
+
 rw30() |>
   visualize_walks()
 ```
@@ -92,6 +96,7 @@ trajectories](reference/figures/README-random_walk_visual_example-1.png)
 Get comprehensive statistical summaries of your random walks:
 
 ``` r
+
 # Overall summary
 rw30() |>
   summarize_walks(.value = y)
@@ -124,11 +129,31 @@ rw30() |>
 #> #   skewness <dbl>, kurtosis <dbl>
 ```
 
+### Double pendulum trajectories
+
+Simulate continuous-time pendulum motion from randomized starting
+angles. The solver (`deSolve`) and animation packages (`gganimate`,
+`gifski`) are optional.
+
+``` r
+
+set.seed(287)
+pendulum <- double_pendulum_walk(.num_walks = 2, .n = 101)
+plot_double_pendulum(pendulum, .walk = 1)
+animation <- animate_double_pendulum(pendulum, .walk = 1)
+# Render explicitly with gganimate::animate(); construction saves no files.
+```
+
+See
+[`vignette("double-pendulum", package = "RandomWalker")`](https://www.spsanderson.com/RandomWalker/articles/double-pendulum.md)
+for units, deterministic starts, and GIF rendering.
+
 ## 🎯 Common Use Cases
 
 ### 1. Custom Random Walks with Specific Distributions
 
 ``` r
+
 # Normal walk with custom parameters
 random_normal_walk(
   .num_walks = 5,
@@ -143,6 +168,7 @@ random_normal_walk(
 ![](reference/figures/README-custom_examples-1.png)
 
 ``` r
+
 
 # Geometric Brownian Motion (great for stock prices!)
 geometric_brownian_motion(
@@ -160,6 +186,7 @@ geometric_brownian_motion(
 ### 2. Multi-Dimensional Random Walks
 
 ``` r
+
 # 2D random walk
 random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2) |>
   head(10)
@@ -204,6 +231,7 @@ random_normal_walk(.num_walks = 2, .n = 50, .dimensions = 3) |>
 ### 3. Discrete Random Walks
 
 ``` r
+
 # Discrete walk with upper/lower bounds
 discrete_walk(
   .num_walks = 5,
@@ -332,6 +360,7 @@ details.
 If you use RandomWalker in your research, please cite:
 
 ``` r
+
 citation("RandomWalker")
 ```
 
@@ -361,6 +390,8 @@ Functions that generate modifiable random walks
 
 - [`brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/brownian_motion.md)
   : Brownian Motion
+- [`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md)
+  : Double Pendulum Walk
 - [`geometric_brownian_motion()`](https://www.spsanderson.com/RandomWalker/reference/geometric_brownian_motion.md)
   : Geometric Brownian Motion
 - [`random_beta_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_beta_walk.md)
@@ -419,6 +450,10 @@ Functions that generate modifiable random walks
 
 Functions that visualise random walks
 
+- [`animate_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/animate_double_pendulum.md)
+  : Animate a Double Pendulum
+- [`plot_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/plot_double_pendulum.md)
+  : Plot a Double Pendulum Trajectory
 - [`visualize_walks()`](https://www.spsanderson.com/RandomWalker/reference/visualize_walks.md)
   : Visualize Walks
 
@@ -507,6 +542,8 @@ Functions that summarise random walks
   Generators](https://www.spsanderson.com/RandomWalker/articles/continuous-distribution-generators.md):
 - [Discrete Distribution
   Generators](https://www.spsanderson.com/RandomWalker/articles/discrete-distribution-generators.md):
+- [Double Pendulum
+  Trajectories](https://www.spsanderson.com/RandomWalker/articles/double-pendulum.md):
 - [Frequently Asked Questions
   (FAQ)](https://www.spsanderson.com/RandomWalker/articles/faq.md):
 - [Getting Started with

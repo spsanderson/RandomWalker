@@ -8,6 +8,10 @@ None
 
 ### New Features
 
+- Fix [\#287](https://github.com/spsanderson/RandomWalker/issues/287) -
+  Add double-pendulum trajectories with randomized starting angles,
+  static trajectory plots, and optional animation.
+
 1.  Fix
     [\#235](https://github.com/spsanderson/RandomWalker/issues/235) -
     Add function
@@ -15,6 +19,13 @@ None
     to generate a random walk using a custom displacement function.
 
 ### Minor Fixes and Improvements
+
+- Fix [\#289](https://github.com/spsanderson/RandomWalker/issues/289) -
+  Make grouping optional in
+  [`summarize_walks()`](https://www.spsanderson.com/RandomWalker/reference/summarize_walks.md)
+  and
+  [`summarise_walks()`](https://www.spsanderson.com/RandomWalker/reference/summarize_walks.md),
+  and support both dimension metadata attribute spellings.
 
 1.  Fix
     [\#252](https://github.com/spsanderson/RandomWalker/issues/252) -
