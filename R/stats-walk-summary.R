@@ -7,16 +7,18 @@
 #' @details This function requires that the input data frame contains a
 #' column named 'walk_number' and that the value to summarize is provided.
 #' It computes statistics such as mean, median, variance, and quantiles
-#' for the specified value variable. #' This function summarizes a data frame
-#' containing random walk data by computing various statistical measures for a
-#' specified value variable, grouped by a specified grouping variable. It checks
-#' for necessary attributes and ensures that the data frame is structured correctly.
+#' for the specified value variable. Omit `.group_var` or set it to `NULL`
+#' for an overall summary, ignoring any existing grouping on the input.
+#' Supply a grouping column to summarize only by that column.
+#' Dimension metadata is read from `dimensions`, falling back to the legacy
+#' `dimension` attribute. If neither is present, `dimensions` is `NA_integer_`.
 #'
 #' @description Summarizes random walk data by computing statistical measures.
 #'
 #' @param .data A data frame or tibble containing random walk data.
 #' @param .value A column name (unquoted) representing the value to summarize.
-#' @param .group_var A column name (unquoted) representing the grouping variable.
+#' @param .group_var An optional column name (unquoted) representing the grouping
+#'   variable. Defaults to `NULL` for one overall summary across all walks.
 #'
 #' @return A tibble containing the summarized statistics for each group,
 #' including mean, median, range, quantiles, variance, standard deviation,
@@ -28,10 +30,13 @@
 #' # Example data frame
 #' walk_data <- random_normal_walk(.initial_value = 100)
 #'
-#' # Summarize the walks
+#' # Summarize by walk
 #' summarize_walks(walk_data, cum_sum_y, walk_number) |>
 #'  glimpse()
+#' # Overall summary (omitted grouping and explicit NULL are equivalent)
 #' summarize_walks(walk_data, y) |>
+#'   glimpse()
+#' summarize_walks(walk_data, y, .group_var = NULL) |>
 #'   glimpse()
 #'
 #' # Example with missing value variable
@@ -42,14 +47,21 @@ NULL
 #' @rdname summarize_walks
 #' @export
 
-summarize_walks <- function(.data, .value, .group_var) {
+summarize_walks <- function(.data, .value, .group_var = NULL) {
   # Variables
   value_var <- rlang::enquo(.value)
   group_var <- rlang::enquo(.group_var)
 
   # Attributes
   df <- dplyr::as_tibble(.data)
-  atb <- attributes(df)
+  atb <- attributes(.data)
+  walk_dimensions <- attr(.data, "dimensions", exact = TRUE)
+  if (is.null(walk_dimensions)) {
+    walk_dimensions <- attr(.data, "dimension", exact = TRUE)
+  }
+  if (is.null(walk_dimensions)) {
+    walk_dimensions <- NA_integer_
+  }
 
   # Checks
   if (rlang::quo_is_null(value_var)) {
@@ -77,13 +89,16 @@ summarize_walks <- function(.data, .value, .group_var) {
   }
 
   # Summarize the data
+  df <- dplyr::ungroup(df)
+  if (!rlang::quo_is_null(group_var)) {
+    df <- dplyr::group_by(df, !!group_var)
+  }
   df |>
-    dplyr::group_by(!!group_var) |>
     dplyr::select(!!group_var, !!value_var) |>
     dplyr::summarize(
       fns = atb[["fns"]],
       fns_name = convert_snake_to_title_case(atb[["fns"]]),
-      dimensions = atb[["dimension"]],
+      dimensions = .env$walk_dimensions,
       obs = atb[["n"]],
       mean_val = NNS::NNS.moments(!!value_var)[["mean"]],
       median = stats::median(!!value_var),

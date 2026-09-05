@@ -5,16 +5,17 @@
 \alias{summarise_walks}
 \title{Summarize Walks Data}
 \usage{
-summarize_walks(.data, .value, .group_var)
+summarize_walks(.data, .value, .group_var = NULL)
 
-summarise_walks(.data, .value, .group_var)
+summarise_walks(.data, .value, .group_var = NULL)
 }
 \arguments{
 \item{.data}{A data frame or tibble containing random walk data.}
 
 \item{.value}{A column name (unquoted) representing the value to summarize.}
 
-\item{.group_var}{A column name (unquoted) representing the grouping variable.}
+\item{.group_var}{An optional column name (unquoted) representing the grouping
+variable. Defaults to \code{NULL} for one overall summary across all walks.}
 }
 \value{
 A tibble containing the summarized statistics for each group,
@@ -28,10 +29,11 @@ Summarizes random walk data by computing statistical measures.
 This function requires that the input data frame contains a
 column named 'walk_number' and that the value to summarize is provided.
 It computes statistics such as mean, median, variance, and quantiles
-for the specified value variable. #' This function summarizes a data frame
-containing random walk data by computing various statistical measures for a
-specified value variable, grouped by a specified grouping variable. It checks
-for necessary attributes and ensures that the data frame is structured correctly.
+for the specified value variable. Omit \code{.group_var} or set it to \code{NULL}
+for an overall summary, ignoring any existing grouping on the input.
+Supply a grouping column to summarize only by that column.
+Dimension metadata is read from \code{dimensions}, falling back to the legacy
+\code{dimension} attribute. If neither is present, \code{dimensions} is \code{NA_integer_}.
 }
 \examples{
 library(dplyr)
@@ -39,10 +41,13 @@ library(dplyr)
 # Example data frame
 walk_data <- random_normal_walk(.initial_value = 100)
 
-# Summarize the walks
+# Summarize by walk
 summarize_walks(walk_data, cum_sum_y, walk_number) |>
  glimpse()
+# Overall summary (omitted grouping and explicit NULL are equivalent)
 summarize_walks(walk_data, y) |>
+  glimpse()
+summarize_walks(walk_data, y, .group_var = NULL) |>
   glimpse()
 
 # Example with missing value variable
