@@ -17,6 +17,9 @@ None
 
 ## Minor Fixes and Improvements
 
+* Fix #289 - Make grouping optional in `summarize_walks()` and
+  `summarise_walks()`, and support both dimension metadata attribute spellings.
+
 1. Fix #252 - Update generating functions resulting in a 2.8x speed up or 82% faster.
 
 # RandomWalker 1.0.0
