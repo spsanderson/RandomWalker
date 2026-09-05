@@ -1,5 +1,3 @@
-Paste this into `.github/skills/code-review/SKILL.md`. GitHub recommends a review-focused skill name and description so Copilot can recognize when to use it. [GitHub documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review?tool=webui#mcp-servers-and-agent-skills)
-
 ---
 name: code-review
 description: Review RandomWalker pull requests for R package correctness, statistical accuracy, public API compatibility, and consistency between random walk generators, summaries, visualizations, and documentation.
