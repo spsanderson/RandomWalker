@@ -508,7 +508,7 @@ citation("RandomWalker")
 
 Yes! Join us on:
 - [GitHub Discussions](https://github.com/spsanderson/RandomWalker/discussions)
-- Follow [@spsanderson](https://twitter.com/spsanderson) on Twitter
+- Follow [@steveondata](https://t.me/steveondata) on Telegram
 
 ## Contributing
 
