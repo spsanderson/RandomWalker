@@ -221,7 +221,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📄 License
 
-This package is licensed under the MIT License. See [LICENSE.md](LICENSE.md) for details.
+This package is licensed under the MIT License. See [LICENSE.md](https://github.com/spsanderson/RandomWalker/blob/main/LICENSE.md) for details.
 
 ## 👥 Authors
 

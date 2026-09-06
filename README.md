@@ -75,15 +75,15 @@ head(walks, 10)
 #>    walk_number step_number      y
 #>    <fct>             <int>  <dbl>
 #>  1 1                     1  0    
-#>  2 1                     2 -0.315
-#>  3 1                     3  0.413
-#>  4 1                     4 -0.351
-#>  5 1                     5 -1.53 
-#>  6 1                     6 -2.44 
-#>  7 1                     7 -3.19 
-#>  8 1                     8 -3.58 
-#>  9 1                     9 -4.95 
-#> 10 1                    10 -3.75
+#>  2 1                     2  0.952
+#>  3 1                     3  0.573
+#>  4 1                     4  0.292
+#>  5 1                     5  1.06 
+#>  6 1                     6  1.39 
+#>  7 1                     7  0.727
+#>  8 1                     8  0.186
+#>  9 1                     9 -0.305
+#> 10 1                    10 -0.310
 ```
 
 ### Visualize Random Walks
@@ -108,7 +108,7 @@ rw30() |>
 #> # A tibble: 1 × 16
 #>   fns   fns_name dimensions mean_val median range quantile_lo quantile_hi
 #>   <chr> <chr>         <dbl>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 rw30  Rw30              1   -0.624 -0.900  49.1       -13.9        18.7
+#> 1 rw30  Rw30              1  -0.0134  0.302  43.1       -16.9        11.5
 #> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
 #> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
 
@@ -119,16 +119,16 @@ rw30() |>
 #> # A tibble: 10 × 17
 #>    walk_number fns   fns_name dimensions mean_val median range quantile_lo
 #>    <fct>       <chr> <chr>         <dbl>    <dbl>  <dbl> <dbl>       <dbl>
-#>  1 1           rw30  Rw30              1    3.88   3.90  10.6       -0.636
-#>  2 2           rw30  Rw30              1    0.848  0.922 10.4       -3.85 
-#>  3 3           rw30  Rw30              1    3.32   3.09  10.2       -0.536
-#>  4 4           rw30  Rw30              1   -3.40  -3.30  10.2       -7.30 
-#>  5 5           rw30  Rw30              1    7.28   7.04  13.7        1.10 
-#>  6 6           rw30  Rw30              1   -8.04  -9.73  19.2      -18.0  
-#>  7 7           rw30  Rw30              1   -2.50  -2.56  11.3       -6.96 
-#>  8 8           rw30  Rw30              1   -0.348 -0.426  7.21      -3.41 
-#>  9 9           rw30  Rw30              1    7.19   5.56  16.2        1.44 
-#> 10 10          rw30  Rw30              1    1.42   1.44  12.8       -4.34 
+#>  1 1           rw30  Rw30              1   0.834   0.911 11.3       -4.14 
+#>  2 2           rw30  Rw30              1  -1.63   -1.22   9.43      -5.97 
+#>  3 3           rw30  Rw30              1   7.51    7.34  14.3        0.579
+#>  4 4           rw30  Rw30              1  10.8    11.7   18.4       -0.147
+#>  5 5           rw30  Rw30              1  -3.51   -3.96  12.8       -8.49 
+#>  6 6           rw30  Rw30              1   6.98    8.40  21.8       -1.90 
+#>  7 7           rw30  Rw30              1   0.392   0.458 11.1       -4.98 
+#>  8 8           rw30  Rw30              1  -0.0693 -0.495  9.60      -3.34 
+#>  9 9           rw30  Rw30              1   7.54    7.56  11.7        1.55 
+#> 10 10          rw30  Rw30              1  -9.22   -8.86  19.6      -18.5  
 #> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
 #> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
 #> #   skewness <dbl>, kurtosis <dbl>
@@ -136,10 +136,11 @@ rw30() |>
 
 ### Double pendulum trajectories
 
-Simulate continuous-time pendulum motion from randomized starting angles.
-The solver (`deSolve`) and animation packages (`gganimate`, `gifski`) are optional.
+Simulate continuous-time pendulum motion from randomized starting
+angles. The solver (`deSolve`) and animation packages (`gganimate`,
+`gifski`) are optional.
 
-```r
+``` r
 set.seed(287)
 pendulum <- double_pendulum_walk(.num_walks = 2, .n = 101)
 plot_double_pendulum(pendulum, .walk = 1)
@@ -166,7 +167,7 @@ random_normal_walk(
   visualize_walks()
 ```
 
-<img src="man/figures/README-custom_examples-1.png" width="100%" />
+<img src="man/figures/README-custom_examples-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -181,7 +182,7 @@ geometric_brownian_motion(
   visualize_walks()
 ```
 
-<img src="man/figures/README-custom_examples-2.png" width="100%" />
+<img src="man/figures/README-custom_examples-2.png" alt="" width="100%" />
 
 ### 2. Multi-Dimensional Random Walks
 
@@ -190,18 +191,18 @@ geometric_brownian_motion(
 random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2) |>
   head(10)
 #> # A tibble: 10 × 14
-#>    walk_number step_number        x       y cum_sum_x cum_prod_x cum_min_x
-#>    <fct>             <int>    <dbl>   <dbl>     <dbl>      <dbl>     <dbl>
-#>  1 1                     1  0.0268  -0.0711    0.0268          0    0.0268
-#>  2 1                     2  0.0268   0.0582    0.0536          0    0.0268
-#>  3 1                     3 -0.195   -0.0251   -0.141           0   -0.195 
-#>  4 1                     4 -0.0504  -0.148    -0.192           0   -0.195 
-#>  5 1                     5  0.00382  0.0865   -0.188           0   -0.195 
-#>  6 1                     6  0.131    0.139    -0.0567          0   -0.195 
-#>  7 1                     7  0.0420   0.0549   -0.0148          0   -0.195 
-#>  8 1                     8  0.0384  -0.0772    0.0236          0   -0.195 
-#>  9 1                     9 -0.258    0.149    -0.234           0   -0.258 
-#> 10 1                    10 -0.195    0.144    -0.429           0   -0.258 
+#>    walk_number step_number       x       y cum_sum_x cum_prod_x cum_min_x
+#>    <fct>             <int>   <dbl>   <dbl>     <dbl>      <dbl>     <dbl>
+#>  1 1                     1 -0.0474 -0.117    -0.0474          0   -0.0474
+#>  2 1                     2  0.0274 -0.0564   -0.0201          0   -0.0474
+#>  3 1                     3  0.142   0.0586    0.122           0   -0.0474
+#>  4 1                     4 -0.103   0.276     0.0189          0   -0.103 
+#>  5 1                     5  0.0206 -0.134     0.0395          0   -0.103 
+#>  6 1                     6 -0.131   0.0759   -0.0919          0   -0.131 
+#>  7 1                     7 -0.120   0.0155   -0.211           0   -0.131 
+#>  8 1                     8 -0.0595  0.0214   -0.271           0   -0.131 
+#>  9 1                     9  0.159   0.0155   -0.112           0   -0.131 
+#> 10 1                    10 -0.233   0.178    -0.345           0   -0.233 
 #> # ℹ 7 more variables: cum_max_x <dbl>, cum_mean_x <dbl>, cum_sum_y <dbl>,
 #> #   cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>, cum_mean_y <dbl>
 
@@ -209,18 +210,18 @@ random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2) |>
 random_normal_walk(.num_walks = 2, .n = 50, .dimensions = 3) |>
   head(10)
 #> # A tibble: 10 × 20
-#>    walk_number step_number       x        y       z cum_sum_x cum_prod_x
-#>    <fct>             <int>   <dbl>    <dbl>   <dbl>     <dbl>      <dbl>
-#>  1 1                     1  0.190   0.147    0.0425     0.190          0
-#>  2 1                     2 -0.0333 -0.0159   0.0287     0.157          0
-#>  3 1                     3  0.124  -0.0312   0.0523     0.281          0
-#>  4 1                     4 -0.0133 -0.00990 -0.0491     0.267          0
-#>  5 1                     5  0.0863 -0.0759  -0.106      0.354          0
-#>  6 1                     6 -0.0173 -0.0564   0.0971     0.336          0
-#>  7 1                     7  0.0345 -0.0564  -0.0301     0.371          0
-#>  8 1                     8  0.0345  0.222    0.108      0.405          0
-#>  9 1                     9 -0.0566 -0.0325   0.0971     0.349          0
-#> 10 1                    10  0.104   0.199    0.123      0.453          0
+#>    walk_number step_number        x        y        z cum_sum_x cum_prod_x
+#>    <fct>             <int>    <dbl>    <dbl>    <dbl>     <dbl>      <dbl>
+#>  1 1                     1 -0.0119  -0.0963   0.154     -0.0119          0
+#>  2 1                     2  0.0345  -0.103   -0.278      0.0225          0
+#>  3 1                     3  0.139   -0.0586  -0.0603     0.162           0
+#>  4 1                     4 -0.0636  -0.0963   0.00208    0.0983          0
+#>  5 1                     5 -0.174   -0.170    0.0608    -0.0755          0
+#>  6 1                     6  0.124   -0.0995   0.112      0.0480          0
+#>  7 1                     7 -0.111    0.00989 -0.0555    -0.0633          0
+#>  8 1                     8 -0.0505  -0.159    0.00208   -0.114           0
+#>  9 1                     9  0.0366  -0.0686   0.00471   -0.0772          0
+#> 10 1                    10  0.00216 -0.131   -0.0555    -0.0750          0
 #> # ℹ 13 more variables: cum_min_x <dbl>, cum_max_x <dbl>, cum_mean_x <dbl>,
 #> #   cum_sum_y <dbl>, cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>,
 #> #   cum_mean_y <dbl>, cum_sum_z <dbl>, cum_prod_z <dbl>, cum_min_z <dbl>,
@@ -242,7 +243,7 @@ discrete_walk(
   visualize_walks()
 ```
 
-<img src="man/figures/README-discrete_examples-1.png" width="100%" />
+<img src="man/figures/README-discrete_examples-1.png" alt="" width="100%" />
 
 ## 📚 Available Random Walk Types
 
@@ -310,7 +311,8 @@ like to change.
 ## 📄 License
 
 This package is licensed under the MIT License. See
-[LICENSE.md](LICENSE.md) for details.
+[LICENSE.md](https://github.com/spsanderson/RandomWalker/blob/main/LICENSE.md)
+for details.
 
 ## 👥 Authors
 
