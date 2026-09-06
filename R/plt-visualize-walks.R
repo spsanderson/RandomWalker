@@ -58,16 +58,6 @@
 #' rw30() |>
 #'  visualize_walks()
 #'
-#' # Set the alpha value to be other than the default 0.7
-#' set.seed(123)
-#' rw30() |>
-#'  visualize_walks(.alpha = 0.5)
-#'
-#' # Use the function with an input that has alternatives for y
-#' set.seed(123)
-#' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
-#'  visualize_walks()
-#'
 #' # Use the function to create interactive visualizations
 #' set.seed(123)
 #' random_normal_walk(.num_walks = 5, .initial_value = 100) |>
