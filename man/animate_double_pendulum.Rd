@@ -27,7 +27,7 @@ rendering at \code{fps = 1 / .delta_time} preserves simulated time.
 }
 \examples{
 \dontrun{
-walks <- double_pendulum_walk(.num_walks = 1)
+walks <- double_pendulum_walk(.num_walks = 1, .n = 200)
 animation <- animate_double_pendulum(walks)
 gif <- gganimate::animate(animation, nframes = attr(walks, "n"),
   fps = 1 / attr(walks, "delta_time"), renderer = gganimate::gifski_renderer())
@@ -38,5 +38,8 @@ gganimate::anim_save("double-pendulum.gif", animation = gif)
 Other Visualization Functions:
 \code{\link[=plot_double_pendulum]{plot_double_pendulum()}},
 \code{\link[=visualize_walks]{visualize_walks()}}
+}
+\author{
+Steven P. Sanderson II, MPH
 }
 \concept{Visualization Functions}

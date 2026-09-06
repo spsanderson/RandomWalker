@@ -14,18 +14,23 @@ plot_double_pendulum(.data, .walk = 1)
 \value{
 A customizable ggplot of the second bob's spatial trajectory,
 colored by elapsed seconds. Coordinates are in meters.
+
+a tibble of random walks generatd by a double pendulum
 }
 \description{
 Plot a Double Pendulum Trajectory
 }
 \examples{
 if (requireNamespace("deSolve", quietly = TRUE)) {
-  plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 21))
+  plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 200))
 }
 }
 \seealso{
 Other Visualization Functions:
 \code{\link[=animate_double_pendulum]{animate_double_pendulum()}},
 \code{\link[=visualize_walks]{visualize_walks()}}
+}
+\author{
+Steven P. Sanderson II, MPH
 }
 \concept{Visualization Functions}
