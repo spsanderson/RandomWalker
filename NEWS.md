@@ -12,7 +12,7 @@ None
 
 ## New Features
 
-1. Fix #287 - Add function `double_pendulum_walk()` to creeate double-pendulum 
+1. Fix #287 - Add function `double_pendulum_walk()` to create double-pendulum 
 trajectories with randomized starting angles, static trajectory plots, and 
 optional animation.
 
