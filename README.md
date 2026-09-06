@@ -72,18 +72,18 @@ library(RandomWalker)
 walks <- rw30()
 head(walks, 10)
 #> # A tibble: 10 × 3
-#>    walk_number step_number        y
-#>    <fct>             <int>    <dbl>
-#>  1 1                     1  0      
-#>  2 1                     2  0.00201
-#>  3 1                     3  0.678  
-#>  4 1                     4 -0.212  
-#>  5 1                     5  1.21   
-#>  6 1                     6  1.25   
-#>  7 1                     7  1.95   
-#>  8 1                     8  2.08   
-#>  9 1                     9  2.33   
-#> 10 1                    10  2.56
+#>    walk_number step_number      y
+#>    <fct>             <int>  <dbl>
+#>  1 1                     1  0    
+#>  2 1                     2  0.952
+#>  3 1                     3  0.573
+#>  4 1                     4  0.292
+#>  5 1                     5  1.06 
+#>  6 1                     6  1.39 
+#>  7 1                     7  0.727
+#>  8 1                     8  0.186
+#>  9 1                     9 -0.305
+#> 10 1                    10 -0.310
 ```
 
 ### Visualize Random Walks
@@ -108,7 +108,7 @@ rw30() |>
 #> # A tibble: 1 × 16
 #>   fns   fns_name dimensions mean_val median range quantile_lo quantile_hi
 #>   <chr> <chr>         <dbl>    <dbl>  <dbl> <dbl>       <dbl>       <dbl>
-#> 1 rw30  Rw30              1  -0.0607 -0.615  37.6       -13.4        14.2
+#> 1 rw30  Rw30              1  -0.0134  0.302  43.1       -16.9        11.5
 #> # ℹ 8 more variables: variance <dbl>, sd <dbl>, min_val <dbl>, max_val <dbl>,
 #> #   harmonic_mean <dbl>, geometric_mean <dbl>, skewness <dbl>, kurtosis <dbl>
 
@@ -117,18 +117,18 @@ rw30() |>
   summarize_walks(.value = y, .group_var = walk_number) |>
   head(10)
 #> # A tibble: 10 × 17
-#>    walk_number fns   fns_name dimensions mean_val  median range quantile_lo
-#>    <fct>       <chr> <chr>         <dbl>    <dbl>   <dbl> <dbl>       <dbl>
-#>  1 1           rw30  Rw30              1   -3.34  -3.51    8.94      -6.79 
-#>  2 2           rw30  Rw30              1   -7.19  -8.24   14.0      -12.6  
-#>  3 3           rw30  Rw30              1    4.29   3.69   13.0       -0.651
-#>  4 4           rw30  Rw30              1   -4.67  -4.95    9.26      -7.85 
-#>  5 5           rw30  Rw30              1    9.02   9.06   19.0        0.551
-#>  6 6           rw30  Rw30              1    3.55   3.70   10.1       -1.27 
-#>  7 7           rw30  Rw30              1    9.65   9.68   21.7       -0.282
-#>  8 8           rw30  Rw30              1    0.244 -0.0674 12.7       -5.45 
-#>  9 9           rw30  Rw30              1   -1.26  -1.48   10.5       -6.13 
-#> 10 10          rw30  Rw30              1   -1.65  -1.75   11.5       -5.74 
+#>    walk_number fns   fns_name dimensions mean_val median range quantile_lo
+#>    <fct>       <chr> <chr>         <dbl>    <dbl>  <dbl> <dbl>       <dbl>
+#>  1 1           rw30  Rw30              1   0.834   0.911 11.3       -4.14 
+#>  2 2           rw30  Rw30              1  -1.63   -1.22   9.43      -5.97 
+#>  3 3           rw30  Rw30              1   7.51    7.34  14.3        0.579
+#>  4 4           rw30  Rw30              1  10.8    11.7   18.4       -0.147
+#>  5 5           rw30  Rw30              1  -3.51   -3.96  12.8       -8.49 
+#>  6 6           rw30  Rw30              1   6.98    8.40  21.8       -1.90 
+#>  7 7           rw30  Rw30              1   0.392   0.458 11.1       -4.98 
+#>  8 8           rw30  Rw30              1  -0.0693 -0.495  9.60      -3.34 
+#>  9 9           rw30  Rw30              1   7.54    7.56  11.7        1.55 
+#> 10 10          rw30  Rw30              1  -9.22   -8.86  19.6      -18.5  
 #> # ℹ 9 more variables: quantile_hi <dbl>, variance <dbl>, sd <dbl>,
 #> #   min_val <dbl>, max_val <dbl>, harmonic_mean <dbl>, geometric_mean <dbl>,
 #> #   skewness <dbl>, kurtosis <dbl>
@@ -191,18 +191,18 @@ geometric_brownian_motion(
 random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2) |>
   head(10)
 #> # A tibble: 10 × 14
-#>    walk_number step_number        x       y cum_sum_x cum_prod_x cum_min_x
-#>    <fct>             <int>    <dbl>   <dbl>     <dbl>      <dbl>     <dbl>
-#>  1 1                     1  0.0281   0.0322  0.0281            0    0.0281
-#>  2 1                     2 -0.0404  -0.0737 -0.0124            0   -0.0404
-#>  3 1                     3  0.0548   0.139   0.0424            0   -0.0404
-#>  4 1                     4 -0.129   -0.103  -0.0866            0   -0.129 
-#>  5 1                     5  0.0448  -0.0530 -0.0419            0   -0.129 
-#>  6 1                     6  0.0281  -0.103  -0.0138            0   -0.129 
-#>  7 1                     7 -0.00585 -0.0614 -0.0196            0   -0.129 
-#>  8 1                     8  0.0187   0.0235 -0.000947          0   -0.129 
-#>  9 1                     9  0.0242  -0.0573  0.0233            0   -0.129 
-#> 10 1                    10  0.0638   0.0297  0.0871            0   -0.129 
+#>    walk_number step_number       x       y cum_sum_x cum_prod_x cum_min_x
+#>    <fct>             <int>   <dbl>   <dbl>     <dbl>      <dbl>     <dbl>
+#>  1 1                     1 -0.0474 -0.117    -0.0474          0   -0.0474
+#>  2 1                     2  0.0274 -0.0564   -0.0201          0   -0.0474
+#>  3 1                     3  0.142   0.0586    0.122           0   -0.0474
+#>  4 1                     4 -0.103   0.276     0.0189          0   -0.103 
+#>  5 1                     5  0.0206 -0.134     0.0395          0   -0.103 
+#>  6 1                     6 -0.131   0.0759   -0.0919          0   -0.131 
+#>  7 1                     7 -0.120   0.0155   -0.211           0   -0.131 
+#>  8 1                     8 -0.0595  0.0214   -0.271           0   -0.131 
+#>  9 1                     9  0.159   0.0155   -0.112           0   -0.131 
+#> 10 1                    10 -0.233   0.178    -0.345           0   -0.233 
 #> # ℹ 7 more variables: cum_max_x <dbl>, cum_mean_x <dbl>, cum_sum_y <dbl>,
 #> #   cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>, cum_mean_y <dbl>
 
@@ -210,18 +210,18 @@ random_normal_walk(.num_walks = 3, .n = 100, .dimensions = 2) |>
 random_normal_walk(.num_walks = 2, .n = 50, .dimensions = 3) |>
   head(10)
 #> # A tibble: 10 × 20
-#>    walk_number step_number        x        y         z cum_sum_x cum_prod_x
-#>    <fct>             <int>    <dbl>    <dbl>     <dbl>     <dbl>      <dbl>
-#>  1 1                     1  0.132    0.00328 -0.000246   0.132            0
-#>  2 1                     2 -0.0380   0.0549   0.0565     0.0943           0
-#>  3 1                     3 -0.00682  0.0286  -0.0404     0.0874           0
-#>  4 1                     4 -0.154   -0.171    0.139     -0.0667           0
-#>  5 1                     5  0.0191  -0.171   -0.0285    -0.0477           0
-#>  6 1                     6 -0.0126  -0.00421  0.107     -0.0603           0
-#>  7 1                     7  0.0694   0.0641  -0.201      0.00912          0
-#>  8 1                     8  0.0890  -0.00921  0.00900    0.0981           0
-#>  9 1                     9 -0.0525  -0.219   -0.0246     0.0456           0
-#> 10 1                    10 -0.0380   0.0927   0.0425     0.00760          0
+#>    walk_number step_number        x        y        z cum_sum_x cum_prod_x
+#>    <fct>             <int>    <dbl>    <dbl>    <dbl>     <dbl>      <dbl>
+#>  1 1                     1 -0.0119  -0.0963   0.154     -0.0119          0
+#>  2 1                     2  0.0345  -0.103   -0.278      0.0225          0
+#>  3 1                     3  0.139   -0.0586  -0.0603     0.162           0
+#>  4 1                     4 -0.0636  -0.0963   0.00208    0.0983          0
+#>  5 1                     5 -0.174   -0.170    0.0608    -0.0755          0
+#>  6 1                     6  0.124   -0.0995   0.112      0.0480          0
+#>  7 1                     7 -0.111    0.00989 -0.0555    -0.0633          0
+#>  8 1                     8 -0.0505  -0.159    0.00208   -0.114           0
+#>  9 1                     9  0.0366  -0.0686   0.00471   -0.0772          0
+#> 10 1                    10  0.00216 -0.131   -0.0555    -0.0750          0
 #> # ℹ 13 more variables: cum_min_x <dbl>, cum_max_x <dbl>, cum_mean_x <dbl>,
 #> #   cum_sum_y <dbl>, cum_prod_y <dbl>, cum_min_y <dbl>, cum_max_y <dbl>,
 #> #   cum_mean_y <dbl>, cum_sum_z <dbl>, cum_prod_z <dbl>, cum_min_z <dbl>,
@@ -311,7 +311,8 @@ like to change.
 ## 📄 License
 
 This package is licensed under the MIT License. See
-[LICENSE.md](LICENSE.md) for details.
+[LICENSE.md](https://github.com/spsanderson/RandomWalker/blob/main/LICENSE.md)
+for details.
 
 ## 👥 Authors
 
