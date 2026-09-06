@@ -15,7 +15,7 @@ plot_double_pendulum(.data, .walk = 1)
 A customizable ggplot of the second bob's spatial trajectory,
 colored by elapsed seconds. Coordinates are in meters.
 
-a tibble of random walks generatd by a double pendulum
+a ggplot2 object.
 }
 \description{
 Plot a Double Pendulum Trajectory

@@ -10,7 +10,7 @@
 #' @return A customizable ggplot of the second bob's spatial trajectory,
 #' colored by elapsed seconds. Coordinates are in meters.
 #'
-#' @return a tibble of random walks generatd by a double pendulum
+#' @return a ggplot2 object.
 #'
 #' @examples
 #' if (requireNamespace("deSolve", quietly = TRUE)) {
@@ -36,10 +36,13 @@ plot_double_pendulum <- function(.data, .walk = 1) {
 #'
 #' @param .trail_length Nonnegative integer number of recent sampled positions
 #' in the second bob's trail, including the current position. Zero disables it.
+#'
 #' @return A gganim object. Construction does not render or save files.
+#'
 #' @details Requires optional packages ggplot2 and gganimate. GIF rendering
 #' additionally requires gifski. Each observation is one discrete frame;
 #' rendering at `fps = 1 / .delta_time` preserves simulated time.
+#'
 #' @examples
 #' \dontrun{
 #' walks <- double_pendulum_walk(.num_walks = 1, .n = 200)
