@@ -2,9 +2,13 @@
 #'
 #' @family Generator Functions
 #' @family Continuous Distribution
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @description Simulate a planar frictionless double pendulum with massless
 #' rigid rods and point masses. Randomness enters only through starting angles;
 #' subsequent continuous-time motion is deterministic.
+#'
 #' @param .num_walks Positive integer number of trajectories.
 #' @param .n Integer number of observations, including time zero (at least two).
 #' @param .delta_time Positive sampling interval in seconds, not the solver step.
@@ -15,6 +19,7 @@
 #' @param .m1,.m2 Positive bob masses in kilograms.
 #' @param .l1,.l2 Positive rod lengths in meters.
 #' @param .gravity Positive gravitational acceleration in meters per second squared.
+#'
 #' @details Uses optional package deSolve and adaptive LSODA integration with
 #' relative and absolute tolerances of 1e-9. Times are
 #' `(0:(.n - 1)) * .delta_time`. The default covers 20 seconds.
@@ -22,13 +27,16 @@
 #' toward positive x from downward vertical. The pivot is at the origin and y
 #' increases upward. This is an ensemble of randomized initial conditions,
 #' not a process with random forces or random waiting times.
+#'
 #' @return An ungrouped tibble with factor `walk_number`, integer `step_number`,
 #' `time`, angles `theta1`, `theta2`, angular velocities `omega1`, `omega2`, first
 #' bob coordinates `x1`, `y1`, and second bob coordinates `x`, `y`. Coordinates
 #' are positions, not increments; no cumulative columns are added. Attributes
 #' contain parameters, `initial_states`, `fns`, `n`, `num_steps`, `num_walks`,
 #' `delta_time`, and `dimensions = 2`.
+#'
 #' @references Equations: <https://www.myphysicslab.com/pendulum/double-pendulum-en.html>.
+#'
 #' @examples
 #' if (requireNamespace("deSolve", quietly = TRUE)) {
 #'   set.seed(287)

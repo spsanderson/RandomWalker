@@ -1,13 +1,20 @@
 #' Plot a Double Pendulum Trajectory
 #' @family Visualization Functions
+#'
 #' @importFrom rlang .data
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @param .data Data returned by [double_pendulum_walk()].
 #' @param .walk One walk_number label to display, rather than its position.
 #' @return A customizable ggplot of the second bob's spatial trajectory,
 #' colored by elapsed seconds. Coordinates are in meters.
+#'
+#' @return a ggplot2 object.
+#'
 #' @examples
 #' if (requireNamespace("deSolve", quietly = TRUE)) {
-#'   plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 21))
+#'   plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 200))
 #' }
 #' @export
 plot_double_pendulum <- function(.data, .walk = 1) {
@@ -22,16 +29,23 @@ plot_double_pendulum <- function(.data, .walk = 1) {
 
 #' Animate a Double Pendulum
 #' @family Visualization Functions
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
 #' @inheritParams plot_double_pendulum
+#'
 #' @param .trail_length Nonnegative integer number of recent sampled positions
 #' in the second bob's trail, including the current position. Zero disables it.
+#'
 #' @return A gganim object. Construction does not render or save files.
+#'
 #' @details Requires optional packages ggplot2 and gganimate. GIF rendering
 #' additionally requires gifski. Each observation is one discrete frame;
 #' rendering at `fps = 1 / .delta_time` preserves simulated time.
+#'
 #' @examples
 #' \dontrun{
-#' walks <- double_pendulum_walk(.num_walks = 1)
+#' walks <- double_pendulum_walk(.num_walks = 1, .n = 200)
 #' animation <- animate_double_pendulum(walks)
 #' gif <- gganimate::animate(animation, nframes = attr(walks, "n"),
 #'   fps = 1 / attr(walks, "delta_time"), renderer = gganimate::gifski_renderer())
