@@ -1,12 +1,10 @@
-# RandomWalker 1.1.0
-
 ---
 editor_options: 
   markdown: 
     wrap: 72
 ---
 
-# RandomWalker (development version)
+# RandomWalker 1.1.0
 
 ## Breaking Changes
 

@@ -8,3 +8,5 @@
 ^\.github$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^wiki$
+^WIKI_SUMMARY\.md$
