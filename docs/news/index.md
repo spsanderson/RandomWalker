@@ -1,6 +1,8 @@
 # Changelog
 
-## RandomWalker (development version)
+## RandomWalker 1.1.0
+
+CRAN release: 2026-09-07
 
 ### Breaking Changes
 
@@ -8,15 +10,19 @@ None
 
 ### New Features
 
-- Fix [\#287](https://github.com/spsanderson/RandomWalker/issues/287) -
-  Add double-pendulum trajectories with randomized starting angles,
-  static trajectory plots, and optional animation.
-
 1.  Fix
+    [\#287](https://github.com/spsanderson/RandomWalker/issues/287) -
+    Add function
+    [`double_pendulum_walk()`](https://www.spsanderson.com/RandomWalker/reference/double_pendulum_walk.md)
+    to create double-pendulum trajectories with randomized starting
+    angles, static trajectory plots, and optional animation.
+
+2.  Fix
     [\#235](https://github.com/spsanderson/RandomWalker/issues/235) -
     Add function
     [`custom_walk()`](https://www.spsanderson.com/RandomWalker/reference/custom_walk.md)
-    to generate a random walk using a custom displacement function.
+    to generate a random walk using a custom function of your own. It
+    must output a single value.
 
 ### Minor Fixes and Improvements
 

@@ -1,4 +1,4 @@
-pandoc: 3.8.3
+pandoc: '3.10'
 pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
@@ -13,7 +13,7 @@ articles:
   home: home.html
   multi-dimensional-walks: multi-dimensional-walks.html
   statistical-analysis-guide: statistical-analysis-guide.html
-last_built: 2026-09-05T04:37Z
+last_built: 2026-09-08T21:47Z
 urls:
   reference: https://www.spsanderson.com/RandomWalker/reference
   article: https://www.spsanderson.com/RandomWalker/articles

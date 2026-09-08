@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">RandomWalker</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,18 +47,18 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="randomwalker-development-version">RandomWalker (development version)<a class="anchor" aria-label="anchor" href="#randomwalker-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="randomwalker-110">RandomWalker 1.1.0<a class="anchor" aria-label="anchor" href="#randomwalker-110"></a></h2><p class="text-muted">CRAN release: 2026-09-07</p>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-1-1-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-1-0"></a></h3>
 <p>None</p>
 </div>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
-<ul><li>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/287" class="external-link">#287</a> - Add double-pendulum trajectories with randomized starting angles, static trajectory plots, and optional animation.</li>
-</ul><ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/235" class="external-link">#235</a> - Add function <code><a href="../reference/custom_walk.html">custom_walk()</a></code> to generate a random walk using a custom displacement function.</li>
+<h3 id="new-features-1-1-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
+<ol style="list-style-type: decimal"><li><p>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/287" class="external-link">#287</a> - Add function <code><a href="../reference/double_pendulum_walk.html">double_pendulum_walk()</a></code> to create double-pendulum trajectories with randomized starting angles, static trajectory plots, and optional animation.</p></li>
+<li><p>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/235" class="external-link">#235</a> - Add function <code><a href="../reference/custom_walk.html">custom_walk()</a></code> to generate a random walk using a custom function of your own. It must output a single value.</p></li>
 </ol></div>
 <div class="section level3">
-<h3 id="minor-fixes-and-improvements-development-version">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-development-version"></a></h3>
+<h3 id="minor-fixes-and-improvements-1-1-0">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-1-1-0"></a></h3>
 <ul><li>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/289" class="external-link">#289</a> - Make grouping optional in <code><a href="../reference/summarize_walks.html">summarize_walks()</a></code> and <code><a href="../reference/summarize_walks.html">summarise_walks()</a></code>, and support both dimension metadata attribute spellings.</li>
 </ul><ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/RandomWalker/issues/252" class="external-link">#252</a> - Update generating functions resulting in a 2.8x speed up or 82% faster.</li>
 </ol></div>

@@ -40,11 +40,15 @@ Other Visualization Functions:
 [`plot_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/plot_double_pendulum.md),
 [`visualize_walks()`](https://www.spsanderson.com/RandomWalker/reference/visualize_walks.md)
 
+## Author
+
+Steven P. Sanderson II, MPH
+
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-walks <- double_pendulum_walk(.num_walks = 1)
+walks <- double_pendulum_walk(.num_walks = 1, .n = 200)
 animation <- animate_double_pendulum(walks)
 gif <- gganimate::animate(animation, nframes = attr(walks, "n"),
   fps = 1 / attr(walks, "delta_time"), renderer = gganimate::gifski_renderer())

@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">RandomWalker</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -203,7 +203,7 @@ modeling</p>
 <span></span>
 <span><span class="va">gambler</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    prob_ruin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">min_val</span> <span class="op">&lt;=</span> <span class="fl">0</span><span class="op">)</span>,</span>
 <span>    avg_final <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
@@ -270,7 +270,7 @@ successes) - Coin flip experiments</p>
 <span></span>
 <span><span class="va">defects</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    avg_defects_per_batch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>,</span>
 <span>    max_defects <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
@@ -326,7 +326,7 @@ testing - Customer conversion time - Waiting time modeling</p>
 <span></span>
 <span><span class="va">conversion</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average trials until conversion</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average trials until conversion</span></span>
 <span><span class="co">#&gt; [1] 19.13025</span></span></code></pre></div>
 </div>
 </div>
@@ -381,7 +381,7 @@ probabilities - Card games - Ecological sampling</p>
 <span></span>
 <span><span class="va">inspection</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average defects found per sample</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average defects found per sample</span></span>
 <span><span class="co">#&gt; [1] 0.505</span></span></code></pre></div>
 </div>
 </div>
@@ -489,7 +489,7 @@ claims - Accident modeling - Count data with extra variability</p>
 <span></span>
 <span><span class="va">claims</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    avg_monthly_claims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>,</span>
 <span>    sd_monthly_claims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
@@ -545,7 +545,7 @@ decay</p>
 <span></span>
 <span><span class="va">arrivals</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    avg_daily_calls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span>,</span>
 <span>    max_daily_calls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span>,</span>
 <span>    min_daily_calls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span></span>
@@ -754,7 +754,7 @@ outcomes - Independent trials</p>
 <span></span>
 <span><span class="co"># Visualize cumulative page views for a sample of walks</span></span>
 <span><span class="va">traffic</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">traffic</span><span class="op">$</span><span class="va">walk_number</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">traffic</span><span class="op">$</span><span class="va">walk_number</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Cumulative Website Page Views (Poisson Random Walk)"</span>,</span>
@@ -767,7 +767,7 @@ outcomes - Independent trials</p>
 <span><span class="co"># Compute total annual views (summary statistic)</span></span>
 <span><span class="va">traffic</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_sum_y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># Total annual views</span></span>
 <span><span class="co">#&gt; [1] 294053</span></span></code></pre></div>
 </div>
@@ -786,7 +786,7 @@ outcomes - Independent trials</p>
 <span></span>
 <span><span class="va">quality</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    prob_find_defect <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">max_val</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
@@ -807,7 +807,7 @@ outcomes - Independent trials</p>
 <span></span>
 <span><span class="va">resolution</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average calls until resolution</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">mean_val</span><span class="op">)</span>  <span class="co"># Average calls until resolution</span></span>
 <span><span class="co">#&gt; [1] 5.67865</span></span></code></pre></div>
 </div>
 </div>
@@ -854,7 +854,7 @@ outcomes - Independent trials</p>
 <span></span>
 <span><span class="va">walk</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    empirical_mean <span class="op">=</span> <span class="va">mean_val</span>,</span>
 <span>    empirical_var <span class="op">=</span> <span class="va">variance</span>,</span>
 <span>    ratio <span class="op">=</span> <span class="va">variance</span> <span class="op">/</span> <span class="va">mean_val</span>  <span class="co"># Should be ≈ 1 for Poisson</span></span>

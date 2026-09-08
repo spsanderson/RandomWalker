@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">RandomWalker</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -249,11 +249,11 @@ Normal distribution - &gt; 3: Heavy tails (more extreme values) - &lt;
 <span><span class="co"># Get final price statistics</span></span>
 <span><span class="va">final_prices</span> <span class="op">&lt;-</span> <span class="va">stock_sim</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">cum_prod_y</span>, .group_var <span class="op">=</span> <span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">max_val</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Analyze outcomes</span></span>
 <span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>final_price <span class="op">=</span> <span class="va">final_prices</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">final_price</span><span class="op">)</span>,</span>
 <span>    mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">final_price</span><span class="op">)</span>,</span>
 <span>    prob_profit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">final_price</span> <span class="op">&gt;</span> <span class="fl">100</span><span class="op">)</span>,</span>
@@ -272,7 +272,7 @@ Normal distribution - &gt; 3: Heavy tails (more extreme values) - &lt;
 <code class="sourceCode R"><span><span class="co"># Normal vs Cauchy walks</span></span>
 <span><span class="va">normal_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">100</span>, .n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"Normal"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"Normal"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: There was 1 warning in `dplyr::summarize()`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> In argument: `geometric_mean = exp(mean(log(y)))`.</span></span>
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
@@ -280,15 +280,15 @@ Normal distribution - &gt; 3: Heavy tails (more extreme values) - &lt;
 <span></span>
 <span><span class="va">cauchy_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_cauchy_walk.html">random_cauchy_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">100</span>, .n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/summarize_walks.html">summarize_walks</a></span><span class="op">(</span>.value <span class="op">=</span> <span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"Cauchy"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>distribution <span class="op">=</span> <span class="st">"Cauchy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: There was 1 warning in `dplyr::summarize()`.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> In argument: `geometric_mean = exp(mean(log(y)))`.</span></span>
 <span><span class="co">#&gt; Caused by warning in `log()`:</span></span>
 <span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> NaNs produced</span></span>
 <span></span>
 <span><span class="co"># Compare</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">normal_stats</span>, <span class="va">cauchy_stats</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">distribution</span>, <span class="va">mean_val</span>, <span class="va">sd</span>, <span class="va">skewness</span>, <span class="va">kurtosis</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">normal_stats</span>, <span class="va">cauchy_stats</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">distribution</span>, <span class="va">mean_val</span>, <span class="va">sd</span>, <span class="va">skewness</span>, <span class="va">kurtosis</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 5</span></span></span>
 <span><span class="co">#&gt;   distribution  mean_val      sd skewness  kurtosis</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -322,7 +322,7 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Cumulative functions are already in the data</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="fu"><a href="https://rdrr.io/pkg/tidyselect/man/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"cum_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"cum_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 8</span></span></span>
 <span><span class="co">#&gt;    walk_number step_number        y cum_sum_y cum_prod_y cum_min_y cum_max_y</span></span>
@@ -358,11 +358,11 @@ are computed for each dimension (x, y, z).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Track maximum ever reached</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    max_ever <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">cum_max_y</span><span class="op">)</span>,</span>
 <span>    min_ever <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">cum_min_y</span><span class="op">)</span>,</span>
-<span>    final_value <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span>    final_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
@@ -382,10 +382,10 @@ are computed for each dimension (x, y, z).</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Add custom cumulative functions</span></span>
 <span><span class="va">walks_extended</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    <span class="co"># Cumulative variance</span></span>
-<span>    cum_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    cum_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/row_number.html" class="external-link">row_number</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Cumulative absolute sum</span></span>
 <span>    cum_abs_sum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Running maximum drawdown</span></span>
@@ -393,7 +393,7 @@ are computed for each dimension (x, y, z).</p>
 <span>    drawdown <span class="op">=</span> <span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">-</span> <span class="va">running_peak</span><span class="op">)</span> <span class="op">/</span> <span class="va">running_peak</span>,</span>
 <span>    max_drawdown <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cummin</a></span><span class="op">(</span><span class="va">drawdown</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Visualize drawdown</span></span>
 <span><span class="va">walks_extended</span> <span class="op">|&gt;</span></span>
@@ -445,8 +445,8 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Calculate CI at each step</span></span>
 <span><span class="va">ci_by_step</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    mean_val <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.025</span><span class="op">)</span>,</span>
 <span>    upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.975</span><span class="op">)</span></span>
@@ -472,9 +472,9 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1000</span>, .n <span class="op">=</span> <span class="fl">100</span>, .initial_value <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">final_values</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate confidence interval</span></span>
 <span><span class="fu"><a href="../reference/confidence_interval.html">confidence_interval</a></span><span class="op">(</span><span class="va">final_values</span><span class="op">)</span></span>
@@ -497,13 +497,13 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Calculate running median (50th percentile)</span></span>
 <span><span class="va">walks_with_median</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>median_at_step <span class="op">=</span> <span class="fu"><a href="../reference/running_quantile.html">running_quantile</a></span><span class="op">(</span><span class="va">y</span>, .probs <span class="op">=</span> <span class="fl">0.5</span>, .window <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>median_at_step <span class="op">=</span> <span class="fu"><a href="../reference/running_quantile.html">running_quantile</a></span><span class="op">(</span><span class="va">y</span>, .probs <span class="op">=</span> <span class="fl">0.5</span>, .window <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Show results</span></span>
 <span><span class="va">walks_with_median</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="va">median_at_step</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="va">median_at_step</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 4</span></span></span>
 <span><span class="co">#&gt;    walk_number step_number        y median_at_step</span></span>
@@ -521,17 +521,17 @@ are computed for each dimension (x, y, z).</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate running quartiles</span></span>
 <span><span class="va">walks_with_quartiles</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    q25 <span class="op">=</span> <span class="fu"><a href="../reference/running_quantile.html">running_quantile</a></span><span class="op">(</span><span class="va">y</span>, .probs <span class="op">=</span> <span class="fl">0.25</span>, .window <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
 <span>    q50 <span class="op">=</span> <span class="fu"><a href="../reference/running_quantile.html">running_quantile</a></span><span class="op">(</span><span class="va">y</span>, .probs <span class="op">=</span> <span class="fl">0.50</span>, .window <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
 <span>    q75 <span class="op">=</span> <span class="fu"><a href="../reference/running_quantile.html">running_quantile</a></span><span class="op">(</span><span class="va">y</span>, .probs <span class="op">=</span> <span class="fl">0.75</span>, .window <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Show results</span></span>
 <span><span class="va">walks_with_quartiles</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="va">q25</span>, <span class="va">q50</span>, <span class="va">q75</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, <span class="va">step_number</span>, <span class="va">y</span>, <span class="va">q25</span>, <span class="va">q50</span>, <span class="va">q75</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
 <span><span class="co">#&gt;    walk_number step_number        y     q25       q50      q75</span></span>
@@ -556,8 +556,8 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Calculate quantiles at each step</span></span>
 <span><span class="va">quantile_evolution</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    q05 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.05</span><span class="op">)</span>,</span>
 <span>    q25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
 <span>    q50 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.50</span><span class="op">)</span>,</span>
@@ -621,8 +621,8 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Analyze distance evolution</span></span>
 <span><span class="va">distance_stats</span> <span class="op">&lt;-</span> <span class="va">walks_with_dist</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    mean_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span>,</span>
 <span>    sd_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span>,</span>
 <span>    max_dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">distance</span><span class="op">)</span></span>
@@ -656,10 +656,10 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Find first passage time to level 10</span></span>
 <span><span class="va">first_passage</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">&gt;=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_min</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, first_passage_time <span class="op">=</span> <span class="va">step_number</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">&gt;=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_min</a></span><span class="op">(</span><span class="va">step_number</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">walk_number</span>, first_passage_time <span class="op">=</span> <span class="va">step_number</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Analyze distribution of first passage times</span></span>
 <span><span class="va">first_passage</span> <span class="op">|&gt;</span></span>
@@ -721,14 +721,14 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Identify walks that reached 102</span></span>
 <span><span class="va">crossed_102</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">&gt;=</span> <span class="fl">102</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">cum_sum_y</span> <span class="op">&gt;=</span> <span class="fl">102</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Extract and visualize those walks</span></span>
 <span><span class="va">walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">crossed_102</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">walk_number</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">crossed_102</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/visualize_walks.html">visualize_walks</a></span><span class="op">(</span>.pluck <span class="op">=</span> <span class="st">"cum_sum_y"</span>, .alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="statistical-analysis-guide_files/figure-html/find_specific_walks-1.png" class="r-plt" alt="Multi-line plot showing all random walks that crossed the threshold of 102 at some point during their evolution. Multiple semi-transparent lines in different colors show the cumulative sum trajectories. The x-axis shows step numbers from 0 to 100, and the y-axis shows the cumulative sum values." width="672"></p>
 </div>
@@ -744,7 +744,7 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_drift_walk.html">random_normal_drift_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1</span>, .n <span class="op">=</span> <span class="fl">500</span>, .mu <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate autocorrelation</span></span>
-<span><span class="va">acf_result</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/acf.html" class="external-link">acf</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">acf_result</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/acf.html" class="external-link">acf</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">acf_result</span>, main <span class="op">=</span> <span class="st">"Autocorrelation of Random Walk Steps"</span><span class="op">)</span></span></code></pre></div>
@@ -758,7 +758,7 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">100</span>, .n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Test if steps are normally distributed</span></span>
-<span><span class="va">steps</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">steps</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Shapiro-Wilk test for normality</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">steps</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Sample for computational efficiency</span></span>
@@ -782,7 +782,7 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_walk.html">random_normal_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1</span>, .n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate variance ratio</span></span>
-<span><span class="va">values</span> <span class="op">&lt;-</span> <span class="va">walk</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span><span class="va">values</span> <span class="op">&lt;-</span> <span class="va">walk</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Variance of k-differences</span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -809,15 +809,15 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Calculate returns</span></span>
 <span><span class="va">returns</span> <span class="op">&lt;-</span> <span class="va">prices</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>    log_return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">cum_prod_y</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    simple_return <span class="op">=</span> <span class="op">(</span><span class="va">cum_prod_y</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    log_return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">cum_prod_y</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    simple_return <span class="op">=</span> <span class="op">(</span><span class="va">cum_prod_y</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/lead-lag.html" class="external-link">lag</a></span><span class="op">(</span><span class="va">cum_prod_y</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">log_return</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">log_return</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Analyze returns</span></span>
 <span><span class="va">returns</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarize</a></span><span class="op">(</span></span>
 <span>    mean_return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">log_return</span><span class="op">)</span> <span class="op">*</span> <span class="fl">252</span>,  <span class="co"># Annualized</span></span>
 <span>    volatility <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">log_return</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fl">252</span><span class="op">)</span>,  <span class="co"># Annualized</span></span>
 <span>    sharpe_ratio <span class="op">=</span> <span class="va">mean_return</span> <span class="op">/</span> <span class="va">volatility</span></span>
@@ -841,14 +841,14 @@ are computed for each dimension (x, y, z).</p>
 <span></span>
 <span><span class="co"># Get final values</span></span>
 <span><span class="va">normal_final</span> <span class="op">&lt;-</span> <span class="va">normal_walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">cauchy_final</span> <span class="op">&lt;-</span> <span class="va">cauchy_walks</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">walk_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">step_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">cum_sum_y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Wilcoxon rank-sum test (non-parametric)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">wilcox.test</a></span><span class="op">(</span><span class="va">normal_final</span>, <span class="va">cauchy_final</span><span class="op">)</span></span>
@@ -876,7 +876,7 @@ are computed for each dimension (x, y, z).</p>
 <span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_normal_drift_walk.html">random_normal_drift_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">100</span>, .n <span class="op">=</span> <span class="fl">100</span>, .mu <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Test if mean step is significantly different from 0</span></span>
-<span><span class="va">steps</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">steps</span> <span class="op">&lt;-</span> <span class="va">walks</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">steps</span>, mu <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  One Sample t-test</span></span>

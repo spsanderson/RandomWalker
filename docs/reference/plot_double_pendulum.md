@@ -24,16 +24,22 @@ plot_double_pendulum(.data, .walk = 1)
 A customizable ggplot of the second bob's spatial trajectory, colored by
 elapsed seconds. Coordinates are in meters.
 
+a ggplot2 object.
+
 ## See also
 
 Other Visualization Functions:
 [`animate_double_pendulum()`](https://www.spsanderson.com/RandomWalker/reference/animate_double_pendulum.md),
 [`visualize_walks()`](https://www.spsanderson.com/RandomWalker/reference/visualize_walks.md)
 
+## Author
+
+Steven P. Sanderson II, MPH
+
 ## Examples
 
 ``` r
 if (requireNamespace("deSolve", quietly = TRUE)) {
-  plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 21))
+  plot_double_pendulum(double_pendulum_walk(.num_walks = 1, .n = 200))
 }
 ```

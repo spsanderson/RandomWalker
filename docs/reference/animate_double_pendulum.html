@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">RandomWalker</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,11 +89,15 @@ rendering at <code>fps = 1 / .delta_time</code> preserves simulated time.</p>
 <code><a href="plot_double_pendulum.html">plot_double_pendulum()</a></code>,
 <code><a href="visualize_walks.html">visualize_walks()</a></code></p></div>
     </div>
+    <div class="section level2">
+    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
+    <p>Steven P. Sanderson II, MPH</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="double_pendulum_walk.html">double_pendulum_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">walks</span> <span class="op">&lt;-</span> <span class="fu"><a href="double_pendulum_walk.html">double_pendulum_walk</a></span><span class="op">(</span>.num_walks <span class="op">=</span> <span class="fl">1</span>, .n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">animation</span> <span class="op">&lt;-</span> <span class="fu">animate_double_pendulum</span><span class="op">(</span><span class="va">walks</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">gif</span> <span class="op">&lt;-</span> <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gganimate/man/animate.html" class="external-link">animate</a></span><span class="op">(</span><span class="va">animation</span>, nframes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">walks</span>, <span class="st">"n"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  fps <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">walks</span>, <span class="st">"delta_time"</span><span class="op">)</span>, renderer <span class="op">=</span> <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gganimate/man/renderers.html" class="external-link">gifski_renderer</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>

@@ -137,6 +137,10 @@ Other Continuous Distribution:
 [`random_uniform_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_uniform_walk.md),
 [`random_weibull_walk()`](https://www.spsanderson.com/RandomWalker/reference/random_weibull_walk.md)
 
+## Author
+
+Steven P. Sanderson II, MPH
+
 ## Examples
 
 ``` r
